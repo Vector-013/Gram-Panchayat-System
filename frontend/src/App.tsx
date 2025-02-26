@@ -4,6 +4,8 @@ import Home from './pages/Home';
 import GetCitizens from './pages/GetCitizens';
 import PostCitizen from './pages/PostCitizens';
 import CitizensByHousehold from './pages/citizen/household';
+import LandRecords from './pages/citizen/landRecord';
+import VaccinationRecords from './pages/citizen/vaccineRecord';
 
 const App: React.FC = () => {
   return (
@@ -13,6 +15,8 @@ const App: React.FC = () => {
         <Route path="/get-citizens" element={<GetCitizens />} />
         <Route path="/post-citizen" element={<PostCitizen />} />
         <Route path="/house-citizen/:citizenId" element={<CitizensByHousehold/>} />
+        <Route path="/land-records/:citizenId" element={<LandRecords/>} />
+        <Route path="/vaccination-records/:citizenId" element={<VaccinationRecords/>} />
       </Routes>
     </Router>
   );
