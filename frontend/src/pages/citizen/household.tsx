@@ -18,7 +18,19 @@ const CitizensByHousehold: React.FC = () => {
   const [filteredCitizens, setFilteredCitizens] = useState<Citizen[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
-  const [search, setSearch] = useState<string>("");
+
+  // Filter states
+  const [nameFilter, setNameFilter] = useState<string>("");
+  const [genderFilter, setGenderFilter] = useState<string>("");
+  const [educationFilter, setEducationFilter] = useState<string>("");
+  const [dobRange, setDobRange] = useState<{ start: string; end: string }>({
+    start: "",
+    end: "",
+  });
+  const [incomeRange, setIncomeRange] = useState<{ min: number; max: number }>({
+    min: 0,
+    max: 1000000,
+  });
 
   useEffect(() => {
     if (!citizenId) return;
@@ -54,26 +66,95 @@ const CitizensByHousehold: React.FC = () => {
   }, [citizenId]);
 
   useEffect(() => {
-    const filtered = citizens.filter(
-      (citizen) =>
-        citizen.name.toLowerCase().includes(search.toLowerCase()) ||
-        citizen.educational_qualification.toLowerCase().includes(search.toLowerCase())
-    );
+    const filtered = citizens.filter((citizen) => {
+      const matchesName = citizen.name.toLowerCase().includes(nameFilter.toLowerCase());
+      const matchesGender = genderFilter ? citizen.gender === genderFilter : true;
+      const matchesEducation = citizen.educational_qualification
+        .toLowerCase()
+        .includes(educationFilter.toLowerCase());
+
+      const matchesDob =
+        (!dobRange.start || new Date(citizen.dob) >= new Date(dobRange.start)) &&
+        (!dobRange.end || new Date(citizen.dob) <= new Date(dobRange.end));
+
+      const matchesIncome =
+        citizen.income >= incomeRange.min && citizen.income <= incomeRange.max;
+
+      return matchesName && matchesGender && matchesEducation && matchesDob && matchesIncome;
+    });
+
     setFilteredCitizens(filtered);
-  }, [search, citizens]);
+  }, [nameFilter, genderFilter, educationFilter, dobRange, incomeRange, citizens]);
 
   return (
     <div style={{ padding: "20px" }}>
       <h2>Find Citizens by Household</h2>
 
-      <input
-        type="text"
-        placeholder="Filter by name or education"
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-        style={{ marginTop: "10px", padding: "5px", width: "100%", maxWidth: "300px" }}
-      />
+      {/* Filters */}
+      <div style={{ display: "flex", flexWrap: "wrap", gap: "10px", marginBottom: "10px" }}>
+        <input
+          type="text"
+          placeholder="Filter by Name"
+          value={nameFilter}
+          onChange={(e) => setNameFilter(e.target.value)}
+          style={inputStyle}
+        />
+        <select value={genderFilter} onChange={(e) => setGenderFilter(e.target.value)} style={inputStyle}>
+          <option value="">All Genders</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Other">Other</option>
+        </select>
+        <input
+          type="text"
+          placeholder="Filter by Education"
+          value={educationFilter}
+          onChange={(e) => setEducationFilter(e.target.value)}
+          style={inputStyle}
+        />
 
+        {/* DOB Range */}
+        <div>
+          <label style={labelStyle}>DOB Range:</label>
+          <input
+            type="date"
+            value={dobRange.start}
+            onChange={(e) => setDobRange((prev) => ({ ...prev, start: e.target.value }))}
+            style={inputStyle}
+          />
+          <input
+            type="date"
+            value={dobRange.end}
+            onChange={(e) => setDobRange((prev) => ({ ...prev, end: e.target.value }))}
+            style={inputStyle}
+          />
+        </div>
+
+        {/* Income Range */}
+        <div>
+          <label style={labelStyle}>Income Range:</label>
+          <input
+            type="number"
+            placeholder="Min Income"
+            value={incomeRange.min}
+            onChange={(e) =>
+              setIncomeRange((prev) => ({ ...prev, min: parseInt(e.target.value) || 0 }))
+            }
+            style={inputStyle}
+          />
+          <input
+            type="number"
+            placeholder="Max Income"
+            value={incomeRange.max}
+            onChange={(e) =>
+              setIncomeRange((prev) => ({ ...prev, max: parseInt(e.target.value) || 1000000 }))
+            }
+            style={inputStyle}
+          />
+        </div>
+      </div>
+
+      {/* Display Table */}
       {loading ? (
         <p>Loading...</p>
       ) : error ? (
@@ -83,6 +164,20 @@ const CitizensByHousehold: React.FC = () => {
       )}
     </div>
   );
+};
+
+// Styles
+const inputStyle: React.CSSProperties = {
+  padding: "8px",
+  border: "1px solid #ccc",
+  borderRadius: "4px",
+  width: "180px",
+};
+
+const labelStyle: React.CSSProperties = {
+  fontSize: "14px",
+  fontWeight: "bold",
+  marginRight: "5px",
 };
 
 export default CitizensByHousehold;

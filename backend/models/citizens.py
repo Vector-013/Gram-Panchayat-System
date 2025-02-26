@@ -35,6 +35,7 @@ class Tax(Base):
 
     tax_id = Column(Integer, primary_key=True, index=True, autoincrement=True)
     citizen_id = Column(Integer, ForeignKey("citizens.citizen_id"), nullable=False)
+    type = Column(String, nullable=False)
     tax_amount = Column(Integer, nullable=False)
     payment_status = Column(String, nullable=False)
 

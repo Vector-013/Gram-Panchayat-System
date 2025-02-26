@@ -27,5 +27,16 @@
       "income": 85000,
       "household_id": 101
     }
+  ],
+  "medical_data": [
+    {"medical_id":11, "citizen_id":1, "name":"Amit Kumar", "health_status":"Good", "medical_condition":"None"},
+    {"medical_id":2, "citizen_id":2, "name":"Sunita Sharma","health_status":"Poor", "medical_condition":"Asthama"},
+    {"medical_id":3, "citizen_id":3, "name":"Rahul Mehta", "health_status":"Poor", "medical_condition":"Diabetes"}
+  ],
+  "taxes": [
+    {"tax_id":101, "citizen_id":1,"name":"Amit Kumar", "payment_status":"Pending", "type":"Income Tax", "tax_amount":5000},
+    {"tax_id":102, "citizen_id":2, "name":"Sunita Sharma", "payment_status":"Pending", "type":"Property Tax","tax_amount":6000},
+    {"tax_id":103, "citizen_id":3, "name":"Rahul Mehta","payment_status":"Paid","type":"Income Tax","tax_amount":7000}
   ]
+
 }
