@@ -71,7 +71,7 @@ This README covers the installation and configuration steps needed for developer
    npm -v
    ```
    
-   If necessary, install the latest LTS version using nvm:
+   If necessary, install the latest LTS version using nvm (Check ```bash npm -v``` should give 11.1.0):
    ```bash
    nvm install --lts
    nvm use --lts
@@ -82,11 +82,11 @@ This README covers the installation and configuration steps needed for developer
    npm install -g npm@latest
    ```
 
-3. **Create a New React App with Vite (TypeScript Template):**
+3. **Install requirements:**
    ```bash
-   npm create vite@latest gram-panchayat-frontend --template react-ts
-   cd gram-panchayat-frontend
    npm install
+   npm install react-router-dom
+   npm install axios
    ```
 
 4. **Configure Vite Proxy (Optional but Recommended):**
