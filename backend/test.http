@@ -1,0 +1,10 @@
+POST http://127.0.0.1:8000/citizens/
+Content-Type: application/json
+
+{
+    "name": "my_boy_tester",
+    "gender": "Male",
+    "dob": "2010-03-15",
+    "household_id": 1001,
+    "educational_qualification": "10th"
+}

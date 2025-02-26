@@ -9,7 +9,6 @@ __pycache__/
 *.pyd
 
 # Ignore environment variables and secrets
-.env
 *.sqlite3
 
 # Ignore system files
