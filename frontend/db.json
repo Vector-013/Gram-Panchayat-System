@@ -1,0 +1,31 @@
+{
+  "citizens": [
+    {
+      "citizen_id": 1,
+      "name": "Amit Kumar",
+      "gender": "Male",
+      "dob": "1990-05-12",
+      "educational_qualification": "B.Sc",
+      "income": 50000,
+      "household_id": 101
+    },
+    {
+      "citizen_id": 2,
+      "name": "Sunita Sharma",
+      "gender": "Female",
+      "dob": "1995-08-22",
+      "educational_qualification": "M.A",
+      "income": 65000,
+      "household_id": 101
+    },
+    {
+      "citizen_id": 3,
+      "name": "Rahul Mehta",
+      "gender": "Male",
+      "dob": "1988-03-14",
+      "educational_qualification": "MBA",
+      "income": 85000,
+      "household_id": 101
+    }
+  ]
+}
