@@ -59,6 +59,8 @@ This README covers the installation and configuration steps needed for developer
 
 ## Frontend Setup
 
+### cd into the front end folder first
+
 1. **Upgrade Node and npm:**
    
    Check your versions:
