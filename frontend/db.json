@@ -37,6 +37,51 @@
     {"tax_id":101, "citizen_id":1,"name":"Amit Kumar", "payment_status":"Pending", "type":"Income Tax", "tax_amount":5000},
     {"tax_id":102, "citizen_id":2, "name":"Sunita Sharma", "payment_status":"Pending", "type":"Property Tax","tax_amount":6000},
     {"tax_id":103, "citizen_id":3, "name":"Rahul Mehta","payment_status":"Paid","type":"Income Tax","tax_amount":7000}
-  ]
-
+  ],
+  "land_records" : [
+    {
+      "citizen_id" : 1,
+      "land_id" : 1,
+      "name" : "Amit Kumar",
+      "area_acres": 2.5,
+      "crop_type": "Rice"
+    },
+    {
+      "citizen_id" : 2,
+      "land_id" : 2,
+      "name" : "Sunita Sharma",
+      "area_acres": 3.5,
+      "crop_type": "Rice"
+    },
+    {
+      "citizen_id" : 3,
+      "land_id" : 3,
+      "name" : "Rahul Mehta",
+      "area_acres": 4.5,
+      "crop_type": "Maize"
+    }
+  ],  
+  "vaccine_records": [
+      {
+        "citizen_id": 1,
+        "vaccination_id": 1,
+        "name": "Amit Kumar",
+        "vaccination_type": "COVID-19",
+        "date_administered": "2021-05-12"
+      },
+      {
+        "citizen_id": 2,
+        "vaccination_id": 2,
+        "name": "Sunita Sharma",
+        "vaccination_type": "COVID-19",
+        "date_administered": "2021-06-15"
+      },
+      {
+        "citizen_id": 3,
+        "vaccination_id": 3,
+        "name": "Rahul Mehta",
+        "vaccination_type": "COVID-19",
+        "date_administered": "2021-07-20"
+      }
+    ]
 }
