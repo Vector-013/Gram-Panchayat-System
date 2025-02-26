@@ -59,12 +59,7 @@ This README covers the installation and configuration steps needed for developer
 
 ## Frontend Setup
 
-1. **Clean Up Old React App (if present):**
-   ```bash
-   rm -rf gram-panchayat-frontend
-   ```
-
-2. **Upgrade Node and npm:**
+1. **Upgrade Node and npm:**
    
    Check your versions:
    ```bash
@@ -83,14 +78,14 @@ This README covers the installation and configuration steps needed for developer
    npm install -g npm@latest
    ```
 
-3. **Install requirements:**
+2. **Install requirements:**
    ```bash
    npm install
    npm install react-router-dom
    npm install axios
    ```
 
-4. **Configure Vite Proxy (Optional but Recommended):**
+3. **Configure Vite Proxy (Optional but Recommended):**
    
    Edit vite.config.ts to forward API requests to your backend:
    ```ts
@@ -111,7 +106,7 @@ This README covers the installation and configuration steps needed for developer
    });
    ```
 
-5. **Start the Frontend Development Server:**
+4. **Start the Frontend Development Server:**
    ```bash
    npm run dev
    ```
