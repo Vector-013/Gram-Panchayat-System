@@ -36,7 +36,7 @@ This README covers the installation and configuration steps needed for developer
 
 3. **Install Dependencies:**
    ```bash
-   pip install fastapi uvicorn sqlalchemy psycopg2-binary python-dotenv
+   pip3 install fastapi uvicorn sqlalchemy psycopg2-binary python-dotenv
    ```
 
 4. **Configure Database:**
