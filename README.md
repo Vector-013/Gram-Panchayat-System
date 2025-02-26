@@ -20,11 +20,12 @@ This README covers the installation and configuration steps needed for developer
 
 ---
 
+### Fork this repo and clone it into your device first
+
 ## Backend Setup
 
 1. **Clone the Repository & Navigate:**
    ```bash
-   git clone https://github.com/yourusername/gram-panchayat-system.git
    cd gram-panchayat-system/backend
    ```
 
