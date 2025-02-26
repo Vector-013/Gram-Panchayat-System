@@ -51,7 +51,7 @@ This README covers the installation and configuration steps needed for developer
 
 5. **Run the Backend Server:**
    ```bash
-   uvicorn main:app --reload
+   python3 main.py
    ```
 
    The backend will be available at http://localhost:8000/.
