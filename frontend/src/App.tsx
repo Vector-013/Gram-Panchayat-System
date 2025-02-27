@@ -12,6 +12,10 @@ import Logout from './pages/auth/Logout';
 import AdminDashboard from './pages/admin/AdminDashboard';
 import CitizenDashboard from './pages/citizen/CitizenDashboard';
 import AdminRegister from './pages/AdminRegister';
+import AssetPage from './pages/base/assets';
+import EnvironmentStats from './pages/base/env';
+import GeoPage from './pages/base/geo';
+import FloraFaunaPage from './pages/base/floraFauna';
 
 // Function to check if the user is authenticated
 const isAuthenticated = () => {
@@ -33,6 +37,7 @@ const LandingPage: React.FC = () => {
   const role = getUserRole();
   return role === 'admin' ? <Navigate to="/admin-dashboard" replace /> : <Navigate to="/citizen-dashboard" replace />;
 };
+
 
 const App: React.FC = () => {
   return (
@@ -57,6 +62,10 @@ const App: React.FC = () => {
         <Route path="/land-records/:citizenId" element={<ProtectedRoute element={<LandRecords />} />} />
         <Route path="/vaccination-records/:citizenId" element={<ProtectedRoute element={<VaccinationRecords />} />} />
         <Route path="/admin-register" element={<ProtectedRoute element={<AdminRegister />} />} />
+        <Route path="/assets" element={<AssetPage />} />
+        <Route path="/env" element={<EnvironmentStats />} />
+        <Route path="/geo" element={<GeoPage />} />
+        <Route path="/flora-fauna" element={<FloraFaunaPage />} />
       </Routes>
     </Router>
   );
