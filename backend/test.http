@@ -3,7 +3,7 @@
 # Content-Type: application/json
 
 # {
-#   "email": "Admin",
+#   "email": "Admin@panchayat.com",
 #   "password": "OjasMyBoy"
 # }
 
@@ -21,15 +21,15 @@
 # }
 
 # Attempt to register a new citizen using a citizen token (should fail)
-POST http://localhost:8000/admin/register
-Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBZG1pbiIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTc0MDY0MTM1OX0.Bq5TOsz9Sjv_PYCIkeZY343rnWsOkqXD7bQBc8C5SNY
+# POST http://localhost:8000/admin/register
+# Content-Type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBZG1pbiIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTc0MDY0MTM1OX0.Bq5TOsz9Sjv_PYCIkeZY343rnWsOkqXD7bQBc8C5SNY
 
-{
-  "name": "Johny Doe",
-  "gender": "Male",
-  "dob": "1990-01-01",
-  "household_id": 1,
-  "educational_qualification": "Bachelor",
-  "password": "password123"
-}
+# {
+#   "name": "Johny Doe",
+#   "gender": "Male",
+#   "dob": "1990-01-01",
+#   "household_id": 1,
+#   "educational_qualification": "Bachelor",
+#   "password": "password123"
+# }

@@ -1,6 +1,5 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
+import React, { JSX } from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import GetCitizens from './pages/GetCitizens';
 import PostCitizen from './pages/PostCitizens';
 import CitizensByHousehold from './pages/citizen/household';
@@ -8,19 +7,56 @@ import MedicalDataPage from './pages/citizen/medical';
 import TaxRecords from './pages/citizen/tax';
 import LandRecords from './pages/citizen/landRecord';
 import VaccinationRecords from './pages/citizen/vaccineRecord';
+import Login from './pages/auth/Login';
+import Logout from './pages/auth/Logout';
+import AdminDashboard from './pages/admin/AdminDashboard';
+import CitizenDashboard from './pages/citizen/CitizenDashboard';
+import AdminRegister from './pages/AdminRegister';
+
+// Function to check if the user is authenticated
+const isAuthenticated = () => {
+  return localStorage.getItem('token') !== null;
+};
+
+// Function to get user role from localStorage
+const getUserRole = () => {
+  return localStorage.getItem('role') || 'citizen'; // Default to 'citizen' if no role is found
+};
+
+// Protected Route component
+const ProtectedRoute: React.FC<{ element: JSX.Element }> = ({ element }) => {
+  return isAuthenticated() ? element : <Navigate to="/login" replace />;
+};
+
+// Role-based Landing Page
+const LandingPage: React.FC = () => {
+  const role = getUserRole();
+  return role === 'admin' ? <Navigate to="/admin-dashboard" replace /> : <Navigate to="/citizen-dashboard" replace />;
+};
 
 const App: React.FC = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/get-citizens" element={<GetCitizens />} />
-        <Route path="/post-citizen" element={<PostCitizen />} />
-        <Route path="/house-citizen/:citizenId" element={<CitizensByHousehold/>} />
-        <Route path="/medical-citizen/:citizenId" element={<MedicalDataPage/>} />
-        <Route path="/tax-citizen/:citizenId" element={<TaxRecords/>} />
-        <Route path="/land-records/:citizenId" element={<LandRecords/>} />
-        <Route path="/vaccination-records/:citizenId" element={<VaccinationRecords/>} />
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/logout" element={<Logout />} />
+
+        {/* Admin Dashboard */}
+        <Route path="/admin-dashboard" element={<ProtectedRoute element={<AdminDashboard />} />} />
+
+        {/* Citizen Dashboard */}
+        <Route path="/citizen-dashboard" element={<ProtectedRoute element={<CitizenDashboard />} />} />
+
+        {/* Protected Routes for Citizen Data */}
+        <Route path="/get-citizens" element={<ProtectedRoute element={<GetCitizens />} />} />
+        <Route path="/post-citizen" element={<ProtectedRoute element={<PostCitizen />} />} />
+        <Route path="/house-citizen/:citizenId" element={<ProtectedRoute element={<CitizensByHousehold />} />} />
+        <Route path="/medical-citizen/:citizenId" element={<ProtectedRoute element={<MedicalDataPage />} />} />
+        <Route path="/tax-citizen/:citizenId" element={<ProtectedRoute element={<TaxRecords />} />} />
+        <Route path="/land-records/:citizenId" element={<ProtectedRoute element={<LandRecords />} />} />
+        <Route path="/vaccination-records/:citizenId" element={<ProtectedRoute element={<VaccinationRecords />} />} />
+        <Route path="/admin-register" element={<ProtectedRoute element={<AdminRegister />} />} />
       </Routes>
     </Router>
   );

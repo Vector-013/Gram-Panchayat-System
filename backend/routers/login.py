@@ -17,7 +17,7 @@ from utils import (
 
 router = APIRouter(prefix="/login", tags=["Login"])
 
-ADMIN_USERNAME = "Admin"
+ADMIN_USERNAME = "Admin@panchayat.com"
 ADMIN_PASSWORD = "OjasMyBoy"
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/login")
 
@@ -32,7 +32,7 @@ def login(credentials: CitizenLogin, db: Session = Depends(get_db)):
                 data={"sub": ADMIN_USERNAME, "role": "admin"},
                 expires_delta=access_token_expires,
             )
-            return {"access_token": token, "token_type": "bearer"}
+            return {"access_token": token, "token_type": "bearer", "role": "admin"}
         else:
             raise HTTPException(
                 status_code=status.HTTP_401_UNAUTHORIZED,
@@ -48,7 +48,7 @@ def login(credentials: CitizenLogin, db: Session = Depends(get_db)):
     token = create_access_token(
         data={"sub": user.email, "role": "citizen"}, expires_delta=access_token_expires
     )
-    return {"access_token": token, "token_type": "bearer"}
+    return {"access_token": token, "token_type": "bearer", "role": "citizen"}
 
 
 @router.post("/logout", response_model=dict)

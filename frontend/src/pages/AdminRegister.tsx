@@ -3,7 +3,6 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 interface RegisterForm {
-  citizen_id: number;
   name: string;
   email: string;
   gender: string;
@@ -15,7 +14,6 @@ interface RegisterForm {
 
 const AdminRegister: React.FC = () => {
   const [formData, setFormData] = useState<RegisterForm>({
-    citizen_id: 0,
     name: '',
     email: '',
     gender: '',
@@ -30,9 +28,10 @@ const AdminRegister: React.FC = () => {
 
   // Redirect to admin login if no token is found
   useEffect(() => {
-    const token = localStorage.getItem('admin_token');
-    if (!token) {
-      navigate('/admin/login');
+    const token = localStorage.getItem('token');
+    const role = localStorage.getItem('role');
+    if (!token || role !== 'admin') {
+      navigate('/login');
     }
   }, [navigate]);
 
@@ -49,9 +48,10 @@ const AdminRegister: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const token = localStorage.getItem('admin_token');
-    if (!token) {
-      navigate('/admin/login');
+    const token = localStorage.getItem('token');
+    const role = localStorage.getItem('role');
+    if (!token || role !== 'admin') {
+      navigate('/login');
       return;
     }
     try {
@@ -72,18 +72,6 @@ const AdminRegister: React.FC = () => {
       <h2>Register a New Citizen</h2>
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="citizen_id">Citizen ID:</label>
-          <input
-            id="citizen_id"
-            type="number"
-            name="citizen_id"
-            placeholder="Enter Citizen ID"
-            title="Citizen ID"
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div>
           <label htmlFor="name">Name:</label>
           <input
             id="name"
@@ -91,18 +79,6 @@ const AdminRegister: React.FC = () => {
             name="name"
             placeholder="Enter full name"
             title="Name"
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="email">Email:</label>
-          <input
-            id="email"
-            type="email"
-            name="email"
-            placeholder="Enter email address"
-            title="Email"
             onChange={handleChange}
             required
           />
