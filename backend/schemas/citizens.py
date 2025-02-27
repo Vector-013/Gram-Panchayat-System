@@ -1,5 +1,6 @@
 from pydantic import BaseModel
 from datetime import date
+from typing import Optional
 
 
 class CitizenCreate(BaseModel):
@@ -8,6 +9,8 @@ class CitizenCreate(BaseModel):
     dob: date
     household_id: int
     educational_qualification: str
+    email: Optional[str] = None
+    password: str
 
 
 class CitizenResponse(BaseModel):
@@ -17,6 +20,12 @@ class CitizenResponse(BaseModel):
     dob: date
     household_id: int
     educational_qualification: str
+    email: str
 
     class Config:
         orm_mode = True
+
+
+class CitizenLogin(BaseModel):
+    email: str
+    password: str

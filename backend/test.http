@@ -1,10 +1,35 @@
-POST http://127.0.0.1:8000/citizens/
+### Admin Login
+# POST http://localhost:8000/login
+# Content-Type: application/json
+
+# {
+#   "email": "Admin",
+#   "password": "OjasMyBoy"
+# }
+
+# POST http://localhost:8000/login/logout
+# Content-Type: application/json
+# Authorization: Bearer <any_valid_token>
+# "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBZG1pbiIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTc0MDU5MjczNH0.5wL0G2cgGKR9GfemtoSehcYdKIPJJ-Ggwfr-ZX9IvBY"
+
+# POST http://localhost:8000/login
+# Content-Type: application/json
+
+# {
+#   "email": "1@panchayat.com",
+#   "password": "OjasIsGod"
+# }
+
+# Attempt to register a new citizen using a citizen token (should fail)
+POST http://localhost:8000/admin/register
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBZG1pbiIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTc0MDY0MTM1OX0.Bq5TOsz9Sjv_PYCIkeZY343rnWsOkqXD7bQBc8C5SNY
 
 {
-    "name": "my_boy_tester",
-    "gender": "Male",
-    "dob": "2010-03-15",
-    "household_id": 1001,
-    "educational_qualification": "10th"
+  "name": "Johny Doe",
+  "gender": "Male",
+  "dob": "1990-01-01",
+  "household_id": 1,
+  "educational_qualification": "Bachelor",
+  "password": "password123"
 }
