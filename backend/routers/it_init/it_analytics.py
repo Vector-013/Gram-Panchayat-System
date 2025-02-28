@@ -21,7 +21,7 @@ def get_it_analytics(db: Session = Depends(get_db)):
         salary_summary AS (
             SELECT 
                 SUM(c.income) * 12 AS total_salaries
-            FROM employees e
+            FROM panchayat_employees e
             JOIN citizens c ON e.citizen_id = c.citizen_id
         ),
         asset_summary AS (
@@ -34,7 +34,7 @@ def get_it_analytics(db: Session = Depends(get_db)):
         ),
         tax_summary AS (
             SELECT 
-                EXTRACT(YEAR FROM created_at) AS year,
+                EXTRACT(YEAR FROM date) AS year,
                 SUM(amount) AS total_taxes
             FROM taxes
             WHERE payment_status = 'Paid'

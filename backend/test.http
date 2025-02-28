@@ -79,3 +79,6 @@
 # GET http://localhost:8000/api/1/fam-land
 # Content-Type: application/json
 
+### IT Analytics Query
+GET http://localhost:8000/api/it-dept/analytics1
+Content-Type: application/json
