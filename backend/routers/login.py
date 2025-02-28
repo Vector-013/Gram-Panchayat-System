@@ -17,42 +17,53 @@ from utils import (
 
 router = APIRouter(prefix="/login", tags=["Login"])
 
-ADMIN_USERNAME = "Admin@panchayat.com"
-ADMIN_PASSWORD = "OjasMyBoy"
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/login")
+
+# Pre-defined government user credentials and roles.
+GOV_USERS = {
+    "Admin@panchayat.com": {"password": "OjasMyBoy", "role": "admin"},
+    "ITDept@panchayat.com": {"password": "GOVSRules", "role": "it_dept"},
+    "CensusDept@panchayat.com": {"password": "GOVSRules", "role": "census_dept"},
+    "EduDept@panchayat.com": {"password": "GOVSRules", "role": "edu_dept"},
+    "Welfare@panchayat.com": {"password": "GOVSRules", "role": "welfare"},
+    "MedDept@panchayat.com": {"password": "GOVSRules", "role": "med_dept"},
+}
 
 
 @router.post("/", response_model=dict)
 def login(credentials: CitizenLogin, db: Session = Depends(get_db)):
-    # Check if this is an admin login
-    if credentials.email == ADMIN_USERNAME:
-        if credentials.password == ADMIN_PASSWORD:
-            access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
-            token = create_access_token(
-                data={"sub": ADMIN_USERNAME, "role": "admin"},
-                expires_delta=access_token_expires,
-            )
-            return {"access_token": token, "token_type": "bearer", "role": "admin"}
-        else:
+    # Check if this is a government user login.
+    if credentials.email in GOV_USERS:
+        gov_data = GOV_USERS[credentials.email]
+        if credentials.password != gov_data["password"]:
             raise HTTPException(
                 status_code=status.HTTP_401_UNAUTHORIZED,
-                detail="Invalid admin credentials",
+                detail="Invalid credentials for government user",
             )
-    # Otherwise, authenticate as a citizen
+        access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
+        token = create_access_token(
+            data={"sub": credentials.email, "role": gov_data["role"]},
+            expires_delta=access_token_expires,
+        )
+        return {"access_token": token, "token_type": "bearer", "role": gov_data["role"]}
+
+    # Otherwise, authenticate as a citizen.
     user = get_citizen_by_email(db, credentials.email)
     if not user or not verify_password(credentials.password, user.hashed_password):
         raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid credentials"
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Invalid credentials",
         )
     access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
     token = create_access_token(
-        data={"sub": user.email, "role": "citizen"}, expires_delta=access_token_expires
+        data={"sub": user.email, "role": "citizen"},
+        expires_delta=access_token_expires,
     )
     return {"access_token": token, "token_type": "bearer", "role": "citizen"}
 
 
 @router.post("/logout", response_model=dict)
 def logout(token: str = Depends(oauth2_scheme)):
-    # In JWT systems, logout is handled client-side (by deleting the token).
-    # Optionally, implement token blacklisting.
+    # For JWT, logout is typically handled on the client-side by removing the token.
+    # Optionally, token blacklisting can be implemented server-side.
     return {"message": "Successfully logged out"}

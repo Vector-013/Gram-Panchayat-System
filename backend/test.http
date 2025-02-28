@@ -3,8 +3,8 @@
 # Content-Type: application/json
 
 # {
-#   "email": "Admin@panchayat.com",
-#   "password": "OjasMyBoy"
+#   "email": "ITDept@panchayat.com",
+#   "password": "GOVSRules"
 # }
 
 # POST http://localhost:8000/login/logout
