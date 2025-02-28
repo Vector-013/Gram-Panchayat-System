@@ -2,7 +2,7 @@ from fastapi import FastAPI
 import uvicorn
 from fastapi.middleware.cors import CORSMiddleware
 from database import engine, Base
-from routers import citizens, admin, login, it_dept, edu_dept
+from routers import citizens, admin, login, it_dept, edu_dept, family_data
 
 app = FastAPI()
 
@@ -36,6 +36,7 @@ app.include_router(admin)
 app.include_router(login)
 app.include_router(it_dept)
 app.include_router(edu_dept)
+app.include_router(family_data)
 
 # Start server
 if __name__ == "__main__":
