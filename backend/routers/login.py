@@ -15,6 +15,8 @@ from utils import (
     ACCESS_TOKEN_EXPIRE_MINUTES,
 )
 
+from sqlalchemy import text
+
 router = APIRouter(prefix="/login", tags=["Login"])
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/login")
@@ -60,11 +62,28 @@ def login(credentials: CitizenLogin, db: Session = Depends(get_db)):
         data={"sub": user.email, "role": "citizen"},
         expires_delta=access_token_expires,
     )
+    ## find address by crossing the table with household_id
+
+    sql = text(
+        f"""
+        SELECT address FROM households WHERE household_id = {user.household_id}
+    """
+    )
+
+    address = db.execute(sql).fetchone()[0]
     return {
         "access_token": token,
         "token_type": "bearer",
         "role": "citizen",
         "id": user.citizen_id,
+        "name": user.name,
+        "gender": user.gender,
+        "dob": user.dob,
+        "educational_qualification": user.educational_qualification,
+        "income": user.income,
+        "address": address,
+        "household_id": user.household_id,
+        "email": user.email,
     }
 
 

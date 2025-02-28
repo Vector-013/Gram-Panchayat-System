@@ -1,4 +1,4 @@
-### Admin Login
+# ## Admin Login
 # POST http://localhost:8000/login
 # Content-Type: application/json
 
@@ -34,7 +34,7 @@
 #   "password": "password123"
 # }
 
-## IT Dept Query - Citizen Role
+# # IT Dept Query - Citizen Role
 # POST http://localhost:8000/it-dept/land-query
 # Content-Type: application/json
 
@@ -45,7 +45,7 @@
 #   "crop_type": "" 
 # }
 
-### IT Dept Query - Panchayat Role
+# ## IT Dept Query - Panchayat Role
 # POST http://localhost:8000/it-dept/land-query
 # Content-Type: application/json
 
@@ -69,16 +69,16 @@
 #   "income_max": 800000
 # }
 
-### Edu Dept Query for Panchayat is not applicable here.
+# ## Edu Dept Query for Panchayat is not applicable here.
 
-## Family Data Query for Citizen with ID 1
+# # Family Data Query for Citizen with ID 1
 # GET http://localhost:8000/api/1/fam-data
 # Content-Type: application/json
 
-## Family Land Data Query
+# # Family Land Data Query
 # GET http://localhost:8000/api/1/fam-land
 # Content-Type: application/json
 
-### IT Analytics Query
-GET http://localhost:8000/api/it-dept/analytics1
-Content-Type: application/json
+# ### IT Analytics Query
+# GET http://localhost:8000/api/it-dept/analytics1
+# Content-Type: application/json
