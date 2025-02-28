@@ -1,4 +1,6 @@
 import React from "react";
+import "../../styles/Record.css";
+import bgImage from "../../images/village.jpg";
 
 interface RecordCardProps {
   title: string;
@@ -7,9 +9,9 @@ interface RecordCardProps {
 
 const RecordCard: React.FC<RecordCardProps> = ({ title, onRedirect }) => {
   return (
-    <div className="card p-3 mb-3 shadow">
+    <div className="card mb-3">
       <h5 className="card-title">{title}</h5>
-      <button className="btn btn-primary" onClick={onRedirect}>
+      <button className="btn" onClick={onRedirect}>
         View Record
       </button>
     </div>

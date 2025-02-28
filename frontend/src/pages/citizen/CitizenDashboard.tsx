@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import RecordCard from "../components/RecordCard";
+import "../../styles/Dashboard.css";
+import manImage from "../../images/man.png";
+import womanImage from "../../images/woman.png";
+import bgImage from "../../images/village2.jpg";
 
 interface CitizenElement {
   citizen_id: number;
@@ -37,20 +41,35 @@ const CitizenDashboard: React.FC = () => {
   return (
     <div className="container-fluid">
       {/* Navbar */}
-      <nav className="navbar navbar-light bg-light d-flex justify-content-between px-4">
-        <span className="navbar-brand">
+      <nav className="navbar d-flex justify-content-between">
+        <span>
           {loading ? "Loading..." : citizen.length > 0 ? citizen[0].name : "No Citizen Data"}
         </span>
         <button className="btn btn-danger" onClick={() => navigate("/logout")}>Logout</button>
       </nav>
 
       {/* Dashboard Content */}
-      <div className="row mt-4">
+      <div className="row main-container">
         {/* Left Panel: Citizen Dashboards List */}
-        <div className="col-md-4">
-          <h4>Profile</h4>
+        <div className="panel col">
+          {/* Profile Image */}
+          <div className="profileImage">
+            <img
+              src={
+                loading ? "placeholder.jpg" :
+                  citizen.length > 0 ?
+                    (citizen[0].gender === "Male" ? manImage :
+                      citizen[0].gender === "Female" ? womanImage :
+                        "default-avatar.png")
+                    : "default-avatar.png"
+              }
+              alt="Profile"
+              className="rounded-circle mb-3"
+              style={{ width: "150px", height: "150px", objectFit: "cover", border: "3px solid #ddd" }}
+            />
+          </div>
+
           <ul className="list-group">
-            <li className="list-group-item">Name : {loading ? "Loading..." : citizen.length > 0 ? citizen[0].name : "No Citizen Data"}</li>
             <li className="list-group-item">Gender : {loading ? "Loading..." : citizen.length > 0 ? citizen[0].gender : "No Citizen Data"}</li>
             <li className="list-group-item">DOB : {loading ? "Loading..." : citizen.length > 0 ? citizen[0].dob : "No Citizen Data"}</li>
             <li className="list-group-item">Educational Qualification : {loading ? "Loading..." : citizen.length > 0 ? citizen[0].educational_qualification : "No Citizen Data"}</li>
@@ -60,14 +79,41 @@ const CitizenDashboard: React.FC = () => {
         </div>
 
         {/* Right Panel: Record Cards */}
-        <div className="col-md-8">
-          <h4>Records</h4>
-          <div className="row">
-            <div className="col-md-6">
-              <RecordCard title="Landlord Record" onRedirect={() => alert("Redirecting to Landlord Record")} />
+        <div className="card-holder col">
+          <div className="imgCont"><img src={bgImage} alt="bg" className="bg-image" /></div>
+          <div className="cardHolders">
+            <div className="row">
+              <div className="col">
+                <RecordCard title="Land Record" onRedirect={() => alert("Redirecting to Landlord Record")} />
+              </div>
+              <div className="col">
+                <RecordCard title="Medical Record" onRedirect={() => alert("Redirecting to Medical Record")} />
+              </div>
+              <div className="col">
+                <RecordCard title="Tax Record" onRedirect={() => alert("Redirecting to Medical Record")} />
+              </div>
             </div>
-            <div className="col-md-6">
-              <RecordCard title="Medical Record" onRedirect={() => alert("Redirecting to Medical Record")} />
+            <div className="row">
+              <div className="col">
+                <RecordCard title="Household Record" onRedirect={() => alert("Redirecting to Landlord Record")} />
+              </div>
+              <div className="col">
+                <RecordCard title="Vaccine Record" onRedirect={() => alert("Redirecting to Medical Record")} />
+              </div>
+              <div className="col">
+                <RecordCard title="Environment Record" onRedirect={() => alert("Redirecting to Medical Record")} />
+              </div>
+            </div>
+            <div className="row">
+              <div className="col">
+                <RecordCard title="Flora Fauna Record" onRedirect={() => alert("Redirecting to Landlord Record")} />
+              </div>
+              <div className="col">
+                <RecordCard title="Assets Record" onRedirect={() => alert("Redirecting to Medical Record")} />
+              </div>
+              <div className="col">
+                <RecordCard title="Geo Features Record" onRedirect={() => alert("Redirecting to Medical Record")} />
+              </div>
             </div>
           </div>
         </div>
