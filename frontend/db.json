@@ -29,100 +29,272 @@
     }
   ],
   "medical_data": [
-    {"medical_id":11, "citizen_id":1, "name":"Amit Kumar", "health_status":"Good", "medical_condition":"None"},
-    {"medical_id":2, "citizen_id":2, "name":"Sunita Sharma","health_status":"Poor", "medical_condition":"Asthama"},
-    {"medical_id":3, "citizen_id":3, "name":"Rahul Mehta", "health_status":"Poor", "medical_condition":"Diabetes"}
+    {
+      "medical_id": 11,
+      "citizen_id": 1,
+      "name": "Amit Kumar",
+      "health_status": "Good",
+      "medical_condition": "None"
+    },
+    {
+      "medical_id": 2,
+      "citizen_id": 2,
+      "name": "Sunita Sharma",
+      "health_status": "Poor",
+      "medical_condition": "Asthama"
+    },
+    {
+      "medical_id": 3,
+      "citizen_id": 3,
+      "name": "Rahul Mehta",
+      "health_status": "Poor",
+      "medical_condition": "Diabetes"
+    }
   ],
   "taxes": [
-    {"tax_id":101, "citizen_id":1,"name":"Amit Kumar", "payment_status":"Pending", "type":"Income Tax", "tax_amount":5000},
-    {"tax_id":102, "citizen_id":2, "name":"Sunita Sharma", "payment_status":"Pending", "type":"Property Tax","tax_amount":6000},
-    {"tax_id":103, "citizen_id":3, "name":"Rahul Mehta","payment_status":"Paid","type":"Income Tax","tax_amount":7000}
-    ],
-  "land_records" : [
     {
-      "citizen_id" : 1,
-      "land_id" : 1,
-      "name" : "Amit Kumar",
+      "tax_id": 101,
+      "citizen_id": 1,
+      "name": "Amit Kumar",
+      "payment_status": "Pending",
+      "type": "Income Tax",
+      "tax_amount": 5000
+    },
+    {
+      "tax_id": 102,
+      "citizen_id": 2,
+      "name": "Sunita Sharma",
+      "payment_status": "Pending",
+      "type": "Property Tax",
+      "tax_amount": 6000
+    },
+    {
+      "tax_id": 103,
+      "citizen_id": 3,
+      "name": "Rahul Mehta",
+      "payment_status": "Paid",
+      "type": "Income Tax",
+      "tax_amount": 7000
+    }
+  ],
+  "land_records": [
+    {
+      "citizen_id": 1,
+      "land_id": 1,
+      "name": "Amit Kumar",
       "area_acres": 2.5,
       "crop_type": "Rice"
     },
     {
-      "citizen_id" : 2,
-      "land_id" : 2,
-      "name" : "Sunita Sharma",
+      "citizen_id": 2,
+      "land_id": 2,
+      "name": "Sunita Sharma",
       "area_acres": 3.5,
       "crop_type": "Rice"
     },
     {
-      "citizen_id" : 3,
-      "land_id" : 3,
-      "name" : "Rahul Mehta",
+      "citizen_id": 3,
+      "land_id": 3,
+      "name": "Rahul Mehta",
       "area_acres": 4.5,
       "crop_type": "Maize"
     }
-  ],  
-  "vaccine_records": [
-      {
-        "citizen_id": 1,
-        "vaccination_id": 1,
-        "name": "Amit Kumar",
-        "vaccination_type": "COVID-19",
-        "date_administered": "2021-05-12"
-      },
-      {
-        "citizen_id": 2,
-        "vaccination_id": 2,
-        "name": "Sunita Sharma",
-        "vaccination_type": "COVID-19",
-        "date_administered": "2021-06-15"
-      },
-      {
-        "citizen_id": 3,
-        "vaccination_id": 3,
-        "name": "Rahul Mehta",
-        "vaccination_type": "COVID-19",
-        "date_administered": "2021-07-20"
-      }
-    ],
-"assets":[
-    {"type":"Hospital"},
-    {"type":"Hospital"},
-    {"type":"School"},
-    {"type":"Street Light"},
-    {"type":"Water Tank"},
-    {"type":"Bench"},
-    {"type":"School"},
-    {"type":"School"},
-    {"type":"Street Light"},
-    {"type":"Street Light"},
-    {"type":"Street Light"},
-    {"type":"Street Light"}
   ],
-  "env":[
-    {"env_id":1, "aqi":20, "temperature":25, "humidity": 50, "rainfall":10, "date_recorded":"2025-02-01"},
-    {"env_id":2, "aqi":30, "temperature":30, "humidity": 60, "rainfall":20, "date_recorded":"2025-02-02"},
-    {"env_id":3, "aqi":40, "temperature":35, "humidity": 70, "rainfall":30, "date_recorded":"2025-02-03"},
-    {"env_id":4, "aqi":50, "temperature":40, "humidity": 80, "rainfall":40, "date_recorded":"2025-02-04"},
-    {"env_id":5, "aqi":60, "temperature":45, "humidity": 90, "rainfall":50, "date_recorded":"2025-02-05"}
+  "vaccine_records": [
+    {
+      "citizen_id": 1,
+      "vaccination_id": 1,
+      "name": "Amit Kumar",
+      "vaccination_type": "COVID-19",
+      "date_administered": "2021-05-12"
+    },
+    {
+      "citizen_id": 2,
+      "vaccination_id": 2,
+      "name": "Sunita Sharma",
+      "vaccination_type": "COVID-19",
+      "date_administered": "2021-06-15"
+    },
+    {
+      "citizen_id": 3,
+      "vaccination_id": 3,
+      "name": "Rahul Mehta",
+      "vaccination_type": "COVID-19",
+      "date_administered": "2021-07-20"
+    }
+  ],
+  "assets": [
+    {
+      "type": "Hospital"
+    },
+    {
+      "type": "Hospital"
+    },
+    {
+      "type": "School"
+    },
+    {
+      "type": "Street Light"
+    },
+    {
+      "type": "Water Tank"
+    },
+    {
+      "type": "Bench"
+    },
+    {
+      "type": "School"
+    },
+    {
+      "type": "School"
+    },
+    {
+      "type": "Street Light"
+    },
+    {
+      "type": "Street Light"
+    },
+    {
+      "type": "Street Light"
+    },
+    {
+      "type": "Street Light"
+    }
+  ],
+  "env": [
+    {
+      "env_id": 1,
+      "aqi": 20,
+      "temperature": 25,
+      "humidity": 50,
+      "rainfall": 10,
+      "date_recorded": "2025-02-01"
+    },
+    {
+      "env_id": 2,
+      "aqi": 30,
+      "temperature": 30,
+      "humidity": 60,
+      "rainfall": 20,
+      "date_recorded": "2025-02-02"
+    },
+    {
+      "env_id": 3,
+      "aqi": 40,
+      "temperature": 35,
+      "humidity": 70,
+      "rainfall": 30,
+      "date_recorded": "2025-02-03"
+    },
+    {
+      "env_id": 4,
+      "aqi": 50,
+      "temperature": 40,
+      "humidity": 80,
+      "rainfall": 40,
+      "date_recorded": "2025-02-04"
+    },
+    {
+      "env_id": 5,
+      "aqi": 60,
+      "temperature": 45,
+      "humidity": 90,
+      "rainfall": 50,
+      "date_recorded": "2025-02-05"
+    }
   ],
   "geo": [
-    { "feature_id": 1, "feature_type": "Mountain", "name": "Everest", "area": 5000.5 },
-    { "feature_id": 2, "feature_type": "River", "name": "Ganga", "area": 2500.75 },
-    { "feature_id": 3, "feature_type": "Forest", "name": "Amazon", "area": 60000.25 },
-    { "feature_id": 4, "feature_type": "Lake", "name": "Victoria", "area": 6900.0 },
-    { "feature_id": 5, "feature_type": "Desert", "name": "Sahara", "area": 9000000.0 }
+    {
+      "feature_id": 1,
+      "feature_type": "Mountain",
+      "name": "Everest",
+      "area": 5000.5
+    },
+    {
+      "feature_id": 2,
+      "feature_type": "River",
+      "name": "Ganga",
+      "area": 2500.75
+    },
+    {
+      "feature_id": 3,
+      "feature_type": "Forest",
+      "name": "Amazon",
+      "area": 60000.25
+    },
+    {
+      "feature_id": 4,
+      "feature_type": "Lake",
+      "name": "Victoria",
+      "area": 6900.0
+    },
+    {
+      "feature_id": 5,
+      "feature_type": "Desert",
+      "name": "Sahara",
+      "area": 9000000.0
+    }
   ],
   "flora_fauna": [
-    { "f_id": 1, "type": "Flora", "name": "Banyan Tree", "habitat": "Tropical Forests" },
-    { "f_id": 2, "type": "Flora", "name": "Rose", "habitat": "Gardens" },
-    { "f_id": 3, "type": "Fauna", "name": "Tiger", "habitat": "Rainforests" },
-    { "f_id": 4, "type": "Flora", "name": "Oak Tree", "habitat": "Temperate Forests" },
-    { "f_id": 5, "type": "Fauna", "name": "Deer", "habitat": "Grasslands" },
-    { "f_id": 6, "type": "Fauna", "name": "Peacock", "habitat": "Woodlands" },
-    { "f_id": 7, "type": "Flora", "name": "Cactus", "habitat": "Deserts" },
-    { "f_id": 8, "type": "Fauna", "name": "Elephant", "habitat": "Savannas" }
+    {
+      "f_id": 1,
+      "type": "Flora",
+      "name": "Banyan Tree",
+      "habitat": "Tropical Forests"
+    },
+    {
+      "f_id": 2,
+      "type": "Flora",
+      "name": "Rose",
+      "habitat": "Gardens"
+    },
+    {
+      "f_id": 3,
+      "type": "Fauna",
+      "name": "Tiger",
+      "habitat": "Rainforests"
+    },
+    {
+      "f_id": 4,
+      "type": "Flora",
+      "name": "Oak Tree",
+      "habitat": "Temperate Forests"
+    },
+    {
+      "f_id": 5,
+      "type": "Fauna",
+      "name": "Deer",
+      "habitat": "Grasslands"
+    },
+    {
+      "f_id": 6,
+      "type": "Fauna",
+      "name": "Peacock",
+      "habitat": "Woodlands"
+    },
+    {
+      "f_id": 7,
+      "type": "Flora",
+      "name": "Cactus",
+      "habitat": "Deserts"
+    },
+    {
+      "f_id": 8,
+      "type": "Fauna",
+      "name": "Elephant",
+      "habitat": "Savannas"
+    }
+  ],
+  "citizen": [
+    {
+      "citizen_id": 1,
+      "name": "Amit Kumar",
+      "gender": "Male",
+      "dob": "1990-05-12",
+      "educational_qualification": "B.Sc",
+      "email": "1@panchayat.com",
+      "income": 50000,
+      "household_id": 101
+    }
   ]
 }
-
-
-
