@@ -56,3 +56,19 @@
 #   "crop_type": ""
 # }
 
+# ### Edu Dept Query for Citizens
+# POST http://localhost:8000/edu-dept/edu-query
+# Content-Type: application/json
+
+# {
+#   "gender": "",
+#   "educational_level": "Graduate",
+#   "dob_min": "1980-01-01",
+#   "dob_max": "2000-12-31",
+#   "income_min": 10000,
+#   "income_max": 800000
+# }
+
+### Edu Dept Query for Panchayat is not applicable here.
+
+
