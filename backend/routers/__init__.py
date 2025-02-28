@@ -9,3 +9,4 @@ from .it_init.it_analytics import router as it_analytics
 from .citizen_initial.medical_data import router as medical_data
 from .citizen_initial.taxes import router as taxes
 from .citizen_initial.vaccine import router as vaccines
+from .citizen_initial.environment import router as environment

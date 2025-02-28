@@ -95,3 +95,6 @@
 # GET http://localhost:8000/api/1/vaccine
 # Content-Type: application/json
 
+### Get Environmental Data for Citizen with ID 1
+# GET http://localhost:8000/api/1/env
+# Content-Type: application/json
