@@ -4,3 +4,4 @@ from .admin import router as admin
 from .citizens import router as citizens
 from .edu_dept import router as edu_dept
 from .citizen_initial.family_data import router as family_data
+from .citizen_initial.land_records import router as land_records
