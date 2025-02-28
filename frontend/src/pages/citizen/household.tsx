@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import CitizensTable from "./table";
+import "../../styles/CitizenHouseholdModal.css"; // Import CSS
 
 interface Citizen {
   citizen_id: number;
@@ -12,7 +13,7 @@ interface Citizen {
   household_id: number;
 }
 
-const CitizensByHousehold: React.FC = () => {
+const CitizenHouseholdModal: React.FC = () => {
   const { citizenId } = useParams<{ citizenId: string }>();
   const [citizens, setCitizens] = useState<Citizen[]>([]);
   const [filteredCitizens, setFilteredCitizens] = useState<Citizen[]>([]);
@@ -40,7 +41,7 @@ const CitizensByHousehold: React.FC = () => {
       setError("");
 
       try {
-        const response = await fetch("http://localhost:5000/citizens");
+        const response = await fetch(`http://localhost:8000/${citizenId}/fam-data`);
         const data: Citizen[] = await response.json();
 
         const citizen = data.find((c) => c.citizen_id === parseInt(citizenId));
@@ -87,19 +88,23 @@ const CitizensByHousehold: React.FC = () => {
   }, [nameFilter, genderFilter, educationFilter, dobRange, incomeRange, citizens]);
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h2>Find Citizens by Household</h2>
+    <div className="citizen-container">
+      <h2 className="citizen-title">Find Citizens by Household</h2>
 
       {/* Filters */}
-      <div style={{ display: "flex", flexWrap: "wrap", gap: "10px", marginBottom: "10px" }}>
+      <div className="citizen-filter-container">
         <input
           type="text"
           placeholder="Filter by Name"
           value={nameFilter}
           onChange={(e) => setNameFilter(e.target.value)}
-          style={inputStyle}
+          className="citizen-input"
         />
-        <select value={genderFilter} onChange={(e) => setGenderFilter(e.target.value)} style={inputStyle}>
+        <select
+          value={genderFilter}
+          onChange={(e) => setGenderFilter(e.target.value)}
+          className="citizen-input"
+        >
           <option value="">All Genders</option>
           <option value="Male">Male</option>
           <option value="Female">Female</option>
@@ -110,29 +115,29 @@ const CitizensByHousehold: React.FC = () => {
           placeholder="Filter by Education"
           value={educationFilter}
           onChange={(e) => setEducationFilter(e.target.value)}
-          style={inputStyle}
+          className="citizen-input"
         />
 
         {/* DOB Range */}
-        <div>
-          <label style={labelStyle}>DOB Range:</label>
+        <div className="citizen-range">
+          <label className="citizen-label">DOB Range:</label>
           <input
             type="date"
             value={dobRange.start}
             onChange={(e) => setDobRange((prev) => ({ ...prev, start: e.target.value }))}
-            style={inputStyle}
+            className="citizen-input"
           />
           <input
             type="date"
             value={dobRange.end}
             onChange={(e) => setDobRange((prev) => ({ ...prev, end: e.target.value }))}
-            style={inputStyle}
+            className="citizen-input"
           />
         </div>
 
         {/* Income Range */}
-        <div>
-          <label style={labelStyle}>Income Range:</label>
+        <div className="citizen-range">
+          <label className="citizen-label">Income Range:</label>
           <input
             type="number"
             placeholder="Min Income"
@@ -140,7 +145,7 @@ const CitizensByHousehold: React.FC = () => {
             onChange={(e) =>
               setIncomeRange((prev) => ({ ...prev, min: parseInt(e.target.value) || 0 }))
             }
-            style={inputStyle}
+            className="citizen-input"
           />
           <input
             type="number"
@@ -149,16 +154,16 @@ const CitizensByHousehold: React.FC = () => {
             onChange={(e) =>
               setIncomeRange((prev) => ({ ...prev, max: parseInt(e.target.value) || 1000000 }))
             }
-            style={inputStyle}
+            className="citizen-input"
           />
         </div>
       </div>
 
       {/* Display Table */}
       {loading ? (
-        <p>Loading...</p>
+        <p className="citizen-loading">Loading...</p>
       ) : error ? (
-        <p style={{ color: "red" }}>{error}</p>
+        <p className="citizen-error">{error}</p>
       ) : (
         <CitizensTable citizens={filteredCitizens} />
       )}
@@ -166,18 +171,4 @@ const CitizensByHousehold: React.FC = () => {
   );
 };
 
-// Styles
-const inputStyle: React.CSSProperties = {
-  padding: "8px",
-  border: "1px solid #ccc",
-  borderRadius: "4px",
-  width: "180px",
-};
-
-const labelStyle: React.CSSProperties = {
-  fontSize: "14px",
-  fontWeight: "bold",
-  marginRight: "5px",
-};
-
-export default CitizensByHousehold;
+export default CitizenHouseholdModal;
