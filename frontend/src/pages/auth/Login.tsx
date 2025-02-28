@@ -33,6 +33,12 @@ const Login: React.FC = () => {
       if(data.role === "admin") {
         navigate("/admin-dashboard");
       }
+      else if(data.role === "it_dept") {
+        navigate("/it-dashboard");
+      }
+      else if(data.role === "edu_dept") {
+        navigate("/ed-dashboard");
+      }
       else {
         navigate("/citizen-dashboard");
       }

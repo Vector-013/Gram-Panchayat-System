@@ -35,6 +35,7 @@ def login(credentials: CitizenLogin, db: Session = Depends(get_db)):
     # Check if this is a government user login.
     if credentials.email in GOV_USERS:
         gov_data = GOV_USERS[credentials.email]
+        print(gov_data)
         if credentials.password != gov_data["password"]:
             raise HTTPException(
                 status_code=status.HTTP_401_UNAUTHORIZED,

@@ -16,6 +16,10 @@ import AssetPage from './pages/base/assets';
 import EnvironmentStats from './pages/base/env';
 import GeoPage from './pages/base/geo';
 import FloraFaunaPage from './pages/base/floraFauna';
+import CitizenPanchayatForm from './pages/it_dep/land_query';
+import ItDashboard from './pages/it_dep/ItDasboard';
+import EdDashboard from './pages/ed_dep/EdDashboard';
+import EducationForm from './pages/ed_dep/ed_query';
 
 // Function to check if the user is authenticated
 const isAuthenticated = () => {
@@ -35,7 +39,18 @@ const ProtectedRoute: React.FC<{ element: JSX.Element }> = ({ element }) => {
 // Role-based Landing Page
 const LandingPage: React.FC = () => {
   const role = getUserRole();
-  return role === 'admin' ? <Navigate to="/admin-dashboard" replace /> : <Navigate to="/citizen-dashboard" replace />;
+  if (role === 'admin') {
+    return <Navigate to="/admin-dashboard" replace />;
+  } else if (role === 'it_dept') {
+    return <Navigate to="/it-dashboard" replace />;
+  } 
+  else if(role === 'edu_dept')
+  {
+    return <Navigate to="/ed-dashboard" replace />;
+  }
+  else {
+    return <Navigate to="/citizen-dashboard" replace />;
+  }
 };
 
 
@@ -53,6 +68,9 @@ const App: React.FC = () => {
         {/* Citizen Dashboard */}
         <Route path="/citizen-dashboard" element={<ProtectedRoute element={<CitizenDashboard />} />} />
 
+        <Route path="/it-dashboard" element={<ProtectedRoute element={<ItDashboard />} />} />
+        <Route path="/ed-dashboard" element={<ProtectedRoute element={<EdDashboard />} />} />
+
         {/* Protected Routes for Citizen Data */}
         <Route path="/get-citizens" element={<ProtectedRoute element={<GetCitizens />} />} />
         <Route path="/post-citizen" element={<ProtectedRoute element={<PostCitizen />} />} />
@@ -66,6 +84,8 @@ const App: React.FC = () => {
         <Route path="/env" element={<EnvironmentStats />} />
         <Route path="/geo" element={<GeoPage />} />
         <Route path="/flora-fauna" element={<FloraFaunaPage />} />
+        <Route path="/it-dept/land-query" element={<ProtectedRoute element={<CitizenPanchayatForm />} />} />
+        <Route path="/ed-dept/ed-query" element={<ProtectedRoute element={<EducationForm />} />} />
       </Routes>
     </Router>
   );
