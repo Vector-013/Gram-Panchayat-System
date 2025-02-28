@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import LandRecordsTable from "./tableLand";
+import "../../styles/CitizenLand.css";
 
 interface LandRecord {
   citizen_id: number;
-  land_id: number;
   name: string;
   area_acres: number;
   crop_type: string;
 }
 
-const LandRecords: React.FC = () => {
+const CitizenLandModal: React.FC = () => {
   const { citizenId } = useParams<{ citizenId: string }>();
   const [landRecords, setLandRecords] = useState<LandRecord[]>([]);
   const [filteredRecords, setFilteredRecords] = useState<LandRecord[]>([]);
@@ -29,8 +29,10 @@ const LandRecords: React.FC = () => {
       setError("");
 
       try {
-        const response = await fetch("http://localhost:5000/land_records");
-        const data: LandRecord[] = await response.json();
+        const response = await fetch(`http://localhost:8000/api/${citizenId}/fam-land`);
+        const res: LandRecord[] = await response.json();
+        const data = res.records;
+        console.log(data);
         setLandRecords(data);
       } catch (err) {
         console.error(err);
@@ -60,49 +62,51 @@ const LandRecords: React.FC = () => {
   }, [nameFilter, cropTypeFilter, minAreaFilter, maxAreaFilter, landRecords]);
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h2>Land Records</h2>
+    <div className="land-container card-holder">
+      <h2 className="land-title">Land Records</h2>
 
-      {/* Name Filter */}
-      <input
-        type="text"
-        placeholder="Filter by name"
-        value={nameFilter}
-        onChange={(e) => setNameFilter(e.target.value)}
-        style={{ marginTop: "10px", padding: "5px", width: "100%", maxWidth: "300px" }}
-      />
-
-      {/* Crop Type Filter */}
-      <input
-        type="text"
-        placeholder="Filter by crop type"
-        value={cropTypeFilter}
-        onChange={(e) => setCropTypeFilter(e.target.value)}
-        style={{ marginTop: "10px", padding: "5px", width: "100%", maxWidth: "300px" }}
-      />
-
-      {/* Area Range Filter */}
-      <div style={{ display: "flex", gap: "10px", marginTop: "10px" }}>
+      {/* Filters */}
+      <div className="land-filter-container">
         <input
-          type="number"
-          placeholder="Min area (acres)"
-          value={minAreaFilter}
-          onChange={(e) => setMinAreaFilter(e.target.value)}
-          style={{ padding: "5px", width: "100%", maxWidth: "140px" }}
+          type="text"
+          placeholder="Filter by name"
+          value={nameFilter}
+          onChange={(e) => setNameFilter(e.target.value)}
+          className="land-input"
         />
+
         <input
-          type="number"
-          placeholder="Max area (acres)"
-          value={maxAreaFilter}
-          onChange={(e) => setMaxAreaFilter(e.target.value)}
-          style={{ padding: "5px", width: "100%", maxWidth: "140px" }}
+          type="text"
+          placeholder="Filter by crop type"
+          value={cropTypeFilter}
+          onChange={(e) => setCropTypeFilter(e.target.value)}
+          className="land-input"
         />
+
+        <div className="land-range">
+          <label className="land-label">Area (Acres):</label>
+          <input
+            type="number"
+            placeholder="Min"
+            value={minAreaFilter}
+            onChange={(e) => setMinAreaFilter(e.target.value)}
+            className="land-input"
+          />
+          <input
+            type="number"
+            placeholder="Max"
+            value={maxAreaFilter}
+            onChange={(e) => setMaxAreaFilter(e.target.value)}
+            className="land-input"
+          />
+        </div>
       </div>
 
+      {/* Display Table */}
       {loading ? (
-        <p>Loading...</p>
+        <p className="land-loading">Loading...</p>
       ) : error ? (
-        <p style={{ color: "red" }}>{error}</p>
+        <p className="land-error">{error}</p>
       ) : (
         <LandRecordsTable landRecords={filteredRecords} />
       )}
@@ -110,4 +114,4 @@ const LandRecords: React.FC = () => {
   );
 };
 
-export default LandRecords;
+export default CitizenLandModal;

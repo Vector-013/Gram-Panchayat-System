@@ -62,7 +62,15 @@ def login(credentials: CitizenLogin, db: Session = Depends(get_db)):
         data={"sub": user.email, "role": "citizen"},
         expires_delta=access_token_expires,
     )
-    print(user.citizen_id)
+     ## find address by crossing the table with household_id
+
+    sql = text(
+        f"""
+        SELECT address FROM households WHERE household_id = {user.household_id}
+    """
+    )
+
+    address = db.execute(sql).fetchone()[0]
     return {
         "access_token": token,
         "token_type": "bearer",

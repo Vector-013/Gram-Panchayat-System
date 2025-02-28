@@ -30,6 +30,14 @@ const Login: React.FC = () => {
       localStorage.setItem("token", data.access_token);
       localStorage.setItem("role", data.role);
       localStorage.setItem("citizen_id", data.id);
+      localStorage.setItem("email", data.email);
+      localStorage.setItem("name", data.name);
+      localStorage.setItem("dob", data.dob);
+      localStorage.setItem("educational_qualification", data.educational_qualification);
+      localStorage.setItem("income", data.income);
+      localStorage.setItem("household_id", data.household_id);
+      localStorage.setItem("address", data.address);
+      localStorage.setItem("gender", data.gender);
 
       console.log(data.role);
       // Redirect to the landing page

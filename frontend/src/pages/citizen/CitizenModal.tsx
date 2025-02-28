@@ -13,7 +13,7 @@ const CitizenModal = () => {
             <div className="cardHolders">
                 <div className="row">
                     <div className="col">
-                        <RecordCard title="Land Record" onRedirect={() => alert("Redirecting to Landlord Record")} to_link=""/>
+                        <RecordCard title="Land Record" onRedirect={() => alert("Redirecting to Landlord Record")} to_link="land-record"/>
                     </div>
                     <div className="col">
                         <RecordCard title="Medical Record" onRedirect={() => alert("Redirecting to Medical Record")} />

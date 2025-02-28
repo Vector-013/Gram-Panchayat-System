@@ -16,6 +16,7 @@ interface CitizenElement {
   email: string;
   income: number;
   household_id: number;
+  address:string;
 }
 
 const CitizenDashboard: React.FC = () => {
@@ -23,12 +24,25 @@ const CitizenDashboard: React.FC = () => {
   const [citizen, setCitizen] = useState<CitizenElement[]>([]);
   const [loading, setLoading] = useState(true); // To handle initial loading state
   const navigate = useNavigate();
+  
   useEffect(() => {
-    const storedCitizen = localStorage.getItem("citizenData");
-    if (storedCitizen) {
-      setCitizen(JSON.parse(storedCitizen));
-    }
-    setLoading(false);
+    const fetchCitizenData = () => {
+      const citizenData: CitizenElement = {
+        citizen_id: Number(localStorage.getItem("citizen_id")),
+        name: localStorage.getItem("name") || "",
+        gender: localStorage.getItem("gender") || "",
+        dob: localStorage.getItem("dob") || "",
+        educational_qualification: localStorage.getItem("educational_qualification") || "",
+        email: localStorage.getItem("email") || "",
+        income: Number(localStorage.getItem("income")),
+        household_id: Number(localStorage.getItem("household_id")),
+        address: localStorage.getItem("address") || "",
+      };
+      setCitizen([citizenData]);
+      setLoading(false);
+    };
+
+    fetchCitizenData();
   }, []);
 
   return (
@@ -68,6 +82,8 @@ const CitizenDashboard: React.FC = () => {
             <li className="list-group-item">Educational Qualification : {loading ? "Loading..." : citizen.length > 0 ? citizen[0].educational_qualification : "No Citizen Data"}</li>
             <li className="list-group-item">Email : {loading ? "Loading..." : citizen.length > 0 ? citizen[0].email : "No Citizen Data"}</li>
             <li className="list-group-item">Household ID : {loading ? "Loading..." : citizen.length > 0 ? citizen[0].household_id : "No Citizen Data"}</li>
+            <li className="list-group-item">Address : {loading ? "Loading..." : citizen.length > 0 ? citizen[0].address : "No Citizen Data"}</li>
+             
           </ul>
         </div>
 
