@@ -16,14 +16,15 @@ function CitizenPanchayatForm() {
             return;
         }
         try {
-            const requestBody: { role: string; land_min: number; land_max: number; crop_type?: string } = {
+            const requestBody: { role: string; lower_limit: number; upper_limit: number; crop_type?: string } = {
                 role,
-                land_min: landMin,
-                land_max: landMax,
+                lower_limit: landMin,
+                upper_limit: landMax,
             };
             if (cropType.trim() !== "") {
                 requestBody.crop_type = cropType;
             }
+            console.log(requestBody);
             
             const response = await fetch("http://localhost:8000/it-dept/land-query", {
                 method: "POST",
@@ -31,6 +32,7 @@ function CitizenPanchayatForm() {
                 body: JSON.stringify(requestBody),
             });
             if (!response.ok) {
+                console.log(response);
                 throw new Error("Submission failed");
             }
             navigate("/success");
@@ -53,11 +55,11 @@ function CitizenPanchayatForm() {
                 
                 <label>Land Owned (in acres):</label>
                 <br />
-                <label htmlFor="land_min">Min:</label>
+                <label htmlFor="lower_limit">Min:</label>
                 <input 
                     type="number" 
-                    id="land_min" 
-                    name="land_min" 
+                    id="lower_limit" 
+                    name="lower_limit" 
                     min="0" 
                     max="100" 
                     step="0.1" 
@@ -65,11 +67,11 @@ function CitizenPanchayatForm() {
                     onChange={(e) => setLandMin(parseFloat(e.target.value))} 
                 />
                 
-                <label htmlFor="land_max">Max:</label>
+                <label htmlFor="upper_limit">Max:</label>
                 <input 
                     type="number" 
-                    id="land_max" 
-                    name="land_max" 
+                    id="upper_limit" 
+                    name="upper_limit" 
                     min="0" 
                     max="100" 
                     step="0.1" 

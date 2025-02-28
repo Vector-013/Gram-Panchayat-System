@@ -15,8 +15,8 @@ const EdDashboard: React.FC = () => {
 
   return (
     <div className="container mt-5">
-      <h2 className="text-center">IT Department Dashboard</h2>
-      <p className="text-center">Welcome, IT Department!</p>
+      <h2 className="text-center">ED Department Dashboard</h2>
+      <p className="text-center">Welcome, ED Department!</p>
       <div className="d-flex justify-content-center mt-3">
         <button className="btn btn-danger" onClick={() => navigate("/logout")}>Logout</button>
       </div>

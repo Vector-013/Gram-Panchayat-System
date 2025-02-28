@@ -21,7 +21,7 @@ const ItDashboard: React.FC = () => {
         <button className="btn btn-danger" onClick={() => navigate("/logout")}>Logout</button>
       </div>
        <div className="d-flex justify-content-center mt-3">
-        <button className="btn btn-danger" onClick={() => navigate("/land-query")}>Land Query</button>
+        <button className="btn btn-danger" onClick={() => navigate("/it-dept/land-query")}>Land Query</button>
       </div>
     </div>
   );

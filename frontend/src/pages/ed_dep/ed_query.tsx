@@ -27,7 +27,7 @@ function EducationForm() {
                 income_max: incomeMax,
             };
             
-            const response = await fetch("http://localhost:8000/land-query", {
+            const response = await fetch("http://localhost:8000/edu-dpt/edu-query", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(requestBody),
