@@ -1,14 +1,14 @@
 import React, { useEffect, } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const ItDashboard: React.FC = () => {
+const EdDashboard: React.FC = () => {
   const navigate = useNavigate();
 
   // Redirect to admin login if no token is found
     useEffect(() => {
       const token = localStorage.getItem('token');
       const role = localStorage.getItem('role');
-      if (!token || role !== 'it_dept') {
+      if (!token || role !== 'edu_dept') {
         navigate('/login');
       }
     }, [navigate]);
@@ -21,10 +21,10 @@ const ItDashboard: React.FC = () => {
         <button className="btn btn-danger" onClick={() => navigate("/logout")}>Logout</button>
       </div>
        <div className="d-flex justify-content-center mt-3">
-        <button className="btn btn-danger" onClick={() => navigate("/land-query")}>Land Query</button>
+        <button className="btn btn-danger" onClick={() => navigate("/ed-dept/ed-query")}>Education Query</button>
       </div>
     </div>
   );
 };
 
-export default ItDashboard;
+export default EdDashboard;
