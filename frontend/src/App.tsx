@@ -25,6 +25,9 @@ import TaxQueryForm from './pages/it_dep/tax_query';
 import AssetQueryForm from './pages/it_dep/asset_query';
 import IncomeQueryForm from './pages/it_dep/income_query';
 
+import CitizenModal from './pages/citizen/CitizenModal';
+import ITModal from './pages/it_dep/ITModal';
+import "./styles/App.css";
 // Function to check if the user is authenticated
 const isAuthenticated = () => {
   return localStorage.getItem('token') !== null;
@@ -74,9 +77,14 @@ const App: React.FC = () => {
         <Route path="/admin-dashboard" element={<ProtectedRoute element={<AdminDashboard />} />} />
 
         {/* Citizen Dashboard */}
-        <Route path="/citizen-dashboard" element={<ProtectedRoute element={<CitizenDashboard />} />} />
+        <Route path="/citizen-dashboard" element={<ProtectedRoute element={<CitizenDashboard />} />}>
+            <Route index element={<CitizenModal />} /> 
+        </Route>
 
-        <Route path="/it-dashboard" element={<ProtectedRoute element={<ItDashboard />} />} />
+        <Route path="/it-dashboard" element={<ProtectedRoute element={<ItDashboard />} />} >
+            <Route index element={<ITModal />} /> 
+            <Route path="land-query" element={<CitizenPanchayatForm />} />
+        </Route>
         <Route path="/ed-dashboard" element={<ProtectedRoute element={<EdDashboard />} />} />
         <Route path="/med-dashboard" element={<ProtectedRoute element={<MedDashboard />} />} />
 

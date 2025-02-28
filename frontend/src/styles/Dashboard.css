@@ -6,6 +6,7 @@
     width: 100vw;
     height: 100vh;
     max-width: 100% !important;
+    overflow: hidden;
 }
 
 .navbar{
@@ -58,6 +59,7 @@
     /* background-color: #f7eeea; */
     /* padding: 1rem 1rem; */
     position: relative;
+    overflow: scroll;
 }
 
 

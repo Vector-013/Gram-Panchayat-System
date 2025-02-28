@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import RecordCard from "../components/RecordCard";
 import "../../styles/Dashboard.css";
 import manImage from "../../images/man.png";
@@ -53,29 +53,7 @@ const CitizenDashboard: React.FC = () => {
         </div>
 
         {/* Right Panel: Record Cards */}
-        <div className="card-holder col">
-          <div className="imgCont"><img src={bgImage} alt="bg" className="bg-image" /></div>
-          <div className="cardHolders">
-            <div className="row">
-              <div className="col">
-                <RecordCard title="Land Record" onRedirect={() => alert("Redirecting to Landlord Record")} />
-              </div>
-              <div className="col">
-                <RecordCard title="Tax Record" onRedirect={() => alert("Redirecting to Medical Record")} />
-              </div>
-              
-            </div>
-            <div className="row">
-              <div className="col">
-                <RecordCard title="Income Record" onRedirect={() => alert("Redirecting to Landlord Record")} />
-              </div>
-              <div className="col">
-                <RecordCard title="Asset Record" onRedirect={() => alert("Redirecting to Medical Record")} />
-              </div>              
-            </div>
-            
-          </div>
-        </div>
+        <Outlet />
       </div>
        <div className="d-flex justify-content-center mt-3">
         <button className="btn btn-danger" onClick={() => navigate("/it-dept/tax-query")}>Tax Query</button>
