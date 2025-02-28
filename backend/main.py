@@ -11,6 +11,8 @@ from routers import (
     family_data,
     land_records,
     it_analytics,
+    medical_data,
+    taxes,
 )
 
 app = FastAPI()
@@ -48,6 +50,8 @@ app.include_router(edu_dept)
 app.include_router(family_data)
 app.include_router(land_records)
 app.include_router(it_analytics)
+app.include_router(medical_data)
+app.include_router(taxes)
 
 # Start server
 if __name__ == "__main__":
