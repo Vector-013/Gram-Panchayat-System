@@ -27,6 +27,7 @@ import IncomeQueryForm from './pages/it_dep/income_query';
 
 import CitizenModal from './pages/citizen/CitizenModal';
 import ITModal from './pages/it_dep/ITModal';
+import FinancialGraph from './pages/it_dep/analytics';
 import "./styles/App.css";
 // Function to check if the user is authenticated
 const isAuthenticated = () => {
@@ -105,6 +106,10 @@ const App: React.FC = () => {
         <Route path="/geo" element={<GeoPage />} />
         <Route path="/flora-fauna" element={<FloraFaunaPage />} />
         <Route path="/it-dept/land-query" element={<ProtectedRoute element={<CitizenPanchayatForm />} />} />
+        <Route path="/it-dept/tax-query" element={<ProtectedRoute element={<TaxQueryForm />} />} />
+        <Route path="/it-dept/asset-query" element={<ProtectedRoute element={<AssetQueryForm />} />} />
+        <Route path="/it-dept/income-query" element={<ProtectedRoute element={<IncomeQueryForm />} />} />
+        <Route path="/it-dept/analytics" element={<ProtectedRoute element={<FinancialGraph />} />} />
         <Route path="/ed-dept/ed-query" element={<ProtectedRoute element={<EducationForm />} />} />
 
       </Routes>
