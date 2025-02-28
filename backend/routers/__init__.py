@@ -10,3 +10,4 @@ from .citizen_initial.medical_data import router as medical_data
 from .citizen_initial.taxes import router as taxes
 from .citizen_initial.vaccine import router as vaccines
 from .citizen_initial.environment import router as environment
+from .citizen_initial.geo import router as geo

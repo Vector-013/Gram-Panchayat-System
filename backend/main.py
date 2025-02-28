@@ -15,6 +15,7 @@ from routers import (
     taxes,
     vaccines,
     environment,
+    geo,
 )
 
 app = FastAPI()
@@ -56,6 +57,7 @@ app.include_router(medical_data)
 app.include_router(taxes)
 app.include_router(vaccines)
 app.include_router(environment)
+app.include_router(geo)
 
 # Start server
 if __name__ == "__main__":

@@ -98,3 +98,8 @@
 ### Get Environmental Data for Citizen with ID 1
 # GET http://localhost:8000/api/1/env
 # Content-Type: application/json
+
+### Get Geo Features Data for Citizen with ID 1
+# GET http://localhost:8000/api/1/geo
+# Content-Type: application/json
+
