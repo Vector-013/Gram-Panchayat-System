@@ -1,0 +1,245 @@
+ citizen_id |     name      | gender |    dob     | educational_qualification | income | household_id |      email       |                       hashed_password                        
+------------+---------------+--------+------------+---------------------------+--------+--------------+------------------+--------------------------------------------------------------
+          1 | Rajesh Sharma | Male   | 1985-06-15 | Graduate                  |  50000 |            1 | 1@panchayat.com  | $2a$06$8.T33vcOKXkuHx7fSM7FF.b.4lwj.n1W2kyWHcEu1DCdrPViJAgJ.
+          2 | Pooja Verma   | Female | 1990-08-22 | Post-Graduate             |  60000 |            2 | 2@panchayat.com  | $2a$06$1sqEOx2J/po1sJk5FSsk4.xq3tQ2Sy3QTMFw4kklm16LCmxkeV51e
+          3 | Amit Kumar    | Male   | 1982-11-03 | 10th                      |  30000 |            3 | 3@panchayat.com  | $2a$06$H7ZaZY4S.vT7KNXoVSjzIeqCipchvVlxAIbkn8nHLgGghPXmWNShi
+          4 | Sneha Das     | Female | 1995-04-12 | 12th                      |  40000 |            4 | 4@panchayat.com  | $2a$06$irlwVoh7hnA8J0PSy9/2uOWoA8jC.hpPQnUWM8uC0Q2qIGdQc/BEK
+          5 | Vikram Rao    | Male   | 1987-09-25 | Secondary                 |  35000 |            5 | 5@panchayat.com  | $2a$06$svI.1wv3roLWNwrXf.ZtKOBTbc/7CHoIdK86AHrZNl1EpUfhZwHFi
+          6 | Meena Nair    | Female | 1998-02-20 | Graduate                  |  45000 |            6 | 6@panchayat.com  | $2a$06$gqlGKjNp0LLmbbhb9qufluOTrpo.cXRDDra2zCIIwVR9fmaaztfWe
+          7 | Rohan Mehta   | Male   | 1992-07-18 | Post-Graduate             |  70000 |            7 | 7@panchayat.com  | $2a$06$F1dMGSXmtsGekDfmlhtirORyq/yRetQjq7IbmE5q7BrOp9MidmgRe
+          8 | Ananya Ghosh  | Female | 1989-05-10 | Illiterate                |  25000 |            8 | 8@panchayat.com  | $2a$06$ZU68Kdy8d20cV6dHaHjL5./7CzehzcIOkr9uUG7TwIg8CZHq3Njd.
+          9 | Suresh Patil  | Male   | 1983-03-30 | Primary                   |  32000 |            9 | 9@panchayat.com  | $2a$06$TczmBncLJOx.JDLvDm47MeG0pPOjhMWgL0xIaa7QqvY7j20HSoZU2
+         10 | Neha Kapoor   | Female | 1996-12-05 | Graduate                  |  48000 |           10 | 10@panchayat.com | $2a$06$.jrfZidjy22VTNA5Ibwp2eXHyCKs2ZW.dC/N.qX032zRionb7xEra
+         11 | Aryan Sharma  | Male   | 2011-07-10 | None                      |      0 |            1 | 11@panchayat.com | $2a$06$tE.6YZSnvmlgLDY8.mA55u9hPJDIN7Tqm68Bw4oMAsaNIpQdxPyGa
+         12 | Diya Kumar    | Female | 2013-09-20 | None                      |      0 |            3 | 12@panchayat.com | $2a$06$FW4q3/39fiC.JvK6CJlExem/svwNuJkfkDnYmzIrE7souzA.CUeKu
+         13 | Kabir Rao     | Male   | 2016-12-25 | None                      |      0 |            5 | 13@panchayat.com | $2a$06$.YiVxfjhZK3J/HfDN6IdxOC6m2c5KugGm4NuYqiOzGhsZPQGiJ..i
+         14 | Ishita Mehta  | Female | 2019-05-30 | None                      |      0 |            7 | 14@panchayat.com | $2a$06$er2Oy0yeqo8y.vc2yD63v.OAc3y74PLMH5Hu2a0cRBXn3k27HEYnm
+         15 | Vivaan Kapoor | Male   | 2021-11-15 | None                      |      0 |            9 | 15@panchayat.com | $2a$06$PTJjzBn6xVsAkyIFt6tC..c34N6s/CnDgfiqw0foueT0hukz9wHvi
+         16 | ojas dubey    | Male   | 2004-12-13 | None                      |        |            5 | 16@panchayat.com | $2a$06$l4s/ym.zB3wMmtnfNNYsiuGNKruD4RndJu9kWqG.1Or4vy6yPgJO6
+         17 | John Doe      | Male   | 1990-01-01 | Bachelor                  |        |            1 | 17@panchayat.com | $2b$12$svHfF4CcgHjG0N7g2BsdPugQst7oRTIpqT1qjKLSaG1LrCnLmJ2xu
+         18 | Johny Doe     | Male   | 1990-01-01 | Bachelor                  |        |            1 | 18@panchayat.com | $2b$12$ViVujBA1baXiMlR0/FyZj.2O.1SrO5iLa1vx/WzhsHnYsi0gSraHe
+         19 | Mokok Nanami  | Male   | 2025-02-05 | Polya                     |        |            3 | 19@panchayat.com | $2b$12$6KfnikbcKy2z2hvN/LrjU.NN2niGMLbYEuQHSyf6pNIF4Dh2BuEoe
+         20 | Shreya Boss   | Other  | 2025-02-06 | Failure                   |        |            5 | 20@panchayat.com | $2b$12$f8KvQf1KRtGBn6doN2CrV.7X63FgKmGWZbKGbXa.2ab6mwwN9.yy6
+         21 | Noni Sharma   | Female | 1995-06-15 | Graduate                  |  70000 |            1 |                  | 
+(21 rows)
+
+ household_id |           address            
+--------------+------------------------------
+            1 | 12, Main Bazaar, Phulera
+            2 | 34, Station Road, Phulera
+            3 | 56, Gandhi Chowk, Phulera
+            4 | 78, Rajput Mohalla, Phulera
+            5 | 90, Shastri Nagar, Phulera
+            6 | 23, Ambedkar Colony, Phulera
+            7 | 45, Ramganj, Phulera
+            8 | 67, Shivaji Nagar, Phulera
+            9 | 89, Patel Nagar, Phulera
+           10 | 101, Subhash Marg, Phulera
+           11 | 12, Main Bazaar, Phulera
+           12 | 34, Station Road, Phulera
+           13 | 56, Gandhi Chowk, Phulera
+           14 | 78, Rajput Mohalla, Phulera
+           15 | 90, Shastri Nagar, Phulera
+           16 | 23, Ambedkar Colony, Phulera
+           17 | 45, Ramganj, Phulera
+           18 | 67, Shivaji Nagar, Phulera
+           19 | 89, Patel Nagar, Phulera
+           20 | 101, Subhash Marg, Phulera
+(20 rows)
+
+ land_id | area_acres | crop_type | citizen_id 
+---------+------------+-----------+------------
+       1 |        2.5 | Wheat     |          1
+       2 |        3.0 | Rice      |          3
+       3 |        1.2 | Cotton    |          5
+       4 |        4.0 | Sugarcane |          7
+       5 |        3.5 | Maize     |          9
+       6 |        2.5 | Wheat     |          1
+       7 |        1.8 | Barley    |          1
+       8 |        3.0 | Rice      |          3
+       9 |        1.2 | Cotton    |          5
+      10 |        4.0 | Sugarcane |          7
+      11 |        3.5 | Maize     |          9
+      12 |        2.5 | Wheat     |          2
+      13 |        3.0 | Rice      |          2
+      14 |        1.5 | Maize     |          4
+      15 |        2.0 | Barley    |          4
+      16 |        2.5 | Sugarcane |         10
+      17 |        2.5 | Wheat     |         21
+(17 rows)
+
+ employee_id |   role    | citizen_id 
+-------------+-----------+------------
+           1 | Sarpanch  |          2
+           2 | Secretary |          4
+           3 | Member    |          6
+           4 | Clerk     |          8
+           5 | Treasurer |         10
+           6 | Sarpanch  |          2
+           7 | Secretary |          4
+           8 | Member    |          6
+           9 | Clerk     |          8
+          10 | Treasurer |         10
+(10 rows)
+
+ asset_id |     type      |        location         | installation_date |   value   
+----------+---------------+-------------------------+-------------------+-----------
+        1 | Street Light  | Main Bazaar, Phulera    | 2023-01-15        |  50000.00
+        3 | Road          | Gandhi Chowk, Phulera   | 2021-09-30        |  50000.00
+        5 | Library       | Subhash Marg, Phulera   | 2020-11-05        |  50000.00
+        9 | Public Toilet | Rajput Mohalla, Phulera | 2023-06-20        |  50000.00
+        2 | Water Pump    | Station Road, Phulera   | 2022-05-10        | 100000.00
+        4 | Public Toilet | Rajput Mohalla, Phulera | 2023-06-20        | 100000.00
+        6 | Street Light  | Main Bazaar, Phulera    | 2023-01-15        | 200000.00
+       10 | Library       | Subhash Marg, Phulera   | 2020-11-05        | 200000.00
+        8 | Road          | Gandhi Chowk, Phulera   | 2021-09-30        | 150000.00
+        7 | Water Pump    | Station Road, Phulera   | 2022-05-10        | 150000.00
+(10 rows)
+
+ scheme_id |             name             |                      description                      
+-----------+------------------------------+-------------------------------------------------------
+         1 | Ayushman Bharat              | Health insurance for poor families
+         2 | Sarva Shiksha Abhiyan        | Scholarships for students from low-income backgrounds
+         3 | MGNREGA                      | 100-day employment for rural workers
+         4 | Indira Gandhi Pension Yojana | Financial support for senior citizens
+         5 | Mahila Samridhi Yojana       | Self-help groups and financial aid for women
+         6 | Ayushman Bharat              | Health insurance for poor families
+         7 | Sarva Shiksha Abhiyan        | Scholarships for students from low-income backgrounds
+         8 | MGNREGA                      | 100-day employment for rural workers
+         9 | Indira Gandhi Pension Yojana | Financial support for senior citizens
+        10 | Mahila Samridhi Yojana       | Self-help groups and financial aid for women
+(10 rows)
+
+ citizen_id | scheme_id | enrollment_date 
+------------+-----------+-----------------
+          1 |         1 | 2023-01-10
+          2 |         2 | 2022-07-15
+          3 |         3 | 2021-12-05
+          4 |         4 | 2023-06-22
+          5 |         5 | 2023-03-18
+(5 rows)
+
+ vaccination_id | citizen_id | vaccination_type | date_administered 
+----------------+------------+------------------+-------------------
+              1 |          1 | Covid-19         | 2021-05-10
+              2 |          2 | Polio            | 2020-08-15
+              3 |          3 | Hepatitis B      | 2022-11-30
+              4 |          4 | Typhoid          | 2023-02-14
+              5 |          5 | Tetanus          | 2023-04-28
+              6 |          1 | Covid-19         | 2021-05-10
+              7 |          2 | Polio            | 2020-08-15
+              8 |          3 | Hepatitis B      | 2022-11-30
+              9 |          4 | Typhoid          | 2023-02-14
+             10 |          5 | Tetanus          | 2023-04-28
+(10 rows)
+
+ medical_id | citizen_id | health_status | medical_condition 
+------------+------------+---------------+-------------------
+          1 |          1 | Good          | None
+          2 |          2 | Fair          | Diabetes
+          3 |          3 | Poor          | Hypertension
+          4 |          4 | Good          | None
+          5 |          5 | Fair          | Asthma
+          6 |          1 | Good          | None
+          7 |          2 | Fair          | Diabetes
+          8 |          3 | Poor          | Hypertension
+          9 |          4 | Good          | None
+         10 |          5 | Fair          | Asthma
+         11 |         11 | Good          | None
+(11 rows)
+
+ tax_id |     type     | amount | payment_status | citizen_id |    date    
+--------+--------------+--------+----------------+------------+------------
+      4 | Road Tax     |   2000 | Pending        |          4 | 2024-01-01
+      5 | Water Tax    |   1500 | Paid           |          5 | 2024-01-01
+      6 | Property Tax |   5000 | Paid           |          1 | 2024-01-01
+      7 | Income Tax   |  10000 | Pending        |          2 | 2024-01-01
+      8 | Property Tax |   3000 | Paid           |          3 | 2024-01-01
+      9 | Road Tax     |   2000 | Pending        |          4 | 2024-01-01
+     10 | Water Tax    |   1500 | Paid           |          5 | 2024-01-01
+      3 | Property Tax |   3000 | Paid           |          3 | 2024-01-02
+      1 | Property Tax |   5000 | Paid           |          1 | 2024-02-02
+      2 | Income Tax   |  10000 | Pending        |          2 | 2024-02-02
+(10 rows)
+
+ env_id | aqi | temperature | humidity | rainfall | date_recorded 
+--------+-----+-------------+----------+----------+---------------
+      1 |  85 |          30 |       60 |       12 | 2023-01-01
+      2 |  92 |          32 |       55 |        8 | 2023-02-10
+      3 |  78 |          28 |       65 |       15 | 2023-03-15
+      4 | 110 |          35 |       50 |        5 | 2023-04-20
+      5 |  95 |          29 |       70 |       20 | 2023-05-05
+      6 |  85 |          30 |       60 |       12 | 2023-01-01
+      7 |  92 |          32 |       55 |        8 | 2023-02-10
+      8 |  78 |          28 |       65 |       15 | 2023-03-15
+      9 | 110 |          35 |       50 |        5 | 2023-04-20
+     10 |  95 |          29 |       70 |       20 | 2023-05-05
+(10 rows)
+
+ feature_id | feature_type |      name      | area  
+------------+--------------+----------------+-------
+          1 | River        | Banganga       |  5000
+          2 | Forest       | Aravalli Hills | 12000
+          3 | Mountain     | Nahargarh      | 30000
+          4 | Lake         | Sambhar Lake   |  1500
+          5 | Desert       | Thar Desert    | 20000
+          6 | River        | Banganga       |  5000
+          7 | Forest       | Aravalli Hills | 12000
+          8 | Mountain     | Nahargarh      | 30000
+          9 | Lake         | Sambhar Lake   |  1500
+         10 | Desert       | Thar Desert    | 20000
+(10 rows)
+
+ husband_id | wife_id | marriage_date 
+------------+---------+---------------
+          1 |       2 | 2010-06-15
+          3 |       4 | 2012-08-22
+          5 |       6 | 2015-11-03
+          7 |       8 | 2018-04-12
+          9 |      10 | 2020-09-25
+(5 rows)
+
+ child_id | father_id | mother_id | birth_date 
+----------+-----------+-----------+------------
+       11 |         1 |         2 | 2011-07-10
+       12 |         3 |         4 | 2013-09-20
+       13 |         5 |         6 | 2016-12-25
+       14 |         7 |         8 | 2019-05-30
+       15 |         9 |        10 | 2021-11-15
+(5 rows)
+
+ citizen_id |    date    |    cause     
+------------+------------+--------------
+          3 | 2022-10-05 | Heart Attack
+          6 | 2021-12-20 | Covid-19
+          9 | 2023-01-15 | Accident
+(3 rows)
+
+ f_id |  type  |   name   |  habitat   
+------+--------+----------+------------
+    1 | Tree   | Neem     | Rajasthan
+    2 | Animal | Camel    | Desert
+    3 | Bird   | Peacock  | Grasslands
+    4 | Flower | Marigold | Gardens
+    5 | Fish   | Rohu     | Rivers
+    6 | Tree   | Neem     | Rajasthan
+    7 | Animal | Camel    | Desert
+    8 | Bird   | Peacock  | Grasslands
+    9 | Flower | Marigold | Gardens
+   10 | Fish   | Rohu     | Rivers
+(10 rows)
+
+ id |      category       |  amount  |  spent   | created_at 
+----+---------------------+----------+----------+------------
+  1 | Healthcare          | 12000.00 |  9500.00 | 2024-02-01
+  2 | Education           | 15000.00 | 14000.00 | 2024-02-02
+  3 | Awareness           |  5000.00 |  4500.00 | 2024-02-03
+  4 | Elections           | 20000.00 | 18500.00 | 2024-02-04
+  5 | Sanitation          |  8000.00 |  7200.00 | 2024-02-05
+  6 | Water Supply        | 10000.00 |  9600.00 | 2024-02-06
+  7 | Road Maintenance    | 18000.00 | 15000.00 | 2024-02-07
+  8 | Women Empowerment   |  7000.00 |  6500.00 | 2024-02-08
+  9 | Agriculture Support | 12000.00 | 11000.00 | 2024-02-09
+ 10 | Disaster Relief     | 25000.00 | 23000.00 | 2024-02-10
+(10 rows)
+
