@@ -24,24 +24,11 @@ const CitizenDashboard: React.FC = () => {
   const [loading, setLoading] = useState(true); // To handle initial loading state
   const navigate = useNavigate();
   useEffect(() => {
-    const fetchCitizen = async () => {
-      try {
-        const response = await fetch(`http://localhost:8000/api/${citizenId}/fam-data`);
-        const res = await response.json();
-        const data: CitizenElement[] = res.family_members;
-        console.log(data);
-        const filteredData = data.filter(citizen => citizen.citizen_id === parseInt(citizenId));
-        console.log(filteredData);
-        console.log(data);
-        setCitizen(data);
-      } catch (err) {
-        console.error("Error fetching citizen data:", err);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchCitizen();
+    const storedCitizen = localStorage.getItem("citizenData");
+    if (storedCitizen) {
+      setCitizen(JSON.parse(storedCitizen));
+    }
+    setLoading(false);
   }, []);
 
   return (
