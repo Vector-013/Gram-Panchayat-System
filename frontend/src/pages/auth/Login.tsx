@@ -29,6 +29,7 @@ const Login: React.FC = () => {
       // Save token and role in localStorage
       localStorage.setItem("token", data.access_token);
       localStorage.setItem("role", data.role);
+      localStorage.setItem("citizen_id", data.id);
 
       console.log(data.role);
       // Redirect to the landing page
@@ -45,7 +46,7 @@ const Login: React.FC = () => {
         navigate("/med-dashboard");
       }
       else {
-        navigate("/citizen-dashboard");
+        navigate(`/citizen-dashboard/${data.id}`);
       }
     } catch (err: any) {
       setError(err.message);
