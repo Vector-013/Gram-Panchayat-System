@@ -84,8 +84,8 @@
 # Content-Type: application/json
 
 ### Get Medical Data for Citizen with ID 1
-# GET http://localhost:8000/api/1/medical
-# Content-Type: application/json
+GET http://localhost:8000/api/1/medical
+Content-Type: application/json
 
 ### Get Family Tax Data for Citizen with ID 1
 # GET http://localhost:8000/api/1/taxes
