@@ -39,6 +39,9 @@ const Login: React.FC = () => {
       else if(data.role === "edu_dept") {
         navigate("/ed-dashboard");
       }
+      else if(data.role === "med_dept") {
+        navigate("/med-dashboard");
+      }
       else {
         navigate("/citizen-dashboard");
       }

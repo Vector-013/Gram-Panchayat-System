@@ -20,6 +20,7 @@ import CitizenPanchayatForm from './pages/it_dep/land_query';
 import ItDashboard from './pages/it_dep/ItDasboard';
 import EdDashboard from './pages/ed_dep/EdDashboard';
 import EducationForm from './pages/ed_dep/ed_query';
+import MedDashboard from './pages/med_dep/MedDashboard';
 
 // Function to check if the user is authenticated
 const isAuthenticated = () => {
@@ -48,6 +49,10 @@ const LandingPage: React.FC = () => {
   {
     return <Navigate to="/ed-dashboard" replace />;
   }
+  else if(role === 'med_dept')
+  {
+    return <Navigate to="/med-dashboard" replace />;
+  }
   else {
     return <Navigate to="/citizen-dashboard" replace />;
   }
@@ -70,6 +75,7 @@ const App: React.FC = () => {
 
         <Route path="/it-dashboard" element={<ProtectedRoute element={<ItDashboard />} />} />
         <Route path="/ed-dashboard" element={<ProtectedRoute element={<EdDashboard />} />} />
+        <Route path="/med-dashboard" element={<ProtectedRoute element={<MedDashboard />} />} />
 
         {/* Protected Routes for Citizen Data */}
         <Route path="/get-citizens" element={<ProtectedRoute element={<GetCitizens />} />} />
@@ -86,6 +92,7 @@ const App: React.FC = () => {
         <Route path="/flora-fauna" element={<FloraFaunaPage />} />
         <Route path="/it-dept/land-query" element={<ProtectedRoute element={<CitizenPanchayatForm />} />} />
         <Route path="/ed-dept/ed-query" element={<ProtectedRoute element={<EducationForm />} />} />
+        
       </Routes>
     </Router>
   );
