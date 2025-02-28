@@ -71,7 +71,7 @@
 
 # ## Edu Dept Query for Panchayat is not applicable here.
 
-# # Family Data Query for Citizen with ID 1
+# Family Data Query for Citizen with ID 1
 # GET http://localhost:8000/api/1/fam-data
 # Content-Type: application/json
 
@@ -79,6 +79,6 @@
 # GET http://localhost:8000/api/1/fam-land
 # Content-Type: application/json
 
-# ### IT Analytics Query
-# GET http://localhost:8000/api/it-dept/analytics1
-# Content-Type: application/json
+### IT Analytics Query
+GET http://localhost:8000/api/it-dept/analytics1
+Content-Type: application/json

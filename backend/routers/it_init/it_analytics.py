@@ -69,16 +69,6 @@ def get_it_analytics(db: Session = Depends(get_db)):
         total_salaries = 0
 
         for row in rows:
-            ## if None, set to zero
-
-            if row.total_salaries is None:
-                row.total_salaries = 0
-            if row.total_budget is None:
-                row.total_budget = 0
-            if row.total_assets is None:
-                row.total_assets = 0
-            if row.total_taxes is None:
-                row.total_taxes = 0
 
             if row.total_salaries is not None:
                 total_salaries = float(row.total_salaries)
@@ -99,15 +89,15 @@ def get_it_analytics(db: Session = Depends(get_db)):
                     {
                         "year": row.asset_year,
                         "total_expenditure": float(row.total_salaries)
-                        + float(row.total_assets),
+                        + float(row.total_assets)
                     }
                 )
-            if (row.total_taxes is not None) and row.total_budget is not None:
+            if row.total_taxes is not None and row.total_budget is not None:
                 income.append(
                     {
                         "year": row.year,
                         "total_income": float(row.total_taxes)
-                        + float(row.total_budget),
+                        + float(row.total_budget)
                     }
                 )
 
