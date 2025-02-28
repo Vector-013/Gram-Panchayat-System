@@ -62,7 +62,7 @@ def login(credentials: CitizenLogin, db: Session = Depends(get_db)):
         data={"sub": user.email, "role": "citizen"},
         expires_delta=access_token_expires,
     )
-    ## find address by crossing the table with household_id
+     ## find address by crossing the table with household_id
 
     sql = text(
         f"""

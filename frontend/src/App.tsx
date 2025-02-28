@@ -26,6 +26,9 @@ import AssetQueryForm from './pages/it_dep/asset_query';
 import IncomeQueryForm from './pages/it_dep/income_query';
 
 import CitizenModal from './pages/citizen/CitizenModal';
+import CitizenHouseholdModal from './pages/citizen/household';
+import CitizenLandModal from './pages/citizen/landRecord';
+
 import ITModal from './pages/it_dep/ITModal';
 import "./styles/App.css";
 // Function to check if the user is authenticated
@@ -77,8 +80,10 @@ const App: React.FC = () => {
         <Route path="/admin-dashboard" element={<ProtectedRoute element={<AdminDashboard />} />} />
 
         {/* Citizen Dashboard */}
-        <Route path="/citizen-dashboard" element={<ProtectedRoute element={<CitizenDashboard />} />}>
+        <Route path="/citizen-dashboard/:citizenId" element={<ProtectedRoute element={<CitizenDashboard />} />}>
             <Route index element={<CitizenModal />} /> 
+            <Route path="household" element={<CitizenHouseholdModal />} />
+            <Route path="land-record" element={<CitizenLandModal />} />
         </Route>
 
         <Route path="/it-dashboard" element={<ProtectedRoute element={<ItDashboard />} />} >

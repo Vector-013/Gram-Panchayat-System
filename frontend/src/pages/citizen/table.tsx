@@ -16,39 +16,33 @@ interface Props {
 
 const CitizensTable: React.FC<Props> = ({ citizens }) => {
   return (
-    <div style={{ overflowX: "auto", maxHeight: "400px", overflowY: "auto" }}>
-      <table
-        style={{
-          width: "100%",
-          borderCollapse: "collapse",
-          minWidth: "600px",
-        }}
-      >
+    <div style={tableContainerStyle}>
+      <table style={tableStyle}>
         <thead>
-          <tr style={{ backgroundColor: "#f2f2f2" }}>
-            <th style={tableHeaderStyle}>ID</th>
-            <th style={tableHeaderStyle}>Name</th>
-            <th style={tableHeaderStyle}>Gender</th>
-            <th style={tableHeaderStyle}>DOB</th>
-            <th style={tableHeaderStyle}>Education</th>
-            <th style={tableHeaderStyle}>Income</th>
+          <tr>
+            <th style={headerCellStyle}>ID</th>
+            <th style={headerCellStyle}>Name</th>
+            <th style={headerCellStyle}>Gender</th>
+            <th style={headerCellStyle}>DOB</th>
+            <th style={headerCellStyle}>Education</th>
+            <th style={headerCellStyle}>Income</th>
           </tr>
         </thead>
         <tbody>
           {citizens.length > 0 ? (
-            citizens.map((citizen) => (
-              <tr key={citizen.citizen_id} style={tableRowStyle}>
-                <td style={tableCellStyle}>{citizen.citizen_id}</td>
-                <td style={tableCellStyle}>{citizen.name}</td>
-                <td style={tableCellStyle}>{citizen.gender}</td>
-                <td style={tableCellStyle}>{citizen.dob}</td>
-                <td style={tableCellStyle}>{citizen.educational_qualification}</td>
-                <td style={tableCellStyle}>{citizen.income}</td>
+            citizens.map((citizen, index) => (
+              <tr key={citizen.citizen_id} style={index % 2 === 0 ? evenRowStyle : oddRowStyle}>
+                <td style={cellStyle}>{citizen.citizen_id}</td>
+                <td style={cellStyle}>{citizen.name}</td>
+                <td style={cellStyle}>{citizen.gender}</td>
+                <td style={cellStyle}>{citizen.dob}</td>
+                <td style={cellStyle}>{citizen.educational_qualification}</td>
+                <td style={cellStyle}>{citizen.income}</td>
               </tr>
             ))
           ) : (
             <tr>
-              <td colSpan={6} style={{ textAlign: "center", padding: "10px" }}>
+              <td colSpan={6} style={noDataStyle}>
                 No citizens found
               </td>
             </tr>
@@ -59,20 +53,48 @@ const CitizensTable: React.FC<Props> = ({ citizens }) => {
   );
 };
 
-// Styling
-const tableHeaderStyle: React.CSSProperties = {
-  padding: "10px",
-  borderBottom: "2px solid #ddd",
-  textAlign: "left",
+// Styles
+const tableContainerStyle: React.CSSProperties = {
+  marginTop: "20px",
+  overflowY: "auto",
+  maxHeight: "500px",
+  borderRadius: "5px",
+  boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
 };
 
-const tableCellStyle: React.CSSProperties = {
-  padding: "10px",
-  borderBottom: "1px solid #ddd",
+const tableStyle: React.CSSProperties = {
+  width: "100%",
+  borderCollapse: "collapse",
+  backgroundColor: "white",
 };
 
-const tableRowStyle: React.CSSProperties = {
-  backgroundColor: "#fff",
+const headerCellStyle: React.CSSProperties = {
+  backgroundColor: "#007bff",
+  color: "white",
+  padding: "10px",
+  border: "1px solid #ddd",
+  textAlign: "center",
+};
+
+const cellStyle: React.CSSProperties = {
+  padding: "10px",
+  border: "1px solid #ddd",
+  textAlign: "center",
+};
+
+const evenRowStyle: React.CSSProperties = {
+  backgroundColor: "#f2f2f2",
+};
+
+const oddRowStyle: React.CSSProperties = {
+  backgroundColor: "#ffffff",
+};
+
+const noDataStyle: React.CSSProperties = {
+  textAlign: "center",
+  fontWeight: "bold",
+  color: "#888",
+  padding: "15px",
 };
 
 export default CitizensTable;

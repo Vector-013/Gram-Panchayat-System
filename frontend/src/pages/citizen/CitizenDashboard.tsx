@@ -5,6 +5,7 @@ import "../../styles/Dashboard.css";
 import manImage from "../../images/man.png";
 import womanImage from "../../images/woman.png";
 import bgImage from "../../images/village2.jpg";
+import { useParams } from "react-router-dom";
 
 interface CitizenElement {
   citizen_id: number;
@@ -15,27 +16,33 @@ interface CitizenElement {
   email: string;
   income: number;
   household_id: number;
+  address:string;
 }
 
 const CitizenDashboard: React.FC = () => {
+  const { citizenId } = useParams<{ citizenId: string }>();
   const [citizen, setCitizen] = useState<CitizenElement[]>([]);
   const [loading, setLoading] = useState(true); // To handle initial loading state
   const navigate = useNavigate();
+  
   useEffect(() => {
-    const fetchCitizen = async () => {
-      try {
-        const response = await fetch("http://localhost:5000/citizen");
-        const data: CitizenElement[] = await response.json();
-        console.log(data);
-        setCitizen(data);
-      } catch (err) {
-        console.error("Error fetching citizen data:", err);
-      } finally {
-        setLoading(false);
-      }
+    const fetchCitizenData = () => {
+      const citizenData: CitizenElement = {
+        citizen_id: Number(localStorage.getItem("citizen_id")),
+        name: localStorage.getItem("name") || "",
+        gender: localStorage.getItem("gender") || "",
+        dob: localStorage.getItem("dob") || "",
+        educational_qualification: localStorage.getItem("educational_qualification") || "",
+        email: localStorage.getItem("email") || "",
+        income: Number(localStorage.getItem("income")),
+        household_id: Number(localStorage.getItem("household_id")),
+        address: localStorage.getItem("address") || "",
+      };
+      setCitizen([citizenData]);
+      setLoading(false);
     };
 
-    fetchCitizen();
+    fetchCitizenData();
   }, []);
 
   return (
@@ -75,6 +82,8 @@ const CitizenDashboard: React.FC = () => {
             <li className="list-group-item">Educational Qualification : {loading ? "Loading..." : citizen.length > 0 ? citizen[0].educational_qualification : "No Citizen Data"}</li>
             <li className="list-group-item">Email : {loading ? "Loading..." : citizen.length > 0 ? citizen[0].email : "No Citizen Data"}</li>
             <li className="list-group-item">Household ID : {loading ? "Loading..." : citizen.length > 0 ? citizen[0].household_id : "No Citizen Data"}</li>
+            <li className="list-group-item">Address : {loading ? "Loading..." : citizen.length > 0 ? citizen[0].address : "No Citizen Data"}</li>
+             
           </ul>
         </div>
 
