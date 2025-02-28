@@ -9,8 +9,8 @@ interface RecordCardProps {
 
 const RecordCard: React.FC<RecordCardProps> = ({ title, onRedirect }) => {
   return (
-    <div className="card mb-3">
-      <h5 className="card-title">{title}</h5>
+    <div className="card card-rec mb-3">
+      <h5 className="card-title c-title">{title}</h5>
       <button className="btn" onClick={onRedirect}>
         View Record
       </button>

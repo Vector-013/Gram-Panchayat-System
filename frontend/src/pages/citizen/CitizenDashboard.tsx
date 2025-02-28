@@ -39,7 +39,7 @@ const CitizenDashboard: React.FC = () => {
   }, []);
 
   return (
-    <div className="container-fluid">
+    <div className="container-fluid dashboard-container">
       {/* Navbar */}
       <nav className="navbar d-flex justify-content-between">
         <span>
