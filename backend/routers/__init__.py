@@ -11,3 +11,4 @@ from .citizen_initial.taxes import router as taxes
 from .citizen_initial.vaccine import router as vaccines
 from .citizen_initial.environment import router as environment
 from .citizen_initial.geo import router as geo
+from .citizen_initial.asset import router as assets

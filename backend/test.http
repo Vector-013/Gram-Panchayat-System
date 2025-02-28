@@ -84,8 +84,8 @@
 # Content-Type: application/json
 
 ### Get Medical Data for Citizen with ID 1
-GET http://localhost:8000/api/1/medical
-Content-Type: application/json
+# GET http://localhost:8000/api/1/medical
+# Content-Type: application/json
 
 ### Get Family Tax Data for Citizen with ID 1
 # GET http://localhost:8000/api/1/taxes
@@ -102,4 +102,27 @@ Content-Type: application/json
 ### Get Geo Features Data for Citizen with ID 1
 # GET http://localhost:8000/api/1/geo
 # Content-Type: application/json
+
+### Asset Query - Filter by type and location
+POST http://localhost:8000/api/assets/query
+Content-Type: application/json
+
+{
+  "type": "Street Light",
+  "value_min": 1000,
+  "value_max": 100000,
+  "location": "Main Bazaar, Phulera"
+}
+
+### Asset Query - No type filter, no location filter
+POST http://localhost:8000/api/assets/query
+Content-Type: application/json
+
+{
+  "type": "",
+  "value_min": 500,
+  "value_max": 100000,
+  "location": ""
+}
+
 
