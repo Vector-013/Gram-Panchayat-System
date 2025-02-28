@@ -2,7 +2,7 @@ from fastapi import FastAPI
 import uvicorn
 from fastapi.middleware.cors import CORSMiddleware
 from database import engine, Base
-from routers import citizens, admin, login
+from routers import citizens, admin, login, it_dept
 
 app = FastAPI()
 
@@ -23,6 +23,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
 # Root endpoint
 @app.get("/")
 def read_root():
@@ -30,9 +31,10 @@ def read_root():
 
 
 # Include API routers
-app.include_router(citizens.router)
-app.include_router(admin.router)
-app.include_router(login.router)
+app.include_router(citizens)
+app.include_router(admin)
+app.include_router(login)
+app.include_router(it_dept)
 
 # Start server
 if __name__ == "__main__":

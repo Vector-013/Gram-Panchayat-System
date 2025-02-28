@@ -33,3 +33,26 @@
 #   "educational_qualification": "Bachelor",
 #   "password": "password123"
 # }
+
+### IT Dept Query - Citizen Role
+# POST http://localhost:8000/it-dept/land-query
+# Content-Type: application/json
+
+# {
+#   "role": "citizen",
+#   "lower_limit": 1.0,
+#   "upper_limit": 20.0,
+#   "crop_type": "" 
+# }
+
+### IT Dept Query - Panchayat Role
+# POST http://localhost:8000/it-dept/land-query
+# Content-Type: application/json
+
+# {
+#   "role": "panchayat",
+#   "lower_limit": 1.0,
+#   "upper_limit": 20.0,
+#   "crop_type": ""
+# }
+
