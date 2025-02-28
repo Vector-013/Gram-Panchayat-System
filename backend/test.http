@@ -34,7 +34,7 @@
 #   "password": "password123"
 # }
 
-### IT Dept Query - Citizen Role
+## IT Dept Query - Citizen Role
 # POST http://localhost:8000/it-dept/land-query
 # Content-Type: application/json
 

@@ -43,7 +43,7 @@ function AssetQueryForm() {
     };
 
     return (
-        <div>
+        <div className="col card-holder">
             <h2>Asset Query</h2>
             {error && <div style={{ color: "red" }}>{error}</div>}
             <form onSubmit={handleSubmit}>

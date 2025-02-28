@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "../../styles/TaxQuery.css";
 
 function TaxQueryForm() {
     const [queryType, setQueryType] = useState("person");
@@ -44,92 +45,108 @@ function TaxQueryForm() {
     };
 
     return (
-        <div>
-            <h2>Tax Query</h2>
+        <div className="col card-holder tax-query-container">
+            <div className="header">
+                <div className="tax-query-title">Tax Query</div>
+                <button className="back-button" onClick={() => navigate("/it-dashboard")}>Back</button>
+            </div>
             {error && <div style={{ color: "red" }}>{error}</div>}
-            <form onSubmit={handleSubmit}>
-                <label>Query Type:</label>
+            <form className="tax-query-form" onSubmit={handleSubmit}>
                 <div>
-                    <input 
-                        type="radio" 
-                        id="person" 
-                        name="queryType" 
-                        value="person" 
-                        checked={queryType === "person"} 
-                        onChange={() => setQueryType("person")}
-                    />
-                    <label htmlFor="person">Person</label>
+                    <label className="tax-query-label">Query Type:</label>
+                    <div>
+                        <input
+                            type="radio"
+                            id="person"
+                            name="queryType"
+                            value="person"
+                            checked={queryType === "person"}
+                            onChange={() => setQueryType("person")}
+                        />
+                        <label htmlFor="person">Person</label>
 
-                    <input 
-                        type="radio" 
-                        id="household" 
-                        name="queryType" 
-                        value="household" 
-                        checked={queryType === "household"} 
-                        onChange={() => setQueryType("household")}
-                    />
-                    <label htmlFor="household">Household</label>
+                        <input
+                            type="radio"
+                            id="household"
+                            name="queryType"
+                            value="household"
+                            checked={queryType === "household"}
+                            onChange={() => setQueryType("household")}
+                        />
+                        <label htmlFor="household">Household</label>
+                    </div>
                 </div>
                 <br />
 
-                <label htmlFor="id">ID:</label>
-                <input 
-                    type="text" 
-                    id="id" 
-                    name="id" 
-                    required 
-                    value={id} 
-                    onChange={(e) => setId(e.target.value)}
-                />
+                <div>
+                    <label className="tax-query-label" htmlFor="id">ID:</label>
+                    <input
+                        className="tax-query-input"
+                        type="text"
+                        id="id"
+                        name="id"
+                        required
+                        value={id}
+                        onChange={(e) => setId(e.target.value)}
+                    />
+                </div>
                 <br /><br />
 
-                <label>Date Range:</label>
-                <br />
-                <label htmlFor="start_date">From:</label>
-                <input 
-                    type="date" 
-                    id="start_date" 
-                    name="start_date" 
-                    value={startDate} 
-                    onChange={(e) => setStartDate(e.target.value)}
-                />
+                <div>
+                    <label className="tax-query-label" >Date Range:</label>
+                    <br />
+                    <label className="tax-query-label" htmlFor="start_date">From:</label>
+                    <input
+                        className="tax-query-input"
+                        type="date"
+                        id="start_date"
+                        name="start_date"
+                        value={startDate}
+                        onChange={(e) => setStartDate(e.target.value)}
+                    />
 
-                <label htmlFor="end_date">To:</label>
-                <input 
-                    type="date" 
-                    id="end_date" 
-                    name="end_date" 
-                    value={endDate} 
-                    onChange={(e) => setEndDate(e.target.value)}
-                />
+                    <label className="tax-query-label" htmlFor="end_date">To:</label>
+                    <input
+                        className="tax-query-input"
+                        type="date"
+                        id="end_date"
+                        name="end_date"
+                        value={endDate}
+                        onChange={(e) => setEndDate(e.target.value)}
+                    />
+                </div>
                 <br /><br />
 
-                <label>Amount Range:</label>
-                <br />
-                <label htmlFor="min_amount">Min:</label>
-                <input 
-                    type="number" 
-                    id="min_amount" 
-                    name="min_amount" 
-                    min="0" 
-                    step="100" 
-                    value={minAmount} 
-                    onChange={(e) => setMinAmount(parseFloat(e.target.value))} 
-                />
+                <div>
+                    <label className="tax-query-label" >Amount Range:</label>
+                    <br />
+                    <label className="tax-query-label" htmlFor="min_amount">Min:</label>
+                    <input
+                        className="tax-query-input"
+                        type="number"
+                        id="min_amount"
+                        name="min_amount"
+                        min="0"
+                        step="100"
+                        value={minAmount}
+                        onChange={(e) => setMinAmount(parseFloat(e.target.value))}
+                    />
 
-                <label htmlFor="max_amount">Max:</label>
-                <input 
-                    type="number" 
-                    id="max_amount" 
-                    name="max_amount" 
-                    min="0" 
-                    step="100" 
-                    value={maxAmount} 
-                    onChange={(e) => setMaxAmount(parseFloat(e.target.value))} 
-                />
+                    <label className="tax-query-label" htmlFor="max_amount">Max:</label>
+                    <input
+                        className="tax-query-input"
+                        type="number"
+                        id="max_amount"
+                        name="max_amount"
+                        min="0"
+                        step="100"
+                        value={maxAmount}
+                        onChange={(e) => setMaxAmount(parseFloat(e.target.value))}
+                    />
+                </div>
                 <br /><br />
 
-                <input type="submit" value="Submit" />
+                <input className="tax-query-submit" type="submit" value="Submit" />
             </form>
         </div>
     );

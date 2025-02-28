@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "../../styles/Login.css";
+import bgImage from "../../images/login-bg.jpg";
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -30,7 +32,7 @@ const Login: React.FC = () => {
 
       console.log(data.role);
       // Redirect to the landing page
-      if(data.role === "admin") {
+      if (data.role === "admin") {
         navigate("/admin-dashboard");
       }
       else if(data.role === "it_dept") {
@@ -51,41 +53,42 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div className="container mt-5">
-      <div className="card p-4">
-        <h2 className="mb-3 text-center">Login</h2>
-        {error && <div className="alert alert-danger" role="alert">{error}</div>}
-        <form onSubmit={handleLogin}>
-          <div className="mb-3">
-            <label htmlFor="email" className="form-label" title="Enter your email address">Email</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              className="form-control"
-              placeholder="Enter your email"
-              title="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-          </div>
-          <div className="mb-3">
-            <label htmlFor="password" className="form-label" title="Enter your password">Password</label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              className="form-control"
-              placeholder="Enter your password"
-              title="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </div>
-          <button type="submit" className="btn btn-primary w-100">Login</button>
-        </form>
+    <div className="login-container">
+      <div className="bgHolder"><img src={bgImage} alt="bgImage" className="bgImage" /></div>
+      <div className="login-container">
+        <div className="glass-card">
+          <h2 className="login-title">Login</h2>
+          {error && <div className="error-message">{error}</div>}
+          <form onSubmit={handleLogin}>
+            <div className="formHolder">
+              <div className="input-group">
+                <label htmlFor="email">Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="Enter your email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+              </div>
+              <div className="input-group">
+                <label htmlFor="password">Password</label>
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  placeholder="Enter your password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+              </div>
+              <div className="btnHolder"><button type="submit" className="login-button">Login</button></div>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   );
