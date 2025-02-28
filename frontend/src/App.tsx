@@ -78,7 +78,7 @@ const App: React.FC = () => {
         <Route path="/admin-dashboard" element={<ProtectedRoute element={<AdminDashboard />} />} />
 
         {/* Citizen Dashboard */}
-        <Route path="/citizen-dashboard" element={<ProtectedRoute element={<CitizenDashboard />} />}>
+        <Route path="/citizen-dashboard/:citizenId" element={<ProtectedRoute element={<CitizenDashboard />} />}>
             <Route index element={<CitizenModal />} /> 
             <Route path="household" element={<CitizenHouseholdModal />} />
         </Route>

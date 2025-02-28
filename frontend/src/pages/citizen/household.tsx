@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import CitizensTable from "./table";
-import "../../styles/CitizenHouseholdModal.css"; // Import CSS
+import "../../styles/CitizenHousehold.css"; // Import CSS
 
 interface Citizen {
   citizen_id: number;
@@ -88,7 +88,7 @@ const CitizenHouseholdModal: React.FC = () => {
   }, [nameFilter, genderFilter, educationFilter, dobRange, incomeRange, citizens]);
 
   return (
-    <div className="citizen-container">
+    <div className="citizen-container col card-holder">
       <h2 className="citizen-title">Find Citizens by Household</h2>
 
       {/* Filters */}
@@ -147,6 +147,7 @@ const CitizenHouseholdModal: React.FC = () => {
             }
             className="citizen-input"
           />
+          to
           <input
             type="number"
             placeholder="Max Income"

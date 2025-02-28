@@ -1,7 +1,5 @@
 /* Main Container */
 .citizen-container {
-    max-width: 800px;
-    margin: 30px auto;
     padding: 20px;
     background-color: #f9f9f9;
     border-radius: 10px;
