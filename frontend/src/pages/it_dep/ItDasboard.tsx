@@ -23,6 +23,15 @@ const ItDashboard: React.FC = () => {
        <div className="d-flex justify-content-center mt-3">
         <button className="btn btn-danger" onClick={() => navigate("/it-dept/land-query")}>Land Query</button>
       </div>
+       <div className="d-flex justify-content-center mt-3">
+        <button className="btn btn-danger" onClick={() => navigate("/it-dept/tax-query")}>Tax Query</button>
+      </div>
+         <div className="d-flex justify-content-center mt-3">
+        <button className="btn btn-danger" onClick={() => navigate("/it-dept/asset-query")}>Asset Query</button>
+      </div>
+         <div className="d-flex justify-content-center mt-3">
+        <button className="btn btn-danger" onClick={() => navigate("/it-dept/income-query")}>Income Query</button>
+      </div>
     </div>
   );
 };

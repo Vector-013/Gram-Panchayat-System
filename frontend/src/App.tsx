@@ -21,6 +21,9 @@ import ItDashboard from './pages/it_dep/ItDasboard';
 import EdDashboard from './pages/ed_dep/EdDashboard';
 import EducationForm from './pages/ed_dep/ed_query';
 import MedDashboard from './pages/med_dep/MedDashboard';
+import TaxQueryForm from './pages/it_dep/tax_query';
+import AssetQueryForm from './pages/it_dep/asset_query';
+import IncomeQueryForm from './pages/it_dep/income_query';
 
 // Function to check if the user is authenticated
 const isAuthenticated = () => {
@@ -91,8 +94,11 @@ const App: React.FC = () => {
         <Route path="/geo" element={<GeoPage />} />
         <Route path="/flora-fauna" element={<FloraFaunaPage />} />
         <Route path="/it-dept/land-query" element={<ProtectedRoute element={<CitizenPanchayatForm />} />} />
+        <Route path="/it-dept/tax-query" element={<ProtectedRoute element={<TaxQueryForm />} />} />
+        <Route path="/it-dept/asset-query" element={<ProtectedRoute element={<AssetQueryForm />} />} />
+        <Route path="/it-dept/income-query" element={<ProtectedRoute element={<IncomeQueryForm />} />} />
         <Route path="/ed-dept/ed-query" element={<ProtectedRoute element={<EducationForm />} />} />
-        
+
       </Routes>
     </Router>
   );
