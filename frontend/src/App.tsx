@@ -16,6 +16,7 @@ import AssetPage from './pages/base/assets';
 import EnvironmentStats from './pages/base/env';
 import GeoPage from './pages/base/geo';
 import FloraFaunaPage from './pages/base/floraFauna';
+import CitizenPanchayatForm from './pages/it_dep/land_query';
 
 // Function to check if the user is authenticated
 const isAuthenticated = () => {
@@ -66,6 +67,7 @@ const App: React.FC = () => {
         <Route path="/env" element={<EnvironmentStats />} />
         <Route path="/geo" element={<GeoPage />} />
         <Route path="/flora-fauna" element={<FloraFaunaPage />} />
+        <Route path="/it-dept-land-query" element={<ProtectedRoute element={<CitizenPanchayatForm />} />} />
       </Routes>
     </Router>
   );
