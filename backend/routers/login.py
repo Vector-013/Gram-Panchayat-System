@@ -60,7 +60,12 @@ def login(credentials: CitizenLogin, db: Session = Depends(get_db)):
         data={"sub": user.email, "role": "citizen"},
         expires_delta=access_token_expires,
     )
-    return {"access_token": token, "token_type": "bearer", "role": "citizen"}
+    return {
+        "access_token": token,
+        "token_type": "bearer",
+        "role": "citizen",
+        "id": user.citizen_id,
+    }
 
 
 @router.post("/logout", response_model=dict)
