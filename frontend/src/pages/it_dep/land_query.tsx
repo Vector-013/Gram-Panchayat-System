@@ -1,5 +1,12 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
+
+interface LandRecord {
+    owner: string;
+    land_size: number;
+    crop_type: string;
+    location: string;
+}
 
 function CitizenPanchayatForm() {
     const [role, setRole] = useState("citizen");
@@ -7,7 +14,8 @@ function CitizenPanchayatForm() {
     const [landMax, setLandMax] = useState(100);
     const [cropType, setCropType] = useState("");
     const [error, setError] = useState<string | null>(null);
-    const navigate = useNavigate();
+    const [landRecords, setLandRecords] = useState<LandRecord[]>([]); // Store response data
+    // const navigate = useNavigate();
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -32,10 +40,11 @@ function CitizenPanchayatForm() {
                 body: JSON.stringify(requestBody),
             });
             if (!response.ok) {
-                console.log(response);
                 throw new Error("Submission failed");
             }
-            navigate("/success");
+            const data: LandRecord[] = await response.json(); // Store response
+            setLandRecords(data); // Update state with response data
+            console.log(data);
         } catch (err: any) {
             setError(err.message);
         }
@@ -92,6 +101,33 @@ function CitizenPanchayatForm() {
                 
                 <input type="submit" value="Submit" />
             </form>
+
+            {/* Display Table Only If There Are Records */}
+            {landRecords.length > 0 && (
+                <div>
+                    <h3>Land Records</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Owner</th>
+                                <th>Land Size (acres)</th>
+                                <th>Crop Type</th>
+                                <th>Location</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {landRecords.map((record, index) => (
+                                <tr key={index}>
+                                    <td>{record.name}</td>
+                                    <td>{record.land_size}</td>
+                                    <td>{record.crop_type}</td>
+                                    <td>{record.location}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            )}
         </div>
     );
 }
