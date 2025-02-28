@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function EducationForm() {
-    const [education, setEducation] = useState("");
+    const [educational_level, setEducation] = useState("");
     const [gender, setGender] = useState("");
     const [dobMin, setDobMin] = useState("");
     const [dobMax, setDobMax] = useState("");
@@ -19,7 +19,7 @@ function EducationForm() {
         }
         try {
             const requestBody = {
-                education,
+                educational_level,
                 gender,
                 dob_min: dobMin,
                 dob_max: dobMax,
@@ -27,7 +27,7 @@ function EducationForm() {
                 income_max: incomeMax,
             };
             
-            const response = await fetch("http://localhost:8000/edu-dpt/edu-query", {
+            const response = await fetch("http://localhost:8000/edu-dept/edu-query", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(requestBody),
@@ -47,7 +47,7 @@ function EducationForm() {
             {error && <div style={{ color: "red" }}>{error}</div>}
             <form onSubmit={handleSubmit}>
                 <label htmlFor="education">Educational Qualification:</label>
-                <select id="education" name="education" required value={education} onChange={(e) => setEducation(e.target.value)}>
+                <select id="education" name="education" required value={educational_level} onChange={(e) => setEducation(e.target.value)}>
                     <option value="">Select Qualification</option>
                     <option value="Primary">Primary</option>
                     <option value="Secondary">Secondary</option>
@@ -58,12 +58,17 @@ function EducationForm() {
                 <br /><br />
                 
                 <label htmlFor="gender">Gender:</label>
-                <select id="gender" name="gender" required value={gender} onChange={(e) => setGender(e.target.value)}>
+               <select 
+                    id="gender" 
+                    name="gender" 
+                    value={gender} 
+                    onChange={(e) => setGender(e.target.value || "")}>
                     <option value="">Select Gender</option>
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>
                     <option value="Other">Other</option>
                 </select>
+
                 <br /><br />
                 
                 <label>Date of Birth Range:</label>

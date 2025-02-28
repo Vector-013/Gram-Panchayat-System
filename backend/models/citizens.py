@@ -130,6 +130,7 @@ class Asset(Base):
     type = Column(Text, nullable=False)
     location = Column(Text, nullable=False)
     installation_date = Column(Date, nullable=True)
+    value = Column(Numeric, nullable=False)
 
 
 ##############################
@@ -203,6 +204,7 @@ class Tax(Base):
     amount = Column(Numeric, nullable=False)
     payment_status = Column(Text, nullable=False)
     citizen_id = Column(Integer, ForeignKey("citizens.citizen_id"), nullable=True)
+    date = Column(Date, nullable=False)
 
     citizen = relationship("Citizen", back_populates="taxes")
 
@@ -296,3 +298,15 @@ class FloraFauna(Base):
     type = Column(Text, nullable=False)
     name = Column(Text, nullable=False)
     habitat = Column(Text, nullable=False)
+
+##############################
+# Budget
+##############################
+class Budget(Base):
+    __tablename__ = "budget"
+
+    id = Column(Integer, primary_key=True, index=True, autoincrement=True)
+    category = Column(Text, nullable=False)
+    amount = Column(Numeric, nullable=False)
+    spent = Column(Numeric, nullable=False)
+    created_at = Column(Date, nullable=False)
