@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import MedicalDataTable from "./medTable";
+import "../../styles/CitizenLand.css";
 
 interface MedicalData {
   medical_id: number;
@@ -10,7 +11,7 @@ interface MedicalData {
   medical_condition: string;
 }
 
-const MedicalDataPage: React.FC = () => {
+const CitizenMedicalModal: React.FC = () => {
   const { citizenId } = useParams<{ citizenId: string }>();
   const [medicalData, setMedicalData] = useState<MedicalData[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
@@ -29,9 +30,9 @@ const MedicalDataPage: React.FC = () => {
       setError("");
 
       try {
-        const response = await fetch(`http://localhost:5000/medical_data`);
+        const response = await fetch(`http://localhost:8000/api/${citizenId}/medical`);
         const data: MedicalData[] = await response.json();
-
+        console.log(data);
         if ("error" in data) {
           setMedicalData([]);
         } else {
@@ -56,7 +57,7 @@ const MedicalDataPage: React.FC = () => {
   );
 
   return (
-    <div style={{ padding: "20px" }}>
+    <div className="land-container card-holder">
       <h2>Medical Data for Household</h2>
 
       {/* Filter Inputs */}
@@ -103,4 +104,4 @@ const inputStyle: React.CSSProperties = {
   width: "200px",
 };
 
-export default MedicalDataPage;
+export default CitizenMedicalModal;

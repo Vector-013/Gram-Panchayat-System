@@ -94,7 +94,7 @@
 
 -- -- Insert data into environmental_data
 -- INSERT INTO environmental_data (aqi, temperature, humidity, rainfall, date_recorded) VALUES
--- (85, 30, 60, 12, '2023-01-01'),
+-- (85, 30, 60, 12, '2025-03-01');
 -- (92, 32, 55, 8, '2023-02-10'),
 -- (78, 28, 65, 15, '2023-03-15'),
 -- (110, 35, 50, 5, '2023-04-20'),
