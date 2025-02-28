@@ -84,6 +84,9 @@ const App: React.FC = () => {
         <Route path="/it-dashboard" element={<ProtectedRoute element={<ItDashboard />} />} >
             <Route index element={<ITModal />} /> 
             <Route path="land-query" element={<CitizenPanchayatForm />} />
+            <Route path="tax-query" element={<TaxQueryForm />} />
+            <Route path="asset-query" element={<AssetQueryForm />} />
+            <Route path="income-query" element={<IncomeQueryForm />} />
         </Route>
         <Route path="/ed-dashboard" element={<ProtectedRoute element={<EdDashboard />} />} />
         <Route path="/med-dashboard" element={<ProtectedRoute element={<MedDashboard />} />} />
@@ -102,9 +105,6 @@ const App: React.FC = () => {
         <Route path="/geo" element={<GeoPage />} />
         <Route path="/flora-fauna" element={<FloraFaunaPage />} />
         <Route path="/it-dept/land-query" element={<ProtectedRoute element={<CitizenPanchayatForm />} />} />
-        <Route path="/it-dept/tax-query" element={<ProtectedRoute element={<TaxQueryForm />} />} />
-        <Route path="/it-dept/asset-query" element={<ProtectedRoute element={<AssetQueryForm />} />} />
-        <Route path="/it-dept/income-query" element={<ProtectedRoute element={<IncomeQueryForm />} />} />
         <Route path="/ed-dept/ed-query" element={<ProtectedRoute element={<EducationForm />} />} />
 
       </Routes>

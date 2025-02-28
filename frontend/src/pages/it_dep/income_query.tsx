@@ -46,7 +46,7 @@ function IncomeQueryForm() {
     };
 
     return (
-        <div>
+        <div className="col card-holder">
             <h2>Income Query</h2>
             {error && <div style={{ color: "red" }}>{error}</div>}
             <form onSubmit={handleSubmit}>

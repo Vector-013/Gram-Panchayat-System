@@ -20,13 +20,13 @@ interface CitizenElement {
 
 const CitizenDashboard: React.FC = () => {
   const navigate = useNavigate();
-  
+
   return (
     <div className="container-fluid dashboard-container">
       {/* Navbar */}
       <nav className="navbar d-flex justify-content-between">
         <span>
-          IT Department 
+          IT Department
         </span>
         <button className="btn btn-danger" onClick={() => navigate("/logout")}>Logout</button>
       </nav>
@@ -54,15 +54,6 @@ const CitizenDashboard: React.FC = () => {
 
         {/* Right Panel: Record Cards */}
         <Outlet />
-      </div>
-       <div className="d-flex justify-content-center mt-3">
-        <button className="btn btn-danger" onClick={() => navigate("/it-dept/tax-query")}>Tax Query</button>
-      </div>
-         <div className="d-flex justify-content-center mt-3">
-        <button className="btn btn-danger" onClick={() => navigate("/it-dept/asset-query")}>Asset Query</button>
-      </div>
-         <div className="d-flex justify-content-center mt-3">
-        <button className="btn btn-danger" onClick={() => navigate("/it-dept/income-query")}>Income Query</button>
       </div>
     </div>
   );

@@ -17,16 +17,16 @@ const ITModal: React.FC = () => {
                         <RecordCard title="Land Record" to_link="land-query" onRedirect={() => alert("Redirecting to Landlord Record") } />
                     </div>
                     <div className="col">
-                        <RecordCard title="Tax Record" to_link="/land-query" onRedirect={() => alert("Redirecting to Medical Record")} />
+                        <RecordCard title="Tax Record" to_link="tax-query" onRedirect={() => alert("Redirecting to Medical Record")} />
                     </div>
 
                 </div>
                 <div className="row">
                     <div className="col">
-                        <RecordCard title="Income Record" to_link="/land-query" onRedirect={() => alert("Redirecting to Landlord Record")} />
+                        <RecordCard title="Income Record" to_link="income-query" onRedirect={() => alert("Redirecting to Landlord Record")} />
                     </div>
                     <div className="col">
-                        <RecordCard title="Asset Record" to_link="/land-query" onRedirect={() => alert("Redirecting to Medical Record")} />
+                        <RecordCard title="Asset Record" to_link="asset-query" onRedirect={() => alert("Redirecting to Medical Record")} />
                     </div>
                 </div>
 
