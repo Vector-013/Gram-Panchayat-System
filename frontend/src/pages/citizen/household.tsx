@@ -41,20 +41,12 @@ const CitizenHouseholdModal: React.FC = () => {
       setError("");
 
       try {
-        const response = await fetch(`http://localhost:8000/${citizenId}/fam-data`);
-        const data: Citizen[] = await response.json();
+        const response = await fetch(`http://localhost:8000/api/${citizenId}/fam-data`);
+        const res = await response.json();
+        const data: Citizen[] = res.family_members;
+        setCitizens(data);
+        console.log(data);
 
-        const citizen = data.find((c) => c.citizen_id === parseInt(citizenId));
-
-        if (!citizen) {
-          setError("Citizen not found");
-          setCitizens([]);
-        } else {
-          const householdCitizens = data.filter(
-            (c) => c.household_id === citizen.household_id
-          );
-          setCitizens(householdCitizens);
-        }
       } catch (err) {
         console.error(err);
         setError("Error loading citizens data");

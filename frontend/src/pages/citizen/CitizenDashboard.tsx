@@ -5,6 +5,7 @@ import "../../styles/Dashboard.css";
 import manImage from "../../images/man.png";
 import womanImage from "../../images/woman.png";
 import bgImage from "../../images/village2.jpg";
+import { useParams } from "react-router-dom";
 
 interface CitizenElement {
   citizen_id: number;
@@ -18,14 +19,19 @@ interface CitizenElement {
 }
 
 const CitizenDashboard: React.FC = () => {
+  const { citizenId } = useParams<{ citizenId: string }>();
   const [citizen, setCitizen] = useState<CitizenElement[]>([]);
   const [loading, setLoading] = useState(true); // To handle initial loading state
   const navigate = useNavigate();
   useEffect(() => {
     const fetchCitizen = async () => {
       try {
-        const response = await fetch("http://localhost:5000/citizen");
-        const data: CitizenElement[] = await response.json();
+        const response = await fetch(`http://localhost:8000/api/${citizenId}/fam-data`);
+        const res = await response.json();
+        const data: CitizenElement[] = res.family_members;
+        console.log(data);
+        const filteredData = data.filter(citizen => citizen.citizen_id === parseInt(citizenId));
+        console.log(filteredData);
         console.log(data);
         setCitizen(data);
       } catch (err) {
