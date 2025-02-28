@@ -2,7 +2,8 @@ from sqlalchemy import Column, Integer, String, Date
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql.schema import ForeignKey
 from database import Base
-from sqlalchemy import Numeric, Text
+from sqlalchemy.dialects.postgresql import JSON
+from sqlalchemy import Text, Numeric
 
 ##############################
 # Households
