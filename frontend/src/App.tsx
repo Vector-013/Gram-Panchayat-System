@@ -37,6 +37,9 @@ import CitizenGeoModal from './pages/citizen/CitizenGeoModal';
 import BirthQueryForm from './pages/census_dep/births';
 import DeathQueryForm from './pages/census_dep/deaths';
 import MarriageQueryForm from './pages/census_dep/marriages';
+import CensusEnvForm from './pages/census_dep/CensusEnvironment';
+import FloraFaunaQueryForm from './pages/census_dep/florafauna';
+import CensusGeoModal from './pages/census_dep/CensusGeo';
 
 import ITModal from './pages/it_dep/ITModal';
 import CensusModal from './pages/census_dep/CensusModal';
@@ -114,6 +117,9 @@ const App: React.FC = () => {
             <Route path="birth-query" element={<BirthQueryForm />} />
             <Route path="death-query" element={<DeathQueryForm />} />
             <Route path="marriage-query" element={<MarriageQueryForm />} />
+            <Route path="env-query" element={<CensusEnvForm/>} />
+            <Route path="flora-query" element={<FloraFaunaQueryForm />} />
+            <Route path="geo-query" element={<CensusGeoModal />} />
         </Route>
 
         {/* Protected Routes for Citizen Data */}

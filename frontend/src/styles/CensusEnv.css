@@ -1,0 +1,129 @@
+/* Main Container */
+.env-container {
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.env-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+/* Today's Values */
+.env-today {
+    background: #e3f2fd;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+/* Filters */
+.env-filter-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.env-range {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.env-input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100px;
+}
+
+/* Loading & Error Messages */
+.env-loading {
+    color: #007bff;
+}
+
+.env-error {
+    color: red;
+}
+
+/* Table Container */
+.env-table-container {
+    margin-top: 20px;
+    overflow-y: auto;
+    max-height: 400px;
+    border-radius: 5px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.env-table-container thead{
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+/* Table Styling */
+.env-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+}
+
+/* Table Headers */
+.env-table th {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+/* Table Cells */
+.env-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+/* High AQI Warning */
+.env-high-aqi {
+    font-weight: bold;
+    color: red;
+}
+
+/* Normal AQI */
+.env-normal-aqi {
+    font-weight: bold;
+    color: green;
+}
+
+/* Alternate Row Styling */
+.env-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Hover Effect */
+.env-table tr:hover {
+    background-color: #d6eaff;
+}
+
+/* No Data Row */
+.no-data {
+    text-align: center;
+    font-weight: bold;
+    color: #888;
+    padding: 15px;
+}
+
+/* Responsive Table */
+@media (max-width: 768px) {
+    .env-table {
+        font-size: 14px;
+    }
+}
