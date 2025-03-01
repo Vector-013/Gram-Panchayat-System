@@ -5,7 +5,7 @@ from typing import Optional, List
 
 from database import get_db
 
-from schemas import LandQuery, LandQueryResult, ITAssetQuery, TaxQuery
+from schemas import LandQuery, LandQueryResult, ITAssetQuery, TaxQuery, IncomeQuery
 
 router = APIRouter(prefix="/it-dept", tags=["ITDept Query"])
 
@@ -155,7 +155,8 @@ def tax_query(query: TaxQuery, db: Session = Depends(get_db)):
             c.household_id,
             t.amount,
             to_char(t.date, 'YYYY-MM-DD') AS date,
-            t.payment_status
+            t.payment_status,
+            t.type
         FROM taxes t
         JOIN citizens c ON t.citizen_id = c.citizen_id
         WHERE t.amount BETWEEN :min_amount AND :max_amount
@@ -211,6 +212,7 @@ def tax_query(query: TaxQuery, db: Session = Depends(get_db)):
                 "amount": float(row.amount),
                 "date": row.date,
                 "status": row.payment_status,
+                "type": row.type,
             }
             if row.payment_status == "Paid":
                 paid_taxes.append(tax_record)
@@ -225,6 +227,98 @@ def tax_query(query: TaxQuery, db: Session = Depends(get_db)):
             "total_paid": total_paid,
             "total_pending": total_pending,
         }
+    except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e)
+        )
+
+
+@router.post("/income-query", response_model=dict)
+def income_query(query: IncomeQuery, db: Session = Depends(get_db)):
+    # First, compute household income per household using a WITH clause.
+    household_income_sql = text(
+        """
+        WITH HouseholdIncome AS (
+            SELECT household_id, SUM(COALESCE(income, 0)) AS total_income
+            FROM citizens
+            GROUP BY household_id
+        )
+        SELECT household_id FROM HouseholdIncome
+        WHERE total_income BETWEEN :household_income_min AND :household_income_max
+    """
+    )
+
+    household_params = {
+        "household_income_min": query.household_income_min,
+        "household_income_max": query.household_income_max,
+    }
+
+    try:
+        valid_households = db.execute(household_income_sql, household_params).fetchall()
+        household_ids = [str(row[0]) for row in valid_households]
+
+        if not household_ids:
+            return {
+                "citizens": [],
+                "message": "No households found within income range",
+            }
+
+        # Construct the query for citizens.
+        # Calculate age using EXTRACT(YEAR FROM age(dob))::int.
+        citizen_sql = f"""
+            SELECT 
+                citizen_id, 
+                name, 
+                EXTRACT(YEAR FROM age(dob))::int AS age,
+                gender,
+                income,
+                household_id,
+                educational_qualification
+            FROM citizens
+            WHERE household_id IN ({", ".join(household_ids)})
+              AND income BETWEEN :income_min AND :income_max
+        """
+
+        # Append filters for age range
+        citizen_sql += " AND EXTRACT(YEAR FROM age(dob))::int >= :age_min"
+        params = {
+            "income_min": query.income_min,
+            "income_max": query.income_max,
+            "age_min": query.age_min,
+        }
+        if query.age_max is not None:
+            citizen_sql += " AND EXTRACT(YEAR FROM age(dob))::int <= :age_max"
+            params["age_max"] = query.age_max
+
+        # Append filter for gender if provided (non-empty)
+        if query.gender.strip() != "":
+            citizen_sql += " AND gender = :gender"
+            params["gender"] = query.gender
+
+        # Append filter for educational qualification if provided (non-empty)
+        if query.educational_qualification.strip() != "":
+            citizen_sql += " AND educational_qualification = :education"
+            params["education"] = query.educational_qualification
+
+        citizen_sql += " ORDER BY income DESC, age ASC"
+
+        citizens = db.execute(text(citizen_sql), params).fetchall()
+
+        citizen_list = [
+            {
+                "citizen_id": row.citizen_id,
+                "name": row.name,
+                "age": row.age,
+                "gender": row.gender,
+                "income": float(row.income),
+                "household_id": row.household_id,
+                "educational_qualification": row.educational_qualification,
+            }
+            for row in citizens
+        ]
+
+        return {"citizens": citizen_list}
+
     except Exception as e:
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e)
