@@ -57,7 +57,7 @@ const CitizensTable: React.FC<Props> = ({ citizens }) => {
 // Styles
 const tableContainerStyle: React.CSSProperties = {
   marginTop: "20px",
-  overflowY: "auto",
+  overflowY: "scroll",
   maxHeight: "500px",
   borderRadius: "5px",
   boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",

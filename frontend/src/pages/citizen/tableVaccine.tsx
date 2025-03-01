@@ -1,4 +1,5 @@
 import React from "react";
+import "../../styles/CitizenVaccine.css";
 
 interface VaccineRecord {
     citizen_id: number;
@@ -6,6 +7,7 @@ interface VaccineRecord {
     name: string;
     vaccination_type: string;
     date_administered: string;
+    age: number;
 }
 
 interface Props {
@@ -14,37 +16,33 @@ interface Props {
 
 const VaccineRecordsTable: React.FC<Props> = ({ vaccineRecords }) => {
     return (
-        <div style={{ overflowX: "auto", maxHeight: "400px", overflowY: "auto" }}>
-            <table
-                style={{
-                    width: "100%",
-                    borderCollapse: "collapse",
-                    minWidth: "600px",
-                }}
-            >
+        <div className="vaccine-table-container">
+            <table className="vaccine-table">
                 <thead>
-                    <tr style={{ backgroundColor: "#f2f2f2" }}>
-                        <th style={tableHeaderStyle}>Citizen ID</th>
-                        <th style={tableHeaderStyle}>Vaccination ID</th>
-                        <th style={tableHeaderStyle}>Name</th>
-                        <th style={tableHeaderStyle}>Vaccination Type</th>
-                        <th style={tableHeaderStyle}>Date Administered</th>
+                    <tr>
+                        <th>Citizen ID</th>
+                        <th>Vaccination ID</th>
+                        <th>Name</th>
+                        <th>Vaccination Type</th>
+                        <th>Date Administered</th>
+                        <th>Age</th>
                     </tr>
                 </thead>
                 <tbody>
                     {vaccineRecords.length > 0 ? (
                         vaccineRecords.map((vaccineRecord) => (
-                            <tr key={vaccineRecord.vaccination_id} style={tableRowStyle}>
-                                <td style={tableCellStyle}>{vaccineRecord.citizen_id}</td>
-                                <td style={tableCellStyle}>{vaccineRecord.vaccination_id}</td>
-                                <td style={tableCellStyle}>{vaccineRecord.name}</td>
-                                <td style={tableCellStyle}>{vaccineRecord.vaccination_type}</td>
-                                <td style={tableCellStyle}>{vaccineRecord.date_administered}</td>
+                            <tr key={vaccineRecord.vaccination_id}>
+                                <td>{vaccineRecord.citizen_id}</td>
+                                <td>{vaccineRecord.vaccination_id}</td>
+                                <td>{vaccineRecord.name}</td>
+                                <td>{vaccineRecord.vaccination_type}</td>
+                                <td>{vaccineRecord.date_administered}</td>
+                                <td>{vaccineRecord.age}</td>
                             </tr>
                         ))
                     ) : (
                         <tr>
-                            <td colSpan={5} style={{ textAlign: "center", padding: "10px" }}>
+                            <td colSpan={6} className="no-data">
                                 No vaccination records found
                             </td>
                         </tr>
@@ -53,21 +51,6 @@ const VaccineRecordsTable: React.FC<Props> = ({ vaccineRecords }) => {
             </table>
         </div>
     );
-}
-
-const tableHeaderStyle: React.CSSProperties = {
-    padding: "10px",
-    textAlign: "left",
-    borderBottom: "1px solid #ddd",
-};
-
-const tableCellStyle: React.CSSProperties = {
-  padding: "10px",
-  borderBottom: "1px solid #ddd",
-};
-
-const tableRowStyle: React.CSSProperties = {
-  backgroundColor: "#fff",
 };
 
 export default VaccineRecordsTable;

@@ -10,8 +10,10 @@
 /* Title */
 .medical-title {
     color: #333;
-    font-size: 22px;
+    font-size: 1.25rem;
     margin-bottom: 15px;
+    margin-top: 15px;
+    font-weight: bold;
 }
 
 /* Filter Section */
@@ -65,6 +67,9 @@
     padding: 10px;
     border: 1px solid #ddd;
     text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 1;
 }
 
 /* Table Cells */
