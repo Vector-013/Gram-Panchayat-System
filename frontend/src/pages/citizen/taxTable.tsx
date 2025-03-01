@@ -1,4 +1,5 @@
 import React from "react";
+import "../../styles/CitizenTax.css";
 
 interface TaxRecord {
   tax_id: number;
@@ -7,6 +8,8 @@ interface TaxRecord {
   payment_status: string;
   type: string;
   tax_amount: number;
+  year: number;
+
 }
 
 interface Props {
@@ -15,39 +18,37 @@ interface Props {
 
 const TaxTable: React.FC<Props> = ({ taxes }) => {
   return (
-    <div style={{ overflowX: "auto", maxHeight: "400px", overflowY: "auto" }}>
-      <table
-        style={{
-          width: "100%",
-          borderCollapse: "collapse",
-          minWidth: "700px",
-        }}
-      >
+    <div className="tax-table-container">
+      <table className="tax-table">
         <thead>
-          <tr style={{ backgroundColor: "#f2f2f2" }}>
-            <th style={tableHeaderStyle}>Tax ID</th>
-            <th style={tableHeaderStyle}>Citizen ID</th>
-            <th style={tableHeaderStyle}>Name</th>
-            <th style={tableHeaderStyle}>Payment Status</th>
-            <th style={tableHeaderStyle}>Tax Type</th>
-            <th style={tableHeaderStyle}>Tax Amount</th>
+          <tr>
+            <th>Tax ID</th>
+            <th>Citizen ID</th>
+            <th>Name</th>
+            <th>Payment Status</th>
+            <th>Tax Type</th>
+            <th>Tax Amount</th>
+            <th>Year</th>
           </tr>
         </thead>
         <tbody>
           {taxes.length > 0 ? (
             taxes.map((tax) => (
-              <tr key={tax.tax_id} style={tableRowStyle}>
-                <td style={tableCellStyle}>{tax.tax_id}</td>
-                <td style={tableCellStyle}>{tax.citizen_id}</td>
-                <td style={tableCellStyle}>{tax.name}</td>
-                <td style={tableCellStyle}>{tax.payment_status}</td>
-                <td style={tableCellStyle}>{tax.type}</td>
-                <td style={tableCellStyle}>{tax.tax_amount}</td>
+              <tr key={tax.tax_id}>
+                <td>{tax.tax_id}</td>
+                <td>{tax.citizen_id}</td>
+                <td>{tax.name}</td>
+                <td className={tax.payment_status === "Paid" ? "tax-paid" : "tax-pending"}>
+                  {tax.payment_status}
+                </td>
+                <td>{tax.type}</td>
+                <td>{tax.tax_amount}</td>
+                <td>{tax.year}</td>
               </tr>
             ))
           ) : (
             <tr>
-              <td colSpan={6} style={{ textAlign: "center", padding: "10px" }}>
+              <td colSpan={7} className="no-data">
                 No tax records found
               </td>
             </tr>
@@ -56,22 +57,6 @@ const TaxTable: React.FC<Props> = ({ taxes }) => {
       </table>
     </div>
   );
-};
-
-// Styling
-const tableHeaderStyle: React.CSSProperties = {
-  padding: "10px",
-  borderBottom: "2px solid #ddd",
-  textAlign: "left",
-};
-
-const tableCellStyle: React.CSSProperties = {
-  padding: "10px",
-  borderBottom: "1px solid #ddd",
-};
-
-const tableRowStyle: React.CSSProperties = {
-  backgroundColor: "#fff",
 };
 
 export default TaxTable;

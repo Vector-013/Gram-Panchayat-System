@@ -56,7 +56,6 @@ function CitizenPanchayatForm() {
         <div id="land-query-container" className="land-query-container col card-holder">
             <div className="header">
                 <div className="land-query-title">Citizen/Panchayat Land Query</div>
-                <button className="back-button" onClick={() => navigate("/it-dashboard")}>Back</button>
             </div>
             {error && <div className="land-query-error">{error}</div>}
             
