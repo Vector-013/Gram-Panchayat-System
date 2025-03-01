@@ -65,11 +65,8 @@ const InsertFloraFauna: React.FC = () => {
           value={type}
           onChange={(e) => setType(e.target.value)}
         >
-          <option value="tree">Tree</option>
-          <option value="animal">Animal</option>
-          <option value="bird">Bird</option>
-          <option value="fish">Fish</option>
-          <option value="flower">Flower</option>
+          <option value="flora">Flora</option>
+          <option value="fauna">Fauna</option>
         </select>
 
         <label className="insert-form-label">Name:</label>
