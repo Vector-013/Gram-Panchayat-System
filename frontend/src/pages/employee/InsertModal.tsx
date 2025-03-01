@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import "../../styles/InsertModal.css";
 import InsertCitizen from "../forms/InsertCitizen";
+import InsertBirth from "../forms/InsertBirth";
+import InsertDeath from "../forms/InsertDeath";
+import InsertFloraFauna from "../forms/InsertFlora";
+import InsertGeo from "../forms/InsertGeo";
+import InsertEnv from "../forms/InsertEnv";
 import bgImage from "../../images/village.jpg";
 
 const InsertModal: React.FC = () => {
@@ -27,6 +32,12 @@ const InsertModal: React.FC = () => {
                     <option value="tax">Tax Record</option>
                     <option value="education">Education Record</option>
                     <option value="health">Health Record</option>
+                    <option value="flora-fauna">Flora-Fauna Record</option>
+                    <option value="geo">Geographical Record</option>
+                    <option value="environment">Environment Record</option>
+                    <option value="birth">Birth Record</option>
+                    <option value="death">Death Record</option>
+
                 </select>
             </div>
 
@@ -38,6 +49,11 @@ const InsertModal: React.FC = () => {
             {selectedType === "tax" && <p className="insert-placeholder">Tax Record form will appear here.</p>}
             {selectedType === "education" && <p className="insert-placeholder">Education Record form will appear here.</p>}
             {selectedType === "health" && <p className="insert-placeholder">Health Record form will appear here.</p>}
+            {selectedType === "birth" && <InsertBirth />}
+            {selectedType === "death" && < InsertDeath/>}
+            {selectedType === "flora-fauna" && <InsertFloraFauna/>}
+            {selectedType === "geo" && <InsertGeo/>}
+            {selectedType === "environment" && <InsertEnv/>}
         </div>
     );
 };
