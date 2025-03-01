@@ -68,7 +68,10 @@ const LandingPage: React.FC = () => {
   {
     return <Navigate to="/med-dashboard" replace />;
   }
-  else {
+  else if( role === 'census_dept'){
+    return <Navigate to ="/census-dashboard" replace />;
+  }
+  else{
     return <Navigate to="/citizen-dashboard" replace />;
   }
 };
@@ -105,7 +108,9 @@ const App: React.FC = () => {
             <Route path="income-query" element={<IncomeQueryForm />} />
             <Route path="analytics" element={<ProtectedRoute element={<FinancialGraph />} />} />
         </Route>
-        <Route path="/ed-dashboard" element={<ProtectedRoute element={<EdDashboard />} />} />
+        <Route path="/census-dashboard" element={<ProtectedRoute element={<EdDashboard />} />} >
+            <Route index element={<CensusModal />} />
+        </Route>
         <Route path="/med-dashboard" element={<ProtectedRoute element={<MedDashboard />} />} />
 
         {/* Protected Routes for Citizen Data */}
