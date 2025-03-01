@@ -38,7 +38,7 @@ function AssetQueryForm() {
                 end_date: endDate,
             };
 
-            const response = await fetch("http://localhost:8000/assets/query", {
+            const response = await fetch("http://localhost:8000/it-dept/asset-query", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(requestBody),
@@ -49,7 +49,6 @@ function AssetQueryForm() {
             }
             const data: AssetRecord[] = await response.json();
             setAssetRecords(data);
-            navigate("/success");
         } catch (err: any) {
             setError(err.message);
         }
@@ -57,10 +56,7 @@ function AssetQueryForm() {
 
     return (
         <div className="asset-query-container col card-holder">
-            <div className="header">
-                <div className="asset-query-title">Asset Query</div>
-                <button className="back-button" onClick={() => navigate("/it-dashboard")}>Back</button>
-            </div>
+            <div className="asset-query-title">Asset Query</div>
 
             {error && <div className="asset-query-error">{error}</div>}
 

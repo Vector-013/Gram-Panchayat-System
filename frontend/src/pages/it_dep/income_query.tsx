@@ -9,8 +9,7 @@ interface IncomeRecord {
   age: number;
   educational_qualification: string;
   income: number;
-  household_income: number;
-  land_area: number;
+  household_id: number;
 }
 
 function IncomeQueryForm() {
@@ -48,7 +47,7 @@ function IncomeQueryForm() {
         educational_qualification: education,
       };
 
-      const response = await fetch("http://localhost:8000/income-query", {
+      const response = await fetch("http://localhost:8000/it-dept/income-query", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(requestBody),
@@ -56,9 +55,9 @@ function IncomeQueryForm() {
       if (!response.ok) {
         throw new Error("Submission failed");
       }
-      const data: IncomeRecord[] = await response.json();
+      const res = await response.json();
+      const data: IncomeRecord[] = res.citizens;
       setIncomeRecords(data);
-      navigate("/success");
     } catch (err: any) {
       setError(err.message);
     }
@@ -66,21 +65,13 @@ function IncomeQueryForm() {
 
   return (
     <div className="income-query-container col card-holder">
-      <div className="header">
-        <div className="income-query-title">Income Query</div>
-        <button
-          className="back-button"
-          onClick={() => navigate("/it-dashboard")}
-        >
-          Back
-        </button>
-      </div>
+      <div className="income-query-title">Income Query</div>
 
       {error && <div className="income-query-error">{error}</div>}
 
       <form className="income-query-form" onSubmit={handleSubmit}>
         <div className="income-query-range">
-          <label className="income-query-label">Individual Income Range:</label>
+          <label className="income-query-label">Individual Income:</label>
           <div className="income-query-input-group">
             <input
               className="income-query-input"
@@ -99,7 +90,7 @@ function IncomeQueryForm() {
         </div>
 
         <div className="income-query-range">
-          <label className="income-query-label">Household Income Range:</label>
+          <label className="income-query-label">Household Income:</label>
           <div className="income-query-input-group">
             <input
               className="income-query-input"
@@ -121,18 +112,6 @@ function IncomeQueryForm() {
           </div>
         </div>
 
-        <label className="income-query-label">Gender:</label>
-        <select
-          className="income-query-input"
-          value={gender}
-          onChange={(e) => setGender(e.target.value)}
-        >
-          <option value="">Select Gender</option>
-          <option value="Male">Male</option>
-          <option value="Female">Female</option>
-          <option value="Other">Other</option>
-        </select>
-
         <div className="income-query-range">
           <label className="income-query-label">Age Range:</label>
           <div className="income-query-input-group">
@@ -152,19 +131,33 @@ function IncomeQueryForm() {
           </div>
         </div>
 
-        <label className="income-query-label">Educational Qualification:</label>
-        <select
-          className="income-query-input"
-          value={education}
-          onChange={(e) => setEducation(e.target.value)}
-        >
-          <option value="">Select Qualification</option>
-          <option value="Primary">Primary</option>
-          <option value="Secondary">Secondary</option>
-          <option value="Higher Secondary">Higher Secondary</option>
-          <option value="Graduate">Graduate</option>
-          <option value="Postgraduate">Postgraduate</option>
-        </select>
+        <div className="gender-query">
+          <label className="income-query-label">Educational Qualification:</label>
+          <select
+            className="income-query-input"
+            value={education}
+            onChange={(e) => setEducation(e.target.value)}
+          >
+            <option value="">Select Qualification</option>
+            <option value="Primary">Primary</option>
+            <option value="Secondary">Secondary</option>
+            <option value="Higher Secondary">Higher Secondary</option>
+            <option value="Graduate">Graduate</option>
+            <option value="Postgraduate">Postgraduate</option>
+          </select>
+
+          <label className="income-query-label">Gender:</label>
+          <select
+            className="income-query-input"
+            value={gender}
+            onChange={(e) => setGender(e.target.value)}
+          >
+            <option value="">Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
         <input className="tax-query-submit" type="submit" value="Submit" />
       </form>
 
@@ -179,8 +172,7 @@ function IncomeQueryForm() {
                 <th>Gender</th>
                 <th>Education</th>
                 <th>Income</th>
-                <th>Household Income</th>
-                <th>Land Area</th>
+                <th>Household ID</th>
               </tr>
             </thead>
             <tbody>
@@ -192,8 +184,7 @@ function IncomeQueryForm() {
                   <td>{record.gender}</td>
                   <td>{record.educational_qualification}</td>
                   <td>{record.income}</td>
-                  <td>{record.household_income}</td>
-                  <td>{record.land_area}</td>
+                  <td>{record.household_id}</td>
                 </tr>
               ))}
             </tbody>

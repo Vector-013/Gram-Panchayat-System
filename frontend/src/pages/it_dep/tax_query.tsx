@@ -9,6 +9,7 @@ interface TaxRecord {
   status: string;
   citizen_id: number;
   date: string;
+  name:string;
 }
 
 function TaxQueryForm() {
@@ -20,6 +21,8 @@ function TaxQueryForm() {
   const [maxAmount, setMaxAmount] = useState(100000);
   const [error, setError] = useState<string | null>(null);
   const [taxRecords, setTaxRecords] = useState<TaxRecord[]>([]);
+  const [total_paid, setTotalPaid] = useState("");
+  const [total_pending, setTotalPending] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -39,7 +42,7 @@ function TaxQueryForm() {
         max_amount: maxAmount,
       };
 
-      const response = await fetch("http://localhost:8000/tax/query", {
+      const response = await fetch("http://localhost:8000/it-dept/taxes", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(requestBody),
@@ -48,9 +51,12 @@ function TaxQueryForm() {
       if (!response.ok) {
         throw new Error("Submission failed");
       }
-      const data: TaxRecord[] = await response.json();
-      setTaxRecords(data);
-      navigate("/success"); //doubtful
+      const res = await response.json();
+      const data_paid: TaxRecord[] = res.paid_taxes;
+      const data_pending: TaxRecord[] = res.pending_taxes;
+      setTotalPaid(res.total_paid);
+      setTotalPending(res.total_pending);
+      setTaxRecords([...data_paid, ...data_pending]);
     } catch (err: any) {
       setError(err.message);
     }
@@ -58,15 +64,8 @@ function TaxQueryForm() {
 
   return (
     <div className="col card-holder tax-query-container">
-      <div className="header">
-        <div className="tax-query-title">Tax Query</div>
-        <button
-          className="back-button"
-          onClick={() => navigate("/it-dashboard")}
-        >
-          Back
-        </button>
-      </div>
+      <div className="tax-query-title">Tax Query</div>
+      
       {error && <div style={{ color: "red" }}>{error}</div>}
       <form className="tax-query-form" onSubmit={handleSubmit}>
         <label className="tax-query-label" htmlFor="queryType">
@@ -126,69 +125,77 @@ function TaxQueryForm() {
         </div>
 
 
-        <div className = "tax-query-range">
-        <label className="tax-query-label">Amount Range:</label>
-        <div className="tax-query-input-group">
-          <label className="tax-query-label-small" htmlFor="min_amount">
-            Min:
-          </label>
-          <input
-            className="tax-query-input"
-            type="number"
-            id="min_amount"
-            name="min_amount"
-            min="0"
-            step="100"
-            value={minAmount}
-            onChange={(e) => setMinAmount(parseFloat(e.target.value))}
-          />
+        <div className="tax-query-range">
+          <label className="tax-query-label">Amount Range:</label>
+          <div className="tax-query-input-group">
+            <label className="tax-query-label-small" htmlFor="min_amount">
+              Min:
+            </label>
+            <input
+              className="tax-query-input"
+              type="number"
+              id="min_amount"
+              name="min_amount"
+              min="0"
+              step="100"
+              value={minAmount}
+              onChange={(e) => setMinAmount(parseFloat(e.target.value))}
+            />
 
-          <span className="tax-query-separator"></span>
-          <label className="tax-query-label-small" htmlFor="max_amount">
-            Max:
-          </label>
-          <input
-            className="tax-query-input"
-            type="number"
-            id="max_amount"
-            name="max_amount"
-            min="0"
-            step="100"
-            value={maxAmount}
-            onChange={(e) => setMaxAmount(parseFloat(e.target.value))}
-          />
-        </div>
+            <span className="tax-query-separator"></span>
+            <label className="tax-query-label-small" htmlFor="max_amount">
+              Max:
+            </label>
+            <input
+              className="tax-query-input"
+              type="number"
+              id="max_amount"
+              name="max_amount"
+              min="0"
+              step="100"
+              value={maxAmount}
+              onChange={(e) => setMaxAmount(parseFloat(e.target.value))}
+            />
+          </div>
         </div>
 
         <input className="tax-query-submit" type="submit" value="Submit" />
       </form>
 
       {taxRecords.length > 0 && (
-        <div className="tax-records-container">
-          <table className="tax-records-table">
-            <thead>
-              <tr>
-                <th>Tax ID</th>
-                <th>Type</th>
-                <th>Amount (rupees)</th>
-                <th>Status</th>
-                <th>Citizen id</th>
-                <th>Date</th>
-              </tr>
-            </thead>
-            <tbody>
-              {taxRecords.map((record, index) => (
-                <tr key={index}>
-                  <td>{record.tax_id}</td>
-                  <td>{record.type}</td>
-                  <td>{record.amount}</td>
-                  <td>{record.status}</td>
-                  <td>{record.citizen_id}</td>
-                  <td>{record.date}</td>
+        <div>
+          <div className="tax-stats">
+            <div className="tax-paid">Total Paid : {total_paid}</div>
+            <div className="tax-pending">Total Pending : {total_pending}</div>
+          </div>
+          <div className="tax-records-container">
+            <table className="tax-records-table">
+              <thead>
+                <tr>
+                  <th>Tax ID</th>
+                  <th>Citizen id</th>
+                  <th>Name</th>
+                  <th>Type</th>
+                  <th>Amount (rupees)</th>
+                  <th>Status</th>
+                  <th>Date</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {taxRecords.map((record, index) => (
+                  <tr key={index}>
+                    <td>{record.tax_id}</td>
+                    <td>{record.citizen_id}</td>
+                    <td>{record.name}</td>
+                    <td>{record.type}</td>
+                    <td>{record.amount}</td>
+                    <td>{record.status}</td>
+                    <td>{record.date}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       )}
     </div>

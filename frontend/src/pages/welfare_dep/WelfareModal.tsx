@@ -7,26 +7,29 @@ import womanImage from "../../images/woman.png";
 import bgImage from "../../images/village2.jpg";
 import CitizenPanchayatForm from "./land_query";
 
-const ITModal: React.FC = () => {
+const WelfareModal: React.FC = () => {
     return (
         <div className="card-holder col">
             <div className="imgCont"><img src={bgImage} alt="bg" className="bg-image" /></div>
             <div className="cardHolders">
                 <div className="row">
                     <div className="col">
-                        <RecordCard title="Land Record" to_link="land-query" onRedirect={() => alert("Redirecting to Landlord Record")} />
+                        <RecordCard title="Health Record" to_link="land-query" onRedirect={() => alert("Redirecting to Landlord Record")} />
                     </div>
                     <div className="col">
-                        <RecordCard title="Tax Record" to_link="tax-query" onRedirect={() => alert("Redirecting to Medical Record")} />
+                        <RecordCard title="Vaccine Record" to_link="vaccine" onRedirect={() => alert("Redirecting to Medical Record")} />
+                    </div>
+                    <div className="col">
+                        <RecordCard title="Education Record" to_link="edu" onRedirect={() => alert("Redirecting to Medical Record")} />
                     </div>
 
                 </div>
                 <div className="row">
                     <div className="col">
-                        <RecordCard title="Income Record" to_link="income-query" onRedirect={() => alert("Redirecting to Landlord Record")} />
+                        <RecordCard title="Single Girl Child" to_link="sgc" onRedirect={() => alert("Redirecting to Landlord Record")} />
                     </div>
                     <div className="col">
-                        <RecordCard title="Asset Record" to_link="asset-query" onRedirect={() => alert("Redirecting to Medical Record")} />
+                        <RecordCard title="MNREGA" to_link="asset-query" onRedirect={() => alert("Redirecting to Medical Record")} />
                     </div>
                 </div>
                 <div className="row justify-content-center">
@@ -40,4 +43,4 @@ const ITModal: React.FC = () => {
     );
 }
 
-export default ITModal;
+export default WelfareModal;

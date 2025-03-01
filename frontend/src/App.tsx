@@ -19,7 +19,7 @@ import GeoPage from './pages/base/geo';
 import FloraFaunaPage from './pages/base/floraFauna';
 import CitizenPanchayatForm from './pages/it_dep/land_query';
 import ItDashboard from './pages/it_dep/ItDasboard';
-import EdDashboard from './pages/welfare_dep/EdDashboard';
+import EdDashboard from './pages/welfare_dep/WelfareDashboard';
 import EducationForm from './pages/welfare_dep/ed_query';
 import TaxQueryForm from './pages/it_dep/tax_query';
 import AssetQueryForm from './pages/it_dep/asset_query';
@@ -40,6 +40,11 @@ import MarriageQueryForm from './pages/census_dep/marriages';
 import CensusEnvForm from './pages/census_dep/CensusEnvironment';
 import FloraFaunaQueryForm from './pages/census_dep/florafauna';
 import CensusGeoModal from './pages/census_dep/CensusGeo';
+
+import WelfareDashboard from './pages/welfare_dep/WelfareDashboard';
+import WelfareModal from './pages/welfare_dep/WelfareModal';
+import WelfareSGCModal from './pages/welfare_dep/WelfareSGCModal';
+import WelfareEduModal from './pages/welfare_dep/WelfareEduModal';
 
 import ITModal from './pages/it_dep/ITModal';
 import CensusModal from './pages/census_dep/CensusModal';
@@ -111,6 +116,12 @@ const App: React.FC = () => {
             <Route path="asset-query" element={<AssetQueryForm />} />
             <Route path="income-query" element={<IncomeQueryForm />} />
             <Route path="analytics" element={<ProtectedRoute element={<FinancialGraph />} />} />
+        </Route>
+
+        <Route path="/welfare-dashboard" element={<ProtectedRoute element={<WelfareDashboard />} />}>
+            <Route index element={<WelfareModal />} />
+            <Route path ="sgc" element={<WelfareSGCModal />} />
+            <Route path="edu" element={<WelfareEduModal />} />
         </Route>
         <Route path="/census-dashboard" element={<ProtectedRoute element={<CensusDashboard />} />} >
             <Route index element={<CensusModal />} />

@@ -23,6 +23,7 @@ class EduDeptQuery(BaseModel):
     @field_validator("educational_level")
     def validate_educational_level(cls, v):
         allowed = {
+            "Illiterate",
             "Primary",
             "Secondary",
             "Higher Secondary",

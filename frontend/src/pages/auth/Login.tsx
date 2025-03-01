@@ -53,6 +53,9 @@ const Login: React.FC = () => {
       else if(data.role === "med_dept") {
         navigate("/med-dashboard");
       }
+      else if(data.role === "welfare") {
+        navigate("/welfare-dashboard");
+      }
       else if(data.role === "census_dept") {
         navigate("/census-dashboard");}
       else {

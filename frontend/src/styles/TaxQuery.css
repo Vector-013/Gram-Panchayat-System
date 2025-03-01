@@ -124,10 +124,36 @@
     font-style: italic;
 }
 
+.tax-stats{
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 1.25rem;
+    font-weight: bold;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.tax-paid {
+    color: green;
+}
+
+.tax-pending{
+    color : red;
+}
+
+.tax-records-container {
+    margin-top: 20px;
+    overflow-y: auto;
+    max-height: 400px;
+    border-radius: 5px;
+}
+
 .tax-records-table {
     width: 100%;
     border-collapse: collapse;
     background-color: white;
+    overflow-y: auto;
+    max-height: 400px;
 }
 
 .tax-records-table th, .tax-records-table td {
@@ -139,6 +165,9 @@
 .tax-records-table th {
     background-color: #007bff;
     color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1;
 }
 
 .tax-records-table tr:nth-child(even) {
@@ -147,19 +176,4 @@
 
 .tax-records-table tr:hover {
     background-color: #d6eaff;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .tax-query-container {
-        width: 90%;
-        padding: 15px;
-    }
-
-    .tax-query-input {
-        width: 100%;
-    }
-    .tax-records-table {
-        font-size: 14px;
-    }
 }

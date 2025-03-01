@@ -69,8 +69,8 @@
 -- (5, 5, '2023-03-18');
 
 -- -- Insert data into vaccinations
--- INSERT INTO vaccinations (citizen_id, vaccination_type, date_administered) VALUES
--- (1, 'Covid-19', '2021-05-10'),
+INSERT INTO vaccinations (citizen_id, vaccination_type, date_administered) VALUES
+(11, 'Covid-19', '2021-05-10');
 -- (2, 'Polio', '2020-08-15'),
 -- (3, 'Hepatitis B', '2022-11-30'),
 -- (4, 'Typhoid', '2023-02-14'),

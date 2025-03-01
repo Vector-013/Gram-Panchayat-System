@@ -6,3 +6,4 @@ from .it_asset import *
 from .citizen_init import *
 from .it_tax import *
 from .it_income import *
+from .vaccination_query import *
