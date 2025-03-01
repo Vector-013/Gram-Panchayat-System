@@ -16,7 +16,7 @@ interface CitizenElement {
   email: string;
   income: number;
   household_id: number;
-  address:string;
+  address: string;
 }
 
 const CitizenDashboard: React.FC = () => {
@@ -24,7 +24,7 @@ const CitizenDashboard: React.FC = () => {
   const [citizen, setCitizen] = useState<CitizenElement[]>([]);
   const [loading, setLoading] = useState(true); // To handle initial loading state
   const navigate = useNavigate();
-  
+
   useEffect(() => {
     const fetchCitizenData = () => {
       const citizenData: CitizenElement = {
@@ -52,7 +52,10 @@ const CitizenDashboard: React.FC = () => {
         <span>
           {loading ? "Loading..." : citizen.length > 0 ? citizen[0].name : "No Citizen Data"}
         </span>
-        <button className="btn btn-danger" onClick={() => navigate("/logout")}>Logout</button>
+        <div className="nav-buttons">
+          <button className="btn btn-danger" onClick={() => navigate("/logout")}>Logout</button>
+          <button className="btn btn-danger" onClick={() => navigate(`/citizen-dashboard/${citizenId}`)}>Home</button>
+        </div>
       </nav>
 
       {/* Dashboard Content */}
@@ -83,7 +86,7 @@ const CitizenDashboard: React.FC = () => {
             <li className="list-group-item">Email : {loading ? "Loading..." : citizen.length > 0 ? citizen[0].email : "No Citizen Data"}</li>
             <li className="list-group-item">Household ID : {loading ? "Loading..." : citizen.length > 0 ? citizen[0].household_id : "No Citizen Data"}</li>
             <li className="list-group-item">Address : {loading ? "Loading..." : citizen.length > 0 ? citizen[0].address : "No Citizen Data"}</li>
-             
+
           </ul>
         </div>
 

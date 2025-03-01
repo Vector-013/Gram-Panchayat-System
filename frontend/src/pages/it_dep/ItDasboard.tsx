@@ -28,7 +28,10 @@ const CitizenDashboard: React.FC = () => {
         <span>
           IT Department
         </span>
-        <button className="btn btn-danger" onClick={() => navigate("/logout")}>Logout</button>
+        <div className="nav-buttons">
+          <button className="btn btn-danger" onClick={() => navigate("/logout")}>Logout</button>
+          <button className="btn btn-danger" onClick={() => navigate("/it-dashboard")}>Home</button>
+        </div>
       </nav>
 
       {/* Dashboard Content */}
