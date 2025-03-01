@@ -23,6 +23,7 @@ from routers import (
     birth_event,
     citizen_creator,
     tax_update,
+    medical_condition,
 )
 
 app = FastAPI()
@@ -72,6 +73,7 @@ app.include_router(posts)
 app.include_router(birth_event)
 app.include_router(citizen_creator)
 app.include_router(tax_update)
+app.include_router(medical_condition)
 
 # Start server
 if __name__ == "__main__":
