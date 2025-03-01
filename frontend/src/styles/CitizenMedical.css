@@ -1,0 +1,100 @@
+/* Main Container */
+.medical-container {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Title */
+.medical-title {
+    color: #333;
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+/* Filter Section */
+.medical-filter-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+/* Input Fields */
+.medical-input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 200px;
+    font-size: 14px;
+}
+
+/* Loading & Error Messages */
+.medical-loading {
+    color: #007bff;
+    font-weight: bold;
+}
+
+.medical-error {
+    color: red;
+    font-weight: bold;
+}
+
+/* Table Container */
+.medical-table-container {
+    margin-top: 20px;
+    overflow-y: auto;
+    max-height: 400px;
+    border-radius: 5px;
+}
+
+/* Table Styling */
+.medical-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+}
+
+/* Table Headers */
+.medical-table th {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+/* Table Cells */
+.medical-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+/* Alternate Row Styling */
+.medical-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Hover Effect */
+.medical-table tr:hover {
+    background-color: #d6eaff;
+}
+
+/* No Data Row */
+.no-data {
+    text-align: center;
+    font-weight: bold;
+    color: #888;
+    padding: 15px;
+}
+
+/* Responsive Table */
+@media (max-width: 768px) {
+    .medical-table {
+        font-size: 14px;
+    }
+}

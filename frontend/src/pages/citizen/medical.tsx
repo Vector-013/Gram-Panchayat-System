@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import MedicalDataTable from "./medTable";
-import "../../styles/CitizenLand.css";
+import "../../styles/CitizenMedical.css";
 
 interface MedicalData {
   medical_id: number;
@@ -57,51 +57,44 @@ const CitizenMedicalModal: React.FC = () => {
   );
 
   return (
-    <div className="land-container card-holder">
-      <h2>Medical Data for Household</h2>
+    <div className="medical-container card-holder">
+      <h2 className="medical-title">Medical Data for Household</h2>
 
-      {/* Filter Inputs */}
-      <div style={{ marginBottom: "10px", display: "flex", gap: "10px" }}>
+      {/* Filter Section */}
+      <div className="medical-filter-container">
         <input
           type="text"
           placeholder="Filter by Name"
           value={nameFilter}
           onChange={(e) => setNameFilter(e.target.value)}
-          style={inputStyle}
+          className="medical-input"
         />
         <input
           type="text"
           placeholder="Filter by Health Status"
           value={statusFilter}
           onChange={(e) => setStatusFilter(e.target.value)}
-          style={inputStyle}
+          className="medical-input"
         />
         <input
           type="text"
           placeholder="Filter by Medical Condition"
           value={conditionFilter}
           onChange={(e) => setConditionFilter(e.target.value)}
-          style={inputStyle}
+          className="medical-input"
         />
       </div>
 
+      {/* Display Table */}
       {loading ? (
-        <p>Loading...</p>
+        <p className="medical-loading">Loading...</p>
       ) : error ? (
-        <p style={{ color: "red" }}>{error}</p>
+        <p className="medical-error">{error}</p>
       ) : (
         <MedicalDataTable medicalData={filteredData} />
       )}
     </div>
   );
-};
-
-// Styles
-const inputStyle: React.CSSProperties = {
-  padding: "8px",
-  border: "1px solid #ccc",
-  borderRadius: "4px",
-  width: "200px",
 };
 
 export default CitizenMedicalModal;

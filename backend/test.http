@@ -113,11 +113,25 @@
 #   "value_max": 100000,
 #   "location": "Main Bazaar, Phulera"
 # }
+# {
+#   "type": "Street Light",
+#   "value_min": 1000,
+#   "value_max": 100000,
+#   "location": "Main Bazaar, Phulera"
+# }
 
 ### Asset Query - No type filter, no location filter
 # POST http://localhost:8000/api/assets/query
 # Content-Type: application/json
+# POST http://localhost:8000/api/assets/query
+# Content-Type: application/json
 
+# {
+#   "type": "",
+#   "value_min": 500,
+#   "value_max": 100000,
+#   "location": ""
+# }
 # {
 #   "type": "",
 #   "value_min": 500,

@@ -14,52 +14,37 @@ interface MedicalDataTableProps {
 
 const MedicalDataTable: React.FC<MedicalDataTableProps> = ({ medicalData }) => {
   return (
-    <table style={{ width: "100%", borderCollapse: "collapse" }}>
-      <thead>
-        <tr style={{ backgroundColor: "#f2f2f2" }}>
-          <th style={tableHeaderStyle}>ID</th>
-          <th style={tableHeaderStyle}>Citizen ID</th>
-          <th style={tableHeaderStyle}>Name</th>
-          <th style={tableHeaderStyle}>Health Status</th>
-          <th style={tableHeaderStyle}>Medical Condition</th>
-        </tr>
-      </thead>
-      <tbody>
-        {medicalData.length > 0 ? (
-          medicalData.map((data) => (
-            <tr key={data.medical_id} style={tableRowStyle}>
-              <td style={tableCellStyle}>{data.medical_id}</td>
-              <td style={tableCellStyle}>{data.citizen_id}</td>
-              <td style={tableCellStyle}>{data.name}</td>
-              <td style={tableCellStyle}>{data.health_status}</td>
-              <td style={tableCellStyle}>{data.medical_condition}</td>
-            </tr>
-          ))
-        ) : (
+    <div className="medical-table-container">
+      <table className="medical-table" style={{ width: "100%", borderCollapse: "collapse" }}>
+        <thead>
           <tr>
-            <td colSpan={5} style={{ textAlign: "center" }}>No matching records found</td>
+            <th>ID</th>
+            <th>Citizen ID</th>
+            <th>Name</th>
+            <th>Health Status</th>
+            <th>Medical Condition</th>
           </tr>
-        )}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {medicalData.length > 0 ? (
+            medicalData.map((data) => (
+              <tr key={data.medical_id}>
+                <td>{data.medical_id}</td>
+                <td>{data.citizen_id}</td>
+                <td>{data.name}</td>
+                <td>{data.health_status}</td>
+                <td>{data.medical_condition}</td>
+              </tr>
+            ))
+          ) : (
+            <tr>
+              <td>No matching records found</td>
+            </tr>
+          )}
+        </tbody>
+      </table>
+    </div>
   );
-};
-
-// Styles
-const tableHeaderStyle: React.CSSProperties = {
-  padding: "10px",
-  borderBottom: "2px solid #ddd",
-  textAlign: "left",
-  fontWeight: "bold",
-};
-
-const tableCellStyle: React.CSSProperties = {
-  padding: "10px",
-  borderBottom: "1px solid #ddd",
-};
-
-const tableRowStyle: React.CSSProperties = {
-  backgroundColor: "#fff",
 };
 
 export default MedicalDataTable;
