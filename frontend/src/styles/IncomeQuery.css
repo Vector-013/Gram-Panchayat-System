@@ -19,10 +19,21 @@
 .income-query-label{
     font-weight: bold;
     margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .income-query-range{
-    width: 80%;
+    display: flex;
+    align-items: center;
+    width: 90%;
     text-align: center;
+}
+
+.gender-query{
+    width: 90%;
+    display: flex;
+    justify-content: space-evenly;
 }
 .income-query-input-group{
     display: flex;
@@ -36,6 +47,7 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
+    margin-right: 10px;
 }
 .income-query-submit{
     background-color: #007bff;
@@ -110,6 +122,9 @@
 .income-records-table th {
     background-color: #007bff;
     color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1;
 }
 
 .income-records-table tr:nth-child(even) {
