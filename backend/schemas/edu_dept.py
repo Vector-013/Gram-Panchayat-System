@@ -52,3 +52,29 @@ class EduDeptResult(BaseModel):
     total_income: float
 
     model_config = {"from_attributes": True}
+
+
+from pydantic import BaseModel, Field, field_validator
+
+
+class SingleGirlQuery(BaseModel):
+    min_household_income: float = Field(..., description="Minimum household income")
+    max_household_income: float = Field(..., description="Maximum household income")
+    min_age: int = Field(..., description="Minimum age")
+    max_age: int = Field(..., description="Maximum age")
+
+    @field_validator("max_household_income")
+    def validate_household_income(cls, v, info):
+        min_val = info.data.get("min_household_income")
+        if min_val is not None and v < min_val:
+            raise ValueError(
+                "max_household_income must be greater than or equal to min_household_income"
+            )
+        return v
+
+    @field_validator("max_age")
+    def validate_age(cls, v, info):
+        min_val = info.data.get("min_age")
+        if min_val is not None and v < min_val:
+            raise ValueError("max_age must be greater than or equal to min_age")
+        return v

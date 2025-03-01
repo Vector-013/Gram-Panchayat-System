@@ -12,3 +12,4 @@ from .citizen_initial.vaccine import router as vaccines
 from .citizen_initial.environment import router as environment
 from .citizen_initial.geo import router as geo
 from .citizen_initial.asset import router as assets
+from .welfare_init.edu_single_girl import router as esg

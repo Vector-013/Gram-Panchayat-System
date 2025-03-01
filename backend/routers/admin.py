@@ -48,7 +48,7 @@ def register_citizen(
     Admin-only endpoint to register a new citizen.
     The get_current_admin dependency ensures only an admin token can access this endpoint.
     """
-    if get_citizen_by_email(db, citizen.email):
-        raise HTTPException(status_code=400, detail="Email already registered")
+    # if get_citizen_by_email(db, citizen.email):
+    #     raise HTTPException(status_code=400, detail="Email already registered")
     new_citizen = create_citizen(db, citizen)
     return new_citizen
