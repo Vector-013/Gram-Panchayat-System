@@ -1,6 +1,5 @@
 /* Main Container */
-.land-container {
-    padding: 20px;
+.geo-container {
     background-color: #f9f9f9;
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
@@ -8,25 +7,16 @@
 }
 
 /* Title */
-.land-title {
+.geo-title {
     color: #333;
     font-size: 1.25rem;
     font-weight: bold;
     margin-bottom: 15px;
-    margin-top: 15px;
-}
-
-.stats{
-    display: flex;
-    justify-content: space-evenly;
-}
-
-.land-stats{
-    color: #e26d5c;
+    margin-top: 20px;
 }
 
 /* Filter Section */
-.land-filter-container {
+.geo-filter-container {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
@@ -35,7 +25,7 @@
 }
 
 /* Input Fields */
-.land-input {
+.geo-input {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -44,47 +34,47 @@
 }
 
 /* Labels */
-.land-label {
+.geo-label {
     font-size: 14px;
     font-weight: bold;
     margin-right: 5px;
 }
 
-/* Area Range */
-.land-range {
+/* Range Input */
+.geo-range {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
 /* Loading & Error Messages */
-.land-loading {
+.geo-loading {
     color: #007bff;
     font-weight: bold;
 }
 
-.land-error {
+.geo-error {
     color: red;
     font-weight: bold;
 }
 
 /* Table Container */
-.land-table-container {
-    margin-top: 20px;
+.geo-table-container {
+    margin-top: 40px;
     overflow-y: auto;
-    max-height: 400px;
+    max-height: 600px;
     border-radius: 5px;
 }
 
 /* Table Styling */
-.land-table {
+.geo-table {
     width: 100%;
     border-collapse: collapse;
     background-color: white;
 }
 
 /* Table Headers */
-.land-table th {
+.geo-table th {
     background-color: #007bff;
     color: white;
     padding: 10px;
@@ -96,19 +86,19 @@
 }
 
 /* Table Cells */
-.land-table td {
+.geo-table td {
     padding: 10px;
     border: 1px solid #ddd;
     text-align: center;
 }
 
 /* Alternate Row Styling */
-.land-table tr:nth-child(even) {
+.geo-table tr:nth-child(even) {
     background-color: #f2f2f2;
 }
 
 /* Hover Effect */
-.land-table tr:hover {
+.geo-table tr:hover {
     background-color: #d6eaff;
 }
 
@@ -122,7 +112,7 @@
 
 /* Responsive Table */
 @media (max-width: 768px) {
-    .land-table {
+    .geo-table {
         font-size: 14px;
     }
 }

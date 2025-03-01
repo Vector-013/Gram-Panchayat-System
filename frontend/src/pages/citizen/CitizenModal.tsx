@@ -19,7 +19,7 @@ const CitizenModal = () => {
                         <RecordCard title="Medical Record" onRedirect={() => alert("Redirecting to Medical Record")} to_link="medical"/>
                     </div>
                     <div className="col">
-                        <RecordCard title="Tax Record" onRedirect={() => alert("Redirecting to Medical Record")} />
+                        <RecordCard to_link="tax" title="Tax Record" onRedirect={() => alert("Redirecting to Medical Record")} />
                     </div>
                 </div>
                 <div className="row">
@@ -27,10 +27,10 @@ const CitizenModal = () => {
                         <RecordCard title="Household Record" onRedirect={() => alert("Redirecting to Landlord Record")} to_link="household" />
                     </div>
                     <div className="col">
-                        <RecordCard title="Vaccine Record" onRedirect={() => alert("Redirecting to Medical Record")} />
+                        <RecordCard to_link="vaccine" title="Vaccine Record" onRedirect={() => alert("Redirecting to Medical Record")} />
                     </div>
                     <div className="col">
-                        <RecordCard title="Environment Record" onRedirect={() => alert("Redirecting to Medical Record")} />
+                        <RecordCard to_link="env" title="Environment Record" onRedirect={() => alert("Redirecting to Medical Record")} />
                     </div>
                 </div>
                 <div className="row">
@@ -41,7 +41,7 @@ const CitizenModal = () => {
                         <RecordCard title="Assets Record" onRedirect={() => alert("Redirecting to Medical Record")} />
                     </div>
                     <div className="col">
-                        <RecordCard title="Geo Features Record" onRedirect={() => alert("Redirecting to Medical Record")} />
+                        <RecordCard to_link="geo" title="Geo Features Record" onRedirect={() => alert("Redirecting to Medical Record")} />
                     </div>
                 </div>
             </div>

@@ -1,10 +1,12 @@
+#####################################################    AUTH    #####################################################
+
 ## Admin Login
 # POST http://localhost:8000/login
 # Content-Type: application/json
 
 # {
-#   "email": "ITDept@panchayat.com",
-#   "password": "GOVSRules"
+#   "email": "Admin@panchayat.com",
+#   "password": "OjasMyBoy"
 # }
 
 # POST http://localhost:8000/login/logout
@@ -20,19 +22,24 @@
 #   "password": "OjasIsGod"
 # }
 
+#####################################################    ADMIN   #####################################################
+
 # Attempt to register a new citizen using a citizen token (should fail)
 # POST http://localhost:8000/admin/register
 # Content-Type: application/json
-# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBZG1pbiIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTc0MDY0MTM1OX0.Bq5TOsz9Sjv_PYCIkeZY343rnWsOkqXD7bQBc8C5SNY
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBZG1pbkBwYW5jaGF5YXQuY29tIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzQwODE1NTcyfQ.2IYk2D9fyVpy2kQNFtv2qdwQ1gcrY_ANSoVedP_ZajE
 
 # {
-#   "name": "Johny Doe",
-#   "gender": "Male",
-#   "dob": "1990-01-01",
+#   "name": "gril6",
+#   "gender": "Female",
+#   "dob": "2024-01-01",
 #   "household_id": 1,
-#   "educational_qualification": "Bachelor",
+#   "income": 0,
+#   "educational_qualification": "Primary",
 #   "password": "password123"
 # }
+
+#####################################################    IT DEPT   #####################################################
 
 # # IT Dept Query - Citizen Role
 # POST http://localhost:8000/it-dept/land-query
@@ -56,18 +63,76 @@
 #   "crop_type": ""
 # }
 
-# ### Edu Dept Query for Citizens
-# POST http://localhost:8000/edu-dept/edu-query
+### IT Dept Asset Query with Filters
+# POST http://localhost:8000/it-dept/asset-query
 # Content-Type: application/json
 
 # {
-#   "gender": "",
-#   "educational_level": "Graduate",
-#   "dob_min": "1980-01-01",
-#   "dob_max": "2000-12-31",
-#   "income_min": 10000,
-#   "income_max": 800000
+#   "asset_type": "",
+#   "location": "Main Bazaar, Phulera",
+#   "value_min": 100,
+#   "value_max": 500000,
+#   "start_date": "2023-01-01",
+#   "end_date": "2023-01-16"
 # }
+
+# ### IT Dept Asset Query without Filtering on asset_type and location
+# POST http://localhost:8000/it-dept/asset-query
+# Content-Type: application/json
+
+# {
+#   "asset_type": "",
+#   "location": "",
+#   "value_min": 500,
+#   "value_max": 10000,
+#   "start_date": "",
+#   "end_date": ""
+# }
+
+### Query taxes for a person
+# POST http://localhost:8000/it-dept/taxes
+# Content-Type: application/json
+
+# {
+#   "query_type": "person",
+#   "id": 1,
+#   "start_date": "2010-01-01",
+#   "end_date": "2025-12-31",
+#   "min_amount": 50,
+#   "max_amount": 10000
+# }
+
+### Query taxes for a household
+# POST http://localhost:8000/it-dept/taxes
+# Content-Type: application/json
+
+# {
+#   "query_type": "household",
+#   "id": 1,
+#   "start_date": "",
+#   "end_date": "",
+#   "min_amount": 100,
+#   "max_amount": 50000
+# }
+
+### Query for citizens based on income and household income
+# POST http://localhost:8000/it-dept/income-query
+# Content-Type: application/json
+
+# {
+#   "income_min": 10000,
+#   "income_max": 50000,
+#   "household_income_min": 30000,
+#   "household_income_max": 150000,
+#   "gender": "Female",
+#   "age_min": 18,
+#   "age_max": "",
+#   "educational_qualification": "Graduate"
+# }
+
+
+
+#####################################################    CITIZENS   #####################################################
 
 ## Edu Dept Query for Panchayat is not applicable here.
 
@@ -76,8 +141,8 @@
 # Content-Type: application/json
 
 # # Family Land Data Query
-GET http://localhost:8000/api/1/fam-land
-Content-Type: application/json
+# GET http://localhost:8000/api/1/fam-land
+# Content-Type: application/json
 
 # ## IT Analytics Query
 # GET http://localhost:8000/api/it-dept/analytics1
@@ -137,6 +202,33 @@ Content-Type: application/json
 #   "value_min": 500,
 #   "value_max": 100000,
 #   "location": ""
+# }
+
+#####################################################    WELFARE QUERIES    #####################################################
+
+
+### Single Girl Child Query
+# POST http://localhost:8000/api/edu/single-girl-child
+# Content-Type: application/json
+
+# {
+#   "min_household_income": 5,
+#   "max_household_income": 300000,
+#   "min_age": 5,
+#   "max_age": 18
+# }
+
+# ### Edu Dept Query for Citizens
+# POST http://localhost:8000/edu-dept/edu-query
+# Content-Type: application/json
+
+# {
+#   "gender": "",
+#   "educational_level": "Graduate",
+#   "dob_min": "1980-01-01",
+#   "dob_max": "2000-12-31",
+#   "income_min": 10000,
+#   "income_max": 800000
 # }
 
 

@@ -29,6 +29,10 @@ import CitizenModal from './pages/citizen/CitizenModal';
 import CitizenHouseholdModal from './pages/citizen/household';
 import CitizenLandModal from './pages/citizen/landRecord';
 import CitizenMedicalModal from './pages/citizen/medical';
+import CitizenTaxModal from './pages/citizen/CitizenTaxModal';
+import CitizenVaccineModal from './pages/citizen/CitizenVaccineModal';
+import CitizenEnvModal from './pages/citizen/CitizenEnvModal';
+import CitizenGeoModal from './pages/citizen/CitizenGeoModal';
 
 import ITModal from './pages/it_dep/ITModal';
 import FinancialGraph from './pages/it_dep/analytics';
@@ -87,6 +91,10 @@ const App: React.FC = () => {
             <Route path="household" element={<CitizenHouseholdModal />} />
             <Route path="land-record" element={<CitizenLandModal />} />
             <Route path="medical" element={<CitizenMedicalModal />} />
+            <Route path="tax" element={<CitizenTaxModal />} />
+            <Route path="vaccine" element={<CitizenVaccineModal />} />
+            <Route path="env" element={<CitizenEnvModal />} />
+            <Route path="geo" element={<CitizenGeoModal />} />
         </Route>
 
         <Route path="/it-dashboard" element={<ProtectedRoute element={<ItDashboard />} />} >
