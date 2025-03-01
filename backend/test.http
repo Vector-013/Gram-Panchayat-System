@@ -14,13 +14,13 @@
 # Authorization: Bearer <any_valid_token>
 # "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBZG1pbiIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTc0MDU5MjczNH0.5wL0G2cgGKR9GfemtoSehcYdKIPJJ-Ggwfr-ZX9IvBY"
 
-# POST http://localhost:8000/login
-# Content-Type: application/json
+POST http://localhost:8000/login
+Content-Type: application/json
 
-# {
-#   "email": "2@panchayat.com",
-#   "password": "OjasIsGod"
-# }
+{
+  "email": "2@panchayat.com",
+  "password": "OjasIsGod"
+}
 
 
 #####################################################    POSTS   #####################################################
@@ -31,6 +31,31 @@
 
 # {
 #   "address": "123 Main Street, Example City"
+# }
+
+### Create Land Record (Valid Request)
+# POST http://localhost:8000/land-records/
+# Content-Type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyQHBhbmNoYXlhdC5jb20iLCJyb2xlIjoiZW1wbG95ZWUiLCJleHAiOjE3NDA4NDY0MjJ9.p4HQ3dNroT70n4KjaZ_LaAHCitgfU3hqdqLLkC2vyYE
+
+# {
+#   "area_acres": 5.2,
+#   "weight": 1200.5,
+#   "crop_type": "Wheat",
+#   "year_recorded": 2024,
+#   "citizen_id": 9
+# }
+
+# ### Invalid Request: Area must be > 0
+# POST http://localhost:8000/land-records/
+# Content-Type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyQHBhbmNoYXlhdC5jb20iLCJyb2xlIjoiZW1wbG95ZWUiLCJleHAiOjE3NDA4NDQxODZ9.bH06JfAOlOIEKKUpsXyhJD2TcZ-7SP-clN2CiZDiImY
+
+# {
+#   "area_acres": 0,
+#   "weight": 1000,
+#   "crop_type": "Rice",
+#   "year_recorded": 2024
 # }
 
 
