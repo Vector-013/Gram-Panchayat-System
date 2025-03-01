@@ -1,5 +1,15 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "../../styles/AssetQuery.css";
+
+interface AssetRecord {
+    asset_id: number;
+    type: string;
+    location: string;
+    installation_date: string;
+    value: number;
+}
+
 
 function AssetQueryForm() {
     const [assetType, setAssetType] = useState("");
@@ -9,6 +19,7 @@ function AssetQueryForm() {
     const [startDate, setStartDate] = useState("");
     const [endDate, setEndDate] = useState("");
     const [error, setError] = useState<string | null>(null);
+    const [assetRecords, setAssetRecords] = useState<AssetRecord[]>([]);
     const navigate = useNavigate();
 
     const handleSubmit = async (e: React.FormEvent) => {
@@ -36,6 +47,8 @@ function AssetQueryForm() {
             if (!response.ok) {
                 throw new Error("Submission failed");
             }
+            const data: AssetRecord[] = await response.json();
+            setAssetRecords(data);
             navigate("/success");
         } catch (err: any) {
             setError(err.message);
@@ -43,12 +56,17 @@ function AssetQueryForm() {
     };
 
     return (
-        <div className="col card-holder">
-            <h2>Asset Query</h2>
-            {error && <div style={{ color: "red" }}>{error}</div>}
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="asset_type">Asset Type:</label>
-                <select id="asset_type" name="asset_type" required value={assetType} onChange={(e) => setAssetType(e.target.value)}>
+        <div className="asset-query-container col card-holder">
+            <div className="header">
+                <div className="asset-query-title">Asset Query</div>
+                <button className="back-button" onClick={() => navigate("/it-dashboard")}>Back</button>
+            </div>
+
+            {error && <div className="asset-query-error">{error}</div>}
+
+            <form className="asset-query-form" onSubmit={handleSubmit}>
+                <label className="asset-query-label">Asset Type:</label>
+                <select className="asset-query-input" value={assetType} onChange={(e) => setAssetType(e.target.value)}>
                     <option value="">Select Asset Type</option>
                     <option value="Street Light">Street Light</option>
                     <option value="Road">Road</option>
@@ -57,66 +75,57 @@ function AssetQueryForm() {
                     <option value="Public Toilet">Public Toilet</option>
                     <option value="Water Pump">Water Pump</option>
                 </select>
-                <br /><br />
 
-                <label htmlFor="location">Location:</label>
-                <input 
-                    type="text" 
-                    id="location" 
-                    name="location" 
-                    value={location} 
-                    onChange={(e) => setLocation(e.target.value)}
-                />
-                <br /><br />
+                <label className="asset-query-label">Location:</label>
+                <input className="asset-query-input" type="text" value={location} onChange={(e) => setLocation(e.target.value)} />
 
-                <label>Asset Value Range:</label>
-                <br />
-                <label htmlFor="value_min">Min:</label>
-                <input 
-                    type="number" 
-                    id="value_min" 
-                    name="value_min" 
-                    min="0" 
-                    step="100" 
-                    value={valueMin} 
-                    onChange={(e) => setValueMin(parseFloat(e.target.value))} 
-                />
-                
-                <label htmlFor="value_max">Max:</label>
-                <input 
-                    type="number" 
-                    id="value_max" 
-                    name="value_max" 
-                    min="0" 
-                    step="100" 
-                    value={valueMax} 
-                    onChange={(e) => setValueMax(parseFloat(e.target.value))} 
-                />
-                <br /><br />
+                <div className="asset-query-range">
+                    <label className="asset-query-label">Asset Value Range:</label>
+                    <div className="asset-query-input-group">
+                        <input className="asset-query-input" type="number" value={valueMin} onChange={(e) => setValueMin(parseFloat(e.target.value))} />
+                        <span className="asset-query-separator">to</span>
+                        <input className="asset-query-input" type="number" value={valueMax} onChange={(e) => setValueMax(parseFloat(e.target.value))} />
+                    </div>
+                </div>
 
-                <label>Installation Date Range:</label>
-                <br />
-                <label htmlFor="start_date">From:</label>
-                <input 
-                    type="date" 
-                    id="start_date" 
-                    name="start_date" 
-                    value={startDate} 
-                    onChange={(e) => setStartDate(e.target.value)}
-                />
-                
-                <label htmlFor="end_date">To:</label>
-                <input 
-                    type="date" 
-                    id="end_date" 
-                    name="end_date" 
-                    value={endDate} 
-                    onChange={(e) => setEndDate(e.target.value)}
-                />
-                <br /><br />
+                <div className="asset-query-range">
+                    <label className="asset-query-label">Installation Date Range:</label>
+                    <div className="asset-query-input-group">
+                        <input className="asset-query-input" type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} />
+                        <span className="asset-query-separator">to</span>
+                        <input className="asset-query-input" type="date" value={endDate} onChange={(e) => setEndDate(e.target.value)} />
+                    </div>
+                </div>
 
-                <input type="submit" value="Submit" />
+                <input className="asset-query-submit" type="submit" value="Submit" />
             </form>
+
+            {assetRecords.length > 0 && (
+                <div className="asset-records-container">
+                    <table className="asset-records-table">
+                        <thead>
+                            <tr>
+                                <th>Asset ID</th>
+                                <th>Type</th>
+                                <th>Location</th>
+                                <th>Installation Date</th>
+                                <th>Value</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {assetRecords.map((record, index) => (
+                                <tr key={index}>
+                                    <td>{record.asset_id}</td>
+                                    <td>{record.type}</td>
+                                    <td>{record.location}</td>
+                                    <td>{record.installation_date}</td>
+                                    <td>{record.value}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            )}
         </div>
     );
 }

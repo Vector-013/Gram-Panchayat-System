@@ -1,6 +1,6 @@
 /* Container Styling */
 .tax-query-container {
-    margin: 30px auto;
+    /* margin: 30px auto; */
     padding: 20px;
     background-color: #f8f9fa;
     border-radius: 10px;
@@ -18,22 +18,28 @@
 
 .tax-query-title {
     color: #333;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: bold;
 }
 
-.tax-query-back-button {
-    background-color: #dc3545;
+.back-button{
+    background-color: #007bff;
     color: white;
+    font-size: 1rem;
+    font-weight: bold;
     border: none;
-    padding: 8px 12px;
+    padding: 10px 15px;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
-.tax-query-back-button:hover {
-    background-color: #a71d2a;
+.back-button:hover {
+    background-color: #0056b3;
 }
-
 /* Error Message */
 .tax-query-error {
     color: red;
@@ -53,10 +59,20 @@
     margin-top: 10px;
 }
 
+.tax-query-range{
+    width: 80%;
+    text-align: center;
+}
+
+.tax-query-separator{
+    margin: 0 10px;
+}
+
 /* Input Styling */
 .tax-query-input {
+    width: 80%;
     padding: 8px;
-    margin: 5px 0;
+    margin: 5px 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
@@ -76,19 +92,13 @@
     gap: 5px;
 }
 
-/* Ranges */
-.tax-query-range-group {
+.tax-query-input-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
-    text-align: center;
-    margin-top: 15px;
 }
 
-.tax-query-range {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    align-items: center;
-}
 
 /* Submit Button */
 .tax-query-submit {
@@ -108,6 +118,37 @@
     background-color: #0056b3;
 }
 
+.tax-query-label-small{
+    margin-top: 5px;
+    font-size: 1rem;
+    font-style: italic;
+}
+
+.tax-records-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+}
+
+.tax-records-table th, .tax-records-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.tax-records-table th {
+    background-color: #007bff;
+    color: white;
+}
+
+.tax-records-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.tax-records-table tr:hover {
+    background-color: #d6eaff;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .tax-query-container {
@@ -117,5 +158,8 @@
 
     .tax-query-input {
         width: 100%;
+    }
+    .tax-records-table {
+        font-size: 14px;
     }
 }
