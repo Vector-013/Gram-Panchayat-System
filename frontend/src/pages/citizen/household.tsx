@@ -19,6 +19,8 @@ const CitizenHouseholdModal: React.FC = () => {
   const [filteredCitizens, setFilteredCitizens] = useState<Citizen[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
+  const [closesetBirthday, setClosesetBirthday] = useState<string>("");
+  const [totalIncome, setTotalIncome] = useState<string>("");
 
   // Filter states
   const [nameFilter, setNameFilter] = useState<string>("");
@@ -44,6 +46,11 @@ const CitizenHouseholdModal: React.FC = () => {
         const response = await fetch(`http://localhost:8000/api/${citizenId}/fam-data`);
         const res = await response.json();
         const data: Citizen[] = res.family_members;
+        const cloBday = res.closest_birthday;
+        const totalInc = res.total_family_income;
+        console.log(res);
+        setTotalIncome(totalInc);
+        setClosesetBirthday(cloBday);
         setCitizens(data);
         console.log(data);
 
@@ -82,7 +89,10 @@ const CitizenHouseholdModal: React.FC = () => {
   return (
     <div className="citizen-container col card-holder">
       <h2 className="citizen-title">Find Citizens by Household</h2>
-
+      <div className="stat">
+        <h2 className="citizen-title bday">Closest Birthday : {closesetBirthday}</h2>
+        <h2 className="citizen-title bday">Total Income : {totalIncome}</h2>
+      </div>
       {/* Filters */}
       <div className="citizen-filter-container">
         <input

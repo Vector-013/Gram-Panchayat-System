@@ -6,12 +6,20 @@
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
-
+.stat{
+    display: flex;
+    justify-content: space-evenly;
+}
 /* Title */
 .citizen-title {
     color: #333;
-    font-size: 22px;
     margin-bottom: 15px;
+    margin-top: 15px;
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+.bday{
+    color: #e26d5c;
 }
 
 /* Filter Section */

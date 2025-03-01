@@ -16,6 +16,8 @@ const CitizenLandModal: React.FC = () => {
   const [filteredRecords, setFilteredRecords] = useState<LandRecord[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
+  const [total_personal_land, setTotalPersonalLand] = useState<string>("");
+  const [total_family_land, setTotalFamilyLand] = useState<string>("");
 
   // Separate filters
   const [nameFilter, setNameFilter] = useState<string>("");
@@ -32,6 +34,10 @@ const CitizenLandModal: React.FC = () => {
         const response = await fetch(`http://localhost:8000/api/${citizenId}/fam-land`);
         const res: LandRecord[] = await response.json();
         const data = res.records;
+        const total_personal_land = res.summary.total_person_land;
+        const total_family_land = res.summary.total_family_land;
+        setTotalPersonalLand(total_personal_land);
+        setTotalFamilyLand(total_family_land);
         console.log(data);
         setLandRecords(data);
       } catch (err) {
@@ -64,7 +70,10 @@ const CitizenLandModal: React.FC = () => {
   return (
     <div className="land-container card-holder">
       <h2 className="land-title">Land Records</h2>
-
+      <div className="stats">
+        <h2 className="land-stats land-title">Total Personal Land: {total_personal_land} acres</h2>
+        <h2 className="land-stats land-title">Total Family Land: {total_family_land} acres</h2>
+      </div>
       {/* Filters */}
       <div className="land-filter-container">
         <input

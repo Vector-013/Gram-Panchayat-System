@@ -47,6 +47,7 @@ const CitizensTable: React.FC<Props> = ({ citizens }) => {
               </td>
             </tr>
           )}
+
         </tbody>
       </table>
     </div>
