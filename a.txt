@@ -21,7 +21,14 @@
          19 | Mokok Nanami  | Male   | 2025-02-05 | Polya                     |        |            3 | 19@panchayat.com | $2b$12$6KfnikbcKy2z2hvN/LrjU.NN2niGMLbYEuQHSyf6pNIF4Dh2BuEoe
          20 | Shreya Boss   | Other  | 2025-02-06 | Failure                   |        |            5 | 20@panchayat.com | $2b$12$f8KvQf1KRtGBn6doN2CrV.7X63FgKmGWZbKGbXa.2ab6mwwN9.yy6
          21 | Noni Sharma   | Female | 1995-06-15 | Graduate                  |  70000 |            1 |                  | 
-(21 rows)
+         22 | gril1         | Male   | 1990-01-01 | Bachelor                  |        |            1 | 22@panchayat.com | $2b$12$u7cVd0tvRqWJemUstBrlEebwkDYGZq/fFtUWt9l4KoQOysJ5xN/Ru
+         23 | gril1         | Male   | 2020-01-01 | Bachelor                  |        |            1 | 23@panchayat.com | $2b$12$9fh2.11530ZpO/t3EctSXefW.6dedXeEDEFtFvimuMcc7VX6yCyrq
+         24 | gril3         | Male   | 2012-01-01 | Primary                   |        |            5 | 24@panchayat.com | $2b$12$XLYzAuxuSrnj7vgzrtWj/eZHzsClTdsjTejY0P5GjFjarrj1I/R06
+         25 | gril6         | Female | 2012-01-01 | Primary                   |        |            5 | 25@panchayat.com | $2b$12$3R5RUIpY.pZPOvtmloBpPuoFfrDqUec8/3sH6Wh7IYw14fxLRve6S
+         26 | gril6         | Female | 1990-01-01 | Primary                   |        |            2 | 26@panchayat.com | $2b$12$k9FJqMKR4ZL4CuPPZKPgKOiZWw.wAMDD6T3GMXtdXgu2g2NLmn7Iq
+         27 | gril6         | Female | 2010-01-01 | Primary                   |        |            2 | 27@panchayat.com | $2b$12$tFgAkH2vJu/mDEo8vD2/Zu1URS2n0n0IdVekW.JIpYVuVjn/4Tgxq
+         28 | gril6         | Female | 2024-01-01 | Primary                   |        |            1 | 28@panchayat.com | $2b$12$Wh5iZ5YXj1H3CMqjgEHy0exFFIdEC5le04hAulHSF9LK6FAFBwSPa
+(28 rows)
 
  household_id |           address            
 --------------+------------------------------
@@ -47,25 +54,25 @@
            20 | 101, Subhash Marg, Phulera
 (20 rows)
 
- land_id | area_acres | crop_type | citizen_id 
----------+------------+-----------+------------
-       1 |        2.5 | Wheat     |          1
-       2 |        3.0 | Rice      |          3
-       3 |        1.2 | Cotton    |          5
-       4 |        4.0 | Sugarcane |          7
-       5 |        3.5 | Maize     |          9
-       6 |        2.5 | Wheat     |          1
-       7 |        1.8 | Barley    |          1
-       8 |        3.0 | Rice      |          3
-       9 |        1.2 | Cotton    |          5
-      10 |        4.0 | Sugarcane |          7
-      11 |        3.5 | Maize     |          9
-      12 |        2.5 | Wheat     |          2
-      13 |        3.0 | Rice      |          2
-      14 |        1.5 | Maize     |          4
-      15 |        2.0 | Barley    |          4
-      16 |        2.5 | Sugarcane |         10
-      17 |        2.5 | Wheat     |         21
+ land_id | area_acres | crop_type | citizen_id | weight | year_recorded 
+---------+------------+-----------+------------+--------+---------------
+       1 |        2.5 | Wheat     |          1 |  12.50 |          2001
+       2 |        3.0 | Rice      |          3 |  25.30 |          1998
+       3 |        1.2 | Cotton    |          5 |  18.00 |          2010
+       4 |        4.0 | Sugarcane |          7 |  30.70 |          2015
+       5 |        3.5 | Maize     |          9 |  22.90 |          2020
+       6 |        2.5 | Wheat     |          1 |  40.50 |          1995
+       7 |        1.8 | Barley    |          1 |  15.20 |          2005
+       8 |        3.0 | Rice      |          3 |  33.80 |          2012
+       9 |        1.2 | Cotton    |          5 |  27.10 |          2018
+      10 |        4.0 | Sugarcane |          7 |  19.40 |          1992
+      11 |        3.5 | Maize     |          9 |  50.00 |          2023
+      12 |        2.5 | Wheat     |          2 |  28.60 |          2008
+      13 |        3.0 | Rice      |          2 |  35.20 |          2019
+      14 |        1.5 | Maize     |          4 |  41.30 |          2016
+      15 |        2.0 | Barley    |          4 |  14.70 |          2011
+      16 |        2.5 | Sugarcane |         10 |  37.90 |          2003
+      17 |        2.5 | Wheat     |         21 |  21.50 |          1999
 (17 rows)
 
  employee_id |   role    | citizen_id 
@@ -131,7 +138,8 @@
               8 |          3 | Hepatitis B      | 2022-11-30
               9 |          4 | Typhoid          | 2023-02-14
              10 |          5 | Tetanus          | 2023-04-28
-(10 rows)
+             11 |         11 | Covid-19         | 2021-05-10
+(11 rows)
 
  medical_id | citizen_id | health_status | medical_condition 
 ------------+------------+---------------+-------------------
@@ -216,18 +224,18 @@
           9 | 2023-01-15 | Accident
 (3 rows)
 
- f_id |  type  |   name   |  habitat   
-------+--------+----------+------------
-    1 | Tree   | Neem     | Rajasthan
-    2 | Animal | Camel    | Desert
-    3 | Bird   | Peacock  | Grasslands
-    4 | Flower | Marigold | Gardens
-    5 | Fish   | Rohu     | Rivers
-    6 | Tree   | Neem     | Rajasthan
-    7 | Animal | Camel    | Desert
-    8 | Bird   | Peacock  | Grasslands
-    9 | Flower | Marigold | Gardens
-   10 | Fish   | Rohu     | Rivers
+ f_id |  type  |   name   |  habitat   | count 
+------+--------+----------+------------+-------
+    1 | Tree   | Neem     | Rajasthan  |    15
+    2 | Animal | Camel    | Desert     |    20
+    3 | Bird   | Peacock  | Grasslands |    30
+    4 | Flower | Marigold | Gardens    |    40
+    5 | Fish   | Rohu     | Rivers     |    50
+    6 | Tree   | Neem     | Rajasthan  |    60
+    7 | Animal | Camel    | Desert     |    70
+    8 | Bird   | Peacock  | Grasslands |    80
+    9 | Flower | Marigold | Gardens    |    90
+   10 | Fish   | Rohu     | Rivers     |   100
 (10 rows)
 
  id |      category       |  amount  |  spent   | created_at 
