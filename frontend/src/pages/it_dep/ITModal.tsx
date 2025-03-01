@@ -14,7 +14,7 @@ const ITModal: React.FC = () => {
             <div className="cardHolders">
                 <div className="row">
                     <div className="col">
-                        <RecordCard title="Land Record" to_link="land-query" onRedirect={() => alert("Redirecting to Landlord Record") } />
+                        <RecordCard title="Land Record" to_link="land-query" onRedirect={() => alert("Redirecting to Landlord Record")} />
                     </div>
                     <div className="col">
                         <RecordCard title="Tax Record" to_link="tax-query" onRedirect={() => alert("Redirecting to Medical Record")} />
@@ -28,7 +28,9 @@ const ITModal: React.FC = () => {
                     <div className="col">
                         <RecordCard title="Asset Record" to_link="asset-query" onRedirect={() => alert("Redirecting to Medical Record")} />
                     </div>
-                    <div className="col">
+                </div>
+                <div className="row justify-content-center">
+                    <div className="col-md-6">
                         <RecordCard title="Analytics" to_link="analytics" onRedirect={() => alert("Redirecting to Medical Record")} />
                     </div>
                 </div>

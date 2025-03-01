@@ -64,15 +64,8 @@ function TaxQueryForm() {
 
   return (
     <div className="col card-holder tax-query-container">
-      <div className="header">
-        <div className="tax-query-title">Tax Query</div>
-        <button
-          className="back-button"
-          onClick={() => navigate("/it-dashboard")}
-        >
-          Back
-        </button>
-      </div>
+      <div className="tax-query-title">Tax Query</div>
+      
       {error && <div style={{ color: "red" }}>{error}</div>}
       <form className="tax-query-form" onSubmit={handleSubmit}>
         <label className="tax-query-label" htmlFor="queryType">

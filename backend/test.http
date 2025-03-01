@@ -90,46 +90,30 @@
 # }
 
 ### Query taxes for a person
-POST http://localhost:8000/it-dept/taxes
-Content-Type: application/json
-
-{
-  "query_type": "person",
-  "id": 1,
-  "start_date": "2010-01-01",
-  "end_date": "2025-12-31",
-  "min_amount": 0,
-  "max_amount": 1000000
-}
-
-### Query taxes for a household
-POST http://localhost:8000/it-dept/taxes
-Content-Type: application/json
-
-{
-  "query_type": "household",
-  "id": 1,
-  "start_date": "",
-  "end_date": "",
-  "min_amount": 100,
-  "max_amount": 50000
-}
-
-### Query for citizens based on income and household income
-# POST http://localhost:8000/it-dept/income-query
+# POST http://localhost:8000/it-dept/taxes
 # Content-Type: application/json
 
 # {
-#   "income_min": 10000,
-#   "income_max": 50000,
-#   "household_income_min": 30000,
-#   "household_income_max": 150000,
-#   "gender": "Female",
-#   "age_min": 18,
-#   "age_max": "",
-#   "educational_qualification": "Graduate"
+#   "query_type": "person",
+#   "id": 1,
+#   "start_date": "2010-01-01",
+#   "end_date": "2025-12-31",
+#   "min_amount": 50,
+#   "max_amount": 10000
 # }
 
+### Query taxes for a household
+# POST http://localhost:8000/it-dept/taxes
+# Content-Type: application/json
+
+# {
+#   "query_type": "household",
+#   "id": 1,
+#   "start_date": "",
+#   "end_date": "",
+#   "min_amount": 100,
+#   "max_amount": 50000
+# }
 
 
 #####################################################    CITIZENS   #####################################################
