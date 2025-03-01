@@ -22,6 +22,43 @@ Content-Type: application/json
   "password": "OjasIsGod"
 }
 
+
+#####################################################    POSTS   #####################################################
+
+# POST http://localhost:8000/households/
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyQHBhbmNoYXlhdC5jb20iLCJyb2xlIjoiZW1wbG95ZWUiLCJleHAiOjE3NDA4NDQxODZ9.bH06JfAOlOIEKKUpsXyhJD2TcZ-7SP-clN2CiZDiImY
+# Content-Type: application/json
+
+# {
+#   "address": "123 Main Street, Example City"
+# }
+
+### Create Land Record (Valid Request)
+# POST http://localhost:8000/land-records/
+# Content-Type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyQHBhbmNoYXlhdC5jb20iLCJyb2xlIjoiZW1wbG95ZWUiLCJleHAiOjE3NDA4NDY0MjJ9.p4HQ3dNroT70n4KjaZ_LaAHCitgfU3hqdqLLkC2vyYE
+
+# {
+#   "area_acres": 5.2,
+#   "weight": 1200.5,
+#   "crop_type": "Wheat",
+#   "year_recorded": 2024,
+#   "citizen_id": 9
+# }
+
+# ### Invalid Request: Area must be > 0
+# POST http://localhost:8000/land-records/
+# Content-Type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyQHBhbmNoYXlhdC5jb20iLCJyb2xlIjoiZW1wbG95ZWUiLCJleHAiOjE3NDA4NDQxODZ9.bH06JfAOlOIEKKUpsXyhJD2TcZ-7SP-clN2CiZDiImY
+
+# {
+#   "area_acres": 0,
+#   "weight": 1000,
+#   "crop_type": "Rice",
+#   "year_recorded": 2024
+# }
+
+
 #####################################################    ADMIN   #####################################################
 
 # Attempt to register a new citizen using a citizen token (should fail)

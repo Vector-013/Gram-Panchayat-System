@@ -19,6 +19,7 @@ from routers import (
     assets,
     esg,
     vaccination_query,
+    posts,
 )
 
 app = FastAPI()
@@ -64,6 +65,7 @@ app.include_router(geo)
 app.include_router(assets)
 app.include_router(esg)
 app.include_router(vaccination_query)
+app.include_router(posts)
 
 # Start server
 if __name__ == "__main__":

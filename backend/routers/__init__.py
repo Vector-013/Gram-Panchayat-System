@@ -14,3 +14,4 @@ from .citizen_initial.geo import router as geo
 from .citizen_initial.asset import router as assets
 from .welfare_init.edu_single_girl import router as esg
 from .welfare_init.vaccination_query import router as vaccination_query
+from .posts.posts import router as posts
