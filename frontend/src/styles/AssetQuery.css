@@ -99,7 +99,7 @@
 .asset-records-container {
     margin-top: 20px;
     overflow-y: auto;
-    max-height: 500px;
+    max-height: 400px;
 }
 
 .asset-records-title {
@@ -110,6 +110,8 @@
     width: 100%;
     border-collapse: collapse;
     background-color: white;
+    overflow-y: auto;
+    max-height: 400px;
 }
 
 .asset-records-table th, .asset-records-table td {
@@ -121,6 +123,9 @@
 .asset-records-table th {
     background-color: #007bff;
     color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1;
 }
 
 .asset-records-table tr:nth-child(even) {
