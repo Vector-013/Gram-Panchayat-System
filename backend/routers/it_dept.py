@@ -5,7 +5,7 @@ from typing import Optional, List
 
 from database import get_db
 
-from schemas import LandQuery, LandQueryResult
+from schemas import LandQuery, LandQueryResult, ITAssetQuery
 
 router = APIRouter(prefix="/it-dept", tags=["ITDept Query"])
 
@@ -78,6 +78,64 @@ def query_land_data(query: LandQuery, db: Session = Depends(get_db)):
                     "total_area": (
                         float(row.total_area) if row.total_area is not None else 0.0
                     ),
+                }
+            )
+        return output
+    except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e)
+        )
+
+
+@router.post("/asset-query", response_model=list)
+def asset_query(query: ITAssetQuery, db: Session = Depends(get_db)):
+    # Build the base SQL query with mandatory filter on asset value.
+    base_sql = """
+        SELECT 
+            asset_id,
+            type,
+            location,
+            to_char(installation_date, 'YYYY-MM-DD') AS installation_date,
+            value
+        FROM assets
+        WHERE value BETWEEN :value_min AND :value_max
+    """
+    params = {"value_min": query.value_min, "value_max": query.value_max}
+
+    # Filter by asset type if provided (non-empty)
+    if query.asset_type != "":
+        base_sql += " AND type = :asset_type"
+        params["asset_type"] = query.asset_type
+
+    # Filter by location if provided (non-empty)
+    if query.location != "":
+        base_sql += " AND location = :location"
+        params["location"] = query.location
+
+    # Filter by installation_date range if provided
+    if query.start_date is not None:
+        base_sql += " AND installation_date >= :start_date"
+        params["start_date"] = query.start_date
+    if query.end_date is not None:
+        base_sql += " AND installation_date <= :end_date"
+        params["end_date"] = query.end_date
+
+    base_sql += " ORDER BY asset_id;"
+
+    sql = text(base_sql)
+
+    try:
+        result = db.execute(sql, params)
+        rows = result.fetchall()
+        output = []
+        for row in rows:
+            output.append(
+                {
+                    "asset_id": row.asset_id,
+                    "type": row.type,
+                    "location": row.location,
+                    "installation_date": row.installation_date,
+                    "value": float(row.value),
                 }
             )
         return output

@@ -135,6 +135,33 @@
 #   "location": ""
 # }
 
+### IT Dept Asset Query with Filters
+# POST http://localhost:8000/it-dept/asset-query
+# Content-Type: application/json
+
+# {
+#   "asset_type": "",
+#   "location": "Main Bazaar, Phulera",
+#   "value_min": 100,
+#   "value_max": 500000,
+#   "start_date": "2023-01-01",
+#   "end_date": "2023-01-16"
+# }
+
+# ### IT Dept Asset Query without Filtering on asset_type and location
+# POST http://localhost:8000/it-dept/asset-query
+# Content-Type: application/json
+
+# {
+#   "asset_type": "",
+#   "location": "",
+#   "value_min": 500,
+#   "value_max": 10000,
+#   "start_date": "",
+#   "end_date": ""
+# }
+
+
 #####################################################    WELFARE QUERIES    #####################################################
 
 
