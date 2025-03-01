@@ -23,10 +23,11 @@ function BirthQueryForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const requestBody = {
+      const requestBody:{ } = {
         gender,
         household_id: householdId,
-        year,
+        year_min: yearMin,
+        year_max: yearMax,
       };
 
       const response = await fetch("http://localhost:8000/birth-query", {

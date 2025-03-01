@@ -29,7 +29,8 @@ function DeathQueryForm() {
       const requestBody = {
         gender,
         household_id: householdId,
-        year,
+        year_min: yearMin,
+        year_max: yearMax,
         age_min: ageMin,
         age_max: ageMax,
       };
