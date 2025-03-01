@@ -64,17 +64,17 @@
 # }
 
 ### IT Dept Asset Query with Filters
-POST http://localhost:8000/it-dept/asset-query
-Content-Type: application/json
+# POST http://localhost:8000/it-dept/asset-query
+# Content-Type: application/json
 
-{
-  "asset_type": "",
-  "location": "Main Bazaar, Phulera",
-  "value_min": 100,
-  "value_max": 500000,
-  "start_date": "2023-01-01",
-  "end_date": "2023-01-16"
-}
+# {
+#   "asset_type": "",
+#   "location": "Main Bazaar, Phulera",
+#   "value_min": 100,
+#   "value_max": 500000,
+#   "start_date": "2023-01-01",
+#   "end_date": "2023-01-16"
+# }
 
 # ### IT Dept Asset Query without Filtering on asset_type and location
 # POST http://localhost:8000/it-dept/asset-query
@@ -88,6 +88,33 @@ Content-Type: application/json
 #   "start_date": "",
 #   "end_date": ""
 # }
+
+### Query taxes for a person
+# POST http://localhost:8000/it-dept/taxes
+# Content-Type: application/json
+
+# {
+#   "query_type": "person",
+#   "id": 1,
+#   "start_date": "2010-01-01",
+#   "end_date": "2025-12-31",
+#   "min_amount": 50,
+#   "max_amount": 10000
+# }
+
+### Query taxes for a household
+# POST http://localhost:8000/it-dept/taxes
+# Content-Type: application/json
+
+# {
+#   "query_type": "household",
+#   "id": 1,
+#   "start_date": "",
+#   "end_date": "",
+#   "min_amount": 100,
+#   "max_amount": 50000
+# }
+
 
 #####################################################    CITIZENS   #####################################################
 
