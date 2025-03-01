@@ -20,7 +20,6 @@ import CitizenPanchayatForm from './pages/it_dep/land_query';
 import ItDashboard from './pages/it_dep/ItDasboard';
 import EdDashboard from './pages/welfare_dep/WelfareDashboard';
 import EducationForm from './pages/welfare_dep/ed_query';
-import MedDashboard from './pages/med_dep/MedDashboard';
 import TaxQueryForm from './pages/it_dep/tax_query';
 import AssetQueryForm from './pages/it_dep/asset_query';
 import IncomeQueryForm from './pages/it_dep/income_query';
