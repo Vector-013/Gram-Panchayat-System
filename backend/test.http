@@ -18,7 +18,7 @@ POST http://localhost:8000/login
 Content-Type: application/json
 
 {
-  "email": "2@panchayat.com",
+  "email": "1@panchayat.com",
   "password": "OjasIsGod"
 }
 
@@ -58,6 +58,27 @@ Content-Type: application/json
 #   "year_recorded": 2024
 # }
 
+# ### Panchayat Employee Creation - Invalid Role Request
+# POST http://localhost:8000/employee-create/
+# Content-Type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxQHBhbmNoYXlhdC5jb20iLCJyb2xlIjoicHJhZGhhbiIsImV4cCI6MTc0MDg0Njk4M30.6WfoGvfDO4PADO4J91OSNsqgxJdFKPDRepFc5F0z9Do
+
+# {
+#   "role": "Member",
+#   "citizen_id": 3
+# }
+
+# ### Create Asset - Valid Request by Employee or Pradhan
+# POST http://localhost:8000/asset-create/
+# Content-Type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxQHBhbmNoYXlhdC5jb20iLCJyb2xlIjoicHJhZGhhbiIsImV4cCI6MTc0MDg0Njk4M30.6WfoGvfDO4PADO4J91OSNsqgxJdFKPDRepFc5F0z9Do
+
+# {
+#   "type": "Library",
+#   "location": "Main Bazaar, Phulera",
+#   "installation_date": "2023-06-15",
+#   "value": 3500.75
+# }
 
 #####################################################    ADMIN   #####################################################
 
