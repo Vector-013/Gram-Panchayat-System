@@ -64,7 +64,7 @@ const EmployeeDashboard: React.FC = () => {
           {(role == 'employee' || role == 'pradhan') ? <button className="switch-role btn btn-danger ms-2" onClick={() => navigate(`/citizen-dashboard/${citizen[0].citizen_id}`)}>Switch to Citizen</button> : ""}
         </div>
         <div className="nav-buttons">
-          <button className="btn btn-danger" onClick={() => navigate(`/citizen-dashboard/${citizenId}`)}>Home</button>
+          <button className="btn btn-danger" onClick={() => navigate(`/employee-dashboard/${empId}`)}>Home</button>
           <button className="btn btn-danger ms-2" onClick={() => navigate("/logout")}>Logout</button>
         </div>
       </nav>

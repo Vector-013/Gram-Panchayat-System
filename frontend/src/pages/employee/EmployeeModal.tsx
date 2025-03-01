@@ -13,24 +13,13 @@ const EmployeeModal = () => {
             <div className="cardHolders">
                 <div className="row">
                     <div className="col">
-                        <RecordCard title="Insert Citizen" onRedirect={() => alert("Redirecting to Landlord Record")} to_link="land-record"/>
+                        <RecordCard title="Insert" onRedirect={() => alert("Redirecting to Landlord Record")} to_link="insert"/>
                     </div>
                     <div className="col">
-                        <RecordCard title="Update Citizen" onRedirect={() => alert("Redirecting to Medical Record")} to_link="medical"/>
+                        <RecordCard title="Update" onRedirect={() => alert("Redirecting to Medical Record")} to_link="medical"/>
                     </div>
                     <div className="col">
-                        <RecordCard title="View Citizen" onRedirect={() => alert("Redirecting to Medical Record")} to_link="medical"/>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col">
-                        <RecordCard title="Insert Asset" onRedirect={() => alert("Redirecting to Landlord Record")} to_link="household" />
-                    </div>
-                    <div className="col">
-                        <RecordCard to_link="vaccine" title="Update Asset" onRedirect={() => alert("Redirecting to Medical Record")} />
-                    </div>
-                    <div className="col">
-                        <RecordCard to_link="env" title="View Asset" onRedirect={() => alert("Redirecting to Medical Record")} />
+                        <RecordCard title="View" onRedirect={() => alert("Redirecting to Medical Record")} to_link="medical"/>
                     </div>
                 </div>
             </div>
