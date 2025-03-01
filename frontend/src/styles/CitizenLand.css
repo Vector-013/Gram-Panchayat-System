@@ -10,8 +10,19 @@
 /* Title */
 .land-title {
     color: #333;
-    font-size: 22px;
+    font-size: 1.25rem;
+    font-weight: bold;
     margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+.stats{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.land-stats{
+    color: #e26d5c;
 }
 
 /* Filter Section */

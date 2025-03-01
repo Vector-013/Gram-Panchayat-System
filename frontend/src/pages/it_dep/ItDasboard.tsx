@@ -29,8 +29,8 @@ const CitizenDashboard: React.FC = () => {
           IT Department
         </span>
         <div className="nav-buttons">
-          <button className="btn btn-danger" onClick={() => navigate("/logout")}>Logout</button>
           <button className="btn btn-danger" onClick={() => navigate("/it-dashboard")}>Home</button>
+          <button className="btn btn-danger ms-2" onClick={() => navigate("/logout")}>Logout</button>
         </div>
       </nav>
 

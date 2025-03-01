@@ -95,6 +95,7 @@ const App: React.FC = () => {
             <Route path="tax-query" element={<TaxQueryForm />} />
             <Route path="asset-query" element={<AssetQueryForm />} />
             <Route path="income-query" element={<IncomeQueryForm />} />
+            <Route path="analytics" element={<ProtectedRoute element={<FinancialGraph />} />} />
         </Route>
         <Route path="/ed-dashboard" element={<ProtectedRoute element={<EdDashboard />} />} />
         <Route path="/med-dashboard" element={<ProtectedRoute element={<MedDashboard />} />} />
@@ -112,7 +113,6 @@ const App: React.FC = () => {
         <Route path="/env" element={<EnvironmentStats />} />
         <Route path="/geo" element={<GeoPage />} />
         <Route path="/flora-fauna" element={<FloraFaunaPage />} />
-        <Route path="/it-dashboard/analytics" element={<ProtectedRoute element={<FinancialGraph />} />} />
         <Route path="/ed-dept/ed-query" element={<ProtectedRoute element={<EducationForm />} />} />
 
       </Routes>

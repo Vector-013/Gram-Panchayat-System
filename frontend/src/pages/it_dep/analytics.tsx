@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { BarChart, Bar, LineChart, Line, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, CartesianGrid } from "recharts";
-
+import "../../styles/ITAnalytics.css";
 
 const FinancialGraph: React.FC = () => {
   const [data, setData] = useState<any[]>([]);
@@ -54,36 +54,42 @@ const FinancialGraph: React.FC = () => {
   if (error) return <p>Error: {error}</p>;
 
   return (
-    <div style={{ width: "100%", height: 500 }}>
-      <h3>Financial Overview</h3>
+    <div className="graph-holder col card-holder">
 
       {/* Bar Chart */}
-      <ResponsiveContainer width="100%" height={300}>
-        <BarChart data={data} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="year" />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-          <Bar dataKey="budget" fill="#8884d8" name="Budget" />
-          <Bar dataKey="assets" fill="#82ca9d" name="Assets" />
-          <Bar dataKey="taxes" fill="#ffc658" name="Taxes" />
-          <Bar dataKey="salaries" fill="#ff7300" name="Salaries" />
-        </BarChart>
-      </ResponsiveContainer>
+      <div className="chart-container">
+        <h3 className="chart-title">Financial Overview</h3>
+        <ResponsiveContainer width="100%" height={300}>
+          <BarChart data={data} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="year" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <Bar dataKey="budget" fill="#8884d8" name="Budget" />
+            <Bar dataKey="assets" fill="#82ca9d" name="Assets" />
+            <Bar dataKey="taxes" fill="#ffc658" name="Taxes" />
+            <Bar dataKey="salaries" fill="#ff7300" name="Salaries" />
+          </BarChart>
+        </ResponsiveContainer>
+      </div>
 
       {/* Line Chart */}
-      <ResponsiveContainer width="100%" height={300}>
-        <LineChart data={data} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="year" />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-          <Line type="monotone" dataKey="income" stroke="#0088FE" name="Income" />
-          <Line type="monotone" dataKey="expenditure" stroke="#FF0000" name="Expenditure" />
-        </LineChart>
-      </ResponsiveContainer>
+      <div className="chart-container">
+        <h3 className="chart-title">Income vs Expenditure</h3>
+        <ResponsiveContainer width="100%" height={300}>
+          <LineChart data={data} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="year" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <Line type="monotone" dataKey="income" stroke="#0088FE" name="Income" />
+            <Line type="monotone" dataKey="expenditure" stroke="#FF0000" name="Expenditure" />
+          </LineChart>
+        </ResponsiveContainer>
+      </div>
+
     </div>
   );
 };

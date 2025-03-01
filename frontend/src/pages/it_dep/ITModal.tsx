@@ -28,6 +28,9 @@ const ITModal: React.FC = () => {
                     <div className="col">
                         <RecordCard title="Asset Record" to_link="asset-query" onRedirect={() => alert("Redirecting to Medical Record")} />
                     </div>
+                    <div className="col">
+                        <RecordCard title="Analytics" to_link="analytics" onRedirect={() => alert("Redirecting to Medical Record")} />
+                    </div>
                 </div>
 
             </div>
