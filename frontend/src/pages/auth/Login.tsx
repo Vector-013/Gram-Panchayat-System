@@ -38,6 +38,9 @@ const Login: React.FC = () => {
       localStorage.setItem("household_id", data.household_id);
       localStorage.setItem("address", data.address);
       localStorage.setItem("gender", data.gender);
+      if(data.role === "employee"){
+        localStorage.setItem("employee_id", data.employee_id);
+      }
 
       console.log(data.role);
       // Redirect to the landing page
@@ -58,6 +61,9 @@ const Login: React.FC = () => {
       }
       else if(data.role === "census_dept") {
         navigate("/census-dashboard");}
+      else if(data.role === "employee") {
+        navigate(`/employee-dashboard/${data.employee_id}`);
+      }
       else {
         navigate(`/citizen-dashboard/${data.id}`);
       }

@@ -19,7 +19,6 @@ import GeoPage from './pages/base/geo';
 import FloraFaunaPage from './pages/base/floraFauna';
 import CitizenPanchayatForm from './pages/it_dep/land_query';
 import ItDashboard from './pages/it_dep/ItDasboard';
-import EdDashboard from './pages/welfare_dep/WelfareDashboard';
 import EducationForm from './pages/welfare_dep/ed_query';
 import TaxQueryForm from './pages/it_dep/tax_query';
 import AssetQueryForm from './pages/it_dep/asset_query';
@@ -45,6 +44,8 @@ import WelfareDashboard from './pages/welfare_dep/WelfareDashboard';
 import WelfareModal from './pages/welfare_dep/WelfareModal';
 import WelfareSGCModal from './pages/welfare_dep/WelfareSGCModal';
 import WelfareEduModal from './pages/welfare_dep/WelfareEduModal';
+
+import EmployeeDashboard from './pages/employee/EmployeeDashboard';
 
 import ITModal from './pages/it_dep/ITModal';
 import CensusModal from './pages/census_dep/CensusModal';
@@ -131,6 +132,10 @@ const App: React.FC = () => {
             <Route path="env-query" element={<CensusEnvForm/>} />
             <Route path="flora-query" element={<FloraFaunaQueryForm />} />
             <Route path="geo-query" element={<CensusGeoModal />} />
+        </Route>
+
+        <Route path="/employee-dashboard/:empId" element={<ProtectedRoute element={<EmployeeDashboard />} />}>
+
         </Route>
 
         {/* Protected Routes for Citizen Data */}
