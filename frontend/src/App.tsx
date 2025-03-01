@@ -11,6 +11,7 @@ import Login from './pages/auth/Login';
 import Logout from './pages/auth/Logout';
 import AdminDashboard from './pages/admin/AdminDashboard';
 import CitizenDashboard from './pages/citizen/CitizenDashboard';
+import CensusDashboard from './pages/census_dep/CensusDashboard';
 import AdminRegister from './pages/AdminRegister';
 import AssetPage from './pages/base/assets';
 import EnvironmentStats from './pages/base/env';
@@ -20,7 +21,6 @@ import CitizenPanchayatForm from './pages/it_dep/land_query';
 import ItDashboard from './pages/it_dep/ItDasboard';
 import EdDashboard from './pages/welfare_dep/EdDashboard';
 import EducationForm from './pages/welfare_dep/ed_query';
-import MedDashboard from './pages/med_dep/MedDashboard';
 import TaxQueryForm from './pages/it_dep/tax_query';
 import AssetQueryForm from './pages/it_dep/asset_query';
 import IncomeQueryForm from './pages/it_dep/income_query';
@@ -34,7 +34,12 @@ import CitizenVaccineModal from './pages/citizen/CitizenVaccineModal';
 import CitizenEnvModal from './pages/citizen/CitizenEnvModal';
 import CitizenGeoModal from './pages/citizen/CitizenGeoModal';
 
+import BirthQueryForm from './pages/census_dep/births';
+import DeathQueryForm from './pages/census_dep/deaths';
+import MarriageQueryForm from './pages/census_dep/marriages';
+
 import ITModal from './pages/it_dep/ITModal';
+import CensusModal from './pages/census_dep/CensusModal';
 import FinancialGraph from './pages/it_dep/analytics';
 import "./styles/App.css";
 // Function to check if the user is authenticated
@@ -63,10 +68,6 @@ const LandingPage: React.FC = () => {
   else if(role === 'edu_dept')
   {
     return <Navigate to="/ed-dashboard" replace />;
-  }
-  else if(role === 'med_dept')
-  {
-    return <Navigate to="/med-dashboard" replace />;
   }
   else if( role === 'census_dept'){
     return <Navigate to ="/census-dashboard" replace />;
@@ -108,10 +109,12 @@ const App: React.FC = () => {
             <Route path="income-query" element={<IncomeQueryForm />} />
             <Route path="analytics" element={<ProtectedRoute element={<FinancialGraph />} />} />
         </Route>
-        <Route path="/census-dashboard" element={<ProtectedRoute element={<EdDashboard />} />} >
+        <Route path="/census-dashboard" element={<ProtectedRoute element={<CensusDashboard />} />} >
             <Route index element={<CensusModal />} />
+            <Route path="birth-query" element={<BirthQueryForm />} />
+            <Route path="death-query" element={<DeathQueryForm />} />
+            <Route path="marriage-query" element={<MarriageQueryForm />} />
         </Route>
-        <Route path="/med-dashboard" element={<ProtectedRoute element={<MedDashboard />} />} />
 
         {/* Protected Routes for Citizen Data */}
         <Route path="/get-citizens" element={<ProtectedRoute element={<GetCitizens />} />} />

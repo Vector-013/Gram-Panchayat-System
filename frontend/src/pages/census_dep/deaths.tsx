@@ -1,23 +1,26 @@
 import { useState } from "react";
-import "../../styles/BirthQuery.css";
+import "../../styles/DeathQuery.css";
 import { useNavigate } from "react-router-dom";
 
-interface BirthRecord {
+interface DeathRecord {
   citizen_id: number;
   name: string;
-  date_of_birth: string;
   gender: string;
   household_id: string;
-  birth_count: number;
+  death_date: string;
+  death_count: number;
 }
 
-function BirthQueryForm() {
+function DeathQueryForm() {
   const [gender, setGender] = useState("both");
   const [householdId, setHouseholdId] = useState("");
+  const [ageMin, setAgeMin] = useState(0);
+  const [ageMax, setAgeMax] = useState(100);
   const [yearMin, setYearMin] = useState(1000);
   const [yearMax, setYearMax] = useState(2025);
   const [error, setError] = useState<string | null>(null);
-  const [birthRecords, setBirthRecords] = useState<BirthRecord[]>([]);
+  const [deathRecords, setDeathRecords] = useState<DeathRecord[]>([]);
+
   const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -27,9 +30,11 @@ function BirthQueryForm() {
         gender,
         household_id: householdId,
         year,
+        age_min: ageMin,
+        age_max: ageMax,
       };
 
-      const response = await fetch("http://localhost:8000/birth-query", {
+      const response = await fetch("http://localhost:8000/death-query", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(requestBody),
@@ -37,24 +42,24 @@ function BirthQueryForm() {
       if (!response.ok) {
         throw new Error("Submission failed");
       }
-      const data: BirthRecord[] = await response.json();
-      setBirthRecords(data);
+      const data: DeathRecord[] = await response.json();
+      setDeathRecords(data);
     } catch (err: any) {
       setError(err.message);
     }
   };
 
   return (
-    <div className="birth-query-container col card-holder">
+    <div className="death-query-container col card-holder">
       <div className="header">
-        <div className="birth-query-title">Birth Query</div>
+        <div className="death-query-title">Death Query</div>
       </div>
-      {error && <div className="birth-query-error">{error}</div>}
+      {error && <div className="death-query-error">{error}</div>}
 
-      <form className="birth-query-form" onSubmit={handleSubmit}>
-        <label className="birth-query-label">Gender:</label>
+      <form className="death-query-form" onSubmit={handleSubmit}>
+        <label className="death-query-label">Gender:</label>
         <select
-          className="birth-query-input"
+          className="death-query-input"
           value={gender}
           onChange={(e) => setGender(e.target.value)}
         >
@@ -63,9 +68,9 @@ function BirthQueryForm() {
           <option value="female">Female</option>
         </select>
 
-        <label className="birth-query-label">Household ID:</label>
+        <label className="death-query-label">Household ID:</label>
         <input
-          className="birth-query-input"
+          className="death-query-input"
           type="text"
           value={householdId}
           onChange={(e) => setHouseholdId(e.target.value)}
@@ -88,36 +93,52 @@ function BirthQueryForm() {
           />
         </div>
 
-        <button className="birth-query-submit" type="submit">
+        <label className="death-query-label">Age Range:</label>
+        <div className="death-query-input-group">
+          <input
+            className="death-query-input"
+            type="number"
+            value={ageMin}
+            onChange={(e) => setAgeMin(parseInt(e.target.value))}
+          />
+          <span className="death-query-separator">to</span>
+          <input
+            className="death-query-input"
+            type="number"
+            value={ageMax}
+            onChange={(e) => setAgeMax(parseInt(e.target.value))}
+          />
+        </div>
+
+        <button className="death-query-submit" type="submit">
           Submit
         </button>
       </form>
 
-      {birthRecords.length > 0 && (
-        <div className="birth-records-summary">
-          <p>Total Births: {birthRecords.length}</p>
+      {deathRecords.length > 0 && (
+        <div className="death-count">
+          <p>Total Deaths: {deathRecords.length}</p>
         </div>
       )}
-
-      {birthRecords.length > 0 && (
-        <div className="birth-records-container">
-          <table className="birth-records-table">
+      {deathRecords.length > 0 && (
+        <div className="death-records-container">
+          <table className="death-records-table">
             <thead>
               <tr>
                 <th>Citizen ID</th>
                 <th>Name</th>
                 <th>Gender</th>
-                <th>Date of Birth</th>
-                <th>Household Income</th>
+                <th>Date of Death</th>
+                <th>Household ID</th>
               </tr>
             </thead>
             <tbody>
-              {birthRecords.map((record, index) => (
+              {deathRecords.map((record, index) => (
                 <tr key={index}>
                   <td>{record.citizen_id}</td>
                   <td>{record.name}</td>
                   <td>{record.gender}</td>
-                  <td>{record.date_of_birth}</td>
+                  <td>{record.death_date}</td>
                   <td>{record.household_id}</td>
                 </tr>
               ))}
@@ -129,4 +150,4 @@ function BirthQueryForm() {
   );
 }
 
-export default BirthQueryForm;
+export default DeathQueryForm;
