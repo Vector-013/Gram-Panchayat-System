@@ -230,4 +230,13 @@
 #   "income_min": 10000,
 #   "income_max": 800000
 # }
+# POST http://127.0.0.1:8000/welfare/vaccines
+# Content-Type: application/json
+
+# {
+#   "vaccine_type": "Covid-19",
+#   "start_date": "2020-01-01",
+#   "end_date": "2023-12-31",
+#   "parent_qualification": ""
+# }
 
