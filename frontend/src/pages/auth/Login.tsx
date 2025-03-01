@@ -38,26 +38,34 @@ const Login: React.FC = () => {
       localStorage.setItem("household_id", data.household_id);
       localStorage.setItem("address", data.address);
       localStorage.setItem("gender", data.gender);
+      if (data.role === "employee") {
+        localStorage.setItem("employee_id", data.eid);
+        localStorage.setItem("erole", data.erole);
+      }
 
       console.log(data.role);
       // Redirect to the landing page
       if (data.role === "admin") {
         navigate("/admin-dashboard");
       }
-      else if(data.role === "it_dept") {
+      else if (data.role === "it_dept") {
         navigate("/it-dashboard");
       }
-      else if(data.role === "edu_dept") {
+      else if (data.role === "edu_dept") {
         navigate("/ed-dashboard");
       }
-      else if(data.role === "med_dept") {
+      else if (data.role === "med_dept") {
         navigate("/med-dashboard");
       }
-      else if(data.role === "welfare") {
+      else if (data.role === "welfare") {
         navigate("/welfare-dashboard");
       }
-      else if(data.role === "census_dept") {
-        navigate("/census-dashboard");}
+      else if (data.role === "census_dept") {
+        navigate("/census-dashboard");
+      }
+      else if (data.role === "employee" || data.role === "pradhan") {
+        navigate(`/employee-dashboard/${data.eid}`);
+      }
       else {
         navigate(`/citizen-dashboard/${data.id}`);
       }

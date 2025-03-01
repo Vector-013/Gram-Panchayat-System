@@ -19,9 +19,8 @@ interface CitizenElement {
   address: string;
 }
 
-const CitizenDashboard: React.FC = () => {
-  const { citizenId } = useParams<{ citizenId: string }>();
-  const empId = localStorage.getItem('employee_id');
+const EmployeeDashboard: React.FC = () => {
+  const { empId } = useParams<{ empId: string }>();
   const role = localStorage.getItem('role');
   const [citizen, setCitizen] = useState<CitizenElement[]>([]);
   const [loading, setLoading] = useState(true); // To handle initial loading state
@@ -29,7 +28,7 @@ const CitizenDashboard: React.FC = () => {
 
   useEffect(() => {
     const token = localStorage.getItem('token');
-    if (!token || (role !== 'citizen' && role !== 'employee' && role !== 'pradhan')) {
+    if (!token || (role !== 'employee' && role !== 'pradhan')) {
       navigate('/login');
     }
   }, [navigate]);
@@ -62,10 +61,10 @@ const CitizenDashboard: React.FC = () => {
           <span>
             {loading ? "Loading..." : citizen.length > 0 ? citizen[0].name : "No Citizen Data"}
           </span>
-          {role != 'citizen' ? <button className="switch-role btn btn-danger ms-2" onClick={() => navigate(`/employee-dashboard/${empId}`)}>Switch to Employee</button> : ""}
+          {(role == 'employee' || role == 'pradhan') ? <button className="switch-role btn btn-danger ms-2" onClick={() => navigate(`/citizen-dashboard/${citizen[0].citizen_id}`)}>Switch to Citizen</button> : ""}
         </div>
         <div className="nav-buttons">
-          <button className="btn btn-danger" onClick={() => navigate(`/citizen-dashboard/${citizenId}`)}>Home</button>
+          <button className="btn btn-danger" onClick={() => navigate(`/employee-dashboard/${empId}`)}>Home</button>
           <button className="btn btn-danger ms-2" onClick={() => navigate("/logout")}>Logout</button>
         </div>
       </nav>
@@ -109,4 +108,4 @@ const CitizenDashboard: React.FC = () => {
   );
 };
 
-export default CitizenDashboard;
+export default EmployeeDashboard;

@@ -70,6 +70,8 @@ function AssetQueryForm() {
                     <option value="Library">Library</option>
                     <option value="Public Toilet">Public Toilet</option>
                     <option value="Water Pump">Water Pump</option>
+                    <option value="Hospital">Hospital</option>
+                    <option value="Well">Well</option>
                 </select>
 
                 <label className="asset-query-label">Location:</label>
