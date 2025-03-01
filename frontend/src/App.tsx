@@ -46,6 +46,7 @@ import WelfareSGCModal from './pages/welfare_dep/WelfareSGCModal';
 import WelfareEduModal from './pages/welfare_dep/WelfareEduModal';
 
 import EmployeeDashboard from './pages/employee/EmployeeDashboard';
+import EmployeeModal from './pages/employee/EmployeeModal';
 
 import ITModal from './pages/it_dep/ITModal';
 import CensusModal from './pages/census_dep/CensusModal';
@@ -135,7 +136,7 @@ const App: React.FC = () => {
         </Route>
 
         <Route path="/employee-dashboard/:empId" element={<ProtectedRoute element={<EmployeeDashboard />} />}>
-
+          <Route index element={<EmployeeModal />} />
         </Route>
 
         {/* Protected Routes for Citizen Data */}

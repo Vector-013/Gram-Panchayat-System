@@ -28,7 +28,7 @@ const EmployeeDashboard: React.FC = () => {
 
   useEffect(() => {
     const token = localStorage.getItem('token');
-    if (!token || (role !== 'employee')) {
+    if (!token || (role !== 'employee' && role !== 'pradhan')) {
       navigate('/login');
     }
   }, [navigate]);
@@ -61,7 +61,7 @@ const EmployeeDashboard: React.FC = () => {
           <span>
             {loading ? "Loading..." : citizen.length > 0 ? citizen[0].name : "No Citizen Data"}
           </span>
-          {role == 'employee' ? <button className="switch-role btn btn-danger ms-2" onClick={() => navigate(`/citizen-dashboard/${citizen[0].citizen_id}`)}>Switch to Citizen</button> : ""}
+          {(role == 'employee' || role == 'pradhan') ? <button className="switch-role btn btn-danger ms-2" onClick={() => navigate(`/citizen-dashboard/${citizen[0].citizen_id}`)}>Switch to Citizen</button> : ""}
         </div>
         <div className="nav-buttons">
           <button className="btn btn-danger" onClick={() => navigate(`/citizen-dashboard/${citizenId}`)}>Home</button>

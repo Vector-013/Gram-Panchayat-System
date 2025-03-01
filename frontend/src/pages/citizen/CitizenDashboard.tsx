@@ -21,7 +21,7 @@ interface CitizenElement {
 
 const CitizenDashboard: React.FC = () => {
   const { citizenId } = useParams<{ citizenId: string }>();
-  let empId = "";
+  const empId = localStorage.getItem('employee_id');
   const role = localStorage.getItem('role');
   const [citizen, setCitizen] = useState<CitizenElement[]>([]);
   const [loading, setLoading] = useState(true); // To handle initial loading state
@@ -29,9 +29,6 @@ const CitizenDashboard: React.FC = () => {
 
   useEffect(() => {
     const token = localStorage.getItem('token');
-    if(role == 'employee'){
-      empId = localStorage.getItem('employee_id');
-    }
     if (!token || (role !== 'citizen' && role !== 'employee' && role !== 'pradhan')) {
       navigate('/login');
     }
