@@ -40,6 +40,7 @@ const Login: React.FC = () => {
       localStorage.setItem("gender", data.gender);
       if(data.role === "employee"){
         localStorage.setItem("employee_id", data.employee_id);
+        localStorage.setItem("erole", data.erole);
       }
 
       console.log(data.role);

@@ -32,7 +32,7 @@ const CitizenDashboard: React.FC = () => {
     if(role == 'employee'){
       empId = localStorage.getItem('employee_id');
     }
-    if (!token || (role !== 'citizen' && role !== 'employee')) {
+    if (!token || (role !== 'citizen' && role !== 'employee' && role !== 'pradhan')) {
       navigate('/login');
     }
   }, [navigate]);
