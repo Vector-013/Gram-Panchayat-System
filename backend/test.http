@@ -80,6 +80,53 @@ Content-Type: application/json
 #   "value": 3500.75
 # }
 
+### Create Welfare Scheme
+# POST http://localhost:8000/welfare-schemes/
+# Content-Type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxQHBhbmNoYXlhdC5jb20iLCJyb2xlIjoicHJhZGhhbiIsImV4cCI6MTc0MDg0OTAzNX0.TjlXEPGrg7-mcgb64-6ui2R-8rXkWSbCi3S8vTGDQ-U
+
+# {
+#   "name": "PrawnHub",
+#   "description": "National employment guarantee scheme."
+# }
+
+
+# ### List Welfare Schemes
+# GET http://localhost:8000/welfare-schemes/
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxQHBhbmNoYXlhdC5jb20iLCJyb2xlIjoicHJhZGhhbiIsImV4cCI6MTc0MDg0OTAzNX0.TjlXEPGrg7-mcgb64-6ui2R-8rXkWSbCi3S8vTGDQ-U
+
+### Test Birth Event Endpoint
+# POST http://localhost:8000/birth-event/
+# Content-Type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxQHBhbmNoYXlhdC5jb20iLCJyb2xlIjoicHJhZGhhbiIsImV4cCI6MTc0MDg2NjUxOH0.Lz2YmLYx-s_JBLRxtHQjbRXVTWY9swYB6sGZujZ0Tis
+
+# {
+#   "mother_id": 5,
+#   "father_id": 6,
+#   "baby_name": "Baby Rahul",
+#   "gender": "Male",
+#   "password": "babySecret123"
+# }
+
+### Test Citizen Create Endpoint
+# POST http://localhost:8000/citizen-creator/
+# Content-Type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxQHBhbmNoYXlhdC5jb20iLCJyb2xlIjoicHJhZGhhbiIsImV4cCI6MTc0MDg2NjUxOH0.Lz2YmLYx-s_JBLRxtHQjbRXVTWY9swYB6sGZujZ0Tis
+
+# {
+#   "name": "Neha Mrinali",
+#   "gender": "Female",
+#   "dob": "2000-05-20",
+#   "educational_qualification": "Graduate",
+#   "income": 35000,
+#   "household_id": 10,
+#   "password": "OjasIsGod"
+# }
+### Test Update Taxes Endpoint
+# POST http://localhost:8000/update-taxes/
+# Content-Type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxQHBhbmNoYXlhdC5jb20iLCJyb2xlIjoicHJhZGhhbiIsImV4cCI6MTc0MDg2NjUxOH0.Lz2YmLYx-s_JBLRxtHQjbRXVTWY9swYB6sGZujZ0Tis
+
 #####################################################    ADMIN   #####################################################
 
 # Attempt to register a new citizen using a citizen token (should fail)

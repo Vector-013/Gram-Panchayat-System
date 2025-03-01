@@ -101,8 +101,6 @@ class LandRecord(Base):
     land_id = Column(Integer, primary_key=True, index=True, autoincrement=True)
     area_acres = Column(Numeric, nullable=False)
     crop_type = Column(Text, nullable=False)
-    weight = Column(Numeric, nullable = False)
-    year_recorded = Column(Numeric, nullable=False)
     citizen_id = Column(Integer, ForeignKey("citizens.citizen_id"), nullable=True)
 
     # Relationship back to Citizen.
@@ -300,7 +298,6 @@ class FloraFauna(Base):
     type = Column(Text, nullable=False)
     name = Column(Text, nullable=False)
     habitat = Column(Text, nullable=False)
-    count = Column(Integer, nullable=False)
 
 ##############################
 # Budget

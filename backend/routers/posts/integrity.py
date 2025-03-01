@@ -68,3 +68,16 @@ class AssetCreate(BaseModel):
                 "Invalid asset type. Allowed values are: " + ", ".join(sorted(allowed))
             )
         return v
+
+class WelfareSchemeCreate(BaseModel):
+    name: str = Field(..., description="Name of the welfare scheme")
+    description: str = Field("", description="Optional description of the scheme")
+
+class WelfareSchemeResponse(BaseModel):
+    scheme_id: int
+    name: str
+    description: str
+
+    class Config:
+        from_attributes = True
+

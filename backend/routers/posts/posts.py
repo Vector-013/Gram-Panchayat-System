@@ -6,7 +6,14 @@ from database import get_db
 from .dependencies import get_current_user
 from pydantic import BaseModel
 from decimal import Decimal
-from .integrity import HouseholdCreate, LandRecordCreate, PanchayatEmployeeCreate, AssetCreate
+from .integrity import (
+    HouseholdCreate,
+    LandRecordCreate,
+    PanchayatEmployeeCreate,
+    AssetCreate,
+    WelfareSchemeCreate,
+    WelfareSchemeResponse,
+)
 
 router = APIRouter()
 
@@ -195,3 +202,84 @@ def create_asset(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"Database error: {str(e)}",
         )
+
+
+ALLOWED_ROLES = {"pradhan", "employee"}
+
+
+@router.post("/welfare-schemes", response_model=WelfareSchemeResponse)
+def create_welfare_scheme(
+    scheme: WelfareSchemeCreate,
+    db: Session = Depends(get_db),
+    current_user: dict = Depends(get_current_user),
+):
+    # Only allow pradhan or employee to create welfare schemes.
+    if current_user["role"] not in ALLOWED_ROLES:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="You are not authorized to create a welfare scheme.",
+        )
+    try:
+        sql = text(
+            """
+            INSERT INTO welfare_schemes (name, description)
+            VALUES (:name, :description)
+            RETURNING scheme_id, name, description
+        """
+        )
+        result = db.execute(
+            sql, {"name": scheme.name, "description": scheme.description}
+        ).fetchone()
+        db.commit()
+        if not result:
+            raise HTTPException(
+                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                detail="Welfare scheme creation failed",
+            )
+        return WelfareSchemeResponse(
+            scheme_id=result.scheme_id, name=result.name, description=result.description
+        )
+    except SQLAlchemyError as e:
+        db.rollback()
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Database error: {str(e)}",
+        )
+
+
+@router.get("/welfare-schemes", response_model=dict)
+def list_welfare_schemes(
+    db: Session = Depends(get_db), current_user: dict = Depends(get_current_user)
+):
+    # Only allow pradhan or employee to view welfare schemes.
+    if current_user["role"] not in ALLOWED_ROLES:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="You are not authorized to view welfare schemes.",
+        )
+    try:
+        sql = text(
+            """
+            SELECT scheme_id, name, description
+            FROM welfare_schemes
+            ORDER BY scheme_id
+        """
+        )
+        result = db.execute(sql)
+        rows = result.fetchall()
+        schemes = [
+            {
+                "scheme_id": row.scheme_id,
+                "name": row.name,
+                "description": row.description,
+            }
+            for row in rows
+        ]
+        return {"schemes": schemes}
+    except SQLAlchemyError as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Database error: {str(e)}",
+        )
+        
+

@@ -15,3 +15,6 @@ from .citizen_initial.asset import router as assets
 from .welfare_init.edu_single_girl import router as esg
 from .welfare_init.vaccination_query import router as vaccination_query
 from .posts.posts import router as posts
+from .posts.birth_event import router as birth_event
+from .posts.citizen_creator import router as citizen_creator
+from .updates.tax_update import router as tax_update
