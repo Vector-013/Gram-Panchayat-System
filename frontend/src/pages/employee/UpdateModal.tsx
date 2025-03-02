@@ -1,5 +1,10 @@
 import React, { useState } from "react";
 import "../../styles/UpdateModal.css";
+import UpdateCitizen from "../forms/UpdateCitizen";
+import UpdateHousehold from "../forms/UpdateHousehold";
+import UpdateLandRecord from "../forms/UpdateLandRecord";
+import UpdateWelfareScheme from "../forms/UpdateWelfareScheme";
+import UpdateTaxes from "../forms/UpdateTaxes";
 import bgImage from "../../images/village.jpg";
 
 const UpdateModal: React.FC = () => {
@@ -11,11 +16,10 @@ const UpdateModal: React.FC = () => {
     };
 
     return (
-        <div className="update-modal-container card-holder">
+        <div className="update-modal-container col card-holder">
             <div className="imgHolder">
                 <img src={bgImage} alt="bg" className="bg-image" />
             </div>
-            <h2 className="update-modal-title">Update Existing Record</h2>
 
             {/* Dropdown for selecting update type */}
             <div className="update-type-container">
@@ -24,7 +28,6 @@ const UpdateModal: React.FC = () => {
                     <option value="">Choose an option</option>
                     <option value="citizen">Citizen</option>
                     <option value="household">Household</option>
-                    <option value="asset">Asset</option>
                     <option value="land">Land Record</option>
                     <option value="welfare">Welfare Scheme</option>
                     <option value="tax">Tax Record</option>
@@ -38,12 +41,12 @@ const UpdateModal: React.FC = () => {
             {/* Placeholder for the selected form */}
             {selectedType === "" && <p className="update-placeholder">Please select an update type to continue.</p>}
 
-            {/* {selectedType === "citizen" && <UpdateCitizen />}
+            {selectedType === "citizen" && <UpdateCitizen />}
             {selectedType === "household" && <UpdateHousehold />}
-            {selectedType === "asset" && <UpdateAsset />}
             {selectedType === "land" && <UpdateLandRecord />}
             {selectedType === "welfare" && <UpdateWelfareScheme />}
-            {selectedType === "tax" && <p className="update-placeholder">Tax Record update form will appear here.</p>}
+            {selectedType === "tax" && <UpdateTaxes />}
+            {/* 
             {selectedType === "education" && <p className="update-placeholder">Education Record update form will appear here.</p>}
             {selectedType === "health" && <p className="update-placeholder">Health Record update form will appear here.</p>}
             {selectedType === "marriage" && <UpdateMarriage />}

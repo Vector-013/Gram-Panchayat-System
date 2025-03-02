@@ -1,0 +1,132 @@
+/* Main Container */
+.update-taxes-container {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Title */
+.update-taxes-title {
+    color: #333;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Update Button */
+.update-taxes-button {
+    background-color: #28a745;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.update-taxes-button:hover {
+    background-color: #0056b3;
+}
+
+.update-taxes-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Messages */
+.update-taxes-message {
+    color: green;
+    font-weight: bold;
+    margin: 15px 0;
+}
+
+.update-taxes-error {
+    color: red;
+    font-weight: bold;
+    margin: 15px 0;
+}
+
+/* Table Container */
+.tax-table-container {
+    margin-top: 20px;
+    overflow-y: auto;
+    max-height: 400px;
+    border-radius: 5px;
+}
+
+/* Table Styling */
+.tax-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+}
+
+/* Table Headers */
+.tax-table th {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+/* Table Cells */
+.tax-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+/* Alternate Row Styling */
+.tax-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Hover Effect */
+.tax-table tr:hover {
+    background-color: #d6eaff;
+}
+
+/* Filter Container */
+.tax-filter-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+/* Input Fields */
+.tax-filter-input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 200px;
+    margin: 0 5px;
+}
+
+
+/* No Data Row */
+.no-data {
+    text-align: center;
+    font-weight: bold;
+    color: #888;
+    padding: 15px;
+}
+
+/* Responsive Table */
+@media (max-width: 768px) {
+    .tax-table {
+        font-size: 14px;
+    }
+}

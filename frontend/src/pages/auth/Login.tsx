@@ -21,6 +21,7 @@ const Login: React.FC = () => {
         throw new Error("Invalid credentials");
       }
       const data = await response.json();
+      console.log(data);
 
       // data is a JWT token
 
@@ -38,7 +39,7 @@ const Login: React.FC = () => {
       localStorage.setItem("household_id", data.household_id);
       localStorage.setItem("address", data.address);
       localStorage.setItem("gender", data.gender);
-      if (data.role === "employee") {
+      if (data.role === "employee" || data.role === "pradhan") {
         localStorage.setItem("employee_id", data.eid);
         localStorage.setItem("erole", data.erole);
       }
