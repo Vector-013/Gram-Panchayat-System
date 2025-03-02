@@ -210,6 +210,16 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBZG1pbkBwY
   "marriage_date": "2025-03-05"
 }
 
+### Test: Process Death Event
+POST http://localhost:8000/death-event/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBZG1pbkBwYW5jaGF5YXQuY29tIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzQwOTY5MjI0fQ.xTZ--dHt_2zPjpx5nrMJqKsYB04poB7-w2-dBsM0ROE
+
+{
+  "citizen_id": 10,
+  "date": "2025-03-02",
+  "cause": "Natural Causes"
+}
 
 
 

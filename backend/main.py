@@ -32,6 +32,7 @@ from routers import (
     census_env,
     marriages,
     welfare_analytics,
+    deth,
 )
 
 app = FastAPI()
@@ -90,6 +91,7 @@ app.include_router(medical_post)
 app.include_router(census_env)
 app.include_router(marriages)
 app.include_router(welfare_analytics)
+app.include_router(deth)
 
 # Start server
 if __name__ == "__main__":
