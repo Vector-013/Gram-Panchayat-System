@@ -52,6 +52,7 @@ import EmployeeDashboard from './pages/employee/EmployeeDashboard';
 import EmployeeModal from './pages/employee/EmployeeModal';
 import InsertModal from './pages/employee/InsertModal';
 import UpdateModal from './pages/employee/UpdateModal';
+import DeleteModal from './pages/employee/DeleteModal';
 
 import InsertBirth from './pages/forms/InsertBirth';
 
@@ -115,7 +116,7 @@ const App: React.FC = () => {
           <Route index element={<AdminModal />} />
           <Route path='insert' element={<InsertModal />} />
           <Route path='update' element={<UpdateModal />} />
-          <Route path='delete' element={<UpdateModal />} />
+          <Route path='delete' element={<DeleteModal />} />
           <Route path='query' element={<QueryAdmin />} />
         </Route>
 
@@ -165,6 +166,7 @@ const App: React.FC = () => {
           <Route index element={<EmployeeModal />} />
           <Route path="insert" element={<InsertModal />} />
           <Route path="update" element={<UpdateModal />} />
+          <Route path="delete" element={<DeleteModal />} />
         </Route>
 
         {/* Protected Routes for Citizen Data */}

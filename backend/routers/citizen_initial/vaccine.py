@@ -3,10 +3,10 @@ from sqlalchemy.orm import Session
 from sqlalchemy import text
 from database import get_db
 
-router = APIRouter(prefix="/api", tags=["Vaccine Data"])
+router = APIRouter(prefix="", tags=["Vaccine Data"])
 
 
-@router.get("/{citizen_id}/vaccine", response_model=list)
+@router.get("/api/{citizen_id}/vaccine", response_model=list)
 def get_vaccine_data(citizen_id: int, db: Session = Depends(get_db)):
     """
     Returns vaccination data for all citizens in the same household as the given citizen.

@@ -298,12 +298,18 @@ def income_query(
     try:
         valid_households = db.execute(household_income_sql, household_params).fetchall()
         household_ids = [str(row[0]) for row in valid_households]
+        
+        ## remove string 'None' from household_ids
+        household_ids = list(filter(lambda x: x != 'None', household_ids))
+        
 
         if not household_ids:
             return {
                 "citizens": [],
                 "message": "No households found within income range",
             }
+
+        
 
         # Construct the query for citizens.
         # Calculate age using EXTRACT(YEAR FROM age(dob))::int.
