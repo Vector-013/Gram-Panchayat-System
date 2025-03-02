@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../styles/TaxQuery.css";
 
@@ -9,6 +9,7 @@ interface TaxRecord {
   status: string;
   citizen_id: number;
   date: string;
+  name: string;
   name: string;
 }
 
@@ -21,8 +22,17 @@ function TaxQueryForm() {
   const [maxAmount, setMaxAmount] = useState(100000);
   const [error, setError] = useState<string | null>(null);
   const [taxRecords, setTaxRecords] = useState<TaxRecord[]>([]);
+  const [filteredRecords, setFilteredRecords] = useState<TaxRecord[]>([]);
   const [total_paid, setTotalPaid] = useState("");
   const [total_pending, setTotalPending] = useState("");
+
+  // Additional Filters
+  const [nameFilter, setNameFilter] = useState<string>("");
+  const [typeFilter, setTypeFilter] = useState<string>("");
+  const [statusFilter, setStatusFilter] = useState<string>("");
+  const [minDate, setMinDate] = useState<string>("");
+  const [maxDate, setMaxDate] = useState<string>("");
+
   const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -62,9 +72,35 @@ function TaxQueryForm() {
     }
   };
 
+  // Apply filters dynamically using useEffect
+  useEffect(() => {
+    const filtered = taxRecords.filter((record) => {
+      const matchesName =
+        nameFilter === "" || record.name.toLowerCase().includes(nameFilter.toLowerCase());
+
+      const matchesType =
+        typeFilter === "" || record.type.toLowerCase().includes(typeFilter.toLowerCase());
+
+      const matchesStatus =
+        statusFilter === "" || record.status.toLowerCase() === statusFilter.toLowerCase();
+
+      const matchesAmountRange =
+        record.amount >= minAmount && record.amount <= maxAmount;
+
+      const matchesDateRange =
+        (minDate === "" || new Date(record.date) >= new Date(minDate)) &&
+        (maxDate === "" || new Date(record.date) <= new Date(maxDate));
+
+      return matchesName && matchesType && matchesStatus && matchesAmountRange && matchesDateRange;
+    });
+
+    setFilteredRecords(filtered);
+  }, [nameFilter, typeFilter, statusFilter, minAmount, maxAmount, minDate, maxDate, taxRecords]);
+
   return (
     <div className="col card-holder tax-query-container">
       <div className="tax-query-title">Tax Query</div>
+
 
       {error && <div style={{ color: "red" }}>{error}</div>}
       <form className="tax-query-form" onSubmit={handleSubmit}>
@@ -167,7 +203,72 @@ function TaxQueryForm() {
         <input className="tax-query-submit" type="submit" value="Submit" />
       </form>
 
-      {taxRecords.length > 0 && (
+      {/* Filters Section */}
+      <div className="tax-filter-container">
+        <div>
+          <input
+            type="text"
+            placeholder="Filter by Name"
+            value={nameFilter}
+            onChange={(e) => setNameFilter(e.target.value)}
+            className="tax-filter-input"
+          />
+
+          <input
+            type="text"
+            placeholder="Filter by Type"
+            value={typeFilter}
+            onChange={(e) => setTypeFilter(e.target.value)}
+            className="tax-filter-input"
+          />
+
+          <select
+            value={statusFilter}
+            onChange={(e) => setStatusFilter(e.target.value)}
+            className="tax-filter-input"
+          >
+            <option value="">All Status</option>
+            <option value="Paid">Paid</option>
+            <option value="Unpaid">Unpaid</option>
+          </select>
+          Amount:
+          <input
+            type="number"
+            placeholder="Min Amount"
+            value={minAmount}
+            onChange={(e) => setMinAmount(parseFloat(e.target.value))}
+            className="tax-filter-input"
+          />
+          <input
+            type="number"
+            placeholder="Max Amount"
+            value={maxAmount}
+            onChange={(e) => setMaxAmount(parseFloat(e.target.value))}
+            className="tax-filter-input"
+          />
+        </div>
+
+        <div>
+          Date :
+          <input
+            type="date"
+            placeholder="Min Date"
+            value={minDate}
+            onChange={(e) => setMinDate(e.target.value)}
+            className="tax-filter-input"
+          />
+
+          <input
+            type="date"
+            placeholder="Max Date"
+            value={maxDate}
+            onChange={(e) => setMaxDate(e.target.value)}
+            className="tax-filter-input"
+          />
+        </div>
+      </div>
+
+      {filteredRecords.length > 0 && (
         <div>
           <div className="tax-stats">
             <div className="tax-paid">Total Paid : {total_paid}</div>
@@ -178,7 +279,7 @@ function TaxQueryForm() {
               <thead>
                 <tr>
                   <th>Tax ID</th>
-                  <th>Citizen id</th>
+                  <th>Citizen ID</th>
                   <th>Name</th>
                   <th>Type</th>
                   <th>Amount (rupees)</th>
@@ -187,7 +288,7 @@ function TaxQueryForm() {
                 </tr>
               </thead>
               <tbody>
-                {taxRecords.map((record, index) => (
+                {filteredRecords.map((record, index) => (
                   <tr key={index}>
                     <td>{record.tax_id}</td>
                     <td>{record.citizen_id}</td>

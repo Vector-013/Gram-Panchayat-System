@@ -135,17 +135,22 @@
 .asset-records-table tr:hover {
     background-color: #d6eaff;
 }
-@media (max-width: 768px) {
-    .asset-query-container {
-        width: 90%;
-        padding: 15px;
-    }
 
-    .asset-query-input {
-        width: 100%;
-    }
+.asset-filter-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+    font-size: 1rem;
+    font-weight: bold;
+}
 
-    .asset-records-table {
-        font-size: 14px;
-    }
+.asset-filter-input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 200px;
+    font-size: 14px;
 }

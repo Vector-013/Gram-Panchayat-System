@@ -66,8 +66,11 @@ const Login: React.FC = () => {
       else if (data.role === "employee" || data.role === "pradhan") {
         navigate(`/employee-dashboard/${data.eid}`);
       }
-      else {
+      else if(data.role === 'citizen'){
         navigate(`/citizen-dashboard/${data.id}`);
+      }
+      else {
+        navigate("/login"); 
       }
     } catch (err: any) {
       setError(err.message);

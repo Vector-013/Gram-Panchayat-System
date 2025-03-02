@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../styles/AssetQuery.css";
 
@@ -10,7 +10,6 @@ interface AssetRecord {
     value: number;
 }
 
-
 function AssetQueryForm() {
     const [assetType, setAssetType] = useState("");
     const [location, setLocation] = useState("");
@@ -20,6 +19,8 @@ function AssetQueryForm() {
     const [endDate, setEndDate] = useState("");
     const [error, setError] = useState<string | null>(null);
     const [assetRecords, setAssetRecords] = useState<AssetRecord[]>([]);
+    const [filteredRecords, setFilteredRecords] = useState<AssetRecord[]>([]);
+
     const navigate = useNavigate();
 
     const handleSubmit = async (e: React.FormEvent) => {
@@ -53,6 +54,28 @@ function AssetQueryForm() {
             setError(err.message);
         }
     };
+
+    // Apply filters dynamically using useEffect
+    useEffect(() => {
+        const filtered = assetRecords.filter((record) => {
+            const matchesType =
+                assetType === "" || record.type.toLowerCase().includes(assetType.toLowerCase());
+
+            const matchesLocation =
+                location === "" || record.location.toLowerCase().includes(location.toLowerCase());
+
+            const matchesValueRange =
+                record.value >= valueMin && record.value <= valueMax;
+
+            const matchesDateRange =
+                (startDate === "" || new Date(record.installation_date) >= new Date(startDate)) &&
+                (endDate === "" || new Date(record.installation_date) <= new Date(endDate));
+
+            return matchesType && matchesLocation && matchesValueRange && matchesDateRange;
+        });
+
+        setFilteredRecords(filtered);
+    }, [assetType, location, valueMin, valueMax, startDate, endDate, assetRecords]);
 
     return (
         <div className="asset-query-container col card-holder">
@@ -98,7 +121,64 @@ function AssetQueryForm() {
                 <input className="asset-query-submit" type="submit" value="Submit" />
             </form>
 
-            {assetRecords.length > 0 && (
+            {/* Filters Section */}
+            <div className="asset-filter-container">
+                <select className="asset-filter-input" value={assetType} onChange={(e) => setAssetType(e.target.value)}>
+                    <option value="">All Types</option>
+                    <option value="Street Light">Street Light</option>
+                    <option value="Road">Road</option>
+                    <option value="School">School</option>
+                    <option value="Library">Library</option>
+                    <option value="Public Toilet">Public Toilet</option>
+                    <option value="Water Pump">Water Pump</option>
+                    <option value="Hospital">Hospital</option>
+                    <option value="Well">Well</option>
+                </select>
+
+                <select className="asset-filter-input" value={location} onChange={(e) => setLocation(e.target.value)}>
+                    <option value="">Select Location</option>
+                    <option value="Main Bazaar, Phulera">Main Bazaar, Phulera</option>
+                    <option value="Gandhi Chowk, Phulera">Gandhi Chowk, Phulera</option>
+                    <option value="Subhash Marg, Phulera">Subhash Marg, Phulera</option>
+                    <option value="Rajput Mohalla, Phulera">Rajput Mohalla, Phulera</option>
+                    <option value="Station Road, Phulera">Station Road, Phulera</option>
+                </select>
+
+                Amount :
+                <input
+                    type="number"
+                    placeholder="Min Value"
+                    value={valueMin}
+                    onChange={(e) => setValueMin(parseFloat(e.target.value))}
+                    className="asset-filter-input"
+                />
+
+                <input
+                    type="number"
+                    placeholder="Max Value"
+                    value={valueMax}
+                    onChange={(e) => setValueMax(parseFloat(e.target.value))}
+                    className="asset-filter-input"
+                />
+                Date :
+                <input
+                    type="date"
+                    placeholder="Min Date"
+                    value={startDate}
+                    onChange={(e) => setStartDate(e.target.value)}
+                    className="asset-filter-input"
+                />
+
+                <input
+                    type="date"
+                    placeholder="Max Date"
+                    value={endDate}
+                    onChange={(e) => setEndDate(e.target.value)}
+                    className="asset-filter-input"
+                />
+            </div>
+
+            {filteredRecords.length > 0 && (
                 <div className="asset-records-container">
                     <table className="asset-records-table">
                         <thead>
@@ -111,7 +191,7 @@ function AssetQueryForm() {
                             </tr>
                         </thead>
                         <tbody>
-                            {assetRecords.map((record, index) => (
+                            {filteredRecords.map((record, index) => (
                                 <tr key={index}>
                                     <td>{record.asset_id}</td>
                                     <td>{record.type}</td>

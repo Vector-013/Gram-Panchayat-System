@@ -10,10 +10,13 @@ import InsertHousehold from "../forms/InsertHousehold";
 import InsertAsset from "../forms/InsertAsset";
 import InsertLandRecord from "../forms/InsertLandRecords";
 import InsertWelfareScheme from "../forms/InsertWelfareScheme";
+import InsertMarriage from "../forms/InsertMarriage";
+import InsertEmployee from "../forms/InsertEmployee";
 import bgImage from "../../images/village.jpg";
 
 const InsertModal: React.FC = () => {
     const [selectedType, setSelectedType] = useState<string>("");
+    const role = localStorage.getItem("role");
 
     const handleTypeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         setSelectedType(e.target.value);
@@ -39,12 +42,13 @@ const InsertModal: React.FC = () => {
                     <option value="tax">Tax Record</option>
                     <option value="education">Education Record</option>
                     <option value="health">Health Record</option>
+                    <option value="marriage">Marriage Record</option>
                     <option value="flora-fauna">Flora-Fauna Record</option>
                     <option value="geo">Geographical Record</option>
                     <option value="environment">Environment Record</option>
                     <option value="birth">Birth Record</option>
                     <option value="death">Death Record</option>
-
+                    {role == 'pradhan' && <option value="employee">Employee</option>}
                 </select>
             </div>
 
@@ -65,6 +69,8 @@ const InsertModal: React.FC = () => {
             {selectedType === "flora-fauna" && <InsertFloraFauna/>}
             {selectedType === "geo" && <InsertGeo/>}
             {selectedType === "environment" && <InsertEnv/>}
+            {selectedType === "marriage" && <InsertMarriage />}
+            {selectedType === "employee" && <InsertEmployee />}
         </div>
     );
 };

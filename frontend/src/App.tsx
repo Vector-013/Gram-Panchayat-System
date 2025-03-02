@@ -51,6 +51,7 @@ import MGNREGAQuery from './pages/welfare_dep/mgnrega';
 import EmployeeDashboard from './pages/employee/EmployeeDashboard';
 import EmployeeModal from './pages/employee/EmployeeModal';
 import InsertModal from './pages/employee/InsertModal';
+import UpdateModal from './pages/employee/UpdateModal';
 
 import ITModal from './pages/it_dep/ITModal';
 import CensusModal from './pages/census_dep/CensusModal';
@@ -86,9 +87,10 @@ const LandingPage: React.FC = () => {
   else if( role === 'census_dept'){
     return <Navigate to ="/census-dashboard" replace />;
   }
-  else{
+  else if( role === 'citizen'){
     return <Navigate to="/citizen-dashboard" replace />;
   }
+  else return <Navigate to="/login" replace />;
 };
 
 
@@ -96,7 +98,7 @@ const App: React.FC = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<LandingPage />} />
+        <Route index path="/" element={<LandingPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/logout" element={<Logout />} />
 
@@ -114,6 +116,8 @@ const App: React.FC = () => {
             <Route path="env" element={<CitizenEnvModal />} />
             <Route path="geo" element={<CitizenGeoModal />} />
         </Route>
+
+        <Route path='/test' element = {<UpdateModal />} />
 
         <Route path="/it-dashboard" element={<ProtectedRoute element={<ItDashboard />} />} >
             <Route index element={<ITModal />} /> 

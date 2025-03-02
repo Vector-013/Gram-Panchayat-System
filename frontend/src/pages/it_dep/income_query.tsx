@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../styles/IncomeQuery.css";
 
@@ -23,6 +23,12 @@ function IncomeQueryForm() {
   const [education, setEducation] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [incomeRecords, setIncomeRecords] = useState<IncomeRecord[]>([]);
+  const [filteredRecords, setFilteredRecords] = useState<IncomeRecord[]>([]);
+
+  // Additional filters
+  const [nameFilter, setNameFilter] = useState("");
+  const [householdIdFilter, setHouseholdIdFilter] = useState<string>("");
+
   const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -66,6 +72,38 @@ function IncomeQueryForm() {
     }
   };
 
+  // Apply filters dynamically using useEffect
+  useEffect(() => {
+    const filtered = incomeRecords.filter((record) => {
+      const matchesName =
+        nameFilter === "" || record.name.toLowerCase().includes(nameFilter.toLowerCase());
+
+      const matchesGender = gender === "" || record.gender === gender;
+
+      const matchesAgeRange = record.age >= ageMin && record.age <= ageMax;
+
+      const matchesEducation =
+        education === "" ||
+        record.educational_qualification.toLowerCase().includes(education.toLowerCase());
+
+      const matchesIncomeRange = record.income >= incomeMin && record.income <= incomeMax;
+
+      const matchesHouseholdId =
+        householdIdFilter === "" || record.household_id.toString() === householdIdFilter;
+
+      return (
+        matchesName &&
+        matchesGender &&
+        matchesAgeRange &&
+        matchesEducation &&
+        matchesIncomeRange &&
+        matchesHouseholdId
+      );
+    });
+
+    setFilteredRecords(filtered);
+  }, [nameFilter, gender, ageMin, ageMax, education, incomeMin, incomeMax, householdIdFilter, incomeRecords]);
+
   return (
     <div className="income-query-container col card-holder">
       <div className="income-query-title">Income Query</div>
@@ -74,66 +112,66 @@ function IncomeQueryForm() {
 
       <form className="income-query-form" onSubmit={handleSubmit}>
         <div className="gender-query">
-        <div className="gender-subquery">
-          <label className="income-query-label">Individual Income:</label>
-          <div className="income-query-input-group">
-            <input
-              className="income-query-input"
-              type="number"
-              value={incomeMin}
-              onChange={(e) => setIncomeMin(parseFloat(e.target.value))}
-            />
-            <span className="income-query-separator">to</span>
-            <input
-              className="income-query-input"
-              type="number"
-              value={incomeMax}
-              onChange={(e) => setIncomeMax(parseFloat(e.target.value))}
-            />
+          <div className="gender-subquery">
+            <label className="income-query-label">Individual Income:</label>
+            <div className="income-query-input-group">
+              <input
+                className="income-query-input"
+                type="number"
+                value={incomeMin}
+                onChange={(e) => setIncomeMin(parseFloat(e.target.value))}
+              />
+              <span className="income-query-separator">to</span>
+              <input
+                className="income-query-input"
+                type="number"
+                value={incomeMax}
+                onChange={(e) => setIncomeMax(parseFloat(e.target.value))}
+              />
+            </div>
           </div>
-        </div>
 
-        <div className="gender-subquery">
-          <label className="income-query-label">Household Income:</label>
-          <div className="income-query-input-group">
-            <input
-              className="income-query-input"
-              type="number"
-              value={householdIncomeMin}
-              onChange={(e) =>
-                setHouseholdIncomeMin(parseFloat(e.target.value))
-              }
-            />
-            <span className="income-query-separator">to</span>
-            <input
-              className="income-query-input"
-              type="number"
-              value={householdIncomeMax}
-              onChange={(e) =>
-                setHouseholdIncomeMax(parseFloat(e.target.value))
-              }
-            />
+          <div className="gender-subquery">
+            <label className="income-query-label">Household Income:</label>
+            <div className="income-query-input-group">
+              <input
+                className="income-query-input"
+                type="number"
+                value={householdIncomeMin}
+                onChange={(e) =>
+                  setHouseholdIncomeMin(parseFloat(e.target.value))
+                }
+              />
+              <span className="income-query-separator">to</span>
+              <input
+                className="income-query-input"
+                type="number"
+                value={householdIncomeMax}
+                onChange={(e) =>
+                  setHouseholdIncomeMax(parseFloat(e.target.value))
+                }
+              />
+            </div>
           </div>
-        </div>
 
-        <div className="gender-subquery">
-          <label className="income-query-label">Age Range:</label>
-          <div className="income-query-input-group">
-            <input
-              className="income-query-input"
-              type="number"
-              value={ageMin}
-              onChange={(e) => setAgeMin(parseInt(e.target.value))}
-            />
-            <span className="income-query-separator">to</span>
-            <input
-              className="income-query-input"
-              type="number"
-              value={ageMax}
-              onChange={(e) => setAgeMax(parseInt(e.target.value))}
-            />
+          <div className="gender-subquery">
+            <label className="income-query-label">Age Range:</label>
+            <div className="income-query-input-group">
+              <input
+                className="income-query-input"
+                type="number"
+                value={ageMin}
+                onChange={(e) => setAgeMin(parseInt(e.target.value))}
+              />
+              <span className="income-query-separator">to</span>
+              <input
+                className="income-query-input"
+                type="number"
+                value={ageMax}
+                onChange={(e) => setAgeMax(parseInt(e.target.value))}
+              />
+            </div>
           </div>
-        </div>
         </div>
 
         <div className="gender-query">
@@ -156,23 +194,50 @@ function IncomeQueryForm() {
           </div>
 
           <div className="gender-subquery">
-          <label className="income-query-label">Gender:</label>
-          <select
-            className="income-query-input"
-            value={gender}
-            onChange={(e) => setGender(e.target.value)}
-          >
-            <option value="">Select Gender</option>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-            <option value="Other">Other</option>
-          </select>
+            <label className="income-query-label">Gender:</label>
+            <select
+              className="income-query-input"
+              value={gender}
+              onChange={(e) => setGender(e.target.value)}
+            >
+              <option value="">Select Gender</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </select>
           </div>
         </div>
         <input className="tax-query-submit" type="submit" value="Submit" />
       </form>
 
-      {incomeRecords.length > 0 && (
+      {/* Filters Section */}
+      <div className="income-filter-container">
+        <input type="text" placeholder="Filter by Name" value={nameFilter} onChange={(e) => setNameFilter(e.target.value)} className="income-filter-input" />
+
+        <select className="income-filter-input" value={gender} onChange={(e) => setGender(e.target.value)}>
+          <option value="">All Genders</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Other">Other</option>
+        </select>
+        Age :
+        <input type="number" placeholder="Min Age" value={ageMin} onChange={(e) => setAgeMin(parseInt(e.target.value))} className="income-filter-input" />
+        <input type="number" placeholder="Max Age" value={ageMax} onChange={(e) => setAgeMax(parseInt(e.target.value))} className="income-filter-input" />
+
+        <select className="income-filter-input" value={education} onChange={(e) => setEducation(e.target.value)}>
+          <option value="">All Qualifications</option>
+          <option value="Primary">Primary</option>
+          <option value="Secondary">Secondary</option>
+          <option value="Higher Secondary">Higher Secondary</option>
+          <option value="Graduate">Graduate</option>
+          <option value="Postgraduate">Postgraduate</option>
+        </select>
+
+        Household ID:
+        <input type="number" placeholder="Household ID" value={householdIdFilter} onChange={(e) => setHouseholdIdFilter(e.target.value)} className="income-filter-input" />
+      </div>
+
+      {filteredRecords.length > 0 && (
         <div className="income-records-container">
           <table className="income-records-table">
             <thead>
@@ -187,7 +252,7 @@ function IncomeQueryForm() {
               </tr>
             </thead>
             <tbody>
-              {incomeRecords.map((record, index) => (
+              {filteredRecords.map((record, index) => (
                 <tr key={index}>
                   <td>{record.citizen_id}</td>
                   <td>{record.name}</td>
@@ -204,6 +269,6 @@ function IncomeQueryForm() {
       )}
     </div>
   );
-}
+};
 
 export default IncomeQueryForm;

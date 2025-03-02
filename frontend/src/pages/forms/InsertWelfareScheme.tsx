@@ -20,10 +20,11 @@ const InsertWelfareScheme: React.FC = () => {
         };
 
         try {
-            const response = await fetch("http://localhost:8000/welfare-schemes/insert", {
+            const response = await fetch("http://localhost:8000/welfare-schemes/", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
+                    "Authorization": `Bearer ${localStorage.getItem("token")}`,
                 },
                 body: JSON.stringify(requestBody),
             });
