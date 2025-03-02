@@ -124,13 +124,13 @@ Content-Type: application/json
 #   "password": "OjasIsGod"
 # }
 
-### Test: Get Updated Taxes Endpoint
+## Test: Get Updated Taxes Endpoint
 # GET http://localhost:8000/update-taxes/get
 # Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBZG1pbkBwYW5jaGF5YXQuY29tIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzQwOTIzMTM3fQ.Y5L5k4-Onmgh4ZEhaTOJp9fZkex37sFyppX5OWPE9cI
 # ### Test Update Taxes Endpoint
 # POST http://localhost:8000/update-taxes/
 # Content-Type: application/json
-# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBZG1pbkBwYW5jaGF5YXQuY29tIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzQwOTIzMTM3fQ.Y5L5k4-Onmgh4ZEhaTOJp9fZkex37sFyppX5OWPE9cI
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxQHBhbmNoYXlhdC5jb20iLCJyb2xlIjoicHJhZGhhbiIsImV4cCI6MTc0MDk1MzA0MX0.WJx9d472ieF2NSy721JPq7a-L2BJMONK4B7ED8Ovc_8
 
 ### Test: Get Citizen Details
 # GET http://localhost:8000/update-citizen/get/5
@@ -377,12 +377,12 @@ Content-Type: application/json
 # Content-Type: application/json
 
 # {
-#   "gender": "",
+#   "gender": "All",
 #   "educational_level": "All",
 #   "dob_min": "1980-01-01",
-#   "dob_max": "2000-12-31",
-#   "income_min": 10000,
-#   "income_max": 800000
+#   "dob_max": "2025-12-31",
+#   "income_min": 1000,
+#   "income_max": 8000000
 # }
 
 # POST http://127.0.0.1:8000/welfare/vaccines

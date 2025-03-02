@@ -7,6 +7,7 @@ from utils import fetch_env_data_from_api
 from routers.posts.dependencies import get_current_user
 
 
+
 router = APIRouter(prefix="/get-today-env", tags=["Environmental Data"])
 
 

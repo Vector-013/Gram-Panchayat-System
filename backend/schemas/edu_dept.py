@@ -15,7 +15,7 @@ class EduDeptQuery(BaseModel):
 
     @field_validator("gender")
     def validate_gender(cls, v):
-        allowed = {"Male", "Female", "Other", ""}
+        allowed = {"Male", "Female", "Other", "All"}
         if v not in allowed:
             raise ValueError("gender must be one of: Male, Female, Other, All")
         return v

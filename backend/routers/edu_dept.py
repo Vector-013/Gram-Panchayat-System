@@ -6,12 +6,24 @@ from typing import Optional, List
 from database import get_db
 
 from schemas import EduDeptQuery, EduDeptResult
+from sqlalchemy import text, bindparam
 
 router = APIRouter(prefix="/edu-dept", tags=["EduDept Query"])
 
 
 @router.post("/edu-query", response_model=List[EduDeptResult])
 def edu_dept_query(query: EduDeptQuery, db: Session = Depends(get_db)):
+
+    ## if educational leve is "All", I want that any educational level is accepted. instead of making if-else, i would like to use IN operator
+
+    edu_list = []
+    if query.educational_level == "All":
+        edu_list = ["Primary", "Secondary", "Tertiary"]
+    else:
+        edu_list = [query.educational_level]
+
+
+
     if query.gender != "All":
         sql = text(
             """
@@ -30,11 +42,12 @@ def edu_dept_query(query: EduDeptQuery, db: Session = Depends(get_db)):
             FROM citizens c
             JOIN household_income hi ON c.household_id = hi.household_id
             WHERE c.gender = :gender
-            AND c.educational_qualification = :educational_level
+            AND c.educational_qualification IN :edu_list
             AND c.dob BETWEEN :dob_min AND :dob_max
             AND hi.total_income BETWEEN :income_min AND :income_max
-        """
-        )
+            """
+        ).bindparams(bindparam("edu_list", expanding=True))
+
     else:
         sql = text(
             """
@@ -52,14 +65,16 @@ def edu_dept_query(query: EduDeptQuery, db: Session = Depends(get_db)):
                 hi.total_income
             FROM citizens c
             JOIN household_income hi ON c.household_id = hi.household_id
-            WHERE c.educational_qualification = :educational_level
+            WHERE c.educational_qualification IN :edu_list
             AND c.dob BETWEEN :dob_min AND :dob_max
             AND hi.total_income BETWEEN :income_min AND :income_max
-        """
-        )
+            """
+        ).bindparams(bindparam("edu_list", expanding=True))
+
     params = {
         "gender": query.gender,
         "educational_level": query.educational_level,
+        "edu_list": edu_list,
         "dob_min": query.dob_min,
         "dob_max": query.dob_max,
         "income_min": query.income_min,
