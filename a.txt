@@ -30,8 +30,8 @@
          28 | gril6         | Female | 2024-01-01 | Primary                   |        |            1 | 28@panchayat.com | $2b$12$Wh5iZ5YXj1H3CMqjgEHy0exFFIdEC5le04hAulHSF9LK6FAFBwSPa
 (28 rows)
 
- household_id |           address            
---------------+------------------------------
+ household_id |            address            
+--------------+-------------------------------
             1 | 12, Main Bazaar, Phulera
             2 | 34, Station Road, Phulera
             3 | 56, Gandhi Chowk, Phulera
@@ -52,28 +52,34 @@
            18 | 67, Shivaji Nagar, Phulera
            19 | 89, Patel Nagar, Phulera
            20 | 101, Subhash Marg, Phulera
-(20 rows)
+           21 | 123 Main Street, Example City
+           22 | 12, Main Building
+(22 rows)
 
- land_id | area_acres | crop_type | citizen_id | weight | year_recorded 
----------+------------+-----------+------------+--------+---------------
-       1 |        2.5 | Wheat     |          1 |  12.50 |          2001
-       2 |        3.0 | Rice      |          3 |  25.30 |          1998
-       3 |        1.2 | Cotton    |          5 |  18.00 |          2010
-       4 |        4.0 | Sugarcane |          7 |  30.70 |          2015
-       5 |        3.5 | Maize     |          9 |  22.90 |          2020
-       6 |        2.5 | Wheat     |          1 |  40.50 |          1995
-       7 |        1.8 | Barley    |          1 |  15.20 |          2005
-       8 |        3.0 | Rice      |          3 |  33.80 |          2012
-       9 |        1.2 | Cotton    |          5 |  27.10 |          2018
-      10 |        4.0 | Sugarcane |          7 |  19.40 |          1992
-      11 |        3.5 | Maize     |          9 |  50.00 |          2023
-      12 |        2.5 | Wheat     |          2 |  28.60 |          2008
-      13 |        3.0 | Rice      |          2 |  35.20 |          2019
-      14 |        1.5 | Maize     |          4 |  41.30 |          2016
-      15 |        2.0 | Barley    |          4 |  14.70 |          2011
-      16 |        2.5 | Sugarcane |         10 |  37.90 |          2003
-      17 |        2.5 | Wheat     |         21 |  21.50 |          1999
-(17 rows)
+ land_id | area_acres | crop_type | citizen_id | weight  | year_recorded 
+---------+------------+-----------+------------+---------+---------------
+       1 |        2.5 | Wheat     |          1 |   12.50 |          2001
+       2 |        3.0 | Rice      |          3 |   25.30 |          1998
+       3 |        1.2 | Cotton    |          5 |   18.00 |          2010
+       4 |        4.0 | Sugarcane |          7 |   30.70 |          2015
+       5 |        3.5 | Maize     |          9 |   22.90 |          2020
+       6 |        2.5 | Wheat     |          1 |   40.50 |          1995
+       7 |        1.8 | Barley    |          1 |   15.20 |          2005
+       8 |        3.0 | Rice      |          3 |   33.80 |          2012
+       9 |        1.2 | Cotton    |          5 |   27.10 |          2018
+      10 |        4.0 | Sugarcane |          7 |   19.40 |          1992
+      11 |        3.5 | Maize     |          9 |   50.00 |          2023
+      12 |        2.5 | Wheat     |          2 |   28.60 |          2008
+      13 |        3.0 | Rice      |          2 |   35.20 |          2019
+      14 |        1.5 | Maize     |          4 |   41.30 |          2016
+      15 |        2.0 | Barley    |          4 |   14.70 |          2011
+      16 |        2.5 | Sugarcane |         10 |   37.90 |          2003
+      17 |        2.5 | Wheat     |         21 |   21.50 |          1999
+      18 |        5.2 | Wheat     |          9 | 1200.50 |          2024
+      19 |        5.2 | Wheat     |          9 | 1200.50 |          2024
+      21 |        5.2 | Wheat     |          9 | 1200.50 |          2024
+      22 |        2.5 | Rice      |          1 |  100.00 |          2025
+(21 rows)
 
  employee_id |   role    | citizen_id 
 -------------+-----------+------------
@@ -87,7 +93,10 @@
            8 | Member    |          6
            9 | Clerk     |          8
           10 | Treasurer |         10
-(10 rows)
+          11 | Secretary |         17
+          12 | Member    |         18
+          13 | Member    |          3
+(13 rows)
 
  asset_id |     type      |        location         | installation_date |   value   
 ----------+---------------+-------------------------+-------------------+-----------
@@ -101,7 +110,8 @@
        10 | Library       | Subhash Marg, Phulera   | 2020-11-05        | 200000.00
         8 | Road          | Gandhi Chowk, Phulera   | 2021-09-30        | 150000.00
         7 | Water Pump    | Station Road, Phulera   | 2022-05-10        | 150000.00
-(10 rows)
+       11 | Library       | Main Bazaar, Phulera    | 2023-06-15        |   3500.75
+(11 rows)
 
  scheme_id |             name             |                      description                      
 -----------+------------------------------+-------------------------------------------------------
@@ -115,7 +125,8 @@
          8 | MGNREGA                      | 100-day employment for rural workers
          9 | Indira Gandhi Pension Yojana | Financial support for senior citizens
         10 | Mahila Samridhi Yojana       | Self-help groups and financial aid for women
-(10 rows)
+        11 | PrawnHub                     | National employment guarantee scheme.
+(11 rows)
 
  citizen_id | scheme_id | enrollment_date 
 ------------+-----------+-----------------
@@ -141,19 +152,19 @@
              11 |         11 | Covid-19         | 2021-05-10
 (11 rows)
 
- medical_id | citizen_id | health_status | medical_condition 
-------------+------------+---------------+-------------------
-          1 |          1 | Good          | None
-          2 |          2 | Fair          | Diabetes
-          3 |          3 | Poor          | Hypertension
-          4 |          4 | Good          | None
-          5 |          5 | Fair          | Asthma
-          6 |          1 | Good          | None
-          7 |          2 | Fair          | Diabetes
-          8 |          3 | Poor          | Hypertension
-          9 |          4 | Good          | None
-         10 |          5 | Fair          | Asthma
-         11 |         11 | Good          | None
+ medical_id | citizen_id | health_status | medical_condition | date_recorded 
+------------+------------+---------------+-------------------+---------------
+          1 |          1 | Good          | None              | 
+          2 |          2 | Fair          | Diabetes          | 
+          3 |          3 | Poor          | Hypertension      | 
+          4 |          4 | Good          | None              | 
+          5 |          5 | Fair          | Asthma            | 
+          6 |          1 | Good          | None              | 
+          7 |          2 | Fair          | Diabetes          | 
+          8 |          3 | Poor          | Hypertension      | 
+          9 |          4 | Good          | None              | 
+         10 |          5 | Fair          | Asthma            | 
+         11 |         11 | Good          | None              | 
 (11 rows)
 
  tax_id |     type     | amount | payment_status | citizen_id |    date    
