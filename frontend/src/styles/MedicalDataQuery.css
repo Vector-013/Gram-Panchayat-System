@@ -1,0 +1,164 @@
+/* Container Styling */
+#medical-query-container {
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    overflow: auto;
+}
+
+/* Title */
+.medical-query-title {
+    color: #333;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.back-button {
+    background-color: #007bff;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.back-button:hover {
+    background-color: #0056b3;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Error Message */
+.medical-query-error {
+    color: red;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+/* Form Styling */
+.medical-query-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.medical-query-label {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.medical-query-input {
+    width: 80%;
+    padding: 8px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.medical-query-range {
+    width: 80%;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.medical-query-input-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.medical-query-group{
+    display: flex;
+    justify-content: space-evenly;
+    width: 90%;
+}
+
+.medical-query-subgroup{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 45%;
+}
+
+.medical-query-separator {
+    margin: 0 10px;
+    font-style: italic;
+}
+
+/* Submit Button */
+.medical-query-submit {
+    background-color: #007bff;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background-color 0.3s;
+}
+
+.medical-query-submit:hover {
+    background-color: #0056b3;
+}
+
+/* Table Styling */
+.medical-records-container {
+    margin-top: 20px;
+    overflow-y: auto;
+    height: 400px;
+}
+
+.medical-records-title {
+    color: #333;
+}
+
+.medical-records-table {
+    width: 100%;
+    overflow-y: auto;
+    max-height: 500px;
+    border-collapse: collapse;
+    background-color: white;
+}
+
+.medical-records-table th, .medical-records-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.medical-records-table th {
+    background-color: #007bff;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.medical-records-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.medical-records-table tr:hover {
+    background-color: #d6eaff;
+}
+.no-data{
+    text-align: center;
+}

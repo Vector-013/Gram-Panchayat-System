@@ -14,7 +14,7 @@ const WelfareModal: React.FC = () => {
             <div className="cardHolders">
                 <div className="row">
                     <div className="col">
-                        <RecordCard title="Health Record" to_link="land-query" onRedirect={() => alert("Redirecting to Landlord Record")} />
+                        <RecordCard title="Health Record" to_link="health-query" onRedirect={() => alert("Redirecting to Landlord Record")} />
                     </div>
                     <div className="col">
                         <RecordCard title="Vaccine Record" to_link="vaccine" onRedirect={() => alert("Redirecting to Medical Record")} />
@@ -29,7 +29,7 @@ const WelfareModal: React.FC = () => {
                         <RecordCard title="Single Girl Child" to_link="sgc" onRedirect={() => alert("Redirecting to Landlord Record")} />
                     </div>
                     <div className="col">
-                        <RecordCard title="MNREGA" to_link="asset-query" onRedirect={() => alert("Redirecting to Medical Record")} />
+                        <RecordCard title="MGNREGA" to_link="mgnrega" onRedirect={() => alert("Redirecting to Medical Record")} />
                     </div>
                 </div>
                 <div className="row justify-content-center">

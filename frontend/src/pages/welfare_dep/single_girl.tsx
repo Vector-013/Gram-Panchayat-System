@@ -27,7 +27,7 @@ function SchemeQueryForm() {
                 age_max: ageMax,
             };
             
-            const response = await fetch("http://localhost:8000/scheme-query", {
+            const response = await fetch("http://localhost:8000/api/edu/single-girl-child", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(requestBody),

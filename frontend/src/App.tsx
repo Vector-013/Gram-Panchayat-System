@@ -44,6 +44,9 @@ import WelfareDashboard from './pages/welfare_dep/WelfareDashboard';
 import WelfareModal from './pages/welfare_dep/WelfareModal';
 import WelfareSGCModal from './pages/welfare_dep/WelfareSGCModal';
 import WelfareEduModal from './pages/welfare_dep/WelfareEduModal';
+import MedicalDataQueryForm from './pages/welfare_dep/welfare_health';
+import VaccineDataModal from './pages/welfare_dep/vacc_parent';
+import MGNREGAQuery from './pages/welfare_dep/mgnrega';
 
 import EmployeeDashboard from './pages/employee/EmployeeDashboard';
 import EmployeeModal from './pages/employee/EmployeeModal';
@@ -125,6 +128,9 @@ const App: React.FC = () => {
             <Route index element={<WelfareModal />} />
             <Route path ="sgc" element={<WelfareSGCModal />} />
             <Route path="edu" element={<WelfareEduModal />} />
+            <Route path="health-query" element={<MedicalDataQueryForm />} />
+            <Route path="vaccine" element={<VaccineDataModal />} />
+            <Route path="mgnrega" element={<MGNREGAQuery />} />
         </Route>
         <Route path="/census-dashboard" element={<ProtectedRoute element={<CensusDashboard />} />} >
             <Route index element={<CensusModal />} />
