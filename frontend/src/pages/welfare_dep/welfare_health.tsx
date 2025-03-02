@@ -45,7 +45,7 @@ const MedicalDataModal: React.FC = () => {
 
       console.log(requestBody);
       const response = await fetch(
-        "http://localhost:8000/welfare/medical-data/",
+        "http://localhost:8000/welfare/medical-data",
         {
           method: "POST",
           headers: {
@@ -57,7 +57,11 @@ const MedicalDataModal: React.FC = () => {
       );
 
       if (!response.ok) {
-        throw new Error("Submission failed");
+        if (response.status === 400) {
+          throw new Error("Health condition and medical status do not match");
+        } else {
+          throw new Error("Submission failed");
+        }
       }
 
       const data = await response.json();
@@ -72,6 +76,7 @@ const MedicalDataModal: React.FC = () => {
       }));
       setRecords(transformedData);
       setFilteredRecords(transformedData);
+      console.log(transformedData);
     } catch (err: any) {
       setError(err.message);
     }
@@ -158,9 +163,14 @@ const MedicalDataModal: React.FC = () => {
               onChange={(e) => setMedicalCondition(e.target.value)}
             >
               <option value="Hypertension">Hypertension</option>
-              <option value="Blood Pressure">Blood Pressure</option>
+              <option value="Low Blood Pressure">Low Blood Pressure</option>
               <option value="Diabetes">Diabetes</option>
-              <option value="None">None</option>
+              <option value="Arthritis">Arthritis</option>
+              <option value="Asthma">Asthma</option>
+              <option value="Kidney Disease">Kidney Disease</option>
+              <option value="Liver Disease">Liver Disease</option>
+              <option value="Allergies">Allergies</option>
+              <option value="Healthy">Healthy</option>
             </select>
           </div>
 
@@ -174,7 +184,8 @@ const MedicalDataModal: React.FC = () => {
               <option value="Fair">Fair</option>
               <option value="Poor">Poor</option>
               <option value="Good">Good</option>
-              <option value="Needs Diagnoses">Needs Diagnoses</option>
+              <option value="Critical">Critical</option>
+              <option value="Excellent">Excellent</option>
             </select>
           </div>
         </div>

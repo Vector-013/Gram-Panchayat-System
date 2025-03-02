@@ -465,18 +465,18 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJJVERlcHRAc
 # }
 
 ## Medical Data Query - All Filters Provided
-# POST http://localhost:8000/welfare/medical-data/
-# Content-Type: application/json
-# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxQHBhbmNoYXlhdC5jb20iLCJyb2xlIjoicHJhZGhhbiIsImV4cCI6MTc0MDg4MDE5Mn0.DUZz-sER0CLGW13Qwr8LyekP4mtcViEUbHMhRYIIlLU
+POST http://localhost:8000/welfare/medical-data
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxQHBhbmNoYXlhdC5jb20iLCJyb2xlIjoicHJhZGhhbiIsImV4cCI6MTc0MDg4MDE5Mn0.DUZz-sER0CLGW13Qwr8LyekP4mtcViEUbHMhRYIIlLU
 
-# {
-#   "min_age": 30,
-#   "max_age": 90,
-#   "min_income": 2000,
-#   "max_income": 500000,
-#   "medical_condition": "Diabetes",
-#   "health_status": "Fair"
-# }
+{
+  "min_age": 30,
+  "max_age": 90,
+  "min_income": 2000,
+  "max_income": 500000,
+  "medical_condition": "Diabetes",
+  "health_status": "Fair"
+}
 
 # # Fetch Eligible MGNREGA Data
 # POST http://localhost:8000/welfare/mgnrega/
