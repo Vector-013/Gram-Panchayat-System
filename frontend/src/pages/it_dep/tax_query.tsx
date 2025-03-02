@@ -121,21 +121,86 @@ function TaxQueryForm() {
             </select>
           </div>
 
-          <label className="tax-query-label" htmlFor="id">
-            ID:
-          </label>
-          <input
-            className="tax-query-input"
-            type="text"
-            id="id"
-            name="id"
-            required
-            value={id}
-            onChange={(e) => setId(e.target.value)}
-          />
-
-          <input className="tax-query-submit" type="submit" value="Submit" />
+          <div className="tax-query-subgroup">
+            <label className="tax-query-label" htmlFor="id">
+              ID:
+            </label>
+            <input
+              className="tax-query-input"
+              type="text"
+              id="id"
+              name="id"
+              required
+              value={id}
+              onChange={(e) => setId(e.target.value)}
+            />
+          </div>
         </div>
+        <div className="tax-query-range">
+          <label className="tax-query-label">Date Range:</label>
+          <div className="tax-query-input-group">
+            <label className="tax-query-label-small" htmlFor="start_date">
+              From:
+            </label>
+            <input
+              className="tax-query-input"
+              type="date"
+              id="start_date"
+              name="start_date"
+              value={startDate}
+              onChange={(e) => setStartDate(e.target.value)}
+            />
+            <span className="tax-query-separator"></span>
+
+            <label className="tax-query-label-small" htmlFor="end_date">
+              To:
+            </label>
+            <input
+              className="tax-query-input"
+              type="date"
+              id="end_date"
+              name="end_date"
+              value={endDate}
+              onChange={(e) => setEndDate(e.target.value)}
+            />
+          </div>
+        </div>
+
+        <div className="tax-query-range">
+          <label className="tax-query-label">Amount Range:</label>
+          <div className="tax-query-input-group">
+            <label className="tax-query-label-small" htmlFor="min_amount">
+              Min:
+            </label>
+            <input
+              className="tax-query-input"
+              type="number"
+              id="min_amount"
+              name="min_amount"
+              min="0"
+              step="100"
+              value={minAmount}
+              onChange={(e) => setMinAmount(parseFloat(e.target.value))}
+            />
+
+            <span className="tax-query-separator"></span>
+            <label className="tax-query-label-small" htmlFor="max_amount">
+              Max:
+            </label>
+            <input
+              className="tax-query-input"
+              type="number"
+              id="max_amount"
+              name="max_amount"
+              min="0"
+              step="100"
+              value={maxAmount}
+              onChange={(e) => setMaxAmount(parseFloat(e.target.value))}
+            />
+          </div>
+        </div>
+
+        <input className="tax-query-submit" type="submit" value="Submit" />
       </form>
 
       {/* Filters Section */}

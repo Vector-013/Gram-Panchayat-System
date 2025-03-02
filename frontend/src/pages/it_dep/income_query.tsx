@@ -115,23 +115,99 @@ function IncomeQueryForm() {
           <div className="gender-subquery">
             <label className="income-query-label">Individual Income:</label>
             <div className="income-query-input-group">
-              <input className="income-query-input" type="number" value={incomeMin} onChange={(e) => setIncomeMin(parseFloat(e.target.value))} />
+              <input
+                className="income-query-input"
+                type="number"
+                value={incomeMin}
+                onChange={(e) => setIncomeMin(parseFloat(e.target.value))}
+              />
               <span className="income-query-separator">to</span>
-              <input className="income-query-input" type="number" value={incomeMax} onChange={(e) => setIncomeMax(parseFloat(e.target.value))} />
+              <input
+                className="income-query-input"
+                type="number"
+                value={incomeMax}
+                onChange={(e) => setIncomeMax(parseFloat(e.target.value))}
+              />
             </div>
           </div>
 
           <div className="gender-subquery">
             <label className="income-query-label">Household Income:</label>
             <div className="income-query-input-group">
-              <input className="income-query-input" type="number" value={householdIncomeMin} onChange={(e) => setHouseholdIncomeMin(parseFloat(e.target.value))} />
+              <input
+                className="income-query-input"
+                type="number"
+                value={householdIncomeMin}
+                onChange={(e) =>
+                  setHouseholdIncomeMin(parseFloat(e.target.value))
+                }
+              />
               <span className="income-query-separator">to</span>
-              <input className="income-query-input" type="number" value={householdIncomeMax} onChange={(e) => setHouseholdIncomeMax(parseFloat(e.target.value))} />
+              <input
+                className="income-query-input"
+                type="number"
+                value={householdIncomeMax}
+                onChange={(e) =>
+                  setHouseholdIncomeMax(parseFloat(e.target.value))
+                }
+              />
             </div>
           </div>
 
-          <input className="income-query-submit" type="submit" value="Submit" />
+          <div className="gender-subquery">
+            <label className="income-query-label">Age Range:</label>
+            <div className="income-query-input-group">
+              <input
+                className="income-query-input"
+                type="number"
+                value={ageMin}
+                onChange={(e) => setAgeMin(parseInt(e.target.value))}
+              />
+              <span className="income-query-separator">to</span>
+              <input
+                className="income-query-input"
+                type="number"
+                value={ageMax}
+                onChange={(e) => setAgeMax(parseInt(e.target.value))}
+              />
+            </div>
+          </div>
         </div>
+
+        <div className="gender-query">
+          <div className="gender-subquery">
+            <label className="income-query-label">
+              Educational Qualification:
+            </label>
+            <select
+              className="income-query-input"
+              value={education}
+              onChange={(e) => setEducation(e.target.value)}
+            >
+              <option value="">Select Qualification</option>
+              <option value="Primary">Primary</option>
+              <option value="Secondary">Secondary</option>
+              <option value="Higher Secondary">Higher Secondary</option>
+              <option value="Graduate">Graduate</option>
+              <option value="Postgraduate">Postgraduate</option>
+            </select>
+          </div>
+
+          <div className="gender-subquery">
+            <label className="income-query-label">Gender:</label>
+            <select
+              className="income-query-input"
+              value={gender}
+              onChange={(e) => setGender(e.target.value)}
+            >
+              <option value="">Select Gender</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+        </div>
+        <input className="tax-query-submit" type="submit" value="Submit" />
       </form>
 
       {/* Filters Section */}
