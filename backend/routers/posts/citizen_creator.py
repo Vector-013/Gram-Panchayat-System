@@ -18,7 +18,7 @@ def create_citizen(
     user: dict = Depends(get_current_user),
 ):
     # Only allow pradhan or employee to create citizen records
-    if user["role"] not in {"pradhan", "employee"}:
+    if user["role"] not in {"pradhan", "employee", "admin"}:
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
             detail="Not authorized to create citizens",

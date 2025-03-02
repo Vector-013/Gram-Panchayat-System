@@ -21,7 +21,7 @@ def query_land_data(
     if user["role"] not in {"pradhan", "employee", "admin", "it_dept"}:
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
-            detail="Only admins can fetch citizen details",
+            detail="Only admin/pradhan/employee/it_dept can fetch land details",
         )
 
     if query.role == "citizen":

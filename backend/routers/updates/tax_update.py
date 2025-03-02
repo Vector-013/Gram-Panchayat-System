@@ -3,12 +3,19 @@ from sqlalchemy.orm import Session
 from sqlalchemy import text
 from datetime import date
 from database import get_db
+from routers.posts.dependencies import get_current_user
 
 router = APIRouter(prefix="/update-taxes", tags=["Tax Update"])
 
 
 @router.post("/", response_model=dict)
-def update_taxes(db: Session = Depends(get_db)):
+def update_taxes(db: Session = Depends(get_db), user=Depends(get_current_user)):
+    if user["role"] not in {"pradhan", "employee", "admin"}:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Only admin/pradhan/employee can update taxes",
+        )
+
     current_year = date.today().year
     # Set date to December 31st of the current year
     last_day_of_year = f"{current_year}-12-31"
@@ -83,7 +90,12 @@ def update_taxes(db: Session = Depends(get_db)):
 
 
 @router.get("/get", response_model=dict)
-def get_updated_taxes(db: Session = Depends(get_db)):
+def get_updated_taxes(db: Session = Depends(get_db), user=Depends(get_current_user)):
+    if user["role"] not in {"pradhan", "employee", "admin"}:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Only admin/pradhan/employee can fetch updated taxes",
+        )
     current_year = date.today().year
     try:
         sql_select = text(
