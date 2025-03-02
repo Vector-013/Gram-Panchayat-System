@@ -15,13 +15,13 @@
 # Authorization: Bearer <any_valid_token>
 # "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBZG1pbiIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTc0MDU5MjczNH0.5wL0G2cgGKR9GfemtoSehcYdKIPJJ-Ggwfr-ZX9IvBY"
 
-# POST http://localhost:8000/login
-# Content-Type: application/json
+POST http://localhost:8000/login
+Content-Type: application/json
 
-# {
-#   "email": "Admin@panchayat.com",
-#   "password": "OjasMyBoy"
-# }
+{
+  "email": "Admin@panchayat.com",
+  "password": "OjasMyBoy"
+}
 
 
 #####################################################    POSTS   #####################################################
@@ -189,37 +189,37 @@
 # }
 
 ### Test: Create Marriage Record (Valid Request)
-POST http://localhost:8000/marriage/
-Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBZG1pbkBwYW5jaGF5YXQuY29tIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzQwOTY5MjI0fQ.xTZ--dHt_2zPjpx5nrMJqKsYB04poB7-w2-dBsM0ROE
+# POST http://localhost:8000/marriage/
+# Content-Type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBZG1pbkBwYW5jaGF5YXQuY29tIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzQwOTY5MjI0fQ.xTZ--dHt_2zPjpx5nrMJqKsYB04poB7-w2-dBsM0ROE
 
-{
-  "husband_id": 17,
-  "wife_id": 15,
-  "marriage_date": "2025-03-05"
-}
+# {
+#   "husband_id": 17,
+#   "wife_id": 15,
+#   "marriage_date": "2025-03-05"
+# }
 
-### Test: Create Marriage Record (Already Married)
-POST http://localhost:8000/marriage/
-Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBZG1pbkBwYW5jaGF5YXQuY29tIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzQwOTY5MjI0fQ.xTZ--dHt_2zPjpx5nrMJqKsYB04poB7-w2-dBsM0ROE
+# ### Test: Create Marriage Record (Already Married)
+# POST http://localhost:8000/marriage/
+# Content-Type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBZG1pbkBwYW5jaGF5YXQuY29tIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzQwOTY5MjI0fQ.xTZ--dHt_2zPjpx5nrMJqKsYB04poB7-w2-dBsM0ROE
 
-{
-  "husband_id": 12,
-  "wife_id": 15,
-  "marriage_date": "2025-03-05"
-}
+# {
+#   "husband_id": 12,
+#   "wife_id": 15,
+#   "marriage_date": "2025-03-05"
+# }
 
-### Test: Process Death Event
-POST http://localhost:8000/death-event/
-Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBZG1pbkBwYW5jaGF5YXQuY29tIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzQwOTY5MjI0fQ.xTZ--dHt_2zPjpx5nrMJqKsYB04poB7-w2-dBsM0ROE
+# ### Test: Process Death Event
+# POST http://localhost:8000/death-event/
+# Content-Type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBZG1pbkBwYW5jaGF5YXQuY29tIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzQwOTY5MjI0fQ.xTZ--dHt_2zPjpx5nrMJqKsYB04poB7-w2-dBsM0ROE
 
-{
-  "citizen_id": 10,
-  "date": "2025-03-02",
-  "cause": "Natural Causes"
-}
+# {
+#   "citizen_id": 10,
+#   "date": "2025-03-02",
+#   "cause": "Natural Causes"
+# }
 
 
 
@@ -454,29 +454,30 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJJVERlcHRAc
 #   "income_max": 8000000
 # }
 
-# POST http://127.0.0.1:8000/welfare/vaccines
-# Content-Type: application/json
-
-# {
-#   "vaccine_type": "Covid-19",
-#   "start_date": "2020-01-01",
-#   "end_date": "2023-12-31",
-#   "parent_qualification": "Primary"
-# }
-
-## Medical Data Query - All Filters Provided
-POST http://localhost:8000/welfare/medical-data
+POST http://127.0.0.1:8000/welfare/vaccines
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBZG1pbkBwYW5jaGF5YXQuY29tIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzQwOTgxMjQ1fQ.3pJVvNUMc-nUiUyZmDoKxQc9CHx6zuC-Aa4WFdPQ4Js
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxQHBhbmNoYXlhdC5jb20iLCJyb2xlIjoicHJhZGhhbiIsImV4cCI6MTc0MDg4MDE5Mn0.DUZz-sER0CLGW13Qwr8LyekP4mtcViEUbHMhRYIIlLU
 
 {
-  "min_age": 30,
-  "max_age": 90,
-  "min_income": 2000,
-  "max_income": 500000,
-  "medical_condition": "Diabetes",
-  "health_status": "Fair"
+  "vaccine_type": "Covid-19",
+  "start_date": "2000-01-01",
+  "end_date": "2025-12-31",
+  "parent_qualification": ""
 }
+
+## Medical Data Query - All Filters Provided
+# POST http://localhost:8000/welfare/medical-data
+# Content-Type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxQHBhbmNoYXlhdC5jb20iLCJyb2xlIjoicHJhZGhhbiIsImV4cCI6MTc0MDg4MDE5Mn0.DUZz-sER0CLGW13Qwr8LyekP4mtcViEUbHMhRYIIlLU
+
+# {
+#   "min_age": 30,
+#   "max_age": 90,
+#   "min_income": 2000,
+#   "max_income": 500000,
+#   "medical_condition": "Diabetes",
+#   "health_status": "Fair"
+# }
 
 # # Fetch Eligible MGNREGA Data
 # POST http://localhost:8000/welfare/mgnrega/
