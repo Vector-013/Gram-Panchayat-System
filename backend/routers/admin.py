@@ -115,3 +115,34 @@ def allocate_budget(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"Database error: {str(e)}",
         )
+
+from pydantic import BaseModel, Field
+
+class RawSQLQuery(BaseModel):
+    query: str = Field(..., description="The raw SQL query to execute")
+
+
+
+@router.post("/super-box", response_model=dict)
+def execute_raw_sql(
+    raw: RawSQLQuery,
+    db: Session = Depends(get_db),
+    current_user: dict = Depends(get_current_user),
+):
+    # Only allow admin to use this endpoint.
+    if current_user.get("role") != "admin":
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Not authorized to access this resource.",
+        )
+    try:
+        result = db.execute(text(raw.query))
+        try:
+            # Try fetching rows if the query returns data.
+            rows = result.fetchall()
+            results_list = [dict(row._mapping) for row in rows]
+        except Exception:
+            results_list = []  # Query didn't return rows.
+        return {"result": results_list}
+    except Exception as e:
+        return {"error": str(e)}
