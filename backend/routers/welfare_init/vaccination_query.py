@@ -15,7 +15,7 @@ def child_vaccine_query(
     user: dict = Depends(get_current_user),
 ):
 
-    if user["role"] not in {"pradhan", "employee", "admin"}:
+    if user["role"] not in {"pradhan", "employee", "admin", "welfare"}:
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
             detail="You are not authorized to access this resource.",
