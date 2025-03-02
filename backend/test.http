@@ -218,13 +218,13 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBZG1pbkBwY
 # }
 
 # ### Execute a Raw SQL Query (Admin Super Box)
-# POST http://localhost:8000/admin/super-box/
-# Content-Type: application/json
-# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBZG1pbkBwYW5jaGF5YXQuY29tIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzQwOTYzMDU1fQ.TA4DOf13Jclc8pbYiU96P2lEWAHTbwDzg61IJOrEmv8
+POST http://localhost:8000/admin/super-box/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBZG1pbkBwYW5jaGF5YXQuY29tIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzQwOTYzMDU1fQ.TA4DOf13Jclc8pbYiU96P2lEWAHTbwDzg61IJOrEmv8
 
-# {
-#   "query": "SELECT * FROM citizens LIMIT 5"
-# }
+{
+  "query": "SELECT * FROM citizens LIMIT 5"
+}
 
 
 #####################################################    IT DEPT   #####################################################

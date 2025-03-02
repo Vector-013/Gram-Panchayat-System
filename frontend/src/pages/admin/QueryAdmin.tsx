@@ -20,7 +20,7 @@ const QueryAdmin: React.FC = () => {
         setColumns([]);
 
         try {
-            const response = await fetch("http://localhost:8000/admin/query", {
+            const response = await fetch("http://localhost:8000/admin/super-box/", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -34,7 +34,10 @@ const QueryAdmin: React.FC = () => {
                 throw new Error(errorData.detail || "Query execution failed");
             }
 
-            const data = await response.json();
+            const res = await response.json();
+            const data = res.result;
+
+            console.log(data);
 
             if (data.length > 0) {
                 setColumns(Object.keys(data[0])); // Extract column names dynamically
@@ -61,7 +64,7 @@ const QueryAdmin: React.FC = () => {
                     className="query-admin-input"
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
-                    placeholder="SELECT * FROM citizens;"
+                    placeholder="select household_id,sum(income) from citizens group by household_id;"
                     required
                 />
                 <button className="query-admin-submit" type="submit" disabled={loading}>

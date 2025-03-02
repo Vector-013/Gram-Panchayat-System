@@ -2,6 +2,7 @@ from fastapi import APIRouter, HTTPException, Depends, status
 from sqlalchemy.orm import Session
 from sqlalchemy import text
 from typing import Optional, List
+from routers.posts.dependencies import get_current_user
 
 from database import get_db
 from routers.posts.dependencies import get_current_user

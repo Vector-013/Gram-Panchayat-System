@@ -65,6 +65,8 @@
 .query-results-container {
     margin-top: 20px;
     overflow-x: auto;
+    overflow-y: auto;
+    max-height: 80%;
 }
 
 .query-results-table {
