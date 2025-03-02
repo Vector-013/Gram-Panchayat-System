@@ -15,8 +15,8 @@
 # Authorization: Bearer <any_valid_token>
 # "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBZG1pbiIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTc0MDU5MjczNH0.5wL0G2cgGKR9GfemtoSehcYdKIPJJ-Ggwfr-ZX9IvBY"
 
-# POST http://localhost:8000/login
-# Content-Type: application/json
+POST http://localhost:8000/login
+Content-Type: application/json
 
 {
   "email": "Admin@panchayat.com",
@@ -165,6 +165,29 @@
 #   "installation_date": "2025-03-02",
 #   "value": 500000
 # }
+
+### Test: Insert Medical Data
+POST http://localhost:8000/medical-data-insert/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBZG1pbkBwYW5jaGF5YXQuY29tIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzQwOTY5MjI0fQ.xTZ--dHt_2zPjpx5nrMJqKsYB04poB7-w2-dBsM0ROE
+
+{
+  "citizen_id": 5,
+  "health_status": "Excellent",
+  "medical_condition": "Healthy"
+}
+
+### Test: Update Flora Fauna
+POST http://localhost:8000/update-flora-fauna/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBZG1pbkBwYW5jaGF5YXQuY29tIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzQwOTY5MjI0fQ.xTZ--dHt_2zPjpx5nrMJqKsYB04poB7-w2-dBsM0ROE
+
+{
+  "f_id": 3,
+  "habitat": "Forest",
+  "count": 25
+}
+
 
 
 #####################################################    ADMIN   #####################################################

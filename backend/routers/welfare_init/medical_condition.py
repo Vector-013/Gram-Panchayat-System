@@ -71,8 +71,8 @@ def get_medical_data(
         filters.health_status
         and filters.health_status != "Good"
         and (
-            filters.medical_condition != "Asthma"
-            or filters.medical_condition != "Allergies"
+            filters.medical_condition == "Asthma"
+            or filters.medical_condition == "Allergies"
         )
     ):
         raise HTTPException(
@@ -84,8 +84,8 @@ def get_medical_data(
         filters.health_status
         and filters.health_status != "Fair"
         and (
-            filters.medical_condition != "Low Blood Pressure"
-            or filters.medical_condition != "Hypertension"
+            filters.medical_condition == "Low Blood Pressure"
+            or filters.medical_condition == "Hypertension"
         )
     ):
         raise HTTPException(
@@ -97,8 +97,8 @@ def get_medical_data(
         filters.health_status
         and filters.health_status != "Poor"
         and (
-            filters.medical_condition != "Diabetes"
-            or filters.medical_condition != "Arthritis"
+            filters.medical_condition == "Diabetes"
+            or filters.medical_condition == "Arthritis"
         )
     ):
         raise HTTPException(
@@ -110,8 +110,8 @@ def get_medical_data(
         filters.health_status
         and filters.health_status != "Critical"
         and (
-            filters.medical_condition != "Kidney Disease"
-            or filters.medical_condition != "Liver Disease"
+            filters.medical_condition == "Kidney Disease"
+            or filters.medical_condition == "Liver Disease"
         )
     ):
         raise HTTPException(

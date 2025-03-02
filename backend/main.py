@@ -28,6 +28,7 @@ from routers import (
     asset_management,
     update_citizen,
     create_environment,
+    medical_post,
 )
 
 app = FastAPI()
@@ -82,6 +83,7 @@ app.include_router(mgnrega)
 app.include_router(asset_management)
 app.include_router(update_citizen)
 app.include_router(create_environment)
+app.include_router(medical_post)
 
 # Start server
 if __name__ == "__main__":
