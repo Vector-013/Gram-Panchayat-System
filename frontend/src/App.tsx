@@ -53,6 +53,8 @@ import EmployeeModal from './pages/employee/EmployeeModal';
 import InsertModal from './pages/employee/InsertModal';
 import UpdateModal from './pages/employee/UpdateModal';
 
+import InsertBirth from './pages/forms/InsertBirth';
+
 import ITModal from './pages/it_dep/ITModal';
 import CensusModal from './pages/census_dep/CensusModal';
 import FinancialGraph from './pages/it_dep/analytics';

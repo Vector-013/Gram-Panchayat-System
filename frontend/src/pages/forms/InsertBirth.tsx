@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import "../../styles/InsertForm.css";
 
 const InsertBirth: React.FC = () => {
-    const [childId, setChildId] = useState<number | "">("");
+    const [childName, setChildName] = useState<number | "">("");
     const [motherId, setMotherId] = useState<number | "">("");
     const [fatherId, setFatherId] = useState<number | "">("");
-    const [birthDate, setBirthDate] = useState<string>("");
+    const [gender, setGender] = useState<string>("");
     const [password, setPassword] = useState<string>("");
     const [loading, setLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
@@ -18,16 +18,20 @@ const InsertBirth: React.FC = () => {
         setSuccess(null);
 
         const requestBody = {
-            child_id: childId === "" ? null : childId,
-            mother_id: motherId === "" ? null : motherId,
-            father_id: fatherId === "" ? null : fatherId,
-            birth_date: birthDate,
+            baby_name: childName,
+            mother_id: motherId,
+            father_id: fatherId,
+            gender,
+            password
         };
 
         try {
-            const response = await fetch("http://localhost:8000/api/birth/insert", {
+            const response = await fetch("http://localhost:8000/birth-event/", {
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
+                headers: { 
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${localStorage.getItem("token")}`
+                },
                 body: JSON.stringify(requestBody),
             });
 
@@ -36,10 +40,11 @@ const InsertBirth: React.FC = () => {
             }
 
             setSuccess("Birth record successfully added!");
-            setChildId("");
+            setChildName("");
             setMotherId("");
             setFatherId("");
-            setBirthDate("");
+            setGender("");
+            setPassword("");
         } catch (err: any) {
             setError(err.message);
         }
@@ -53,49 +58,54 @@ const InsertBirth: React.FC = () => {
             {success && <div className="insert-form-success">{success}</div>}
 
             <form onSubmit={handleSubmit} className="insert-form">
-                <label className="insert-form-label">Child ID:</label>
-                <input 
-                    type="number" 
-                    value={childId} 
-                    onChange={(e) => setChildId(e.target.value === "" ? "" : parseInt(e.target.value))} 
-                    className="insert-form-input" 
-                    required 
+                <label className="insert-form-label">Child Name:</label>
+                <input
+                    type="number"
+                    value={childName}
+                    onChange={(e) => setChildName(e.target.value === "" ? "" : parseInt(e.target.value))}
+                    className="insert-form-input"
+                    required
                 />
 
                 <label className="insert-form-label">Mother ID:</label>
-                <input 
-                    type="number" 
-                    value={motherId} 
-                    onChange={(e) => setMotherId(e.target.value === "" ? "" : parseInt(e.target.value))} 
-                    className="insert-form-input" 
-                    required 
+                <input
+                    type="number"
+                    value={motherId}
+                    onChange={(e) => setMotherId(e.target.value === "" ? "" : parseInt(e.target.value))}
+                    className="insert-form-input"
+                    required
                 />
 
                 <label className="insert-form-label">Father ID:</label>
-                <input 
-                    type="number" 
-                    value={fatherId} 
-                    onChange={(e) => setFatherId(e.target.value === "" ? "" : parseInt(e.target.value))} 
-                    className="insert-form-input" 
-                    required 
+                <input
+                    type="number"
+                    value={fatherId}
+                    onChange={(e) => setFatherId(e.target.value === "" ? "" : parseInt(e.target.value))}
+                    className="insert-form-input"
+                    required
                 />
 
-                <label className="insert-form-label">Birth Date:</label>
-                <input 
-                    type="date" 
-                    value={birthDate} 
-                    onChange={(e) => setBirthDate(e.target.value)} 
-                    className="insert-form-input" 
-                    required 
-                />
+                <label className="insert-form-label">Gender : </label>
+                <select
+                    value={gender}
+                    onChange={(e) => setGender(e.target.value)}
+                    className="insert-form-input"
+                    required
+                >
+                    <option value="">Select Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
 
-<label className="insert-form-label">Password:</label>
-                <input 
-                    type="password" 
-                    value={password} 
-                    onChange={(e) => setPassword(e.target.value)} 
-                    className="insert-form-input" 
-                    required 
+
+                <label className="insert-form-label">Password:</label>
+                <input
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    className="insert-form-input"
+                    required
                 />
 
 
