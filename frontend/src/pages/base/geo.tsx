@@ -18,7 +18,15 @@ const GeoPage: React.FC = () => {
     // Fetch geo features data (replace URL with actual API endpoint)
     const fetchGeoFeatures = async () => {
       try {
-        const response = await fetch("http://localhost:5000/geo");
+        const response = await fetch("http://localhost:5000/geo",
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": "Bearer " + localStorage.getItem("token"),
+            },
+          }
+        );
         const data: GeoFeature[] = await response.json();
         setGeoFeatures(data);
       } catch (error) {

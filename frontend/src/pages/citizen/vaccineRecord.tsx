@@ -29,7 +29,15 @@ const VaccinationRecords: React.FC = () => {
       setError("");
 
       try {
-        const response = await fetch("http://localhost:5000/vaccine_records");
+        const response = await fetch("http://localhost:5000/vaccine_records",
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": "Bearer " + localStorage.getItem("token"),
+            },
+          }
+        );
         const data: VaccineRecord[] = await response.json();
         setVaccineRecords(data);
       } catch (err) {

@@ -43,7 +43,15 @@ const CitizenHouseholdModal: React.FC = () => {
       setError("");
 
       try {
-        const response = await fetch(`http://localhost:8000/api/${citizenId}/fam-data`);
+        const response = await fetch(`http://localhost:8000/api/${citizenId}/fam-data`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": "Bearer " + localStorage.getItem("token"),
+            },
+          }
+        );
         const res = await response.json();
         const data: Citizen[] = res.family_members;
         const cloBday = res.closest_birthday;

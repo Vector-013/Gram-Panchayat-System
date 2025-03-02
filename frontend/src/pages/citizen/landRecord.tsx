@@ -31,7 +31,15 @@ const CitizenLandModal: React.FC = () => {
       setError("");
 
       try {
-        const response = await fetch(`http://localhost:8000/api/${citizenId}/fam-land`);
+        const response = await fetch(`http://localhost:8000/api/${citizenId}/fam-land`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": "Bearer " + localStorage.getItem("token"),
+            },
+          }
+        );
         const res: LandRecord[] = await response.json();
         const data = res.records;
         const total_personal_land = res.summary.total_person_land;
