@@ -29,6 +29,7 @@ from routers import (
     update_citizen,
     create_environment,
     medical_post,
+    census_env,
 )
 
 app = FastAPI()
@@ -84,6 +85,7 @@ app.include_router(asset_management)
 app.include_router(update_citizen)
 app.include_router(create_environment)
 app.include_router(medical_post)
+app.include_router(census_env)
 
 # Start server
 if __name__ == "__main__":

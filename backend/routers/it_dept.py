@@ -11,9 +11,13 @@ router = APIRouter(prefix="/it-dept", tags=["ITDept Query"])
 
 
 @router.post("/land-query", response_model=List[LandQueryResult])
-def query_land_data(query: LandQuery, db: Session = Depends(get_db), user: dict = Depends(get_current_user)):
+def query_land_data(
+    query: LandQuery,
+    db: Session = Depends(get_db),
+    user: dict = Depends(get_current_user),
+):
 
-    if user["role"] not in {"pradhan", "employee", "admin"}:
+    if user["role"] not in {"pradhan", "employee", "admin", "it_dept"}:
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
             detail="Only admins can fetch citizen details",
@@ -95,8 +99,18 @@ def query_land_data(query: LandQuery, db: Session = Depends(get_db), user: dict 
 
 
 @router.post("/asset-query", response_model=list)
-def asset_query(query: ITAssetQuery, db: Session = Depends(get_db)):
+def asset_query(
+    query: ITAssetQuery,
+    db: Session = Depends(get_db),
+    user: dict = Depends(get_current_user),
+):
     # Build the base SQL query with mandatory filter on asset value.
+
+    if user["role"] not in {"pradhan", "employee", "admin", "it_dept"}:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Only admins can fetch citizen details",
+        )
     base_sql = """
         SELECT 
             asset_id,
@@ -153,7 +167,17 @@ def asset_query(query: ITAssetQuery, db: Session = Depends(get_db)):
 
 
 @router.post("/taxes", response_model=dict)
-def tax_query(query: TaxQuery, db: Session = Depends(get_db)):
+def tax_query(
+    query: TaxQuery,
+    db: Session = Depends(get_db),
+    user: dict = Depends(get_current_user),
+):
+    if user["role"] not in {"pradhan", "employee", "admin", "it_dept"}:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Only admins can fetch citizen details",
+        )
+
     base_sql = """
         SELECT 
             t.tax_id,
@@ -241,7 +265,17 @@ def tax_query(query: TaxQuery, db: Session = Depends(get_db)):
 
 
 @router.post("/income-query", response_model=dict)
-def income_query(query: IncomeQuery, db: Session = Depends(get_db)):
+def income_query(
+    query: IncomeQuery,
+    db: Session = Depends(get_db),
+    user: dict = Depends(get_current_user),
+):
+
+    if user["role"] not in {"pradhan", "employee", "admin", "it_dept"}:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Only admins can fetch citizen details",
+        )
     # First, compute household income per household using a WITH clause.
     household_income_sql = text(
         """

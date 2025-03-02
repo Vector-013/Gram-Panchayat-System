@@ -5,11 +5,19 @@ from datetime import date
 from database import get_db
 from routers.posts.dependencies import get_current_user
 
-router = APIRouter(prefix="/api", tags=["Environmental Data"])
+router = APIRouter(prefix="/", tags=["Environmental Data"])
 
 
-@router.get("/{citizen_id}/env", response_model=dict)
-def get_environmental_data(citizen_id: int, db: Session = Depends(get_db)):
+@router.get("/census-env", response_model=dict)
+def get_environmental_data(
+    db: Session = Depends(get_db), user: dict = Depends(get_current_user)
+):
+
+    if user["role"] not in {"pradhan", "employee", "admin", "census_dept"}:
+        raise HTTPException(
+            status_code=403,
+            detail="Not authorized to view environmental data",
+        )
     """
     Fetch all environmental data records and also return today's specific environmental details.
     """

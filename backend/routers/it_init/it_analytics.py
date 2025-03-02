@@ -2,12 +2,22 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 from sqlalchemy import text
 from database import get_db
+from routers.posts.dependencies import get_current_user
 
 router = APIRouter(prefix="/api/it-dept", tags=["IT Analytics"])
 
 
 @router.get("/analytics1")
-def get_it_analytics(db: Session = Depends(get_db)):
+def get_it_analytics(
+    db: Session = Depends(get_db), user: dict = Depends(get_current_user)
+):
+
+    if user["role"] not in {"pradhan", "employee", "admin", "it_dept"}:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Only admins can fetch citizen details",
+        )
+
     sql = text(
         """
         WITH budget_summary AS (
@@ -89,7 +99,7 @@ def get_it_analytics(db: Session = Depends(get_db)):
                     {
                         "year": row.asset_year,
                         "total_expenditure": float(row.total_salaries)
-                        + float(row.total_assets)
+                        + float(row.total_assets),
                     }
                 )
             if row.total_taxes is not None and row.total_budget is not None:
@@ -97,7 +107,7 @@ def get_it_analytics(db: Session = Depends(get_db)):
                     {
                         "year": row.year,
                         "total_income": float(row.total_taxes)
-                        + float(row.total_budget)
+                        + float(row.total_budget),
                     }
                 )
 
