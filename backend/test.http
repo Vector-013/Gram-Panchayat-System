@@ -124,10 +124,13 @@ Content-Type: application/json
 #   "password": "OjasIsGod"
 # }
 
-### Test Update Taxes Endpoint
+### Test: Get Updated Taxes Endpoint
+# GET http://localhost:8000/update-taxes/get
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBZG1pbkBwYW5jaGF5YXQuY29tIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzQwOTIzMTM3fQ.Y5L5k4-Onmgh4ZEhaTOJp9fZkex37sFyppX5OWPE9cI
+# ### Test Update Taxes Endpoint
 # POST http://localhost:8000/update-taxes/
 # Content-Type: application/json
-# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxQHBhbmNoYXlhdC5jb20iLCJyb2xlIjoicHJhZGhhbiIsImV4cCI6MTc0MDg2NjUxOH0.Lz2YmLYx-s_JBLRxtHQjbRXVTWY9swYB6sGZujZ0Tis
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBZG1pbkBwYW5jaGF5YXQuY29tIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzQwOTIzMTM3fQ.Y5L5k4-Onmgh4ZEhaTOJp9fZkex37sFyppX5OWPE9cI
 
 ### Test: Get Citizen Details
 # GET http://localhost:8000/update-citizen/get/5
@@ -151,16 +154,16 @@ Content-Type: application/json
 # Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxQHBhbmNoYXlhdC5jb20iLCJyb2xlIjoicHJhZGhhbiIsImV4cCI6MTc0MDg2NjUxOH0.Lz2YmLYx-s_JBLRxtHQjbRXVTWY9swYB6sGZujZ0Tis
 
 ### Test: Allocate Asset (Admin/Pradhan/Employee)
-POST http://localhost:8000/asset-management/
-Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBZG1pbkBwYW5jaGF5YXQuY29tIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzQwOTIxNzU3fQ.SXx_5S4-I7T284pFZ-3iE9CkBgcOqpq_rUQ1lCRCYvY
+# POST http://localhost:8000/asset-management/
+# Content-Type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBZG1pbkBwYW5jaGF5YXQuY29tIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzQwOTIxNzU3fQ.SXx_5S4-I7T284pFZ-3iE9CkBgcOqpq_rUQ1lCRCYvY
 
-{
-  "type": "Hospital",
-  "location": "Gandhi Chowk, Phulera",
-  "installation_date": "2025-03-02",
-  "value": 500000
-}
+# {
+#   "type": "Hospital",
+#   "location": "Gandhi Chowk, Phulera",
+#   "installation_date": "2025-03-02",
+#   "value": 500000
+# }
 
 
 #####################################################    ADMIN   #####################################################
