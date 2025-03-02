@@ -440,6 +440,6 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxQHBhbmNoY
 #########################################################   CENSUS  ###############################################################
 
 # ### Get Today's Environmental Data and All Records
-# GET http://localhost:8000/get-today-env/
-# Content-Type: application/json
-# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxQHBhbmNoYXlhdC5jb20iLCJyb2xlIjoicHJhZGhhbiIsImV4cCI6MTc0MDk1MDI3OX0.FUxtX3BDUU4BlToCSZbup62iddAiWJZSPiqLnqWRutg
+GET http://localhost:8000/get-today-env/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxQHBhbmNoYXlhdC5jb20iLCJyb2xlIjoicHJhZGhhbiIsImV4cCI6MTc0MDk1MDI3OX0.FUxtX3BDUU4BlToCSZbup62iddAiWJZSPiqLnqWRutg

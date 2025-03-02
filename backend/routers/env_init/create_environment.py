@@ -16,7 +16,7 @@ def get_today_env_data(
     db: Session = Depends(get_db), user: dict = Depends(get_current_user)
 ):
 
-    if user["role"] not in {"pradhan", "employee", "admin"}:
+    if user["role"] not in {"pradhan", "employee", "admin", "census_dept"}:
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
             detail="Only admins can fetch citizen details",
