@@ -13,6 +13,11 @@ const InsertCitizen: React.FC = () => {
     const [error, setError] = useState<string | null>(null);
     const [success, setSuccess] = useState<string | null>(null);
 
+    const getToken = () => {
+        // Retrieve the token from local storage or any other secure place
+        return localStorage.getItem("token");
+    };
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setLoading(true);
@@ -23,21 +28,25 @@ const InsertCitizen: React.FC = () => {
             name,
             gender,
             dob,
-            educational_qualification: education,
-            income: income === "" ? 0 : income,
             household_id: householdId === "" ? null : householdId,
-            hashed_password: password, // Assuming the backend hashes the password
+            income: income === "" ? 0 : income,
+            educational_qualification: education,
+            password,
         };
 
         try {
-            const response = await fetch("http://localhost:8000/api/citizen/insert", {
+            const response = await fetch("http://localhost:8000/admin/register", {
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${getToken()}`,
+                },
                 body: JSON.stringify(requestBody),
             });
 
             if (!response.ok) {
-                throw new Error("Failed to insert citizen record");
+                const errorData = await response.json();
+                throw new Error(errorData.detail || "Failed to insert citizen record");
             }
 
             setSuccess("Citizen record successfully added!");
@@ -57,6 +66,8 @@ const InsertCitizen: React.FC = () => {
 
     return (
         <div className="insert-form-container">
+            <h3 className="insert-form-title">Insert New Citizen</h3>
+
             {error && <div className="insert-form-error">{error}</div>}
             {success && <div className="insert-form-success">{success}</div>}
 

@@ -6,6 +6,10 @@ import InsertDeath from "../forms/InsertDeath";
 import InsertFloraFauna from "../forms/InsertFlora";
 import InsertGeo from "../forms/InsertGeo";
 import InsertEnv from "../forms/InsertEnv";
+import InsertHousehold from "../forms/InsertHousehold";
+import InsertAsset from "../forms/InsertAsset";
+import InsertLandRecord from "../forms/InsertLandRecords";
+import InsertWelfareScheme from "../forms/InsertWelfareScheme";
 import bgImage from "../../images/village.jpg";
 
 const InsertModal: React.FC = () => {
@@ -28,7 +32,10 @@ const InsertModal: React.FC = () => {
                 <select className="insert-dropdown" value={selectedType} onChange={handleTypeChange}>
                     <option value="">Choose an option</option>
                     <option value="citizen">Citizen</option>
+                    <option value="household">Household</option>
+                    <option value="asset">Asset</option>
                     <option value="land">Land Record</option>
+                    <option value="welfare">Welfare Scheme</option>
                     <option value="tax">Tax Record</option>
                     <option value="education">Education Record</option>
                     <option value="health">Health Record</option>
@@ -45,7 +52,11 @@ const InsertModal: React.FC = () => {
             {selectedType === "" && <p className="insert-placeholder">Please select an insert type to continue.</p>}
 
             {selectedType === "citizen" && <InsertCitizen />}
-            {selectedType === "land" && <p className="insert-placeholder">Land Record form will appear here.</p>}
+            {selectedType === "household" && <InsertHousehold />}
+            {selectedType === "asset" && <InsertAsset />}
+            {selectedType === "land" && <InsertLandRecord />}
+            {selectedType === "welfare" && <InsertWelfareScheme
+            />}
             {selectedType === "tax" && <p className="insert-placeholder">Tax Record form will appear here.</p>}
             {selectedType === "education" && <p className="insert-placeholder">Education Record form will appear here.</p>}
             {selectedType === "health" && <p className="insert-placeholder">Health Record form will appear here.</p>}
