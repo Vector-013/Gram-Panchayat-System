@@ -12,7 +12,7 @@ interface WelfareRecord {
 }
 
 const WelfareEduModal: React.FC = () => {
-    const [gender, setGender] = useState<string>("");
+    const [gender, setGender] = useState<string>("All");
     const [educationalLevel, setEducationalLevel] = useState<string>("All");
     const [dobMin, setDobMin] = useState<string>("1980-01-01");
     const [dobMax, setDobMax] = useState<string>("2000-12-31");
@@ -91,7 +91,7 @@ useEffect(() => {
                     <div className="opt-sel">
                         <label className="welfare-label">Gender :</label>
                         <select value={gender} onChange={(e) => setGender(e.target.value)} className="welfare-input">
-                            <option value="">All</option>
+                            <option value="All">All</option>
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>
                             <option value="Other">Other</option>
@@ -157,7 +157,7 @@ useEffect(() => {
                         onChange={(e) => setGenderFilter(e.target.value)}
                         className="welfare-input"
                     >
-                        <option value="">All</option>
+                        <option value="All">All</option>
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
                         <option value="Other">Other</option>

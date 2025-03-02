@@ -65,12 +65,12 @@ def login(credentials: CitizenLogin, db: Session = Depends(get_db)):
         # Determine user role
         role = "citizen"
         erole = "citizen"
-        eid = -1
+        eid = None
         if user.citizen_id == 1:
             erole = "pradhan"
             role = "pradhan"
             sql = text(
-                "SELECT employee_id FROM panchayat_employees WHERE employee_id = :citizen_id"
+                "SELECT employee_id FROM panchayat_employees WHERE citizen_id = :citizen_id"
             )
             eid = db.execute(sql, {"citizen_id": user.citizen_id}).scalar()
         else:

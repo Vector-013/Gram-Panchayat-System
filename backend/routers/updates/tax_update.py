@@ -65,8 +65,7 @@ def update_taxes(db: Session = Depends(get_db)):
                 to_char(t.date, 'YYYY-MM-DD') AS date
             FROM taxes t
             JOIN citizens c ON t.citizen_id = c.citizen_id
-            WHERE t.type = 'Income Tax' AND EXTRACT(YEAR FROM t.date) = :current_year
-            ORDER BY t.tax_id;
+            ORDER BY date DESC, t.tax_id;
         """
         )
         updated_records = db.execute(
@@ -100,7 +99,6 @@ def get_updated_taxes(db: Session = Depends(get_db)):
                 to_char(t.date, 'YYYY-MM-DD') AS date
             FROM taxes t
             JOIN citizens c ON t.citizen_id = c.citizen_id
-            WHERE t.type = 'Income Tax'
             ORDER BY t.tax_id;
         """
         )
