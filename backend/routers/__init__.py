@@ -25,3 +25,4 @@ from .updates.update_citizen import router as update_citizen
 from .env_init.create_environment import router as create_environment
 from .posts.medical_post import router as medical_post
 from .env_init.census_env import router as census_env
+from .posts.marriages import router as marriages

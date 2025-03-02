@@ -167,26 +167,49 @@ Content-Type: application/json
 # }
 
 ### Test: Insert Medical Data
-POST http://localhost:8000/medical-data-insert/
+# POST http://localhost:8000/medical-data-insert/
+# Content-Type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBZG1pbkBwYW5jaGF5YXQuY29tIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzQwOTY5MjI0fQ.xTZ--dHt_2zPjpx5nrMJqKsYB04poB7-w2-dBsM0ROE
+
+# {
+#   "citizen_id": 5,
+#   "health_status": "Excellent",
+#   "medical_condition": "Healthy"
+# }
+
+# ### Test: Update Flora Fauna
+# POST http://localhost:8000/update-flora-fauna/
+# Content-Type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBZG1pbkBwYW5jaGF5YXQuY29tIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzQwOTY5MjI0fQ.xTZ--dHt_2zPjpx5nrMJqKsYB04poB7-w2-dBsM0ROE
+
+# {
+#   "f_id": 3,
+#   "habitat": "Forest",
+#   "count": 25
+# }
+
+### Test: Create Marriage Record (Valid Request)
+POST http://localhost:8000/marriage/
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBZG1pbkBwYW5jaGF5YXQuY29tIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzQwOTY5MjI0fQ.xTZ--dHt_2zPjpx5nrMJqKsYB04poB7-w2-dBsM0ROE
 
 {
-  "citizen_id": 5,
-  "health_status": "Excellent",
-  "medical_condition": "Healthy"
+  "husband_id": 17,
+  "wife_id": 15,
+  "marriage_date": "2025-03-05"
 }
 
-### Test: Update Flora Fauna
-POST http://localhost:8000/update-flora-fauna/
+### Test: Create Marriage Record (Already Married)
+POST http://localhost:8000/marriage/
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBZG1pbkBwYW5jaGF5YXQuY29tIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzQwOTY5MjI0fQ.xTZ--dHt_2zPjpx5nrMJqKsYB04poB7-w2-dBsM0ROE
 
 {
-  "f_id": 3,
-  "habitat": "Forest",
-  "count": 25
+  "husband_id": 12,
+  "wife_id": 15,
+  "marriage_date": "2025-03-05"
 }
+
 
 
 
