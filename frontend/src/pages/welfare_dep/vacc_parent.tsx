@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState , useEffect} from "react";
 import "../../styles/VaccineDataQuery.css";
 
 interface VaccineRecord {
@@ -20,8 +20,17 @@ const VaccineDataModal: React.FC = () => {
     const [endDate, setEndDate] = useState("2023-12-31");
     const [parentQualification, setParentQualification] = useState("All");
     const [records, setRecords] = useState<VaccineRecord[]>([]);
+    const [filteredRecords, setFilteredRecords] = useState<VaccineRecord[]>([]);
     const [loading, setLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
+
+    //additional filters on name, age and date administered, citizen id, mother's name, father's name
+    const [nameFilter, setNameFilter] = useState("");
+    const [ageFilter, setAgeFilter] = useState<number>(0);
+    const [dateFilter, setDateFilter] = useState<string>("");
+    const [citizenIdFilter, setCitizenIdFilter] = useState<number>(0);
+    const [motherNameFilter, setMotherNameFilter] = useState("");
+    const [fatherNameFilter, setFatherNameFilter] = useState("");
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -55,6 +64,49 @@ const VaccineDataModal: React.FC = () => {
         setLoading(false);
     };
 
+    //useEffect to filter records based on additional filters
+    useEffect(() => {
+        const filtered = records.filter((record) => {
+            const matchesName =
+                nameFilter === "" || record.name.toLowerCase().includes(nameFilter.toLowerCase());
+
+            const matchesAge = ageFilter === 0 || record.age === ageFilter;
+
+            const matchesDate =
+                dateFilter === "" || record.date_administered === dateFilter;
+
+            const matchesCitizenId =
+                citizenIdFilter === 0 || record.citizen_id === citizenIdFilter;
+
+            const matchesMotherName =
+                motherNameFilter === "" ||
+                record.mother_name.toLowerCase().includes(motherNameFilter.toLowerCase());
+
+            const matchesFatherName =
+                fatherNameFilter === "" ||
+                record.father_name.toLowerCase().includes(fatherNameFilter.toLowerCase());
+
+            return (
+                matchesName &&
+                matchesAge &&
+                matchesDate &&
+                matchesCitizenId &&
+                matchesMotherName &&
+                matchesFatherName
+            );
+        });
+
+        setFilteredRecords(filtered);
+    }, [
+        records,
+        nameFilter,
+        ageFilter,
+        dateFilter,
+        citizenIdFilter,
+        motherNameFilter,
+        fatherNameFilter,
+    ]);
+
     return (
         <div id="vaccine-query-container" className="vaccine-query-container card-holder">
             <h2 className="vaccine-query-title">Vaccine Data Query</h2>
@@ -83,6 +135,70 @@ const VaccineDataModal: React.FC = () => {
                 
                 <button className="vaccine-query-submit" type="submit">Submit</button>
             </form>
+
+            {/* filters section */}
+
+            <div className="medical-query-filter">
+                <div className="medical-subfilter">
+                    <label className="medical-query-label">Name:</label>
+                    <input
+                        type="text"
+                        value={nameFilter}
+                        onChange={(e) => setNameFilter(e.target.value)}
+                        className="medical-query-input"
+                    />
+                </div>
+                
+                <div className="medical-subfilter">
+                    <label className="medical-query-label">Age:</label>
+                    <input
+                        type="number"
+                        value={ageFilter}
+                        onChange={(e) => setAgeFilter(Number(e.target.value))}
+                        className="medical-query-input"
+                    />
+                </div>
+
+                <div className="medical-subfilter">
+                    <label className="medical-query-label">Date Administered:</label>
+                    <input
+                        type="date"
+                        value={dateFilter}
+                        onChange={(e) => setDateFilter(e.target.value)}
+                        className="medical-query-input"
+                    />
+                </div>
+
+                <div className="medical-subfilter">
+                    <label className="medical-query-label">Citizen ID:</label>
+                    <input
+                        type="number"
+                        value={citizenIdFilter}
+                        onChange={(e) => setCitizenIdFilter(Number(e.target.value))}
+                        className="medical-query-input"
+                    />
+                </div>
+
+                <div className="medical-subfilter">
+                    <label className="medical-query-label">Mother's Name:</label>
+                    <input
+                        type="text"
+                        value={motherNameFilter}
+                        onChange={(e) => setMotherNameFilter(e.target.value)}
+                        className="medical-query-input"
+                    />
+                </div>
+
+                <div className="medical-subfilter">
+                    <label className="medical-query-label">Father's Name:</label>
+                    <input
+                        type="text"
+                        value={fatherNameFilter}
+                        onChange={(e) => setFatherNameFilter(e.target.value)}
+                        className="medical-query-input"
+                    />
+                </div>
+            </div>
             
             {loading && <p className="vaccine-query-loading">Loading...</p>}
             
@@ -104,8 +220,8 @@ const VaccineDataModal: React.FC = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {records.length > 0 ? (
-                                records.map((record, index) => (
+                            {filteredRecords.length > 0 ? (
+                                filteredRecords.map((record, index) => (
                                     <tr key={index}>
                                         <td>{record.vaccination_id}</td>
                                         <td>{record.citizen_id}</td>

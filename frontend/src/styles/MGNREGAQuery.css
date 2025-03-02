@@ -24,6 +24,24 @@
 }
 
 /* Form Styling */
+
+.mgnrega-group{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+.mgnrega-subgroup{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 30%;
+}
 .mgnrega-query-form {
     display: flex;
     flex-direction: column;
@@ -62,10 +80,10 @@
 .mgnrega-query-submit {
     background-color: #007bff;
     color: white;
-    font-size: 18px;
+    font-size: 1rem;
     font-weight: bold;
     border: none;
-    padding: 10px 15px;
+    padding: 5px 10px;
     border-radius: 5px;
     cursor: pointer;
     margin-top: 15px;
@@ -123,4 +141,21 @@
     font-size: 1.25rem;
     font-weight: bold;
     margin-top: 15px;
+}
+
+/* filters*/
+.mgnrega-query-filters{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+}
+.mgnrega-subfilter{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 22%;
 }

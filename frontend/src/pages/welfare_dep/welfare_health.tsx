@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../../styles/MedicalDataQuery.css";
 
 interface MedicalRecord {
@@ -19,8 +19,14 @@ const MedicalDataModal: React.FC = () => {
   const [medicalCondition, setMedicalCondition] = useState("Diabetes");
   const [healthStatus, setHealthStatus] = useState("Fair");
   const [records, setRecords] = useState<MedicalRecord[]>([]);
+  const [filteredRecords, setFilteredRecords] = useState<MedicalRecord[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+
+  //additional filters on name, household id and address id
+  const [nameFilter, setNameFilter] = useState("");
+  const [householdIdFilter, setHouseholdIdFilter] = useState<string>("");
+  const [addressIdFilter, setAddressIdFilter] = useState<string>("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -42,9 +48,9 @@ const MedicalDataModal: React.FC = () => {
         {
           method: "POST",
           headers: {
-             "Content-Type": "application/json",
-                Authorization: `Bearer ${localStorage.getItem("token")}`,
-            },
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
           body: JSON.stringify(requestBody),
         }
       );
@@ -55,12 +61,32 @@ const MedicalDataModal: React.FC = () => {
 
       const data = await response.json();
       setRecords(data);
+      setFilteredRecords(data);
     } catch (err: any) {
       setError(err.message);
     }
 
     setLoading(false);
   };
+
+  useEffect(() => {
+    const filtered = records.filter((record) => {
+      const matchesName =
+        nameFilter === "" ||
+        record.name.toLowerCase().includes(nameFilter.toLowerCase());
+
+      const matchesHouseholdId =
+        householdIdFilter === "" ||
+        record.household_id === parseInt(householdIdFilter);
+
+      const matchesAddressId =
+        addressIdFilter === "" || record.address_id === addressIdFilter;
+
+      return matchesName && matchesHouseholdId && matchesAddressId;
+    });
+
+    setFilteredRecords(filtered);
+  }, [records, nameFilter, householdIdFilter, addressIdFilter]);
 
   return (
     <div
@@ -143,6 +169,40 @@ const MedicalDataModal: React.FC = () => {
         </button>
       </form>
 
+      {/* filters Section */}
+
+      <div className="medical-query-filter">
+        <div className="medical-subfilter">
+        <label className="medical-query-label">Name:</label>
+        <input
+          type="text"
+          value={nameFilter}
+          onChange={(e) => setNameFilter(e.target.value)}
+          className="medical-query-input"
+        />
+        </div>
+        
+        <div className="medical-subfilter">
+        <label className="medical-query-label">Household ID:</label>
+        <input
+          type="text"
+          value={householdIdFilter}
+          onChange={(e) => setHouseholdIdFilter(e.target.value)}
+          className="medical-query-input"
+        />
+        </div>
+
+        <div className="medical-subfilter">
+        <label className="medical-query-label">Address ID:</label>
+        <input
+          type="text"
+          value={addressIdFilter}
+          onChange={(e) => setAddressIdFilter(e.target.value)}
+          className="medical-query-input"
+        />
+        </div>
+      </div>
+
       {loading && <p className="medical-query-loading">Loading...</p>}
 
       {!loading && (
@@ -160,8 +220,8 @@ const MedicalDataModal: React.FC = () => {
               </tr>
             </thead>
             <tbody>
-              {records.length > 0 ? (
-                records.map((record, index) => (
+              {filteredRecords.length > 0 ? (
+                filteredRecords.map((record, index) => (
                   <tr key={index}>
                     <td>{record.citizen_id}</td>
                     <td>{record.name}</td>

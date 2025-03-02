@@ -117,3 +117,21 @@
     color: #888;
     padding: 15px;
 }
+
+/* filter */
+.welfare-query-filter{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+}
+
+.welfare-subfilter{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+}

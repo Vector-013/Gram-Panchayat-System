@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, {useState } from "react";
 import "../../styles/WelfareEdu.css";
+import { useEffect } from "react";
 
 interface WelfareRecord {
     citizen_id: number;
@@ -18,8 +19,14 @@ const WelfareEduModal: React.FC = () => {
     const [incomeMin, setIncomeMin] = useState<number>(10000);
     const [incomeMax, setIncomeMax] = useState<number>(800000);
     const [records, setRecords] = useState<WelfareRecord[]>([]);
+    const [filteredRecords, setFilteredRecords] = useState<WelfareRecord[]>([]);
     const [loading, setLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
+
+    //additional filters on citizen id, name and gender
+    const [citizenIdFilter, setCitizenIdFilter] = useState(0);
+    const [nameFilter, setNameFilter] = useState("");
+    const [genderFilter, setGenderFilter] = useState("");
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -49,6 +56,7 @@ const WelfareEduModal: React.FC = () => {
 
             const data = await response.json();
             setRecords(data);
+            setFilteredRecords(data);
         } catch (err: any) {
             setError(err.message);
         }
@@ -56,6 +64,18 @@ const WelfareEduModal: React.FC = () => {
         setLoading(false);
     };
 
+    //useEffect for filtering records based on additional filters
+    
+useEffect(() => {
+    const filtered = records.filter((record) => {
+        return (
+            (citizenIdFilter === 0 || record.citizen_id === citizenIdFilter) &&
+            (nameFilter === "" || record.name.toLowerCase().includes(nameFilter.toLowerCase())) &&
+            (genderFilter === "" || record.gender === genderFilter)
+        );
+    });
+    setFilteredRecords(filtered);
+}, [citizenIdFilter, nameFilter, genderFilter, records]);
     return (
         <div id="welfare-edu-container" className="welfare-container card-holder">
             <h2 className="welfare-title">Education Welfare Query</h2>
@@ -103,7 +123,44 @@ const WelfareEduModal: React.FC = () => {
                 </div>
 
                 <button className="welfare-submit" type="submit">Submit</button>
+                <br/>
             </form>
+
+            <div className="welfare-query-filter">
+                <div className="welfare-subfilter">
+                    <label className="welfare-label">Citizen ID:</label>
+                    <input
+                        type="number"
+                        value={citizenIdFilter}
+                        onChange={(e) => setCitizenIdFilter(Number(e.target.value))}
+                        className="welfare-input"
+                    />
+                </div>
+
+                <div className="welfare-subfilter">
+                    <label className="welfare-label">Name:</label>
+                    <input
+                        type="text"
+                        value={nameFilter}
+                        onChange={(e) => setNameFilter(e.target.value)}
+                        className="welfare-input"
+                    />
+                </div>
+
+                <div className="welfare-subfilter">
+                    <label className="welfare-label">Gender:</label>
+                    <select
+                        value={genderFilter}
+                        onChange={(e) => setGenderFilter(e.target.value)}
+                        className="welfare-input"
+                    >
+                        <option value="">All</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+            </div>
 
             {/* Loading State */}
             {loading && <p className="welfare-loading">Loading...</p>}
@@ -124,8 +181,8 @@ const WelfareEduModal: React.FC = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {records.length > 0 ? (
-                                    records.map((record) => (
+                                {filteredRecords.length > 0 ? (
+                                    filteredRecords.map((record) => (
                                         <tr key={record.citizen_id}>
                                             <td>{record.citizen_id}</td>
                                             <td>{record.name}</td>

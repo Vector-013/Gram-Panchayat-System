@@ -67,6 +67,7 @@ function IncomeQueryForm() {
       const res = await response.json();
       const data: IncomeRecord[] = res.citizens;
       setIncomeRecords(data);
+      setFilteredRecords(data);
     } catch (err: any) {
       setError(err.message);
     }

@@ -66,6 +66,22 @@
     background-color: #0056b3;
 }
 
+.welfare-query-filter {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    align-items: center;
+    width: 90%;
+}
+
+.welfare-subfilter{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+}
+
 /* Table Section */
 .welfare-table-container {
     margin-top: 15px;
@@ -124,3 +140,4 @@
     color: #888;
     padding: 15px;
 }
+

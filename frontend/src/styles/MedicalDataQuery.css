@@ -162,3 +162,17 @@
 .no-data{
     text-align: center;
 }
+.medical-query-filter{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;;
+    width: 90%;
+    margin-top: 20px;
+}
+.medical-subfilter{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 45%;
+}

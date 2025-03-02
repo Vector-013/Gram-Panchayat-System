@@ -1,165 +1,303 @@
 import React, { useState } from "react";
 import "../../styles/MGNREGAQuery.css";
+import { useEffect } from "react";
 
 interface MGNREGARecord {
-    citizen_id: number;
-    name: string;
-    age: number;
-    household_id: number;
-    address: string;
-    personal_income: number;
-    household_income: number;
+  citizen_id: number;
+  name: string;
+  age: number;
+  household_id: number;
+  address: string;
+  personal_income: number;
+  household_income: number;
 }
 
 const MGNREGAQuery: React.FC = () => {
-    const [minAge, setMinAge] = useState(18);
-    const [maxAge, setMaxAge] = useState(60);
-    const [minHouseholdIncome, setMinHouseholdIncome] = useState(0);
-    const [maxHouseholdIncome, setMaxHouseholdIncome] = useState(50000);
-    const [personalIncome, setPersonalIncome] = useState(100000);
-    const [enrolled, setEnrolled] = useState<MGNREGARecord[]>([]);
-    const [notEnrolled, setNotEnrolled] = useState<MGNREGARecord[]>([]);
-    const [loading, setLoading] = useState<boolean>(false);
-    const [error, setError] = useState<string | null>(null);
+  const [minAge, setMinAge] = useState(18);
+  const [maxAge, setMaxAge] = useState(60);
+  const [minHouseholdIncome, setMinHouseholdIncome] = useState(0);
+  const [maxHouseholdIncome, setMaxHouseholdIncome] = useState(50000);
+  const [personalIncome, setPersonalIncome] = useState(100000);
+  const [enrolled, setEnrolled] = useState<MGNREGARecord[]>([]);
+  const [notEnrolled, setNotEnrolled] = useState<MGNREGARecord[]>([]);
+  const [filteredEnrolled, setFilteredEnrolled] = useState<MGNREGARecord[]>([]);
+  const [filteredNotEnrolled, setFilteredNotEnrolled] = useState<
+    MGNREGARecord[]
+  >([]);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
 
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-        setLoading(true);
-        setError(null);
+  //addditional filters on citizen id, name , household id and address
+  const [citizenIdFilter, setCitizenIdFilter] = useState(0);
+  const [nameFilter, setNameFilter] = useState("");
+  const [householdIdFilter, setHouseholdIdFilter] = useState<string>("");
+  const [addressFilter, setAddressFilter] = useState("");
 
-        try {
-            const requestBody = {
-                min_age: minAge,
-                max_age: maxAge,
-                min_household_income: minHouseholdIncome,
-                max_household_income: maxHouseholdIncome,
-                personal_income: personalIncome,
-            };
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setError(null);
 
-            const response = await fetch("http://localhost:8000/welfare/mgnrega/", {
-                method: "POST",
-                headers: { 
-                    "Content-Type": "application/json",
-                    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxQHBhbmNoYXlhdC5jb20iLCJyb2xlIjoicHJhZGhhbiIsImV4cCI6MTc0MDg4MDE5Mn0.DUZz-sER0CLGW13Qwr8LyekP4mtcViEUbHMhRYIIlLU"
-                },
-                body: JSON.stringify(requestBody),
-            });
+    try {
+      const requestBody = {
+        min_age: minAge,
+        max_age: maxAge,
+        min_household_income: minHouseholdIncome,
+        max_household_income: maxHouseholdIncome,
+        personal_income: personalIncome,
+      };
 
-            if (!response.ok) {
-                throw new Error("Submission failed");
-            }
+      const response = await fetch("http://localhost:8000/welfare/mgnrega/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxQHBhbmNoYXlhdC5jb20iLCJyb2xlIjoicHJhZGhhbiIsImV4cCI6MTc0MDg4MDE5Mn0.DUZz-sER0CLGW13Qwr8LyekP4mtcViEUbHMhRYIIlLU",
+        },
+        body: JSON.stringify(requestBody),
+      });
 
-            const data = await response.json();
-            setEnrolled(data.eligible_and_enrolled);
-            setNotEnrolled(data.eligible_but_not_enrolled);
-        } catch (err: any) {
-            setError(err.message);
-        }
+      if (!response.ok) {
+        throw new Error("Submission failed");
+      }
 
-        setLoading(false);
-    };
+      const data = await response.json();
+      setEnrolled(data.eligible_and_enrolled);
+      setNotEnrolled(data.eligible_but_not_enrolled);
+    } catch (err: any) {
+      setError(err.message);
+    }
 
-    return (
-        <div id="mgnrega-query-container" className="mgnrega-query-container card-holder">
-            <h2 className="mgnrega-query-title">MGNREGA Data Query</h2>
-            {error && <div className="mgnrega-query-error">{error}</div>}
-            
-            <form className="mgnrega-query-form" onSubmit={handleSubmit}>
-                <label className="mgnrega-query-label">Age Range:</label>
-                <div className="mgnrega-query-range">
-                    <input type="number" value={minAge} onChange={(e) => setMinAge(parseInt(e.target.value))} className="mgnrega-query-input" />
-                    <span className="mgnrega-query-separator">to</span>
-                    <input type="number" value={maxAge} onChange={(e) => setMaxAge(parseInt(e.target.value))} className="mgnrega-query-input" />
-                </div>
-                
-                <label className="mgnrega-query-label">Household Income Range:</label>
-                <div className="mgnrega-query-range">
-                    <input type="number" value={minHouseholdIncome} onChange={(e) => setMinHouseholdIncome(parseInt(e.target.value))} className="mgnrega-query-input" />
-                    <span className="mgnrega-query-separator">to</span>
-                    <input type="number" value={maxHouseholdIncome} onChange={(e) => setMaxHouseholdIncome(parseInt(e.target.value))} className="mgnrega-query-input" />
-                </div>
-                
-                <label className="mgnrega-query-label">Personal Income:</label>
-                <input type="number" value={personalIncome} onChange={(e) => setPersonalIncome(parseInt(e.target.value))} className="mgnrega-query-input" />
-                
-                <button className="mgnrega-query-submit" type="submit">Submit</button>
-                <br/>
-            </form>
-            
-            {loading && <p className="mgnrega-query-loading">Loading...</p>}
-            
-            {!loading && (
-                <>
-                    <h4 className = "mgnrega-subtitle">Enrolled in MGNREGA</h4>
-                    <div className="mgnrega-records-container">
-                        <table className="mgnrega-records-table">
-                            <thead>
-                                <tr>
-                                    <th>Citizen ID</th>
-                                    <th>Name</th>
-                                    <th>Age</th>
-                                    <th>Household ID</th>
-                                    <th>Address</th>
-                                    <th>Personal Income</th>
-                                    <th>Household Income</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            {enrolled.length > 0 ? (
-                                        enrolled.map((record) => (
-                                            <tr key={record.citizen_id}>
-                                                <td>{record.citizen_id}</td>
-                                                <td>{record.name}</td>
-                                                <td>{record.age}</td>
-                                                <td>{record.household_income}</td>
-                                                <td>{record.address}</td>
-                                            </tr>
-                                        ))
-                                    ) : (
-                                        <tr>
-                                            <td colSpan={7} className="no-data">No enrolled records found</td>
-                                        </tr>
-                                    )}
-                            </tbody>
-                        </table>
-                    </div>
-                    <h4 className = "mgnrega-subtitle">Eligible but Not Enrolled</h4>
-                    <div className="mgnrega-records-container">
-                        <table className="mgnrega-records-table">
-                            <thead>
-                                <tr>
-                                    <th>Citizen ID</th>
-                                    <th>Name</th>
-                                    <th>Age</th>
-                                    <th>Household ID</th>
-                                    <th>Address</th>
-                                    <th>Personal Income</th>
-                                    <th>Household Income</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            {notEnrolled.length > 0 ? (
-                                        notEnrolled.map((record) => (
-                                            <tr key={record.citizen_id}>
-                                                <td>{record.citizen_id}</td>
-                                                <td>{record.name}</td>
-                                                <td>{record.age}</td>
-                                                <td>{record.household_income}</td>
-                                                <td>{record.address}</td>
-                                            </tr>
-                                        ))
-                                    ) : (
-                                        <tr>
-                                            <td colSpan={7} className="no-data">No not enrolled records found</td>
-                                        </tr>
-                                    )}
-                            </tbody>
-                        </table>
-                    </div>
-                </>
-            )}
-        </div>
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    const filtered = enrolled.filter(
+      (record) =>
+        (citizenIdFilter === 0 || record.citizen_id === citizenIdFilter) &&
+        (nameFilter === "" ||
+          record.name.toLowerCase().includes(nameFilter.toLowerCase())) &&
+        (householdIdFilter === "" ||
+          record.household_id.toString().includes(householdIdFilter)) &&
+        (addressFilter === "" ||
+          record.address.toLowerCase().includes(addressFilter.toLowerCase()))
     );
+    setFilteredEnrolled(filtered);
+  }, [enrolled, citizenIdFilter, nameFilter, householdIdFilter, addressFilter]);
+
+  useEffect(() => {
+    const filtered = notEnrolled.filter(
+      (record) =>
+        (citizenIdFilter === 0 || record.citizen_id === citizenIdFilter) &&
+        (nameFilter === "" ||
+          record.name.toLowerCase().includes(nameFilter.toLowerCase())) &&
+        (householdIdFilter === "" ||
+          record.household_id.toString().includes(householdIdFilter)) &&
+        (addressFilter === "" ||
+          record.address.toLowerCase().includes(addressFilter.toLowerCase()))
+    );
+    setFilteredNotEnrolled(filtered);
+  }, [
+    notEnrolled,
+    citizenIdFilter,
+    nameFilter,
+    householdIdFilter,
+    addressFilter,
+  ]);
+
+  return (
+    <div
+      id="mgnrega-query-container"
+      className="mgnrega-query-container card-holder"
+    >
+      <h2 className="mgnrega-query-title">MGNREGA Data Query</h2>
+      {error && <div className="mgnrega-query-error">{error}</div>}
+
+      <form className="mgnrega-query-form" onSubmit={handleSubmit}>
+        <div className="mgnrega-group">
+          <div className="mgnrega-subgroup">
+            <label className="mgnrega-query-label">Age Range:</label>
+            <div className="mgnrega-query-range">
+              <input
+                type="number"
+                value={minAge}
+                onChange={(e) => setMinAge(parseInt(e.target.value))}
+                className="mgnrega-query-input"
+              />
+              <span className="mgnrega-query-separator">to</span>
+              <input
+                type="number"
+                value={maxAge}
+                onChange={(e) => setMaxAge(parseInt(e.target.value))}
+                className="mgnrega-query-input"
+              />
+            </div>
+          </div>
+
+          <div className="mgnrega-subgroup">
+            <label className="mgnrega-query-label">Personal Income:</label>
+            <input
+              type="number"
+              value={personalIncome}
+              onChange={(e) => setPersonalIncome(parseInt(e.target.value))}
+              className="mgnrega-query-input"
+            />
+          </div>
+
+          <div className="mgnrega-subgroup">
+            <label className="mgnrega-query-label">
+              Household Income Range:
+            </label>
+            <div className="mgnrega-query-range">
+              <input
+                type="number"
+                value={minHouseholdIncome}
+                onChange={(e) =>
+                  setMinHouseholdIncome(parseInt(e.target.value))
+                }
+                className="mgnrega-query-input"
+              />
+              <span className="mgnrega-query-separator">to</span>
+              <input
+                type="number"
+                value={maxHouseholdIncome}
+                onChange={(e) =>
+                  setMaxHouseholdIncome(parseInt(e.target.value))
+                }
+                className="mgnrega-query-input"
+              />
+            </div>
+          </div>
+        </div>
+
+        <button className="mgnrega-query-submit" type="submit">
+          Submit
+        </button>
+        <br />
+      </form>
+
+      {/* filters */}
+
+      <div className="mgnrega-query-filters">
+        <div className="mgnrega-subfilter">
+          <label className="mgnrega-query-label">Citizen ID:</label>
+          <input
+            type="number"
+            value={citizenIdFilter}
+            onChange={(e) => setCitizenIdFilter(parseInt(e.target.value))}
+            className="mgnrega-query-input"
+          />
+        </div>
+
+        <div className="mgnrega-subfilter">
+          <label className="mgnrega-query-label">Name:</label>
+          <input
+            type="text"
+            value={nameFilter}
+            onChange={(e) => setNameFilter(e.target.value)}
+            className="mgnrega-query-input"
+          />
+        </div>
+
+        <div className="mgnrega-subfilter">
+          <label className="mgnrega-query-label">Household ID:</label>
+          <input
+            type="text"
+            value={householdIdFilter}
+            onChange={(e) => setHouseholdIdFilter(e.target.value)}
+            className="mgnrega-query-input"
+          />
+        </div>
+
+        <div className="mgnrega-subfilter">
+          <label className="mgnrega-query-label">Address:</label>
+          <input
+            type="text"
+            value={addressFilter}
+            onChange={(e) => setAddressFilter(e.target.value)}
+            className="mgnrega-query-input"
+          />
+        </div>
+      </div>
+
+      {loading && <p className="mgnrega-query-loading">Loading...</p>}
+
+      {!loading && (
+        <>
+          <h4 className="mgnrega-subtitle">Enrolled in MGNREGA</h4>
+          <div className="mgnrega-records-container">
+            <table className="mgnrega-records-table">
+              <thead>
+                <tr>
+                  <th>Citizen ID</th>
+                  <th>Name</th>
+                  <th>Age</th>
+                  <th>Household ID</th>
+                  <th>Address</th>
+                  <th>Personal Income</th>
+                  <th>Household Income</th>
+                </tr>
+              </thead>
+              <tbody>
+                {enrolled.length > 0 ? (
+                  enrolled.map((record) => (
+                    <tr key={record.citizen_id}>
+                      <td>{record.citizen_id}</td>
+                      <td>{record.name}</td>
+                      <td>{record.age}</td>
+                      <td>{record.household_income}</td>
+                      <td>{record.address}</td>
+                    </tr>
+                  ))
+                ) : (
+                  <tr>
+                    <td colSpan={7} className="no-data">
+                      No enrolled records found
+                    </td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
+          <h4 className="mgnrega-subtitle">Eligible but Not Enrolled</h4>
+          <div className="mgnrega-records-container">
+            <table className="mgnrega-records-table">
+              <thead>
+                <tr>
+                  <th>Citizen ID</th>
+                  <th>Name</th>
+                  <th>Age</th>
+                  <th>Household ID</th>
+                  <th>Address</th>
+                  <th>Personal Income</th>
+                  <th>Household Income</th>
+                </tr>
+              </thead>
+              <tbody>
+                {notEnrolled.length > 0 ? (
+                  notEnrolled.map((record) => (
+                    <tr key={record.citizen_id}>
+                      <td>{record.citizen_id}</td>
+                      <td>{record.name}</td>
+                      <td>{record.age}</td>
+                      <td>{record.household_income}</td>
+                      <td>{record.address}</td>
+                    </tr>
+                  ))
+                ) : (
+                  <tr>
+                    <td colSpan={7} className="no-data">
+                      No not enrolled records found
+                    </td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
+        </>
+      )}
+    </div>
+  );
 };
 
 export default MGNREGAQuery;
