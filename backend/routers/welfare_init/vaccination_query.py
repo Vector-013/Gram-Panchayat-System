@@ -67,7 +67,7 @@ def child_vaccine_query(query: ChildVaccineQuery, db: Session = Depends(get_db))
             )
 
         ## convert output to a dictionary
-        output = {"data": output}
+        # output = {"data": output}
         return output
 
     except Exception as e:

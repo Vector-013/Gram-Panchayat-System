@@ -45,6 +45,8 @@ const VaccineDataModal: React.FC = () => {
                 parent_qualification: parentQualification,
             };
 
+            console.log(requestBody);
+
             const response = await fetch("http://127.0.0.1:8000/welfare/vaccines", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -57,6 +59,8 @@ const VaccineDataModal: React.FC = () => {
 
             const data = await response.json();
             setRecords(data);
+            setFilteredRecords(data);
+            console.log(data);
         } catch (err: any) {
             setError(err.message);
         }

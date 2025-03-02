@@ -62,9 +62,9 @@ const MedicalDataModal: React.FC = () => {
 
       const data = await response.json();
       const transformedData = data.map((record: any) => ({
-        address_id: record.Address, // Backend uses "Address"
+        address_id: record.Address,
         age: record.Age,
-        citizen_id: record["Citizen ID"], // Backend uses "Citizen ID"
+        citizen_id: record["Citizen ID"],
         health_status: record["Health Status"],
         household_id: record["Household ID"],
         medical_condition: record["Medical Condition"],
