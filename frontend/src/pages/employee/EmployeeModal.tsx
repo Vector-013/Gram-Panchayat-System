@@ -16,10 +16,10 @@ const EmployeeModal = () => {
                         <RecordCard title="Insert" onRedirect={() => alert("Redirecting to Landlord Record")} to_link="insert"/>
                     </div>
                     <div className="col">
-                        <RecordCard title="Update" onRedirect={() => alert("Redirecting to Medical Record")} to_link="medical"/>
+                        <RecordCard title="Update" onRedirect={() => alert("Redirecting to Medical Record")} to_link="update"/>
                     </div>
                     <div className="col">
-                        <RecordCard title="View" onRedirect={() => alert("Redirecting to Medical Record")} to_link="medical"/>
+                        <RecordCard title="Delete" onRedirect={() => alert("Redirecting to Medical Record")} to_link="delete"/>
                     </div>
                 </div>
             </div>
