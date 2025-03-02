@@ -35,6 +35,14 @@
     display: flex;
     justify-content: space-evenly;
 }
+.gender-subquery{
+    width: 45%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 .income-query-input-group{
     display: flex;
     justify-content: space-between;

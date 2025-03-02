@@ -9,7 +9,7 @@ interface TaxRecord {
   status: string;
   citizen_id: number;
   date: string;
-  name:string;
+  name: string;
 }
 
 function TaxQueryForm() {
@@ -65,35 +65,41 @@ function TaxQueryForm() {
   return (
     <div className="col card-holder tax-query-container">
       <div className="tax-query-title">Tax Query</div>
-      
+
       {error && <div style={{ color: "red" }}>{error}</div>}
       <form className="tax-query-form" onSubmit={handleSubmit}>
-        <label className="tax-query-label" htmlFor="queryType">
-          Query Type:
-        </label>
-        <select
-          id="queryType"
-          name="queryType"
-          className="tax-query-input"
-          value={queryType}
-          onChange={(e) => setQueryType(e.target.value)}
-        >
-          <option value="person">Person</option>
-          <option value="household">Household</option>
-        </select>
+        <div className="tax-query-group">
+          <div className="tax-query-subgroup">
+            <label className="tax-query-label" htmlFor="queryType">
+              Query Type:
+            </label>
+            <select
+              id="queryType"
+              name="queryType"
+              className="tax-query-input"
+              value={queryType}
+              onChange={(e) => setQueryType(e.target.value)}
+            >
+              <option value="person">Person</option>
+              <option value="household">Household</option>
+            </select>
+          </div>
 
-        <label className="tax-query-label" htmlFor="id">
-          ID:
-        </label>
-        <input
-          className="tax-query-input"
-          type="text"
-          id="id"
-          name="id"
-          required
-          value={id}
-          onChange={(e) => setId(e.target.value)}
-        />
+          <div className="tax-query-subgroup">
+            <label className="tax-query-label" htmlFor="id">
+              ID:
+            </label>
+            <input
+              className="tax-query-input"
+              type="text"
+              id="id"
+              name="id"
+              required
+              value={id}
+              onChange={(e) => setId(e.target.value)}
+            />
+          </div>
+        </div>
         <div className="tax-query-range">
           <label className="tax-query-label">Date Range:</label>
           <div className="tax-query-input-group">
@@ -123,7 +129,6 @@ function TaxQueryForm() {
             />
           </div>
         </div>
-
 
         <div className="tax-query-range">
           <label className="tax-query-label">Amount Range:</label>

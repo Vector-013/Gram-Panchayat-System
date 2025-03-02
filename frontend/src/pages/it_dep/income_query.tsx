@@ -47,11 +47,14 @@ function IncomeQueryForm() {
         educational_qualification: education,
       };
 
-      const response = await fetch("http://localhost:8000/it-dept/income-query", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(requestBody),
-      });
+      const response = await fetch(
+        "http://localhost:8000/it-dept/income-query",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(requestBody),
+        }
+      );
       if (!response.ok) {
         throw new Error("Submission failed");
       }
@@ -70,7 +73,8 @@ function IncomeQueryForm() {
       {error && <div className="income-query-error">{error}</div>}
 
       <form className="income-query-form" onSubmit={handleSubmit}>
-        <div className="income-query-range">
+        <div className="gender-query">
+        <div className="gender-subquery">
           <label className="income-query-label">Individual Income:</label>
           <div className="income-query-input-group">
             <input
@@ -89,7 +93,7 @@ function IncomeQueryForm() {
           </div>
         </div>
 
-        <div className="income-query-range">
+        <div className="gender-subquery">
           <label className="income-query-label">Household Income:</label>
           <div className="income-query-input-group">
             <input
@@ -112,7 +116,7 @@ function IncomeQueryForm() {
           </div>
         </div>
 
-        <div className="income-query-range">
+        <div className="gender-subquery">
           <label className="income-query-label">Age Range:</label>
           <div className="income-query-input-group">
             <input
@@ -130,22 +134,28 @@ function IncomeQueryForm() {
             />
           </div>
         </div>
+        </div>
 
         <div className="gender-query">
-          <label className="income-query-label">Educational Qualification:</label>
-          <select
-            className="income-query-input"
-            value={education}
-            onChange={(e) => setEducation(e.target.value)}
-          >
-            <option value="">Select Qualification</option>
-            <option value="Primary">Primary</option>
-            <option value="Secondary">Secondary</option>
-            <option value="Higher Secondary">Higher Secondary</option>
-            <option value="Graduate">Graduate</option>
-            <option value="Postgraduate">Postgraduate</option>
-          </select>
+          <div className="gender-subquery">
+            <label className="income-query-label">
+              Educational Qualification:
+            </label>
+            <select
+              className="income-query-input"
+              value={education}
+              onChange={(e) => setEducation(e.target.value)}
+            >
+              <option value="">Select Qualification</option>
+              <option value="Primary">Primary</option>
+              <option value="Secondary">Secondary</option>
+              <option value="Higher Secondary">Higher Secondary</option>
+              <option value="Graduate">Graduate</option>
+              <option value="Postgraduate">Postgraduate</option>
+            </select>
+          </div>
 
+          <div className="gender-subquery">
           <label className="income-query-label">Gender:</label>
           <select
             className="income-query-input"
@@ -157,6 +167,7 @@ function IncomeQueryForm() {
             <option value="Female">Female</option>
             <option value="Other">Other</option>
           </select>
+          </div>
         </div>
         <input className="tax-query-submit" type="submit" value="Submit" />
       </form>
