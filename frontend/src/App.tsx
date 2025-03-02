@@ -101,6 +101,7 @@ const App: React.FC = () => {
         <Route index path="/" element={<LandingPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/logout" element={<Logout />} />
+        <Route path="/test" element = {<AssetQueryForm />}/>
 
         {/* Admin Dashboard */}
         <Route path="/admin-dashboard" element={<ProtectedRoute element={<AdminDashboard />} />} />

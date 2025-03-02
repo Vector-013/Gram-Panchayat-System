@@ -102,7 +102,7 @@ INSERT INTO citizens (citizen_id, name, gender, dob, educational_qualification, 
 (77, 'Arjun Reddy', 'Male', '2013-06-18', 'Secondary', 0, 14, '77@panchayat.com', '$2b$12$hashedPassword'),
 (78, 'Pooja Reddy', 'Female', '2016-10-05', 'Primary', 0, 14, '78@panchayat.com', '$2b$12$hashedPassword'),
 (79, 'Varun Sharma', 'Male', '2012-03-15', 'Secondary', 0, 15, '79@panchayat.com', '$2b$12$hashedPassword'),
-(80, 'Kavya Sharma', 'Female', '2015-07-27', 'Primary', 0, 15, '80@panchayat.com', '$2b$12$hashedPassword')
+(80, 'Kavya Sharma', 'Female', '2015-07-27', 'Primary', 0, 15, '80@panchayat.com', '$2b$12$hashedPassword'),
 -- Grandparents (Age: 60-80, Mostly Illiterate or Primary, Some Secondary)
 (81, 'Surya Nair', 'Male', '1950-03-15', 'Illiterate', 25000, 17, '81@panchayat.com', '$2b$12$hashedPassword'),
 (82, 'Lakshmi Nair', 'Female', '1955-08-10', 'Illiterate', 0, 17, '82@panchayat.com', '$2b$12$hashedPassword'),
