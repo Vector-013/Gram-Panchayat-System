@@ -1,6 +1,7 @@
 from pydantic import BaseModel
 from datetime import date
 from typing import Optional
+from decimal import Decimal
 
 
 class CitizenCreate(BaseModel):
@@ -29,3 +30,10 @@ class CitizenResponse(BaseModel):
 class CitizenLogin(BaseModel):
     email: str
     password: str
+
+class CitizenUpdate(BaseModel):
+    citizen_id: int
+    educational_qualification: Optional[str] = None
+    income: Optional[Decimal] = None
+    household_id: Optional[int] = None
+    password: Optional[str] = None

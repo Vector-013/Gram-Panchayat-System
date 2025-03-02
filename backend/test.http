@@ -1,13 +1,14 @@
 #####################################################    AUTH    #####################################################
 
-## Admin Login
 # POST http://localhost:8000/login
 # Content-Type: application/json
 
 # {
-#   "email": "Admin@panchayat.com",
-#   "password": "OjasMyBoy"
+#     "email": "Admin@panchayat.com",
+#     "password": "OjasMyBoy"
 # }
+
+
 
 # POST http://localhost:8000/login/logout
 # Content-Type: application/json
@@ -18,8 +19,8 @@ POST http://localhost:8000/login
 Content-Type: application/json
 
 {
-  "email": "1@panchayat.com",
-  "password": "OjasIsGod"
+  "email": "Admin@panchayat.com",
+  "password": "OjasMyBoy"
 }
 
 
@@ -128,6 +129,40 @@ Content-Type: application/json
 # Content-Type: application/json
 # Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxQHBhbmNoYXlhdC5jb20iLCJyb2xlIjoicHJhZGhhbiIsImV4cCI6MTc0MDg2NjUxOH0.Lz2YmLYx-s_JBLRxtHQjbRXVTWY9swYB6sGZujZ0Tis
 
+### Test: Get Citizen Details
+# GET http://localhost:8000/update-citizen/get/5
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxQHBhbmNoYXlhdC5jb20iLCJyb2xlIjoicHJhZGhhbiIsImV4cCI6MTc0MDkyMDQ1OX0.a6JTOxgv2JK_ash1_okBvEU7qW5L94WDtLWRWRB8rCw
+
+# ### Test: Update Citizen Details
+# POST http://localhost:8000/update-citizen/post
+# Content-Type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxQHBhbmNoYXlhdC5jb20iLCJyb2xlIjoicHJhZGhhbiIsImV4cCI6MTc0MDkyMDQ1OX0.a6JTOxgv2JK_ash1_okBvEU7qW5L94WDtLWRWRB8rCw
+
+# {
+#   "citizen_id": 5,
+#   "educational_qualification": "Post Graduate",
+#   "income": 90000,
+#   "household_id": 3,
+#   "password": "newpassword123"
+# }
+
+### Test: Integrity Check
+# GET http://localhost:8000/update-citizen/integrity-check/5
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxQHBhbmNoYXlhdC5jb20iLCJyb2xlIjoicHJhZGhhbiIsImV4cCI6MTc0MDg2NjUxOH0.Lz2YmLYx-s_JBLRxtHQjbRXVTWY9swYB6sGZujZ0Tis
+
+### Test: Allocate Asset (Admin/Pradhan/Employee)
+POST http://localhost:8000/asset-management/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBZG1pbkBwYW5jaGF5YXQuY29tIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzQwOTIxNzU3fQ.SXx_5S4-I7T284pFZ-3iE9CkBgcOqpq_rUQ1lCRCYvY
+
+{
+  "type": "Hospital",
+  "location": "Gandhi Chowk, Phulera",
+  "installation_date": "2025-03-02",
+  "value": 500000
+}
+
+
 #####################################################    ADMIN   #####################################################
 
 # Attempt to register a new citizen using a citizen token (should fail)
@@ -143,6 +178,16 @@ Content-Type: application/json
 #   "income": 0,
 #   "educational_qualification": "Primary",
 #   "password": "password123"
+# }
+
+### Test: Allocate Budget (Admin Only)
+# POST http://localhost:8000/admin/allocate-budget/
+# Content-Type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBZG1pbkBwYW5jaGF5YXQuY29tIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzQwOTIxNzU3fQ.SXx_5S4-I7T284pFZ-3iE9CkBgcOqpq_rUQ1lCRCYvY
+
+# {
+#   "category": "Healthcare",
+#   "amount": 500000
 # }
 
 #####################################################    IT DEPT   #####################################################

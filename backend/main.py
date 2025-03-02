@@ -25,6 +25,8 @@ from routers import (
     tax_update,
     medical_condition,
     mgnrega,
+    asset_management,
+    update_citizen,
 )
 
 app = FastAPI()
@@ -76,6 +78,8 @@ app.include_router(citizen_creator)
 app.include_router(tax_update)
 app.include_router(medical_condition)
 app.include_router(mgnrega)
+app.include_router(asset_management)
+app.include_router(update_citizen)
 
 # Start server
 if __name__ == "__main__":
