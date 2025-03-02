@@ -5,7 +5,7 @@ from datetime import date
 from database import get_db
 from routers.posts.dependencies import get_current_user
 
-router = APIRouter(prefix="/", tags=["Environmental Data"])
+router = APIRouter(prefix="", tags=["Environmental Data"])
 
 
 @router.get("/census-env", response_model=dict)
