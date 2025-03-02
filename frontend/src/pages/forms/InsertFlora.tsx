@@ -30,7 +30,7 @@ const InsertFloraFauna: React.FC = () => {
         "http://localhost:8000/api/flora-fauna/insert",
         {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: { "Content-Type": "application/json" , "Authorization": `Bearer ${localStorage.getItem("token")}` },
           body: JSON.stringify(requestBody),
         }
       );

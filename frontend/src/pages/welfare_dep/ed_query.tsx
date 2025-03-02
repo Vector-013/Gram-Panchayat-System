@@ -29,7 +29,7 @@ function EducationForm() {
             
             const response = await fetch("http://localhost:8000/edu-dept/edu-query", {
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
+                headers: { "Content-Type": "application/json", "Authorization": `Bearer ${localStorage.getItem("token")}` },
                 body: JSON.stringify(requestBody),
             });
             if (!response.ok) {

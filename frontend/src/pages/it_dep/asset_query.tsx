@@ -41,7 +41,7 @@ function AssetQueryForm() {
 
             const response = await fetch("http://localhost:8000/it-dept/asset-query", {
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
+                headers: { "Content-Type": "application/json", Authorization: `Bearer ${localStorage.getItem("token")}` },
                 body: JSON.stringify(requestBody),
             });
 
