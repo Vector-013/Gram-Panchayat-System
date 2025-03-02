@@ -125,13 +125,13 @@ Content-Type: application/json
 # }
 
 ### Test: Get Updated Taxes Endpoint
-GET http://localhost:8000/update-taxes/get
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBZG1pbkBwYW5jaGF5YXQuY29tIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzQwOTIzMTM3fQ.Y5L5k4-Onmgh4ZEhaTOJp9fZkex37sFyppX5OWPE9cI
+# GET http://localhost:8000/update-taxes/get
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBZG1pbkBwYW5jaGF5YXQuY29tIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzQwOTIzMTM3fQ.Y5L5k4-Onmgh4ZEhaTOJp9fZkex37sFyppX5OWPE9cI
 
 # ### Test Update Taxes Endpoint
-POST http://localhost:8000/update-taxes/
-Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBZG1pbkBwYW5jaGF5YXQuY29tIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzQwOTIzMTM3fQ.Y5L5k4-Onmgh4ZEhaTOJp9fZkex37sFyppX5OWPE9cI
+# POST http://localhost:8000/update-taxes/
+# Content-Type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBZG1pbkBwYW5jaGF5YXQuY29tIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzQwOTIzMTM3fQ.Y5L5k4-Onmgh4ZEhaTOJp9fZkex37sFyppX5OWPE9cI
 
 ### Test: Get Citizen Details
 # GET http://localhost:8000/update-citizen/get/5
