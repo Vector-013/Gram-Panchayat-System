@@ -12,7 +12,7 @@ router = APIRouter(prefix="/edu-dept", tags=["EduDept Query"])
 
 @router.post("/edu-query", response_model=List[EduDeptResult])
 def edu_dept_query(query: EduDeptQuery, db: Session = Depends(get_db)):
-    if query.gender != "":
+    if query.gender != "All":
         sql = text(
             """
             WITH household_income AS (

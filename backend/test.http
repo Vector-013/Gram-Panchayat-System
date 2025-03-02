@@ -19,8 +19,8 @@ POST http://localhost:8000/login
 Content-Type: application/json
 
 {
-  "email": "Admin@panchayat.com",
-  "password": "OjasMyBoy"
+  "email": "1@panchayat.com",
+  "password": "OjasIsGod"
 }
 
 
@@ -96,15 +96,15 @@ Content-Type: application/json
 # GET http://localhost:8000/welfare-schemes/
 # Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxQHBhbmNoYXlhdC5jb20iLCJyb2xlIjoicHJhZGhhbiIsImV4cCI6MTc0MDg0OTAzNX0.TjlXEPGrg7-mcgb64-6ui2R-8rXkWSbCi3S8vTGDQ-U
 
-### Test Birth Event Endpoint
+# ### Test Birth Event Endpoint
 # POST http://localhost:8000/birth-event/
 # Content-Type: application/json
-# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxQHBhbmNoYXlhdC5jb20iLCJyb2xlIjoicHJhZGhhbiIsImV4cCI6MTc0MDg2NjUxOH0.Lz2YmLYx-s_JBLRxtHQjbRXVTWY9swYB6sGZujZ0Tis
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxQHBhbmNoYXlhdC5jb20iLCJyb2xlIjoicHJhZGhhbiIsImV4cCI6MTc0MDk1MDI3OX0.FUxtX3BDUU4BlToCSZbup62iddAiWJZSPiqLnqWRutg
 
 # {
 #   "mother_id": 5,
 #   "father_id": 6,
-#   "baby_name": "Baby Rahul",
+#   "baby_name": "Baby Lorcan",
 #   "gender": "Male",
 #   "password": "babySecret123"
 # }
@@ -372,29 +372,30 @@ Content-Type: application/json
 #   "max_age": 18
 # }
 
-# ### Edu Dept Query for Citizens
+### Edu Dept Query for Citizens
 # POST http://localhost:8000/edu-dept/edu-query
 # Content-Type: application/json
 
 # {
 #   "gender": "",
-#   "educational_level": "Graduate",
+#   "educational_level": "All",
 #   "dob_min": "1980-01-01",
 #   "dob_max": "2000-12-31",
 #   "income_min": 10000,
 #   "income_max": 800000
 # }
-# POST http://127.0.0.1:8000/welfare/vaccines
-# Content-Type: application/json
 
-# {
-#   "vaccine_type": "Covid-19",
-#   "start_date": "2020-01-01",
-#   "end_date": "2023-12-31",
-#   "parent_qualification": ""
-# }
+POST http://127.0.0.1:8000/welfare/vaccines
+Content-Type: application/json
 
-### Medical Data Query - All Filters Provided
+{
+  "vaccine_type": "Covid-19",
+  "start_date": "2020-01-01",
+  "end_date": "2023-12-31",
+  "parent_qualification": "Primary"
+}
+
+## Medical Data Query - All Filters Provided
 # POST http://localhost:8000/welfare/medical-data/
 # Content-Type: application/json
 # Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxQHBhbmNoYXlhdC5jb20iLCJyb2xlIjoicHJhZGhhbiIsImV4cCI6MTc0MDg4MDE5Mn0.DUZz-sER0CLGW13Qwr8LyekP4mtcViEUbHMhRYIIlLU
@@ -433,3 +434,12 @@ Content-Type: application/json
 #   "max_household_income": 1000000,
 #   "personal_income": 1000000
 # }
+
+
+
+#########################################################   CENSUS  ###############################################################
+
+# ### Get Today's Environmental Data and All Records
+# GET http://localhost:8000/get-today-env/
+# Content-Type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxQHBhbmNoYXlhdC5jb20iLCJyb2xlIjoicHJhZGhhbiIsImV4cCI6MTc0MDk1MDI3OX0.FUxtX3BDUU4BlToCSZbup62iddAiWJZSPiqLnqWRutg

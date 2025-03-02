@@ -22,3 +22,4 @@ from .welfare_init.medical_condition import router as medical_condition
 from .welfare_init.mgnrega import router as mgnrega
 from .posts.asset_management import router as asset_management
 from .updates.update_citizen import router as update_citizen
+from .env_init.create_environment import router as create_environment

@@ -12,6 +12,7 @@ import InsertLandRecord from "../forms/InsertLandRecords";
 import InsertWelfareScheme from "../forms/InsertWelfareScheme";
 import InsertMarriage from "../forms/InsertMarriage";
 import InsertEmployee from "../forms/InsertEmployee";
+import InsertScheme from "../forms/InsertSchemeEnrol";
 import bgImage from "../../images/village.jpg";
 
 const InsertModal: React.FC = () => {
@@ -48,6 +49,7 @@ const InsertModal: React.FC = () => {
                     <option value="environment">Environment Record</option>
                     <option value="birth">Birth Record</option>
                     <option value="death">Death Record</option>
+                    <option value="scheme">Scheme Enrollment</option>
                     {role == 'pradhan' && <option value="employee">Employee</option>}
                 </select>
             </div>
@@ -71,6 +73,7 @@ const InsertModal: React.FC = () => {
             {selectedType === "environment" && <InsertEnv/>}
             {selectedType === "marriage" && <InsertMarriage />}
             {selectedType === "employee" && <InsertEmployee />}
+            {selectedType === "scheme" && <InsertScheme />}
         </div>
     );
 };

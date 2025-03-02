@@ -239,8 +239,8 @@ const MGNREGAQuery: React.FC = () => {
                 </tr>
               </thead>
               <tbody>
-                {enrolled.length > 0 ? (
-                  enrolled.map((record) => (
+                {filteredEnrolled.length > 0 ? (
+                  filteredEnrolled.map((record) => (
                     <tr key={record.citizen_id}>
                       <td>{record.citizen_id}</td>
                       <td>{record.name}</td>
@@ -274,8 +274,8 @@ const MGNREGAQuery: React.FC = () => {
                 </tr>
               </thead>
               <tbody>
-                {notEnrolled.length > 0 ? (
-                  notEnrolled.map((record) => (
+                {filteredNotEnrolled.length > 0 ? (
+                  filteredNotEnrolled.map((record) => (
                     <tr key={record.citizen_id}>
                       <td>{record.citizen_id}</td>
                       <td>{record.name}</td>
