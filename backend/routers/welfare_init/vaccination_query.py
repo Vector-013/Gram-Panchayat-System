@@ -3,12 +3,24 @@ from sqlalchemy.orm import Session
 from sqlalchemy import text
 from database import get_db
 from schemas.vaccination_query import ChildVaccineQuery
+from routers.posts.dependencies import get_current_user
 
 router = APIRouter(prefix="/welfare", tags=["Vaccination Query"])
 
 
 @router.post("/vaccines", response_model=dict)
-def child_vaccine_query(query: ChildVaccineQuery, db: Session = Depends(get_db)):
+def child_vaccine_query(
+    query: ChildVaccineQuery,
+    db: Session = Depends(get_db),
+    user: dict = Depends(get_current_user),
+):
+
+    if user["role"] not in {"pradhan", "employee", "admin"}:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="You are not authorized to access this resource.",
+        )
+
     sql = text(
         """
         WITH filtered_vaccinations AS (
