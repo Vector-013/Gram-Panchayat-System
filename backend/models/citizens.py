@@ -189,6 +189,8 @@ class MedicalData(Base):
     citizen_id = Column(Integer, ForeignKey("citizens.citizen_id"), nullable=True)
     health_status = Column(Text, nullable=False)
     medical_condition = Column(Text, nullable=True)
+    date_recorded = Column(Date, nullable = False)
+
 
     citizen = relationship("Citizen", back_populates="medical_data")
 
