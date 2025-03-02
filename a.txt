@@ -1,37 +1,45 @@
- citizen_id |     name      | gender |    dob     | educational_qualification | income | household_id |      email       |                       hashed_password                        
-------------+---------------+--------+------------+---------------------------+--------+--------------+------------------+--------------------------------------------------------------
-          1 | Rajesh Sharma | Male   | 1985-06-15 | Graduate                  |  50000 |            1 | 1@panchayat.com  | $2a$06$8.T33vcOKXkuHx7fSM7FF.b.4lwj.n1W2kyWHcEu1DCdrPViJAgJ.
-          2 | Pooja Verma   | Female | 1990-08-22 | Post-Graduate             |  60000 |            2 | 2@panchayat.com  | $2a$06$1sqEOx2J/po1sJk5FSsk4.xq3tQ2Sy3QTMFw4kklm16LCmxkeV51e
-          3 | Amit Kumar    | Male   | 1982-11-03 | 10th                      |  30000 |            3 | 3@panchayat.com  | $2a$06$H7ZaZY4S.vT7KNXoVSjzIeqCipchvVlxAIbkn8nHLgGghPXmWNShi
-          4 | Sneha Das     | Female | 1995-04-12 | 12th                      |  40000 |            4 | 4@panchayat.com  | $2a$06$irlwVoh7hnA8J0PSy9/2uOWoA8jC.hpPQnUWM8uC0Q2qIGdQc/BEK
-          5 | Vikram Rao    | Male   | 1987-09-25 | Secondary                 |  35000 |            5 | 5@panchayat.com  | $2a$06$svI.1wv3roLWNwrXf.ZtKOBTbc/7CHoIdK86AHrZNl1EpUfhZwHFi
-          6 | Meena Nair    | Female | 1998-02-20 | Graduate                  |  45000 |            6 | 6@panchayat.com  | $2a$06$gqlGKjNp0LLmbbhb9qufluOTrpo.cXRDDra2zCIIwVR9fmaaztfWe
-          7 | Rohan Mehta   | Male   | 1992-07-18 | Post-Graduate             |  70000 |            7 | 7@panchayat.com  | $2a$06$F1dMGSXmtsGekDfmlhtirORyq/yRetQjq7IbmE5q7BrOp9MidmgRe
-          8 | Ananya Ghosh  | Female | 1989-05-10 | Illiterate                |  25000 |            8 | 8@panchayat.com  | $2a$06$ZU68Kdy8d20cV6dHaHjL5./7CzehzcIOkr9uUG7TwIg8CZHq3Njd.
-          9 | Suresh Patil  | Male   | 1983-03-30 | Primary                   |  32000 |            9 | 9@panchayat.com  | $2a$06$TczmBncLJOx.JDLvDm47MeG0pPOjhMWgL0xIaa7QqvY7j20HSoZU2
-         10 | Neha Kapoor   | Female | 1996-12-05 | Graduate                  |  48000 |           10 | 10@panchayat.com | $2a$06$.jrfZidjy22VTNA5Ibwp2eXHyCKs2ZW.dC/N.qX032zRionb7xEra
-         11 | Aryan Sharma  | Male   | 2011-07-10 | None                      |      0 |            1 | 11@panchayat.com | $2a$06$tE.6YZSnvmlgLDY8.mA55u9hPJDIN7Tqm68Bw4oMAsaNIpQdxPyGa
-         12 | Diya Kumar    | Female | 2013-09-20 | None                      |      0 |            3 | 12@panchayat.com | $2a$06$FW4q3/39fiC.JvK6CJlExem/svwNuJkfkDnYmzIrE7souzA.CUeKu
-         13 | Kabir Rao     | Male   | 2016-12-25 | None                      |      0 |            5 | 13@panchayat.com | $2a$06$.YiVxfjhZK3J/HfDN6IdxOC6m2c5KugGm4NuYqiOzGhsZPQGiJ..i
-         14 | Ishita Mehta  | Female | 2019-05-30 | None                      |      0 |            7 | 14@panchayat.com | $2a$06$er2Oy0yeqo8y.vc2yD63v.OAc3y74PLMH5Hu2a0cRBXn3k27HEYnm
-         15 | Vivaan Kapoor | Male   | 2021-11-15 | None                      |      0 |            9 | 15@panchayat.com | $2a$06$PTJjzBn6xVsAkyIFt6tC..c34N6s/CnDgfiqw0foueT0hukz9wHvi
-         16 | ojas dubey    | Male   | 2004-12-13 | None                      |        |            5 | 16@panchayat.com | $2a$06$l4s/ym.zB3wMmtnfNNYsiuGNKruD4RndJu9kWqG.1Or4vy6yPgJO6
-         17 | John Doe      | Male   | 1990-01-01 | Bachelor                  |        |            1 | 17@panchayat.com | $2b$12$svHfF4CcgHjG0N7g2BsdPugQst7oRTIpqT1qjKLSaG1LrCnLmJ2xu
-         18 | Johny Doe     | Male   | 1990-01-01 | Bachelor                  |        |            1 | 18@panchayat.com | $2b$12$ViVujBA1baXiMlR0/FyZj.2O.1SrO5iLa1vx/WzhsHnYsi0gSraHe
-         19 | Mokok Nanami  | Male   | 2025-02-05 | Polya                     |        |            3 | 19@panchayat.com | $2b$12$6KfnikbcKy2z2hvN/LrjU.NN2niGMLbYEuQHSyf6pNIF4Dh2BuEoe
-         20 | Shreya Boss   | Other  | 2025-02-06 | Failure                   |        |            5 | 20@panchayat.com | $2b$12$f8KvQf1KRtGBn6doN2CrV.7X63FgKmGWZbKGbXa.2ab6mwwN9.yy6
-         21 | Noni Sharma   | Female | 1995-06-15 | Graduate                  |  70000 |            1 |                  | 
-         22 | gril1         | Male   | 1990-01-01 | Bachelor                  |        |            1 | 22@panchayat.com | $2b$12$u7cVd0tvRqWJemUstBrlEebwkDYGZq/fFtUWt9l4KoQOysJ5xN/Ru
-         23 | gril1         | Male   | 2020-01-01 | Bachelor                  |        |            1 | 23@panchayat.com | $2b$12$9fh2.11530ZpO/t3EctSXefW.6dedXeEDEFtFvimuMcc7VX6yCyrq
-         24 | gril3         | Male   | 2012-01-01 | Primary                   |        |            5 | 24@panchayat.com | $2b$12$XLYzAuxuSrnj7vgzrtWj/eZHzsClTdsjTejY0P5GjFjarrj1I/R06
-         25 | gril6         | Female | 2012-01-01 | Primary                   |        |            5 | 25@panchayat.com | $2b$12$3R5RUIpY.pZPOvtmloBpPuoFfrDqUec8/3sH6Wh7IYw14fxLRve6S
-         26 | gril6         | Female | 1990-01-01 | Primary                   |        |            2 | 26@panchayat.com | $2b$12$k9FJqMKR4ZL4CuPPZKPgKOiZWw.wAMDD6T3GMXtdXgu2g2NLmn7Iq
-         27 | gril6         | Female | 2010-01-01 | Primary                   |        |            2 | 27@panchayat.com | $2b$12$tFgAkH2vJu/mDEo8vD2/Zu1URS2n0n0IdVekW.JIpYVuVjn/4Tgxq
-         28 | gril6         | Female | 2024-01-01 | Primary                   |        |            1 | 28@panchayat.com | $2b$12$Wh5iZ5YXj1H3CMqjgEHy0exFFIdEC5le04hAulHSF9LK6FAFBwSPa
-(28 rows)
+ citizen_id |     name      | gender |    dob     | educational_qualification | income  | household_id |      email       |                       hashed_password                        
+------------+---------------+--------+------------+---------------------------+---------+--------------+------------------+--------------------------------------------------------------
+          1 | Rajesh Sharma | Male   | 1985-06-15 | Graduate                  |   50000 |            1 | 1@panchayat.com  | $2a$06$8.T33vcOKXkuHx7fSM7FF.b.4lwj.n1W2kyWHcEu1DCdrPViJAgJ.
+          2 | Pooja Verma   | Female | 1990-08-22 | Post-Graduate             |   60000 |            2 | 2@panchayat.com  | $2a$06$1sqEOx2J/po1sJk5FSsk4.xq3tQ2Sy3QTMFw4kklm16LCmxkeV51e
+          3 | Amit Kumar    | Male   | 1982-11-03 | 10th                      |   30000 |            3 | 3@panchayat.com  | $2a$06$H7ZaZY4S.vT7KNXoVSjzIeqCipchvVlxAIbkn8nHLgGghPXmWNShi
+          4 | Sneha Das     | Female | 1995-04-12 | 12th                      |   40000 |            4 | 4@panchayat.com  | $2a$06$irlwVoh7hnA8J0PSy9/2uOWoA8jC.hpPQnUWM8uC0Q2qIGdQc/BEK
+          5 | Vikram Rao    | Male   | 1987-09-25 | Secondary                 |   35000 |            5 | 5@panchayat.com  | $2a$06$svI.1wv3roLWNwrXf.ZtKOBTbc/7CHoIdK86AHrZNl1EpUfhZwHFi
+          6 | Meena Nair    | Female | 1998-02-20 | Graduate                  |   45000 |            6 | 6@panchayat.com  | $2a$06$gqlGKjNp0LLmbbhb9qufluOTrpo.cXRDDra2zCIIwVR9fmaaztfWe
+          7 | Rohan Mehta   | Male   | 1992-07-18 | Post-Graduate             |   70000 |            7 | 7@panchayat.com  | $2a$06$F1dMGSXmtsGekDfmlhtirORyq/yRetQjq7IbmE5q7BrOp9MidmgRe
+          8 | Ananya Ghosh  | Female | 1989-05-10 | Illiterate                |   25000 |            8 | 8@panchayat.com  | $2a$06$ZU68Kdy8d20cV6dHaHjL5./7CzehzcIOkr9uUG7TwIg8CZHq3Njd.
+          9 | Suresh Patil  | Male   | 1983-03-30 | Primary                   |   32000 |            9 | 9@panchayat.com  | $2a$06$TczmBncLJOx.JDLvDm47MeG0pPOjhMWgL0xIaa7QqvY7j20HSoZU2
+         10 | Neha Kapoor   | Female | 1996-12-05 | Graduate                  |   48000 |           10 | 10@panchayat.com | $2a$06$.jrfZidjy22VTNA5Ibwp2eXHyCKs2ZW.dC/N.qX032zRionb7xEra
+         11 | Aryan Sharma  | Male   | 2011-07-10 | None                      |       0 |            1 | 11@panchayat.com | $2a$06$tE.6YZSnvmlgLDY8.mA55u9hPJDIN7Tqm68Bw4oMAsaNIpQdxPyGa
+         12 | Diya Kumar    | Female | 2013-09-20 | None                      |       0 |            3 | 12@panchayat.com | $2a$06$FW4q3/39fiC.JvK6CJlExem/svwNuJkfkDnYmzIrE7souzA.CUeKu
+         13 | Kabir Rao     | Male   | 2016-12-25 | None                      |       0 |            5 | 13@panchayat.com | $2a$06$.YiVxfjhZK3J/HfDN6IdxOC6m2c5KugGm4NuYqiOzGhsZPQGiJ..i
+         14 | Ishita Mehta  | Female | 2019-05-30 | None                      |       0 |            7 | 14@panchayat.com | $2a$06$er2Oy0yeqo8y.vc2yD63v.OAc3y74PLMH5Hu2a0cRBXn3k27HEYnm
+         15 | Vivaan Kapoor | Male   | 2021-11-15 | None                      |       0 |            9 | 15@panchayat.com | $2a$06$PTJjzBn6xVsAkyIFt6tC..c34N6s/CnDgfiqw0foueT0hukz9wHvi
+         16 | ojas dubey    | Male   | 2004-12-13 | None                      |         |            5 | 16@panchayat.com | $2a$06$l4s/ym.zB3wMmtnfNNYsiuGNKruD4RndJu9kWqG.1Or4vy6yPgJO6
+         17 | John Doe      | Male   | 1990-01-01 | Bachelor                  |         |            1 | 17@panchayat.com | $2b$12$svHfF4CcgHjG0N7g2BsdPugQst7oRTIpqT1qjKLSaG1LrCnLmJ2xu
+         18 | Johny Doe     | Male   | 1990-01-01 | Bachelor                  |         |            1 | 18@panchayat.com | $2b$12$ViVujBA1baXiMlR0/FyZj.2O.1SrO5iLa1vx/WzhsHnYsi0gSraHe
+         19 | Mokok Nanami  | Male   | 2025-02-05 | Polya                     |         |            3 | 19@panchayat.com | $2b$12$6KfnikbcKy2z2hvN/LrjU.NN2niGMLbYEuQHSyf6pNIF4Dh2BuEoe
+         20 | Shreya Boss   | Other  | 2025-02-06 | Failure                   |         |            5 | 20@panchayat.com | $2b$12$f8KvQf1KRtGBn6doN2CrV.7X63FgKmGWZbKGbXa.2ab6mwwN9.yy6
+         21 | Noni Sharma   | Female | 1995-06-15 | Graduate                  |   70000 |            1 |                  | 
+         22 | gril1         | Male   | 1990-01-01 | Bachelor                  |         |            1 | 22@panchayat.com | $2b$12$u7cVd0tvRqWJemUstBrlEebwkDYGZq/fFtUWt9l4KoQOysJ5xN/Ru
+         23 | gril1         | Male   | 2020-01-01 | Bachelor                  |         |            1 | 23@panchayat.com | $2b$12$9fh2.11530ZpO/t3EctSXefW.6dedXeEDEFtFvimuMcc7VX6yCyrq
+         24 | gril3         | Male   | 2012-01-01 | Primary                   |         |            5 | 24@panchayat.com | $2b$12$XLYzAuxuSrnj7vgzrtWj/eZHzsClTdsjTejY0P5GjFjarrj1I/R06
+         25 | gril6         | Female | 2012-01-01 | Primary                   |         |            5 | 25@panchayat.com | $2b$12$3R5RUIpY.pZPOvtmloBpPuoFfrDqUec8/3sH6Wh7IYw14fxLRve6S
+         26 | gril6         | Female | 1990-01-01 | Primary                   |         |            2 | 26@panchayat.com | $2b$12$k9FJqMKR4ZL4CuPPZKPgKOiZWw.wAMDD6T3GMXtdXgu2g2NLmn7Iq
+         27 | gril6         | Female | 2010-01-01 | Primary                   |         |            2 | 27@panchayat.com | $2b$12$tFgAkH2vJu/mDEo8vD2/Zu1URS2n0n0IdVekW.JIpYVuVjn/4Tgxq
+         28 | gril6         | Female | 2024-01-01 | Primary                   |         |            1 | 28@panchayat.com | $2b$12$Wh5iZ5YXj1H3CMqjgEHy0exFFIdEC5le04hAulHSF9LK6FAFBwSPa
+         29 | Baby Rahul    | Male   | 2025-03-02 | Illiterate                |       0 |            5 | 29@panchayat.com | $2b$12$HMiSHR2mIqx203i5MHtc0ucvrr5K9SW06UazOzhylVLN0d59WpY5S
+         30 | Baby Rahul    | Male   | 2025-03-02 | Illiterate                |       0 |            5 | 30@panchayat.com | $2b$12$WzOwSnJzaUWr0wbs/lCEO.owfT/ms4Vi5yWK/itn2KcySxYtKLYy6
+         31 | Baby Rahul    | Male   | 2025-03-02 | Illiterate                |       0 |            5 | 31@panchayat.com | $2b$12$jihzyMfxHSJQHsmRbbOacertIsZQJc.fW66nfkEfj.vwLjJh7DO2i
+         32 | Baby Rahul    | Male   | 2025-03-02 | Illiterate                |       0 |            5 | 32@panchayat.com | $2b$12$GY1FsaHbrpovvqBdJILcIOr8igHT3EcVNU6lCMBzSb6sEPmf8jeRu
+         33 | Baby Rahul    | Male   | 2025-03-02 | Illiterate                |       0 |            5 | 33@panchayat.com | $2b$12$pRmRP5eIyWsC0fnlN/5vN.nH68QMzPAXAxD0J/fuYGB3c4olN9Awy
+         34 | Baby Rahul    | Male   | 2025-03-02 | Illiterate                |       0 |            5 | 34@panchayat.com | $2b$12$4eNiqOv3e.OiXQAhqxHnAeOI8S4iS7gVPLPgI.0S/75zvXsllCfLW
+         35 | Neha Mrinali  | Female | 2000-05-20 | Graduate                  | 35000.0 |           10 | 35@panchayat.com | $2b$12$/gaA6HZp0VrPM7YObhr6h.ShSv4T9uTknh50Z1FGFLTk2cLIoSyt6
+         36 | Gaurav Roy    | Male   | 2004-12-28 | Graduate                  |     0.0 |            1 | 36@panchayat.com | $2b$12$xkcaU6515Iwa7ZSBNpDJc.LIpAR8QWXSPDU.CwjD47X03CplUlaxq
+(36 rows)
 
- household_id |           address            
---------------+------------------------------
+ household_id |            address            
+--------------+-------------------------------
             1 | 12, Main Bazaar, Phulera
             2 | 34, Station Road, Phulera
             3 | 56, Gandhi Chowk, Phulera
@@ -52,28 +60,34 @@
            18 | 67, Shivaji Nagar, Phulera
            19 | 89, Patel Nagar, Phulera
            20 | 101, Subhash Marg, Phulera
-(20 rows)
+           21 | 123 Main Street, Example City
+           22 | 12, Main Building
+(22 rows)
 
- land_id | area_acres | crop_type | citizen_id | weight | year_recorded 
----------+------------+-----------+------------+--------+---------------
-       1 |        2.5 | Wheat     |          1 |  12.50 |          2001
-       2 |        3.0 | Rice      |          3 |  25.30 |          1998
-       3 |        1.2 | Cotton    |          5 |  18.00 |          2010
-       4 |        4.0 | Sugarcane |          7 |  30.70 |          2015
-       5 |        3.5 | Maize     |          9 |  22.90 |          2020
-       6 |        2.5 | Wheat     |          1 |  40.50 |          1995
-       7 |        1.8 | Barley    |          1 |  15.20 |          2005
-       8 |        3.0 | Rice      |          3 |  33.80 |          2012
-       9 |        1.2 | Cotton    |          5 |  27.10 |          2018
-      10 |        4.0 | Sugarcane |          7 |  19.40 |          1992
-      11 |        3.5 | Maize     |          9 |  50.00 |          2023
-      12 |        2.5 | Wheat     |          2 |  28.60 |          2008
-      13 |        3.0 | Rice      |          2 |  35.20 |          2019
-      14 |        1.5 | Maize     |          4 |  41.30 |          2016
-      15 |        2.0 | Barley    |          4 |  14.70 |          2011
-      16 |        2.5 | Sugarcane |         10 |  37.90 |          2003
-      17 |        2.5 | Wheat     |         21 |  21.50 |          1999
-(17 rows)
+ land_id | area_acres | crop_type | citizen_id | weight  | year_recorded 
+---------+------------+-----------+------------+---------+---------------
+       1 |        2.5 | Wheat     |          1 |   12.50 |          2001
+       2 |        3.0 | Rice      |          3 |   25.30 |          1998
+       3 |        1.2 | Cotton    |          5 |   18.00 |          2010
+       4 |        4.0 | Sugarcane |          7 |   30.70 |          2015
+       5 |        3.5 | Maize     |          9 |   22.90 |          2020
+       6 |        2.5 | Wheat     |          1 |   40.50 |          1995
+       7 |        1.8 | Barley    |          1 |   15.20 |          2005
+       8 |        3.0 | Rice      |          3 |   33.80 |          2012
+       9 |        1.2 | Cotton    |          5 |   27.10 |          2018
+      10 |        4.0 | Sugarcane |          7 |   19.40 |          1992
+      11 |        3.5 | Maize     |          9 |   50.00 |          2023
+      12 |        2.5 | Wheat     |          2 |   28.60 |          2008
+      13 |        3.0 | Rice      |          2 |   35.20 |          2019
+      14 |        1.5 | Maize     |          4 |   41.30 |          2016
+      15 |        2.0 | Barley    |          4 |   14.70 |          2011
+      16 |        2.5 | Sugarcane |         10 |   37.90 |          2003
+      17 |        2.5 | Wheat     |         21 |   21.50 |          1999
+      18 |        5.2 | Wheat     |          9 | 1200.50 |          2024
+      19 |        5.2 | Wheat     |          9 | 1200.50 |          2024
+      21 |        5.2 | Wheat     |          9 | 1200.50 |          2024
+      22 |        2.5 | Rice      |          1 |  100.00 |          2025
+(21 rows)
 
  employee_id |   role    | citizen_id 
 -------------+-----------+------------
@@ -87,7 +101,10 @@
            8 | Member    |          6
            9 | Clerk     |          8
           10 | Treasurer |         10
-(10 rows)
+          11 | Secretary |         17
+          12 | Member    |         18
+          13 | Member    |          3
+(13 rows)
 
  asset_id |     type      |        location         | installation_date |   value   
 ----------+---------------+-------------------------+-------------------+-----------
@@ -101,7 +118,8 @@
        10 | Library       | Subhash Marg, Phulera   | 2020-11-05        | 200000.00
         8 | Road          | Gandhi Chowk, Phulera   | 2021-09-30        | 150000.00
         7 | Water Pump    | Station Road, Phulera   | 2022-05-10        | 150000.00
-(10 rows)
+       11 | Library       | Main Bazaar, Phulera    | 2023-06-15        |   3500.75
+(11 rows)
 
  scheme_id |             name             |                      description                      
 -----------+------------------------------+-------------------------------------------------------
@@ -115,7 +133,8 @@
          8 | MGNREGA                      | 100-day employment for rural workers
          9 | Indira Gandhi Pension Yojana | Financial support for senior citizens
         10 | Mahila Samridhi Yojana       | Self-help groups and financial aid for women
-(10 rows)
+        11 | PrawnHub                     | National employment guarantee scheme.
+(11 rows)
 
  citizen_id | scheme_id | enrollment_date 
 ------------+-----------+-----------------
@@ -141,34 +160,37 @@
              11 |         11 | Covid-19         | 2021-05-10
 (11 rows)
 
- medical_id | citizen_id | health_status | medical_condition 
-------------+------------+---------------+-------------------
-          1 |          1 | Good          | None
-          2 |          2 | Fair          | Diabetes
-          3 |          3 | Poor          | Hypertension
-          4 |          4 | Good          | None
-          5 |          5 | Fair          | Asthma
-          6 |          1 | Good          | None
-          7 |          2 | Fair          | Diabetes
-          8 |          3 | Poor          | Hypertension
-          9 |          4 | Good          | None
-         10 |          5 | Fair          | Asthma
-         11 |         11 | Good          | None
+ medical_id | citizen_id | health_status | medical_condition | date_recorded 
+------------+------------+---------------+-------------------+---------------
+          1 |          1 | Good          | None              | 
+          2 |          2 | Fair          | Diabetes          | 
+          3 |          3 | Poor          | Hypertension      | 
+          4 |          4 | Good          | None              | 
+          5 |          5 | Fair          | Asthma            | 
+          6 |          1 | Good          | None              | 
+          7 |          2 | Fair          | Diabetes          | 
+          8 |          3 | Poor          | Hypertension      | 
+          9 |          4 | Good          | None              | 
+         10 |          5 | Fair          | Asthma            | 
+         11 |         11 | Good          | None              | 
 (11 rows)
 
- tax_id |     type     | amount | payment_status | citizen_id |    date    
---------+--------------+--------+----------------+------------+------------
-      4 | Road Tax     |   2000 | Pending        |          4 | 2024-01-01
-      5 | Water Tax    |   1500 | Paid           |          5 | 2024-01-01
-      6 | Property Tax |   5000 | Paid           |          1 | 2024-01-01
-      7 | Income Tax   |  10000 | Pending        |          2 | 2024-01-01
-      8 | Property Tax |   3000 | Paid           |          3 | 2024-01-01
-      9 | Road Tax     |   2000 | Pending        |          4 | 2024-01-01
-     10 | Water Tax    |   1500 | Paid           |          5 | 2024-01-01
-      3 | Property Tax |   3000 | Paid           |          3 | 2024-01-02
-      1 | Property Tax |   5000 | Paid           |          1 | 2024-02-02
-      2 | Income Tax   |  10000 | Pending        |          2 | 2024-02-02
-(10 rows)
+ tax_id |     type     |  amount  | payment_status | citizen_id |    date    
+--------+--------------+----------+----------------+------------+------------
+      4 | Road Tax     |     2000 | Pending        |          4 | 2024-01-01
+      5 | Water Tax    |     1500 | Paid           |          5 | 2024-01-01
+      6 | Property Tax |     5000 | Paid           |          1 | 2024-01-01
+      7 | Income Tax   |    10000 | Pending        |          2 | 2024-01-01
+      8 | Property Tax |     3000 | Paid           |          3 | 2024-01-01
+      9 | Road Tax     |     2000 | Pending        |          4 | 2024-01-01
+     10 | Water Tax    |     1500 | Paid           |          5 | 2024-01-01
+      3 | Property Tax |     3000 | Paid           |          3 | 2024-01-02
+      1 | Property Tax |     5000 | Paid           |          1 | 2024-02-02
+      2 | Income Tax   |    10000 | Pending        |          2 | 2024-02-02
+     11 | Income Tax   | 140000.0 | Pending        |         35 | 2025-03-02
+     12 | Income Tax   |    10000 | Pending        |          2 | 2025-03-02
+     13 | Income Tax   |    10000 | Pending        |          2 | 2025-03-02
+(13 rows)
 
  env_id | aqi | temperature | humidity | rainfall | date_recorded 
 --------+-----+-------------+----------+----------+---------------
@@ -215,7 +237,13 @@
        13 |         5 |         6 | 2016-12-25
        14 |         7 |         8 | 2019-05-30
        15 |         9 |        10 | 2021-11-15
-(5 rows)
+       29 |         6 |         5 | 2025-03-02
+       30 |         6 |         5 | 2025-03-02
+       31 |         6 |         5 | 2025-03-02
+       32 |         6 |         5 | 2025-03-02
+       33 |         6 |         5 | 2025-03-02
+       34 |         6 |         5 | 2025-03-02
+(11 rows)
 
  citizen_id |    date    |    cause     
 ------------+------------+--------------
