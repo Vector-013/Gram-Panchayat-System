@@ -83,14 +83,15 @@ const MGNREGAQuery: React.FC = () => {
                 <input type="number" value={personalIncome} onChange={(e) => setPersonalIncome(parseInt(e.target.value))} className="mgnrega-query-input" />
                 
                 <button className="mgnrega-query-submit" type="submit">Submit</button>
+                <br/>
             </form>
             
             {loading && <p className="mgnrega-query-loading">Loading...</p>}
             
             {!loading && (
                 <>
+                    <h4 className = "mgnrega-subtitle">Enrolled in MGNREGA</h4>
                     <div className="mgnrega-records-container">
-                        <h4>Enrolled in MGNREGA</h4>
                         <table className="mgnrega-records-table">
                             <thead>
                                 <tr>
@@ -104,22 +105,26 @@ const MGNREGAQuery: React.FC = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {enrolled.map((record, index) => (
-                                    <tr key={index}>
-                                        <td>{record.citizen_id}</td>
-                                        <td>{record.name}</td>
-                                        <td>{record.age}</td>
-                                        <td>{record.household_id}</td>
-                                        <td>{record.address}</td>
-                                        <td>{record.personal_income}</td>
-                                        <td>{record.household_income}</td>
-                                    </tr>
-                                ))}
+                            {enrolled.length > 0 ? (
+                                        enrolled.map((record) => (
+                                            <tr key={record.citizen_id}>
+                                                <td>{record.citizen_id}</td>
+                                                <td>{record.name}</td>
+                                                <td>{record.age}</td>
+                                                <td>{record.household_income}</td>
+                                                <td>{record.address}</td>
+                                            </tr>
+                                        ))
+                                    ) : (
+                                        <tr>
+                                            <td colSpan={7} className="no-data">No enrolled records found</td>
+                                        </tr>
+                                    )}
                             </tbody>
                         </table>
                     </div>
+                    <h4 className = "mgnrega-subtitle">Eligible but Not Enrolled</h4>
                     <div className="mgnrega-records-container">
-                        <h4>Eligible but Not Enrolled</h4>
                         <table className="mgnrega-records-table">
                             <thead>
                                 <tr>
@@ -133,17 +138,21 @@ const MGNREGAQuery: React.FC = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {notEnrolled.map((record, index) => (
-                                    <tr key={index}>
-                                        <td>{record.citizen_id}</td>
-                                        <td>{record.name}</td>
-                                        <td>{record.age}</td>
-                                        <td>{record.household_id}</td>
-                                        <td>{record.address}</td>
-                                        <td>{record.personal_income}</td>
-                                        <td>{record.household_income}</td>
-                                    </tr>
-                                ))}
+                            {notEnrolled.length > 0 ? (
+                                        notEnrolled.map((record) => (
+                                            <tr key={record.citizen_id}>
+                                                <td>{record.citizen_id}</td>
+                                                <td>{record.name}</td>
+                                                <td>{record.age}</td>
+                                                <td>{record.household_income}</td>
+                                                <td>{record.address}</td>
+                                            </tr>
+                                        ))
+                                    ) : (
+                                        <tr>
+                                            <td colSpan={7} className="no-data">No not enrolled records found</td>
+                                        </tr>
+                                    )}
                             </tbody>
                         </table>
                     </div>

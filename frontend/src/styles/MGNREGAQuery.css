@@ -80,13 +80,16 @@
 .mgnrega-records-container {
     margin-top: 20px;
     overflow-y: auto;
-    height: 400px;
+    max-height: 300px;
+    border-radius: 5px;
 }
 
 .mgnrega-records-table {
     width: 100%;
     border-collapse: collapse;
     background-color: white;
+    overflow-y: auto;
+    max-height: 300px;
 }
 
 .mgnrega-records-table th, .mgnrega-records-table td {
@@ -109,4 +112,15 @@
 
 .mgnrega-records-table tr:hover {
     background-color: #d6eaff;
+}
+.no-data{
+    text-align: center;
+    font-weight: bold;
+    color: #888;
+    padding: 15px;
+}
+.mgnrega-subtitle{
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-top: 15px;
 }
