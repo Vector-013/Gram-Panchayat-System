@@ -13,6 +13,7 @@ import InsertWelfareScheme from "../forms/InsertWelfareScheme";
 import InsertMarriage from "../forms/InsertMarriage";
 import InsertEmployee from "../forms/InsertEmployee";
 import InsertScheme from "../forms/InsertSchemeEnrol";
+import InsertHealth from "../forms/InsertHealth";
 import bgImage from "../../images/village.jpg";
 
 const InsertModal: React.FC = () => {
@@ -41,12 +42,10 @@ const InsertModal: React.FC = () => {
                     <option value="land">Land Record</option>
                     <option value="welfare">Welfare Scheme</option>
                     <option value="tax">Tax Record</option>
-                    <option value="education">Education Record</option>
                     <option value="health">Health Record</option>
                     <option value="marriage">Marriage Record</option>
                     <option value="flora-fauna">Flora-Fauna Record</option>
                     <option value="geo">Geographical Record</option>
-                    <option value="environment">Environment Record</option>
                     <option value="birth">Birth Record</option>
                     <option value="death">Death Record</option>
                     <option value="scheme">Scheme Enrollment</option>
@@ -65,7 +64,7 @@ const InsertModal: React.FC = () => {
             />}
             {selectedType === "tax" && <p className="insert-placeholder">Tax Record form will appear here.</p>}
             {selectedType === "education" && <p className="insert-placeholder">Education Record form will appear here.</p>}
-            {selectedType === "health" && <p className="insert-placeholder">Health Record form will appear here.</p>}
+            {selectedType === "health" && <InsertHealth />}
             {selectedType === "birth" && <InsertBirth />}
             {selectedType === "death" && < InsertDeath/>}
             {selectedType === "flora-fauna" && <InsertFloraFauna/>}

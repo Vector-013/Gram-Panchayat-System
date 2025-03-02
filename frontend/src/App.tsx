@@ -120,8 +120,6 @@ const App: React.FC = () => {
             <Route path="geo" element={<CitizenGeoModal />} />
         </Route>
 
-        <Route path='/test' element = {<UpdateModal />} />
-
         <Route path="/it-dashboard" element={<ProtectedRoute element={<ItDashboard />} />} >
             <Route index element={<ITModal />} /> 
             <Route path="land-query" element={<CitizenPanchayatForm />} />
@@ -139,6 +137,7 @@ const App: React.FC = () => {
             <Route path="vaccine" element={<VaccineDataModal />} />
             <Route path="mgnrega" element={<MGNREGAQuery />} />
         </Route>
+
         <Route path="/census-dashboard" element={<ProtectedRoute element={<CensusDashboard />} />} >
             <Route index element={<CensusModal />} />
             <Route path="birth-query" element={<BirthQueryForm />} />
@@ -152,6 +151,7 @@ const App: React.FC = () => {
         <Route path="/employee-dashboard/:empId" element={<ProtectedRoute element={<EmployeeDashboard />} />}>
           <Route index element={<EmployeeModal />} />
           <Route path="insert" element={<InsertModal />} />
+          <Route path="update" element={<UpdateModal />} />
         </Route>
 
         {/* Protected Routes for Citizen Data */}

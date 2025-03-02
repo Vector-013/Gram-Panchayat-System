@@ -58,8 +58,6 @@ const UpdateWelfareScheme: React.FC = () => {
 
   return (
     <div className="update-form-container">
-      <h2>Update Scheme</h2>
-
       <div className="id-input-section">
         <input
           type="text"

@@ -22,6 +22,7 @@ const Login: React.FC = () => {
       }
       const data = await response.json();
 
+
       // data is a JWT token
 
       // so we should convert it to a 
@@ -38,7 +39,7 @@ const Login: React.FC = () => {
       localStorage.setItem("household_id", data.household_id);
       localStorage.setItem("address", data.address);
       localStorage.setItem("gender", data.gender);
-      if (data.role === "employee") {
+      if (data.role === "employee" || data.role === "pradhan") {
         localStorage.setItem("employee_id", data.eid);
         localStorage.setItem("erole", data.erole);
       }

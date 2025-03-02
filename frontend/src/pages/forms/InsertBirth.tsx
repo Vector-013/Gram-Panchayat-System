@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../../styles/InsertForm.css";
 
 const InsertBirth: React.FC = () => {
-    const [childName, setChildName] = useState<number | "">("");
+    const [childName, setChildName] = useState<string | "">("");
     const [motherId, setMotherId] = useState<number | "">("");
     const [fatherId, setFatherId] = useState<number | "">("");
     const [gender, setGender] = useState<string>("");
@@ -60,9 +60,9 @@ const InsertBirth: React.FC = () => {
             <form onSubmit={handleSubmit} className="insert-form">
                 <label className="insert-form-label">Child Name:</label>
                 <input
-                    type="number"
+                    type="text"
                     value={childName}
-                    onChange={(e) => setChildName(e.target.value === "" ? "" : parseInt(e.target.value))}
+                    onChange={(e) => setChildName(e.target.value)}
                     className="insert-form-input"
                     required
                 />
@@ -92,9 +92,8 @@ const InsertBirth: React.FC = () => {
                     className="insert-form-input"
                     required
                 >
-                    <option value="">Select Gender</option>
-                    <option value="male">Male</option>
                     <option value="female">Female</option>
+                    <option value="male">Male</option>
                     <option value="other">Other</option>
                 </select>
 
