@@ -281,5 +281,68 @@ def list_welfare_schemes(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"Database error: {str(e)}",
         )
-        
 
+
+from pydantic import BaseModel, Field, field_validator
+from decimal import Decimal
+
+
+class GeoFeatureCreate(BaseModel):
+    feature_type: str = Field(
+        ...,
+        description="Type of geo feature. Allowed values: 'Forest', 'Desert', 'River', 'Lake', 'Mountain'",
+    )
+    name: str = Field(..., description="Name of the geo feature")
+    area: Decimal = Field(..., description="Area of the geo feature")
+
+    @field_validator("feature_type")
+    def validate_feature_type(cls, value):
+        allowed = {"Forest", "Desert", "River", "Lake", "Mountain"}
+        if value not in allowed:
+            raise ValueError(
+                f"Invalid feature type. Allowed values: {', '.join(sorted(allowed))}"
+            )
+        return value
+
+
+@router.post("/geo-features", response_model=dict)
+def create_geo_feature(
+    feature: GeoFeatureCreate,
+    db: Session = Depends(get_db),
+    user: dict = Depends(get_current_user),
+):
+
+    if user["role"] not in {"pradhan", "employee", "admin"}:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="You are not authorized to create a geo feature",
+        )
+
+    sql = text(
+        """
+        INSERT INTO geo_features (feature_type, name, area)
+        VALUES (:feature_type, :name, :area)
+        RETURNING feature_id, feature_type, name, area;
+    """
+    )
+    params = {
+        "feature_type": feature.feature_type,
+        "name": feature.name,
+        "area": feature.area,
+    }
+    try:
+        result = db.execute(sql, params)
+        db.commit()
+        new_feature = result.fetchone()
+        if not new_feature:
+            raise HTTPException(
+                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                detail="Geo feature creation failed",
+            )
+        return dict(new_feature._mapping)
+
+    except Exception as e:
+        db.rollback()
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e)
+        )
