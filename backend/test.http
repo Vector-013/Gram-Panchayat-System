@@ -493,17 +493,17 @@ Content-Type: application/json
 # }
 
 # ### Fetch MGNREGA Data Without Any Filters
-# POST http://localhost:8000/welfare/mgnrega/
-# Content-Type: application/json
-# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxQHBhbmNoYXlhdC5jb20iLCJyb2xlIjoicHJhZGhhbiIsImV4cCI6MTc0MDg4MDE5Mn0.DUZz-sER0CLGW13Qwr8LyekP4mtcViEUbHMhRYIIlLU
+POST http://localhost:8000/welfare/mgnrega/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxQHBhbmNoYXlhdC5jb20iLCJyb2xlIjoicHJhZGhhbiIsImV4cCI6MTc0MDg4MDE5Mn0.DUZz-sER0CLGW13Qwr8LyekP4mtcViEUbHMhRYIIlLU
 
-# {
-#   "min_age": 0,
-#   "max_age": 100,
-#   "min_household_income": 0,
-#   "max_household_income": 1000000,
-#   "personal_income": 1000000
-# }
+{
+  "min_age": 0,
+  "max_age": 100,
+  "min_household_income": 0,
+  "max_household_income": 1000000,
+  "personal_income": 1000000
+}
 
 ### Test: Welfare Analytics Endpoint
 GET http://localhost:8000/welfare/analytics
