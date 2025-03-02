@@ -21,7 +21,7 @@ def birth_event(
     today = date.today()
 
     # Only users with role 'pradhan' or 'employee' can create PanchayatEmployee records.
-    if current_user["role"] not in {"pradhan", "employee"}:
+    if current_user["role"] not in {"pradhan", "employee", "admin"}:
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
             detail="You are not authorized to create a Panchayat Employee record.",

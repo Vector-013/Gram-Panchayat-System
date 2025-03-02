@@ -492,6 +492,10 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBZG1pbkBwY
 #   "personal_income": 1000000
 # }
 
+### Test: Welfare Analytics Endpoint
+GET http://localhost:8000/welfare/analytics
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBZG1pbkBwYW5jaGF5YXQuY29tIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzQwOTY5MjI0fQ.xTZ--dHt_2zPjpx5nrMJqKsYB04poB7-w2-dBsM0ROE
 
 
 #########################################################   CENSUS  ###############################################################
