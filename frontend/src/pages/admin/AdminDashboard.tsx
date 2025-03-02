@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import '../../styles/Dashboard.css'
 
 const AdminDashboard: React.FC = () => {
   const navigate = useNavigate();

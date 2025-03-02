@@ -21,7 +21,7 @@ const Login: React.FC = () => {
         throw new Error("Invalid credentials");
       }
       const data = await response.json();
-
+      console.log(data);
 
       // data is a JWT token
 
