@@ -20,7 +20,14 @@ interface CitizenElement {
 
 const CensusDashboard: React.FC = () => {
   const navigate = useNavigate();
-
+   useEffect(() => {
+      const token = localStorage.getItem('token');
+      const role = localStorage.getItem('role');
+      if (!token || role !== 'census_dept') {
+        navigate('/login');
+      }
+    }, [navigate]);
+    
   return (
     <div className="container-fluid dashboard-container">
       {/* Navbar */}

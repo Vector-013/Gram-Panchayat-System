@@ -300,6 +300,7 @@ class FloraFauna(Base):
     type = Column(Text, nullable=False)
     name = Column(Text, nullable=False)
     habitat = Column(Text, nullable=False)
+    count = Column(Integer, nullable=False)
 
 ##############################
 # Budget

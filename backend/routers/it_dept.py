@@ -4,14 +4,14 @@ from sqlalchemy import text
 from typing import Optional, List
 
 from database import get_db
-
+from routers.posts.dependencies import get_current_user
 from schemas import LandQuery, LandQueryResult, ITAssetQuery, TaxQuery, IncomeQuery
 
 router = APIRouter(prefix="/it-dept", tags=["ITDept Query"])
 
 
 @router.post("/land-query", response_model=List[LandQueryResult])
-def query_land_data(query: LandQuery, db: Session = Depends(get_db)):
+def query_land_data(query: LandQuery, db: Session = Depends(get_db), user: dict = Depends(get_current_user)):
 
     if user["role"] not in {"pradhan", "employee", "admin"}:
         raise HTTPException(

@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import "../../styles/LandQuery.css";
-import { useNavigate } from "react-router-dom";
 
 interface LandRecord {
     citizen_id: number;
@@ -27,8 +26,6 @@ function CitizenPanchayatForm() {
     const [maxAge, setMaxAge] = useState<number | "">("");
     const [minIncome, setMinIncome] = useState<number | "">("");
     const [maxIncome, setMaxIncome] = useState<number | "">("");
-
-    const navigate = useNavigate();
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
