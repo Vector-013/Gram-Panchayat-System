@@ -29,7 +29,15 @@ const CensusGeoModal: React.FC = () => {
             setError("");
 
             try {
-                const response = await fetch(`http://localhost:8000/api/${citizenId}/geo`);
+                const response = await fetch(`http://localhost:8000/api/${citizenId}/geo`,
+                    {
+                        method: "GET",
+                        headers: {
+                            "Content-Type": "application/json",
+                            "Authorization": "Bearer " + localStorage.getItem("token"),
+                        },
+                    }
+                );
                 const data: GeoRecord[] = await response.json();
                 console.log(data);
                 setGeoRecords(data);

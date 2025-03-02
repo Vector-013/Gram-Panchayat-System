@@ -6,35 +6,28 @@ import manImage from "../../images/man.png";
 import womanImage from "../../images/woman.png";
 import bgImage from "../../images/village2.jpg";
 
-interface CitizenElement {
-  citizen_id: number;
-  name: string;
-  gender: string;
-  dob: string;
-  educational_qualification: string;
-  email: string;
-  income: number;
-  household_id: number;
-}
-
-const CitizenDashboard: React.FC = () => {
+const ItDashboard: React.FC = () => {
   const navigate = useNavigate();
+  const role = localStorage.getItem('role');
 
   useEffect(() => {
-      const token = localStorage.getItem('token');
-      const role = localStorage.getItem('role');
-      if (!token || role !== 'it_dept') {
-        navigate('/login');
-      }
-    }, [navigate]);
+    const token = localStorage.getItem('token');
+    const role = localStorage.getItem('role');
+    if (!token || (role !== 'it_dept' && role !== 'admin')) {
+      navigate('/login');
+    }
+  }, [navigate]);
 
   return (
     <div className="container-fluid dashboard-container">
       {/* Navbar */}
       <nav className="navbar d-flex justify-content-between">
-        <span>
-          IT Department
-        </span>
+        <div className="goto">
+          <span>
+            IT Department
+          </span>
+          {role === 'admin' && <button className="btn" onClick={() => navigate("/admin-dashboard")}>Goto Admin</button>}
+        </div>
         <div className="nav-buttons">
           <button className="btn btn-danger" onClick={() => navigate("/it-dashboard")}>Home</button>
           <button className="btn btn-danger ms-2" onClick={() => navigate("/logout")}>Logout</button>
@@ -69,4 +62,4 @@ const CitizenDashboard: React.FC = () => {
   );
 };
 
-export default CitizenDashboard;
+export default ItDashboard;

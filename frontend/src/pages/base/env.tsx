@@ -21,7 +21,15 @@ const EnvironmentStats: React.FC = () => {
       setError("");
 
       try {
-        const response = await fetch("http://localhost:5000/env");
+        const response = await fetch("http://localhost:5000/env",
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": "Bearer " + localStorage.getItem("token"),
+            },
+          }
+        );
         const data: EnvironmentRecord[] = await response.json();
 
         // Convert string dates to Date objects

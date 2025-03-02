@@ -49,7 +49,7 @@ const InsertModal: React.FC = () => {
                     <option value="birth">Birth Record</option>
                     <option value="death">Death Record</option>
                     <option value="scheme">Scheme Enrollment</option>
-                    {role == 'pradhan' && <option value="employee">Employee</option>}
+                    {(role == 'pradhan' || role == 'admin') && <option value="employee">Employee</option>}
                 </select>
             </div>
 

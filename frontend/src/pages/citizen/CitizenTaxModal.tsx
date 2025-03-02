@@ -35,7 +35,15 @@ const CitizenTaxModal: React.FC = () => {
       setError("");
 
       try {
-        const response = await fetch(`http://localhost:8000/api/${citizenId}/taxes`);
+        const response = await fetch(`http://localhost:8000/api/${citizenId}/taxes`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": "Bearer " + localStorage.getItem("token"),
+            },
+          }
+        );
         const data: TaxRecord[] = await response.json();
         console.log(data);
         setTaxRecords(data);

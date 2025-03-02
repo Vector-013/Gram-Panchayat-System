@@ -33,7 +33,15 @@ const CitizenVaccineModal: React.FC = () => {
       setError("");
 
       try {
-        const response = await fetch(`http://localhost:8000/api/${citizenId}/vaccine`);
+        const response = await fetch(`http://localhost:8000/api/${citizenId}/vaccine`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": "Bearer " + localStorage.getItem("token"),
+            },
+          }
+        );
         const data: VaccineRecord[] = await response.json();
         console.log(data);
         setVaccineRecords(data);

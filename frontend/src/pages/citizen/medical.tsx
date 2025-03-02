@@ -30,7 +30,15 @@ const CitizenMedicalModal: React.FC = () => {
       setError("");
 
       try {
-        const response = await fetch(`http://localhost:8000/api/${citizenId}/medical`);
+        const response = await fetch(`http://localhost:8000/api/${citizenId}/medical`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": "Bearer " + localStorage.getItem("token"),
+            },
+          }
+        );
         const data: MedicalData[] = await response.json();
         console.log(data);
         if ("error" in data) {

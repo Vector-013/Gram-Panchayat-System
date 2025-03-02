@@ -32,7 +32,7 @@ const UpdateHousehold: React.FC = () => {
     try {
       const response = await fetch(`/api/households/${householdId}`, {
         method: "PUT",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", "Authorization": `Bearer ${localStorage.getItem("token")}` },
         body: JSON.stringify({ address }),
       });
 

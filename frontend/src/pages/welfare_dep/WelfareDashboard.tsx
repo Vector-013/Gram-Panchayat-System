@@ -7,12 +7,13 @@ import "../../styles/Dashboard.css";
 
 const WelfareDashboard: React.FC = () => {
   const navigate = useNavigate();
+  const role = localStorage.getItem('role');
 
   // Redirect to admin login if no token is found
   useEffect(() => {
     const token = localStorage.getItem('token');
     const role = localStorage.getItem('role');
-    if (!token || role !== 'welfare') {
+    if (!token || (role !== 'welfare' && role !== 'admin')) {
       navigate('/login');
     }
   }, [navigate]);
@@ -21,9 +22,12 @@ const WelfareDashboard: React.FC = () => {
     <div className="container-fluid dashboard-container">
       {/* Navbar */}
       <nav className="navbar d-flex justify-content-between">
-        <span>
-          Welfare Department
-        </span>
+        <div className="goto">
+          <span>
+            Welfare Department
+          </span>
+          {role === 'admin' && <button className="btn" onClick={() => navigate("/admin-dashboard")}>Goto Admin</button>}
+        </div>
         <div className="nav-buttons">
           <button className="btn btn-danger" onClick={() => navigate("/welfare-dashboard")}>Home</button>
           <button className="btn btn-danger ms-2" onClick={() => navigate("/logout")}>Logout</button>

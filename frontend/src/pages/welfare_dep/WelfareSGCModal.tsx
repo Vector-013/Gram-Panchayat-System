@@ -46,7 +46,7 @@ const WelfareSGCModal: React.FC = () => {
         "http://localhost:8000/api/edu/single-girl-child",
         {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: { "Content-Type": "application/json", "Authorization": `Bearer ${localStorage.getItem("token")}` },
           body: JSON.stringify(requestBody),
         }
       );

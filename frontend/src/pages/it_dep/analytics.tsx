@@ -10,7 +10,15 @@ const FinancialGraph: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:8000/api/it-dept/analytics1");
+        const response = await fetch("http://localhost:8000/api/it-dept/analytics1",
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": "Bearer " + localStorage.getItem("token"),
+            },
+          }
+        );
         if (!response.ok) {
           throw new Error("Failed to fetch data");
         }

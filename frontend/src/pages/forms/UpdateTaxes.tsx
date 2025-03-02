@@ -45,6 +45,7 @@ const UpdateTaxes: React.FC = () => {
             try {
                 const response = await fetch("http://localhost:8000/update-taxes/get", {
                     headers: {
+                        "Content-Type": "application/json",
                         "Authorization": `Bearer ${getToken()}`,
                     },
                 });

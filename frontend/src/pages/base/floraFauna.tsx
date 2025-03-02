@@ -22,7 +22,15 @@ const FloraFaunaPage: React.FC = () => {
       setError("");
 
       try {
-        const response = await fetch("http://localhost:5000/flora_fauna");
+        const response = await fetch("http://localhost:5000/flora_fauna",
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": "Bearer " + localStorage.getItem("token"),
+            },
+          }
+        );
         if (!response.ok) throw new Error("Failed to fetch data");
 
         const data: FloraFauna[] = await response.json();

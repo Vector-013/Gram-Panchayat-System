@@ -19,7 +19,15 @@ const AssetsPage: React.FC = () => {
       setError("");
 
       try {
-        const response = await fetch("http://localhost:5000/assets");
+        const response = await fetch("http://localhost:5000/assets", 
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": "Bearer " + localStorage.getItem("token"),
+            },
+          }
+        );
         const data: Asset[] = await response.json();
 
         // Count asset types

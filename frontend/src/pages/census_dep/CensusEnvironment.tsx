@@ -43,7 +43,11 @@ const CensusEnvForm: React.FC = () => {
       setError("");
 
       try {
-        const response = await fetch(`http://localhost:8000/api/${citizenId}/env`); //problem with url
+        const response = await fetch(`http://localhost:8000/census-env`,
+          {
+            method: "GET",
+            headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+          });
         const data = await response.json();
         console.log(data);
 
