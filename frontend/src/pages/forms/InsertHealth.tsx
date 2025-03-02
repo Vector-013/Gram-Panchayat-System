@@ -4,7 +4,7 @@ import "../../styles/InsertForm.css";
 const InsertHealth: React.FC = () => {
     const [citizenId, setCitizenId] = useState<number | "">("");
     const [healthStatus, setHealthStatus] = useState<string>("");
-    const [medicalCondition, setMedicalCondition] = useState<string>("");
+    const [medicalCondition, setMedicalCondition] = useState<string>("Healthy");
     const [dateRecorded, setDateRecorded] = useState<string>("");
     const [loading, setLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
@@ -24,11 +24,12 @@ const InsertHealth: React.FC = () => {
             citizen_id: citizenId === "" ? null : citizenId,
             health_status: healthStatus,
             medical_condition: medicalCondition,
-            date_recorded: dateRecorded,
+            // date_recorded: dateRecorded,
         };
 
         try {
-            const response = await fetch("http://localhost:8000/health-records/", {
+            console.log(requestBody);
+            const response = await fetch("http://localhost:8000/medical-data-insert/", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -36,6 +37,7 @@ const InsertHealth: React.FC = () => {
                 },
                 body: JSON.stringify(requestBody),
             });
+
 
             if (!response.ok) {
                 const errorData = await response.json();
@@ -87,21 +89,22 @@ const InsertHealth: React.FC = () => {
                 </select>
 
                 <label className="insert-form-label">Medical Condition:</label>
-                <textarea
+                <select
                     value={medicalCondition}
                     onChange={(e) => setMedicalCondition(e.target.value)}
-                    className="insert-form-textarea"
-                    required
-                />
-
-                <label className="insert-form-label">Date Recorded:</label>
-                <input
-                    type="date"
-                    value={dateRecorded}
-                    onChange={(e) => setDateRecorded(e.target.value)}
                     className="insert-form-input"
                     required
-                />
+                >
+                    <option value="Healthy">Healthy</option>
+                    <option value="Hypertension">Hypertension</option>
+                    <option value="Low Blood Pressure">Low Blood Pressure</option>
+                    <option value="Diabetes">Diabetes</option>
+                    <option value="Arthritis">Arthritis</option>
+                    <option value="Asthma">Asthma</option>
+                    <option value="Allergies">Allergies</option>
+                    <option value="Kidney Disease">Kidney Disease</option>
+                    <option value="Liver Disease">Liver Disease</option>
+                </select>
 
                 <button type="submit" className="insert-form-submit" disabled={loading}>
                     {loading ? "Submitting..." : "Submit"}

@@ -14,6 +14,7 @@ import InsertMarriage from "../forms/InsertMarriage";
 import InsertEmployee from "../forms/InsertEmployee";
 import InsertScheme from "../forms/InsertSchemeEnrol";
 import InsertHealth from "../forms/InsertHealth";
+import InsertTaxRecord from "../forms/InsertTaxRecord";
 import bgImage from "../../images/village.jpg";
 
 const InsertModal: React.FC = () => {
@@ -62,7 +63,7 @@ const InsertModal: React.FC = () => {
             {selectedType === "land" && <InsertLandRecord />}
             {selectedType === "welfare" && <InsertWelfareScheme
             />}
-            {selectedType === "tax" && <p className="insert-placeholder">Tax Record form will appear here.</p>}
+            {selectedType === "tax" && <InsertTaxRecord />}
             {selectedType === "education" && <p className="insert-placeholder">Education Record form will appear here.</p>}
             {selectedType === "health" && <InsertHealth />}
             {selectedType === "birth" && <InsertBirth />}
