@@ -15,7 +15,7 @@ const WelfareEduModal: React.FC = () => {
     const [gender, setGender] = useState<string>("All");
     const [educationalLevel, setEducationalLevel] = useState<string>("All");
     const [dobMin, setDobMin] = useState<string>("1980-01-01");
-    const [dobMax, setDobMax] = useState<string>("2000-12-31");
+    const [dobMax, setDobMax] = useState<string>("");
     const [incomeMin, setIncomeMin] = useState<number>(10000);
     const [incomeMax, setIncomeMax] = useState<number>(800000);
     const [records, setRecords] = useState<WelfareRecord[]>([]);

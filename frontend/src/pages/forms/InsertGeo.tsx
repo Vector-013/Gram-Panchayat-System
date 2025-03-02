@@ -2,10 +2,9 @@ import React, { useState } from "react";
 import "../../styles/InsertForm.css";
 
 const InsertGeo: React.FC = () => {
-  const [featureType, setFeatureType] = useState("mountain");
+  const [featureType, setFeatureType] = useState("Mountain");
   const [name, setName] = useState("");
   const [area, setArea] = useState<number | "">("");
-  const [password, setPassword] = useState("");
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
@@ -20,11 +19,11 @@ const InsertGeo: React.FC = () => {
       feature_type: featureType,
       name,
       area: area === "" ? null : area,
-      password,
     };
 
     try {
-      const response = await fetch("http://localhost:8000/api/geo/insert", {
+      console.log(requestBody);
+      const response = await fetch("http://localhost:8000/geo-features", {
         method: "POST",
         headers: { "Content-Type": "application/json", "Authorization": `Bearer ${localStorage.getItem("token")}` },
         body: JSON.stringify(requestBody),
@@ -36,10 +35,9 @@ const InsertGeo: React.FC = () => {
 
       setSuccess("Geographic feature successfully added!");
 
-      setFeatureType("mountain");
+      setFeatureType("Mountain");
       setName("");
       setArea("");
-      setPassword("");
     } catch (err: any) {
       setError(err.message);
     }
@@ -59,11 +57,11 @@ const InsertGeo: React.FC = () => {
           value={featureType}
           onChange={(e) => setFeatureType(e.target.value)}
         >
-          <option value="mountain">Mountain</option>
-          <option value="river">River</option>
-          <option value="lake">Lake</option>
-          <option value="forest">Forest</option>
-          <option value="desert">Desert</option>
+          <option value="Mountain">Mountain</option>
+          <option value="River">River</option>
+          <option value="Lake">Lake</option>
+          <option value="Forest">Forest</option>
+          <option value="Desert">Desert</option>
         </select>
 
         <label className="insert-form-label">Name:</label>
@@ -82,15 +80,6 @@ const InsertGeo: React.FC = () => {
           onChange={(e) =>
             setArea(e.target.value === "" ? "" : parseFloat(e.target.value))
           }
-          className="insert-form-input"
-          required
-        />
-
-        <label className="insert-form-label">Password:</label>
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
           className="insert-form-input"
           required
         />

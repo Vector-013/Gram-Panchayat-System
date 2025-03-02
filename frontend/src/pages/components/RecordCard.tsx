@@ -19,6 +19,9 @@ import deleteRecordImage from "../../../../icons/delete.png";
 import analyticsRecordImage from "../../../../icons/analytics.png";
 import incomeRecordImage from "../../../../icons/income.png";
 import educationRecordImage from "../../../../icons/education.png";
+import birthRecordImage from "../../../../icons/birth.png";
+import deathRecordImage from "../../../../icons/death.png";
+import marriageRecordImage from "../../../../icons/marriage.png";
 
 interface RecordCardProps {
   title: string;
@@ -63,6 +66,14 @@ const RecordCard: React.FC<RecordCardProps> = ({ title, onRedirect, to_link }) =
     src = incomeRecordImage;
   } else if (title === "Education Record") {
     src = educationRecordImage;
+  } else if (title === "Birth Record") {
+    src = birthRecordImage;
+  }
+  else if (title === "Death Record") {
+    src = deathRecordImage;
+  }
+  else if (title === "Marriage Record") {
+    src = marriageRecordImage;
   }
 
   return (

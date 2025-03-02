@@ -45,7 +45,6 @@ const InsertModal: React.FC = () => {
                     <option value="tax">Tax Record</option>
                     <option value="health">Health Record</option>
                     <option value="marriage">Marriage Record</option>
-                    <option value="flora-fauna">Flora-Fauna Record</option>
                     <option value="geo">Geographical Record</option>
                     <option value="birth">Birth Record</option>
                     <option value="death">Death Record</option>
@@ -68,7 +67,6 @@ const InsertModal: React.FC = () => {
             {selectedType === "health" && <InsertHealth />}
             {selectedType === "birth" && <InsertBirth />}
             {selectedType === "death" && < InsertDeath/>}
-            {selectedType === "flora-fauna" && <InsertFloraFauna/>}
             {selectedType === "geo" && <InsertGeo/>}
             {selectedType === "environment" && <InsertEnv/>}
             {selectedType === "marriage" && <InsertMarriage />}

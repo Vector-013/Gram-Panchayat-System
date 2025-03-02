@@ -4,7 +4,8 @@ import "../../styles/UpdateForm.css";
 const UpdateCitizen: React.FC = () => {
   const [citizenId, setCitizenId] = useState("");
   const [formData, setFormData] = useState({
-    qualification: "",
+    citizen_id: "",
+    educational_qualification: "",
     income: "",
     householdId: "",
     password: "",
@@ -18,14 +19,20 @@ const UpdateCitizen: React.FC = () => {
     setError("");
 
     try {
-      const response = await fetch(`/api/citizens/${citizenId}`);
+      const response = await fetch(`http://localhost:8000/update-citizen/get/${citizenId}`,
+        {
+          method: "GET",
+          headers: { "Content-Type": "application/json", "Authorization": `Bearer ${localStorage.getItem("token")}` },
+        }
+      );
       if (!response.ok) throw new Error("Citizen not found");
 
       const data = await response.json();
       setFormData({
-        qualification: data.qualification || "",
+        citizen_id: data.citizen_id || "",
+        educational_qualification: data.educational_qualification || "",
         income: data.income || "",
-        householdId: data.householdId || "",
+        householdId: data.household_id || "",
         password: "",
       });
     } catch (err) {
@@ -45,8 +52,8 @@ const UpdateCitizen: React.FC = () => {
     setError("");
 
     try {
-      const response = await fetch(`/api/citizens/${citizenId}`, {
-        method: "PUT",
+      const response = await fetch(`http://localhost:8000/update-citizen/post`, {
+        method: "POST",
         headers: { "Content-Type": "application/json", "Authorization": `Bearer ${localStorage.getItem("token")}` },
         body: JSON.stringify(formData),
       });
@@ -80,22 +87,30 @@ const UpdateCitizen: React.FC = () => {
 
         <div className="update-wrapper">
           <label>Educational Qualification:</label>
-          <input type="text" name="qualification" value={formData.qualification} onChange={handleChange} required />
+          <select name="educational_qualification" value={formData.educational_qualification} onChange={handleChange} required>
+            <option value="">Select</option>
+            <option value="Primary">Primary</option>
+            <option value="Secondary">Secondary</option>
+            <option value="Higher Secondary">Higher Secondary</option>
+            <option value="Graduate">Graduate</option>
+            <option value="Post Graduate">Post Graduate</option>
+            <option value="Illiterate">Illiterate</option>
+          </select>
         </div>
 
         <div className="update-wrapper">
           <label>Income:</label>
-          <input type="number" name="income" value={formData.income} onChange={handleChange} required />
+          <input type="number" name="income" value={formData.income} onChange={handleChange} />
         </div>
 
         <div className="update-wrapper">
           <label>Household ID:</label>
-          <input type="text" name="householdId" value={formData.householdId} onChange={handleChange} required />
+          <input type="text" name="householdId" value={formData.householdId} onChange={handleChange} />
         </div>
 
         <div className="update-wrapper">
           <label>Password:</label>
-          <input type="password" name="password" value={formData.password} onChange={handleChange} required />
+          <input type="password" name="password" value={formData.password} onChange={handleChange} required/>
         </div>
 
         <button type="submit" disabled={loading}>{loading ? "Updating..." : "Update"}</button>
