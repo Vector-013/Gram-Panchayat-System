@@ -13,7 +13,7 @@ interface WelfareRecord {
 
 const WelfareEduModal: React.FC = () => {
     const [gender, setGender] = useState<string>("");
-    const [educationalLevel, setEducationalLevel] = useState<string>("");
+    const [educationalLevel, setEducationalLevel] = useState<string>("All");
     const [dobMin, setDobMin] = useState<string>("1980-01-01");
     const [dobMax, setDobMax] = useState<string>("2000-12-31");
     const [incomeMin, setIncomeMin] = useState<number>(10000);
@@ -35,13 +35,15 @@ const WelfareEduModal: React.FC = () => {
 
         try {
             const requestBody = {
-                gender,
+                gender: gender,
                 educational_level: educationalLevel,
                 dob_min: dobMin,
                 dob_max: dobMax,
                 income_min: incomeMin,
                 income_max: incomeMax,
             };
+
+            console.log(requestBody);
 
             const response = await fetch("http://localhost:8000/edu-dept/edu-query", {
                 method: "POST",
@@ -57,6 +59,7 @@ const WelfareEduModal: React.FC = () => {
             const data = await response.json();
             setRecords(data);
             setFilteredRecords(data);
+            console.log(data);
         } catch (err: any) {
             setError(err.message);
         }
@@ -98,7 +101,7 @@ useEffect(() => {
                     <div className="opt-sel">
                         <label className="welfare-label">Educational Level :</label>
                         <select value={educationalLevel} onChange={(e) => setEducationalLevel(e.target.value)} className="welfare-input">
-                            <option value="">All</option>
+                            <option value="All">All</option>
                             <option value="Primary">Primary</option>
                             <option value="Secondary">Secondary</option>
                             <option value="Higher Secondary">Higher Secondary</option>

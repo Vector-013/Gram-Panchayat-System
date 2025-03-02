@@ -29,6 +29,7 @@ class EduDeptQuery(BaseModel):
             "Higher Secondary",
             "Graduate",
             "Post Graduate",
+            "All",
         }
         if v not in allowed:
             raise ValueError(

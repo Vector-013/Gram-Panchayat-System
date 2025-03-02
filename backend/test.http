@@ -372,18 +372,18 @@ Content-Type: application/json
 #   "max_age": 18
 # }
 
-### Edu Dept Query for Citizens
-# POST http://localhost:8000/edu-dept/edu-query
-# Content-Type: application/json
+## Edu Dept Query for Citizens
+POST http://localhost:8000/edu-dept/edu-query
+Content-Type: application/json
 
-# {
-#   "gender": "",
-#   "educational_level": "All",
-#   "dob_min": "1980-01-01",
-#   "dob_max": "2000-12-31",
-#   "income_min": 10000,
-#   "income_max": 800000
-# }
+{
+  "gender": "",
+  "educational_level": "All",
+  "dob_min": "1980-01-01",
+  "dob_max": "2000-12-31",
+  "income_min": 10000,
+  "income_max": 800000
+}
 
 POST http://127.0.0.1:8000/welfare/vaccines
 Content-Type: application/json
