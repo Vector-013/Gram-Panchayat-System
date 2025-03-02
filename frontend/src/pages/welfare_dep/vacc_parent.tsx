@@ -58,8 +58,8 @@ const VaccineDataModal: React.FC = () => {
             }
 
             const data = await response.json();
-            setRecords(data);
-            setFilteredRecords(data);
+            setRecords(data.data);
+            setFilteredRecords(data.data);
             console.log(data);
         } catch (err: any) {
             setError(err.message);
