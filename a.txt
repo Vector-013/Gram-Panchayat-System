@@ -1,10 +1,10 @@
  citizen_id |       name       | gender |    dob     | educational_qualification | income |       email       |                       hashed_password                        | household_id 
 ------------+------------------+--------+------------+---------------------------+--------+-------------------+--------------------------------------------------------------+--------------
+          5 | Surendra Iyer    | Male   | 1945-07-09 | Post Graduate             |  90000 | 5@panchayat.com   | $2b$12$n2HGdCtYMWkd9zQ.hYGXZ.skppFAgqSE/i1nHwkdZaKZq.hrt27zS |            3
           1 | Rajesh Sharma    | Male   | 1950-05-14 | Illiterate                |  20000 | 1@panchayat.com   | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            1
           2 | Kamla Sharma     | Female | 1955-08-22 | Illiterate                |      0 | 2@panchayat.com   | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            1
           3 | Harish Patel     | Male   | 1948-11-03 | Primary                   |  25000 | 3@panchayat.com   | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            2
           4 | Savitri Patel    | Female | 1952-03-18 | Primary                   |      0 | 4@panchayat.com   | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            2
-          5 | Surendra Iyer    | Male   | 1945-07-09 | Secondary                 |  30000 | 5@panchayat.com   | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            3
           6 | Meera Iyer       | Female | 1950-10-12 | Primary                   |      0 | 6@panchayat.com   | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            3
           7 | Gopal Verma      | Male   | 1949-06-15 | Illiterate                |  18000 | 7@panchayat.com   | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            4
           8 | Laxmi Verma      | Female | 1951-09-20 | Primary                   |      0 | 8@panchayat.com   | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            4
@@ -311,7 +311,10 @@
        58 | Library       | Subhash Marg, Phulera   | 3902991 | 2021-11-16
        59 | Street Light  | Subhash Marg, Phulera   |   23511 | 2021-03-03
        60 | Well          | Station Road, Phulera   |  253455 | 2024-01-18
-(60 rows)
+       61 | Hospital      | Gandhi Chowk, Phulera   |  200000 | 2025-03-02
+       62 | Hospital      | Gandhi Chowk, Phulera   |  500000 | 2025-03-02
+       63 | Hospital      | Gandhi Chowk, Phulera   |  500000 | 2025-03-02
+(63 rows)
 
  scheme_id | name | description 
 -----------+------+-------------
@@ -1041,7 +1044,8 @@
     498 | Road Tax     | 165000 | Paid           | 2022-03-01 |         94
     499 | Water Tax    | 163500 | Pending        | 2021-03-01 |         94
     500 | Utility Tax  | 160000 | Paid           | 2020-03-01 |         94
-(250 rows)
+    501 | Income Tax   | 360000 | Pending        | 2025-03-02 |          5
+(251 rows)
 
  env_id |  aqi  | temperature | humidity | rainfall | date_recorded 
 --------+-------+-------------+----------+----------+---------------
@@ -1366,31 +1370,32 @@
   100 | Fauna | Mongoose             | Village Groves      |    12
 (100 rows)
 
- budget_id |     category      | amount  |  spent  | created_at 
------------+-------------------+---------+---------+------------
-         1 | Education         | 5036601 | 4360596 | 2020-01-01
-         2 | Healthcare        | 5036601 | 4564504 | 2020-04-01
-         3 | Assets            | 5036601 | 4513759 | 2020-07-01
-         4 | Water Supply      | 5036601 | 4551389 | 2020-10-01
-         5 | Roads             | 4296499 | 3867766 | 2021-01-01
-         6 | Miscellaneous     | 4296499 | 4292069 | 2021-04-01
-         7 | Women Empowerment | 4296499 | 4277168 | 2021-07-01
-         8 | Education         | 4296499 | 3959031 | 2021-10-01
-         9 | Healthcare        | 3239521 | 2869181 | 2022-01-01
-        10 | Assets            | 3239521 | 2981497 | 2022-04-01
-        11 | Water Supply      | 3239521 | 3063317 | 2022-07-01
-        12 | Roads             | 3239521 | 2767211 | 2022-10-01
-        13 | Miscellaneous     | 4654121 | 4558922 | 2023-01-01
-        14 | Women Empowerment | 4654121 | 4523457 | 2023-04-01
-        15 | Education         | 4654121 | 4630892 | 2023-07-01
-        16 | Healthcare        | 4654121 | 4442150 | 2023-10-01
-        17 | Assets            | 3569414 | 3109803 | 2024-01-01
-        18 | Water Supply      | 3569414 | 3076934 | 2024-04-01
-        19 | Roads             | 3569414 | 3503583 | 2024-07-01
-        20 | Miscellaneous     | 3569414 | 3520729 | 2024-10-01
-        21 | Women Empowerment | 8021952 | 7531228 | 2025-01-01
-        22 | Education         | 8021952 | 6900261 | 2025-04-01
-        23 | Healthcare        | 8021952 | 7365981 | 2025-07-01
-        24 | Assets            | 8021952 | 7501392 | 2025-10-01
-(24 rows)
+ budget_id |     category      |  amount  |  spent  | created_at 
+-----------+-------------------+----------+---------+------------
+         1 | Education         |  5036601 | 4360596 | 2020-01-01
+         3 | Assets            |  5036601 | 4513759 | 2020-07-01
+         4 | Water Supply      |  5036601 | 4551389 | 2020-10-01
+         5 | Roads             |  4296499 | 3867766 | 2021-01-01
+         6 | Miscellaneous     |  4296499 | 4292069 | 2021-04-01
+         7 | Women Empowerment |  4296499 | 4277168 | 2021-07-01
+         8 | Education         |  4296499 | 3959031 | 2021-10-01
+        10 | Assets            |  3239521 | 2981497 | 2022-04-01
+        11 | Water Supply      |  3239521 | 3063317 | 2022-07-01
+        12 | Roads             |  3239521 | 2767211 | 2022-10-01
+        13 | Miscellaneous     |  4654121 | 4558922 | 2023-01-01
+        14 | Women Empowerment |  4654121 | 4523457 | 2023-04-01
+        15 | Education         |  4654121 | 4630892 | 2023-07-01
+        17 | Assets            |  3569414 | 3109803 | 2024-01-01
+        18 | Water Supply      |  3569414 | 3076934 | 2024-04-01
+        19 | Roads             |  3569414 | 3503583 | 2024-07-01
+        20 | Miscellaneous     |  3569414 | 3520729 | 2024-10-01
+        21 | Women Empowerment |  8021952 | 7531228 | 2025-01-01
+        22 | Education         |  8021952 | 6900261 | 2025-04-01
+        24 | Assets            |  8021952 | 7501392 | 2025-10-01
+         2 | Healthcare        |  5036601 |       0 | 2020-04-01
+         9 | Healthcare        |  3239521 |       0 | 2022-01-01
+        16 | Healthcare        |  4654121 |       0 | 2023-10-01
+        23 | Healthcare        |  8021952 |       0 | 2025-07-01
+        25 | Healthcare        | 500000.0 |       0 | 2025-03-02
+(25 rows)
 
