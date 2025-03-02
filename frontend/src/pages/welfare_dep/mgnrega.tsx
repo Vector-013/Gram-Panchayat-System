@@ -57,13 +57,36 @@ const MGNREGAQuery: React.FC = () => {
         body: JSON.stringify(requestBody),
       });
 
+      
+
       if (!response.ok) {
         throw new Error("Submission failed");
       }
 
+
       const data = await response.json();
-      setEnrolled(data.eligible_and_enrolled);
-      setNotEnrolled(data.eligible_but_not_enrolled);
+
+      const transformedData1 = data["eligible_and_enrolled"].map((record: any) => ({
+        citizen_id: record["Citizen ID"],  // Backend: "Citizen ID"
+        name: record["Name"],  
+        age: record["Age"],
+        household_id: record["Household ID"],  
+        address: record["Address"],
+        personal_income: record["Personal Income"],  
+        household_income: record["Household Income"],  
+    }));
+
+    const transformedData2 = data["eligible_but_not_enrolled"].map((record: any) => ({
+      citizen_id: record["Citizen ID"],  // Backend: "Citizen ID"
+      name: record["Name"],  
+      age: record["Age"],
+      household_id: record["Household ID"],  
+      address: record["Address"],
+      personal_income: record["Personal Income"],  
+      household_income: record["Household Income"],  
+  }));
+      setEnrolled(transformedData1);
+      setNotEnrolled(transformedData2);
     } catch (err: any) {
       setError(err.message);
     }
@@ -280,8 +303,11 @@ const MGNREGAQuery: React.FC = () => {
                       <td>{record.citizen_id}</td>
                       <td>{record.name}</td>
                       <td>{record.age}</td>
-                      <td>{record.household_income}</td>
+                      <td>{record.household_id}</td>
                       <td>{record.address}</td>
+                      <td>{record.personal_income}</td>
+                      <td>{record.household_income}</td>
+          
                     </tr>
                   ))
                 ) : (

@@ -373,27 +373,27 @@ Content-Type: application/json
 # }
 
 ## Edu Dept Query for Citizens
-POST http://localhost:8000/edu-dept/edu-query
-Content-Type: application/json
+# POST http://localhost:8000/edu-dept/edu-query
+# Content-Type: application/json
 
-{
-  "gender": "",
-  "educational_level": "All",
-  "dob_min": "1980-01-01",
-  "dob_max": "2000-12-31",
-  "income_min": 10000,
-  "income_max": 800000
-}
+# {
+#   "gender": "",
+#   "educational_level": "All",
+#   "dob_min": "1980-01-01",
+#   "dob_max": "2000-12-31",
+#   "income_min": 10000,
+#   "income_max": 800000
+# }
 
-POST http://127.0.0.1:8000/welfare/vaccines
-Content-Type: application/json
+# POST http://127.0.0.1:8000/welfare/vaccines
+# Content-Type: application/json
 
-{
-  "vaccine_type": "Covid-19",
-  "start_date": "2020-01-01",
-  "end_date": "2023-12-31",
-  "parent_qualification": "Primary"
-}
+# {
+#   "vaccine_type": "Covid-19",
+#   "start_date": "2020-01-01",
+#   "end_date": "2023-12-31",
+#   "parent_qualification": "Primary"
+# }
 
 ## Medical Data Query - All Filters Provided
 # POST http://localhost:8000/welfare/medical-data/
@@ -409,7 +409,7 @@ Content-Type: application/json
 #   "health_status": "Fair"
 # }
 
-## Fetch Eligible MGNREGA Data
+# # Fetch Eligible MGNREGA Data
 # POST http://localhost:8000/welfare/mgnrega/
 # Content-Type: application/json
 # Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxQHBhbmNoYXlhdC5jb20iLCJyb2xlIjoicHJhZGhhbiIsImV4cCI6MTc0MDg4MDE5Mn0.DUZz-sER0CLGW13Qwr8LyekP4mtcViEUbHMhRYIIlLU
@@ -423,17 +423,17 @@ Content-Type: application/json
 # }
 
 # ### Fetch MGNREGA Data Without Any Filters
-# POST http://localhost:8000/welfare/mgnrega/
-# Content-Type: application/json
-# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxQHBhbmNoYXlhdC5jb20iLCJyb2xlIjoicHJhZGhhbiIsImV4cCI6MTc0MDg4MDE5Mn0.DUZz-sER0CLGW13Qwr8LyekP4mtcViEUbHMhRYIIlLU
+POST http://localhost:8000/welfare/mgnrega/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxQHBhbmNoYXlhdC5jb20iLCJyb2xlIjoicHJhZGhhbiIsImV4cCI6MTc0MDg4MDE5Mn0.DUZz-sER0CLGW13Qwr8LyekP4mtcViEUbHMhRYIIlLU
 
-# {
-#   "min_age": 0,
-#   "max_age": 100,
-#   "min_household_income": 0,
-#   "max_household_income": 1000000,
-#   "personal_income": 1000000
-# }
+{
+  "min_age": 0,
+  "max_age": 100,
+  "min_household_income": 0,
+  "max_household_income": 1000000,
+  "personal_income": 1000000
+}
 
 
 
