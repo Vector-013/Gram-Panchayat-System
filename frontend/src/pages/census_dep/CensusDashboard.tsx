@@ -20,21 +20,26 @@ interface CitizenElement {
 
 const CensusDashboard: React.FC = () => {
   const navigate = useNavigate();
-   useEffect(() => {
+  const role = localStorage.getItem('role');
+
+  useEffect(() => {
       const token = localStorage.getItem('token');
       const role = localStorage.getItem('role');
-      if (!token || role !== 'census_dept') {
+      if (!token || (role !== 'census_dept' && role !== 'admin')) {
         navigate('/login');
       }
     }, [navigate]);
-    
+
   return (
     <div className="container-fluid dashboard-container">
       {/* Navbar */}
       <nav className="navbar d-flex justify-content-between">
-        <span>
-          Census Department
-        </span>
+      <div className="goto">
+          <span>
+            Census Department
+          </span>
+          {role === 'admin' && <button className="btn" onClick={() => navigate("/admin-dashboard")}>Goto Admin</button>}
+        </div>
         <div className="nav-buttons">
           <button className="btn btn-danger" onClick={() => navigate("/census-dashboard")}>Home</button>
           <button className="btn btn-danger ms-2" onClick={() => navigate("/logout")}>Logout</button>

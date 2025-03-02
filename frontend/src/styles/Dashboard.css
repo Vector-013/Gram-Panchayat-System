@@ -18,6 +18,10 @@
     font-weight: bold;
 }
 
+.goto button{
+    margin-left: 10px;
+}
+
 .list-group-item{
     border: none;
     margin : 0;

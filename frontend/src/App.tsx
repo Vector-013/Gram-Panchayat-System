@@ -9,7 +9,6 @@ import LandRecords from './pages/citizen/landRecord';
 import VaccinationRecords from './pages/citizen/vaccineRecord';
 import Login from './pages/auth/Login';
 import Logout from './pages/auth/Logout';
-import AdminDashboard from './pages/admin/AdminDashboard';
 import CitizenDashboard from './pages/citizen/CitizenDashboard';
 import CensusDashboard from './pages/census_dep/CensusDashboard';
 import AdminRegister from './pages/AdminRegister';
@@ -18,7 +17,7 @@ import EnvironmentStats from './pages/base/env';
 import GeoPage from './pages/base/geo';
 import FloraFaunaPage from './pages/base/floraFauna';
 import CitizenPanchayatForm from './pages/it_dep/land_query';
-import ItDashboard from './pages/it_dep/ItDasboard';
+import ItDashboard from './pages/it_dep/ItDashboard';
 import EducationForm from './pages/welfare_dep/ed_query';
 import TaxQueryForm from './pages/it_dep/tax_query';
 import AssetQueryForm from './pages/it_dep/asset_query';
@@ -60,6 +59,10 @@ import CensusModal from './pages/census_dep/CensusModal';
 import FinancialGraph from './pages/it_dep/analytics';
 import EnvironmentalDataComponent from './pages/census_dep/env_analytics';
 import "./styles/App.css";
+
+import AdminDashboard from './pages/admin/AdminDashboard';
+import AdminModal from './pages/admin/AdminModal';
+import QueryAdmin from './pages/admin/QueryAdmin';
 // Function to check if the user is authenticated
 const isAuthenticated = () => {
   return localStorage.getItem('token') !== null;
@@ -107,7 +110,13 @@ const App: React.FC = () => {
         <Route path="/test" element = {<AssetQueryForm />}/>
 
         {/* Admin Dashboard */}
-        <Route path="/admin-dashboard" element={<ProtectedRoute element={<AdminDashboard />} />} />
+        <Route path="/admin-dashboard" element={<ProtectedRoute element={<AdminDashboard />} />}>
+          <Route index element={<AdminModal />} />
+          <Route path='insert' element={<InsertModal />} />
+          <Route path='update' element={<UpdateModal />} />
+          <Route path='delete' element={<UpdateModal />} />
+          <Route path='query' element={<QueryAdmin />} />
+        </Route>
 
         {/* Citizen Dashboard */}
         <Route path="/citizen-dashboard/:citizenId" element={<ProtectedRoute element={<CitizenDashboard />} />}>
