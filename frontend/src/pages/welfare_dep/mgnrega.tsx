@@ -16,7 +16,7 @@ const MGNREGAQuery: React.FC = () => {
   const [minAge, setMinAge] = useState(18);
   const [maxAge, setMaxAge] = useState(60);
   const [minHouseholdIncome, setMinHouseholdIncome] = useState(0);
-  const [maxHouseholdIncome, setMaxHouseholdIncome] = useState(50000);
+  const [maxHouseholdIncome, setMaxHouseholdIncome] = useState(200000);
   const [personalIncome, setPersonalIncome] = useState(100000);
   const [enrolled, setEnrolled] = useState<MGNREGARecord[]>([]);
   const [notEnrolled, setNotEnrolled] = useState<MGNREGARecord[]>([]);

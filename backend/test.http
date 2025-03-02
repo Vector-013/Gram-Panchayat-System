@@ -454,16 +454,16 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJJVERlcHRAc
 #   "income_max": 8000000
 # }
 
-POST http://127.0.0.1:8000/welfare/vaccines
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBZG1pbkBwYW5jaGF5YXQuY29tIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzQwOTgxMjQ1fQ.3pJVvNUMc-nUiUyZmDoKxQc9CHx6zuC-Aa4WFdPQ4Js
-Content-Type: application/json
+# POST http://127.0.0.1:8000/welfare/vaccines
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBZG1pbkBwYW5jaGF5YXQuY29tIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzQwOTgxMjQ1fQ.3pJVvNUMc-nUiUyZmDoKxQc9CHx6zuC-Aa4WFdPQ4Js
+# Content-Type: application/json
 
-{
-  "vaccine_type": "Covid-19",
-  "start_date": "2000-01-01",
-  "end_date": "2025-12-31",
-  "parent_qualification": ""
-}
+# {
+#   "vaccine_type": "Covid-19",
+#   "start_date": "2000-01-01",
+#   "end_date": "2025-12-31",
+#   "parent_qualification": ""
+# }
 
 ## Medical Data Query - All Filters Provided
 # POST http://localhost:8000/welfare/medical-data
@@ -493,17 +493,17 @@ Content-Type: application/json
 # }
 
 # ### Fetch MGNREGA Data Without Any Filters
-# POST http://localhost:8000/welfare/mgnrega/
-# Content-Type: application/json
-# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxQHBhbmNoYXlhdC5jb20iLCJyb2xlIjoicHJhZGhhbiIsImV4cCI6MTc0MDg4MDE5Mn0.DUZz-sER0CLGW13Qwr8LyekP4mtcViEUbHMhRYIIlLU
+POST http://localhost:8000/welfare/mgnrega/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxQHBhbmNoYXlhdC5jb20iLCJyb2xlIjoicHJhZGhhbiIsImV4cCI6MTc0MDg4MDE5Mn0.DUZz-sER0CLGW13Qwr8LyekP4mtcViEUbHMhRYIIlLU
 
-# {
-#   "min_age": 0,
-#   "max_age": 100,
-#   "min_household_income": 0,
-#   "max_household_income": 1000000,
-#   "personal_income": 1000000
-# }
+{
+  "min_age": 0,
+  "max_age": 100,
+  "min_household_income": 0,
+  "max_household_income": 1000000,
+  "personal_income": 1000000
+}
 
 ### Test: Welfare Analytics Endpoint
 GET http://localhost:8000/welfare/analytics
@@ -517,3 +517,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBZG1pbkBwY
 GET http://localhost:8000/get-today-env/
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJDZW5zdXNEZXB0QHBhbmNoYXlhdC5jb20iLCJyb2xlIjoiY2Vuc3VzX2RlcHQiLCJleHAiOjE3NDA5NTk2NzR9.nVDbNGlAZAATcEqiqlOXuiC6CSk9qPm1xfgnic9XfeU
+
+### Census Analytics Data
+GET http://localhost:8000/census/analytics-data/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBZG1pbkBwYW5jaGF5YXQuY29tIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzQwOTg0NTU1fQ.uDB9faTiWx-jXJ3lVzgaX6GL-pGA-DvTVRztR5bJbko
