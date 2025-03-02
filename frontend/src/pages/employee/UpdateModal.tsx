@@ -5,6 +5,7 @@ import UpdateHousehold from "../forms/UpdateHousehold";
 import UpdateLandRecord from "../forms/UpdateLandRecord";
 import UpdateWelfareScheme from "../forms/UpdateWelfareScheme";
 import UpdateTaxes from "../forms/UpdateTaxes";
+import UpdateEmp from "../forms/UpdateEmp";
 import bgImage from "../../images/village.jpg";
 
 const UpdateModal: React.FC = () => {
@@ -31,9 +32,6 @@ const UpdateModal: React.FC = () => {
                     <option value="land">Land Record</option>
                     <option value="welfare">Welfare Scheme</option>
                     <option value="tax">Tax Record</option>
-                    <option value="education">Education Record</option>
-                    <option value="health">Health Record</option>
-                    <option value="marriage">Marriage Record</option>
                     {role === 'pradhan' && <option value="employee">Employee</option>}
                 </select>
             </div>
@@ -46,11 +44,7 @@ const UpdateModal: React.FC = () => {
             {selectedType === "land" && <UpdateLandRecord />}
             {selectedType === "welfare" && <UpdateWelfareScheme />}
             {selectedType === "tax" && <UpdateTaxes />}
-            {/* 
-            {selectedType === "education" && <p className="update-placeholder">Education Record update form will appear here.</p>}
-            {selectedType === "health" && <p className="update-placeholder">Health Record update form will appear here.</p>}
-            {selectedType === "marriage" && <UpdateMarriage />}
-            {selectedType === "employee" && <UpdateEmployee />} */}
+            {selectedType === "employee" && <UpdateEmp />}
         </div>
     );
 };

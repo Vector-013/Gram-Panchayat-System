@@ -7,6 +7,8 @@
     background-color: #f9f9f9;
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    height: 90vh;
 }
 
 /* Chart Wrapper */
@@ -105,3 +107,65 @@
     font-size: 14px;
     font-weight: bold;
 }
+
+/* Container Styling */
+.analytics-container {
+    width: 100%;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    overflow-y: auto;
+    height: 90vh;
+  }
+  
+  /* Title & Subtitle */
+  .chart-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .chart-subtitle {
+    font-size: 18px;
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 10px;
+  }
+  
+  /* Chart Wrapping */
+  .chart-wrapper {
+    margin: 30px 0;
+    padding: 15px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .chart-wrapper:hover {
+    transform: scale(1.02);
+  }
+  
+  /* Loading and Error Messages */
+  .loading-message,
+  .error-message,
+  .no-data-message {
+    font-size: 16px;
+    font-weight: bold;
+    color: #d9534f;
+    padding: 15px;
+    border-radius: 5px;
+    background: #f2dede;
+    border: 1px solid #d9534f;
+    display: inline-block;
+    margin-top: 20px;
+  }
+  
+  /* Chart Colors */
+  .recharts-bar-rectangle {
+    border-radius: 5px;
+  }
+  
