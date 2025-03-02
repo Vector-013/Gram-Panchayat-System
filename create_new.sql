@@ -12,12 +12,10 @@ CREATE TABLE citizens (
     dob DATE NOT NULL,
     educational_qualification TEXT,
     income DECIMAL,
-    email TEXT UNIQUE NOT NULL,
+    email TEXT UNIQUE ,
     hashed_password TEXT NOT NULL,
     household_id INT REFERENCES households(household_id)
 );
-
-
 
 -- Creating land_records table with weight and year_recorded
 CREATE TABLE land_records (

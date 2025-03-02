@@ -15,13 +15,13 @@
 # Authorization: Bearer <any_valid_token>
 # "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBZG1pbiIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTc0MDU5MjczNH0.5wL0G2cgGKR9GfemtoSehcYdKIPJJ-Ggwfr-ZX9IvBY"
 
-POST http://localhost:8000/login
-Content-Type: application/json
+# POST http://localhost:8000/login
+# Content-Type: application/json
 
-{
-  "email": "1@panchayat.com",
-  "password": "OjasIsGod"
-}
+# {
+#   "email": "Admin@panchayat.com",
+#   "password": "OjasMyBoy"
+# }
 
 
 #####################################################    POSTS   #####################################################
@@ -298,9 +298,9 @@ Content-Type: application/json
 # GET http://localhost:8000/api/1/fam-land
 # Content-Type: application/json
 
-# ## IT Analytics Query
-# GET http://localhost:8000/api/it-dept/analytics1
-# Content-Type: application/json
+## IT Analytics Query
+GET http://localhost:8000/api/it-dept/analytics1
+Content-Type: application/json
 
 # ## Get Medical Data for Citizen with ID 1
 # GET http://localhost:8000/api/1/medical
@@ -440,6 +440,6 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxQHBhbmNoY
 #########################################################   CENSUS  ###############################################################
 
 # ### Get Today's Environmental Data and All Records
-# GET http://localhost:8000/get-today-env/
-# Content-Type: application/json
-# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxQHBhbmNoYXlhdC5jb20iLCJyb2xlIjoicHJhZGhhbiIsImV4cCI6MTc0MDk1MDI3OX0.FUxtX3BDUU4BlToCSZbup62iddAiWJZSPiqLnqWRutg
+GET http://localhost:8000/get-today-env/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxQHBhbmNoYXlhdC5jb20iLCJyb2xlIjoicHJhZGhhbiIsImV4cCI6MTc0MDk1MDI3OX0.FUxtX3BDUU4BlToCSZbup62iddAiWJZSPiqLnqWRutg

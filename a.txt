@@ -1,10 +1,10 @@
  citizen_id |       name       | gender |    dob     | educational_qualification | income |       email       |                       hashed_password                        | household_id 
 ------------+------------------+--------+------------+---------------------------+--------+-------------------+--------------------------------------------------------------+--------------
+          5 | Surendra Iyer    | Male   | 1945-07-09 | Post Graduate             |  90000 | 5@panchayat.com   | $2b$12$n2HGdCtYMWkd9zQ.hYGXZ.skppFAgqSE/i1nHwkdZaKZq.hrt27zS |            3
           1 | Rajesh Sharma    | Male   | 1950-05-14 | Illiterate                |  20000 | 1@panchayat.com   | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            1
           2 | Kamla Sharma     | Female | 1955-08-22 | Illiterate                |      0 | 2@panchayat.com   | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            1
           3 | Harish Patel     | Male   | 1948-11-03 | Primary                   |  25000 | 3@panchayat.com   | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            2
           4 | Savitri Patel    | Female | 1952-03-18 | Primary                   |      0 | 4@panchayat.com   | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            2
-          5 | Surendra Iyer    | Male   | 1945-07-09 | Secondary                 |  30000 | 5@panchayat.com   | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            3
           6 | Meera Iyer       | Female | 1950-10-12 | Primary                   |      0 | 6@panchayat.com   | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            3
           7 | Gopal Verma      | Male   | 1949-06-15 | Illiterate                |  18000 | 7@panchayat.com   | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            4
           8 | Laxmi Verma      | Female | 1951-09-20 | Primary                   |      0 | 8@panchayat.com   | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            4
@@ -124,7 +124,8 @@
            18 | Building 26, Subhash Marg, Phulera
            19 | Building 11, Rajput Mohalla, Phulera
            20 | Building 39, Station Road, Phulera
-(20 rows)
+           21 | 35, Main Building, Phulera
+(21 rows)
 
  land_id | area_acres | crop_type | weight | year_recorded | citizen_id 
 ---------+------------+-----------+--------+---------------+------------
@@ -228,7 +229,8 @@
      198 |          6 | Coffee    |      5 |          2022 |         92
      199 |          5 | Wheat     |      4 |          2023 |         93
      200 |          4 | Rice      |      3 |          2024 |         94
-(100 rows)
+     201 |          1 | Wheat     |     50 |          2025 |          3
+(101 rows)
 
  employee_id |    role    | citizen_id 
 -------------+------------+------------
@@ -247,7 +249,9 @@
           28 | Secretary  |         85
           29 | Engineer   |         92
           30 | Treasurer  |         89
-(15 rows)
+          31 | Member     |          2
+          32 | Pradhan    |          1
+(17 rows)
 
  asset_id |     type      |        location         |  value  | installation_date 
 ----------+---------------+-------------------------+---------+-------------------
@@ -311,11 +315,16 @@
        58 | Library       | Subhash Marg, Phulera   | 3902991 | 2021-11-16
        59 | Street Light  | Subhash Marg, Phulera   |   23511 | 2021-03-03
        60 | Well          | Station Road, Phulera   |  253455 | 2024-01-18
-(60 rows)
+       61 | Hospital      | Gandhi Chowk, Phulera   |  200000 | 2025-03-02
+       62 | Hospital      | Gandhi Chowk, Phulera   |  500000 | 2025-03-02
+       63 | Hospital      | Gandhi Chowk, Phulera   |  500000 | 2025-03-02
+       64 | Street Light  | Rajput Mohalla, Phulera |   20000 | 2025-03-02
+(64 rows)
 
- scheme_id | name | description 
------------+------+-------------
-(0 rows)
+ scheme_id |       name       |       description       
+-----------+------------------+-------------------------
+         1 | ABP Sadhan Yojna | Help the needy and poor
+(1 row)
 
  citizen_id | scheme_id | enrollment_date 
 ------------+-----------+-----------------
@@ -523,7 +532,9 @@
             398 |         98 | HepatitisA       | 2020-08-29
             399 |         99 | Small Pox        | 2021-12-25
             400 |        100 | Mumps            | 2022-10-31
-(200 rows)
+            401 |         11 | Covid-19         | 2021-05-10
+            402 |         11 | Covid-19         | 2021-05-10
+(202 rows)
 
  medical_id | citizen_id | health_status | medical_condition  | date_recorded 
 ------------+------------+---------------+--------------------+---------------
@@ -791,257 +802,265 @@
 
  tax_id |     type     | amount | payment_status |    date    | citizen_id 
 --------+--------------+--------+----------------+------------+------------
-    251 | Income Tax   |  80000 | Paid           | 2024-03-01 |          1
-    252 | Property Tax |  75000 | Pending        | 2023-03-01 |          1
-    253 | Water Tax    |  82000 | Paid           | 2022-03-01 |          1
-    254 | Utility Tax  |  78000 | Paid           | 2021-03-01 |          1
-    255 | Road Tax     |  77000 | Pending        | 2020-03-01 |          1
-    256 | Income Tax   | 100000 | Paid           | 2024-03-01 |          3
-    257 | Property Tax |  95000 | Pending        | 2023-03-01 |          3
-    258 | Water Tax    | 102000 | Paid           | 2022-03-01 |          3
-    259 | Utility Tax  |  98000 | Pending        | 2021-03-01 |          3
-    260 | Road Tax     |  97000 | Paid           | 2020-03-01 |          3
-    261 | Income Tax   | 120000 | Paid           | 2024-03-01 |          5
-    262 | Property Tax | 115000 | Pending        | 2023-03-01 |          5
-    263 | Water Tax    | 122000 | Paid           | 2022-03-01 |          5
-    264 | Utility Tax  | 118000 | Pending        | 2021-03-01 |          5
-    265 | Road Tax     | 117000 | Paid           | 2020-03-01 |          5
-    266 | Income Tax   |  72000 | Paid           | 2024-03-01 |          7
-    267 | Property Tax |  67000 | Pending        | 2023-03-01 |          7
-    268 | Water Tax    |  74000 | Paid           | 2022-03-01 |          7
-    269 | Utility Tax  |  68000 | Pending        | 2021-03-01 |          7
-    270 | Road Tax     |  69000 | Paid           | 2020-03-01 |          7
-    271 | Income Tax   | 280000 | Paid           | 2024-03-01 |          9
-    272 | Property Tax | 275000 | Pending        | 2023-03-01 |          9
-    273 | Water Tax    | 282000 | Paid           | 2022-03-01 |          9
-    274 | Utility Tax  | 278000 | Paid           | 2021-03-01 |          9
-    275 | Road Tax     | 277000 | Pending        | 2020-03-01 |          9
-    276 | Income Tax   | 260000 | Paid           | 2024-03-01 |         10
-    277 | Property Tax | 255000 | Pending        | 2023-03-01 |         10
-    278 | Water Tax    | 262000 | Paid           | 2022-03-01 |         10
-    279 | Utility Tax  | 258000 | Pending        | 2021-03-01 |         10
-    280 | Road Tax     | 257000 | Paid           | 2020-03-01 |         10
-    281 | Income Tax   | 340000 | Paid           | 2024-03-01 |         11
-    282 | Property Tax | 335000 | Pending        | 2023-03-01 |         11
-    283 | Water Tax    | 342000 | Paid           | 2022-03-01 |         11
-    284 | Utility Tax  | 338000 | Paid           | 2021-03-01 |         11
-    285 | Road Tax     | 337000 | Pending        | 2020-03-01 |         11
-    286 | Income Tax   | 320000 | Paid           | 2024-03-01 |         12
-    287 | Property Tax | 315000 | Pending        | 2023-03-01 |         12
-    288 | Water Tax    | 322000 | Paid           | 2022-03-01 |         12
-    289 | Utility Tax  | 318000 | Pending        | 2021-03-01 |         12
-    290 | Road Tax     | 317000 | Paid           | 2020-03-01 |         12
-    291 | Income Tax   | 240000 | Paid           | 2024-03-01 |         13
-    292 | Property Tax | 235000 | Pending        | 2023-03-01 |         13
-    293 | Water Tax    | 242000 | Paid           | 2022-03-01 |         13
-    294 | Utility Tax  | 238000 | Pending        | 2021-03-01 |         13
-    295 | Road Tax     | 237000 | Paid           | 2020-03-01 |         13
-    296 | Income Tax   | 160000 | Paid           | 2024-03-01 |         14
-    297 | Property Tax | 155000 | Pending        | 2023-03-01 |         14
-    298 | Water Tax    | 162000 | Paid           | 2022-03-01 |         14
-    299 | Utility Tax  | 158000 | Pending        | 2021-03-01 |         14
-    300 | Road Tax     | 157000 | Paid           | 2020-03-01 |         14
-    301 | Income Tax   |  88000 | Paid           | 2024-03-01 |         21
-    302 | Property Tax |  87000 | Pending        | 2023-03-01 |         21
-    303 | Road Tax     |  86000 | Paid           | 2022-03-01 |         21
-    304 | Water Tax    |  85500 | Pending        | 2021-03-01 |         21
-    305 | Utility Tax  |  85000 | Paid           | 2020-03-01 |         21
-    306 | Income Tax   | 108000 | Paid           | 2024-03-01 |         23
-    307 | Property Tax | 107000 | Pending        | 2023-03-01 |         23
-    308 | Road Tax     | 106500 | Paid           | 2022-03-01 |         23
-    309 | Water Tax    | 105500 | Pending        | 2021-03-01 |         23
-    310 | Utility Tax  | 104000 | Paid           | 2020-03-01 |         23
-    311 | Income Tax   | 116000 | Paid           | 2024-03-01 |         25
-    312 | Property Tax | 115000 | Pending        | 2023-03-01 |         25
-    313 | Road Tax     | 114500 | Paid           | 2022-03-01 |         25
-    314 | Water Tax    | 113500 | Pending        | 2021-03-01 |         25
-    315 | Utility Tax  | 112000 | Paid           | 2020-03-01 |         25
-    316 | Income Tax   |  76000 | Paid           | 2024-03-01 |         27
-    317 | Property Tax |  75000 | Pending        | 2023-03-01 |         27
-    318 | Road Tax     |  74000 | Paid           | 2022-03-01 |         27
-    319 | Water Tax    |  73500 | Pending        | 2021-03-01 |         27
-    320 | Utility Tax  |  73000 | Paid           | 2020-03-01 |         27
-    321 | Income Tax   | 288000 | Paid           | 2024-03-01 |         29
-    322 | Property Tax | 287000 | Pending        | 2023-03-01 |         29
-    323 | Road Tax     | 285000 | Paid           | 2022-03-01 |         29
-    324 | Water Tax    | 283500 | Pending        | 2021-03-01 |         29
-    325 | Utility Tax  | 280000 | Paid           | 2020-03-01 |         29
-    326 | Income Tax   | 272000 | Paid           | 2024-03-01 |         30
-    327 | Property Tax | 271000 | Pending        | 2023-03-01 |         30
-    328 | Road Tax     | 269000 | Paid           | 2022-03-01 |         30
-    329 | Water Tax    | 267500 | Pending        | 2021-03-01 |         30
-    330 | Utility Tax  | 264000 | Paid           | 2020-03-01 |         30
-    331 | Income Tax   | 344000 | Paid           | 2024-03-01 |         31
-    332 | Property Tax | 343000 | Pending        | 2023-03-01 |         31
-    333 | Road Tax     | 341000 | Paid           | 2022-03-01 |         31
-    334 | Water Tax    | 339500 | Pending        | 2021-03-01 |         31
-    335 | Utility Tax  | 336000 | Paid           | 2020-03-01 |         31
-    336 | Income Tax   | 328000 | Paid           | 2024-03-01 |         32
-    337 | Property Tax | 327000 | Pending        | 2023-03-01 |         32
-    338 | Road Tax     | 325000 | Paid           | 2022-03-01 |         32
-    339 | Water Tax    | 323500 | Pending        | 2021-03-01 |         32
-    340 | Utility Tax  | 320000 | Paid           | 2020-03-01 |         32
-    341 | Income Tax   | 248000 | Paid           | 2024-03-01 |         33
-    342 | Property Tax | 247000 | Pending        | 2023-03-01 |         33
-    343 | Road Tax     | 245000 | Paid           | 2022-03-01 |         33
-    344 | Water Tax    | 243500 | Pending        | 2021-03-01 |         33
-    345 | Utility Tax  | 240000 | Paid           | 2020-03-01 |         33
-    346 | Income Tax   | 164000 | Paid           | 2024-03-01 |         34
-    347 | Property Tax | 163000 | Pending        | 2023-03-01 |         34
-    348 | Road Tax     | 161000 | Paid           | 2022-03-01 |         34
-    349 | Water Tax    | 159500 | Pending        | 2021-03-01 |         34
-    350 | Utility Tax  | 156000 | Paid           | 2020-03-01 |         34
-    351 | Income Tax   | 100000 | Paid           | 2024-03-01 |         41
-    352 | Property Tax |  99000 | Pending        | 2023-03-01 |         41
-    353 | Road Tax     |  98000 | Paid           | 2022-03-01 |         41
-    354 | Water Tax    |  97000 | Pending        | 2021-03-01 |         41
-    355 | Utility Tax  |  96000 | Paid           | 2020-03-01 |         41
-    356 | Income Tax   | 112000 | Paid           | 2024-03-01 |         43
-    357 | Property Tax | 111000 | Pending        | 2023-03-01 |         43
-    358 | Road Tax     | 110000 | Paid           | 2022-03-01 |         43
-    359 | Water Tax    | 109000 | Pending        | 2021-03-01 |         43
-    360 | Utility Tax  | 108000 | Paid           | 2020-03-01 |         43
-    361 | Income Tax   | 120000 | Paid           | 2024-03-01 |         45
-    362 | Property Tax | 119000 | Pending        | 2023-03-01 |         45
-    363 | Road Tax     | 118000 | Paid           | 2022-03-01 |         45
-    364 | Water Tax    | 117000 | Pending        | 2021-03-01 |         45
-    365 | Utility Tax  | 116000 | Paid           | 2020-03-01 |         45
-    366 | Income Tax   |  80000 | Paid           | 2024-03-01 |         47
-    367 | Property Tax |  79000 | Pending        | 2023-03-01 |         47
-    368 | Road Tax     |  78000 | Paid           | 2022-03-01 |         47
-    369 | Water Tax    |  77000 | Pending        | 2021-03-01 |         47
-    370 | Utility Tax  |  76000 | Paid           | 2020-03-01 |         47
-    371 | Income Tax   | 280000 | Paid           | 2024-03-01 |         49
-    372 | Property Tax | 278000 | Pending        | 2023-03-01 |         49
-    373 | Road Tax     | 276000 | Paid           | 2022-03-01 |         49
-    374 | Water Tax    | 274000 | Pending        | 2021-03-01 |         49
-    375 | Utility Tax  | 272000 | Paid           | 2020-03-01 |         49
-    376 | Income Tax   | 260000 | Paid           | 2024-03-01 |         50
-    377 | Property Tax | 258000 | Pending        | 2023-03-01 |         50
-    378 | Road Tax     | 256000 | Paid           | 2022-03-01 |         50
-    379 | Water Tax    | 254000 | Pending        | 2021-03-01 |         50
-    380 | Utility Tax  | 252000 | Paid           | 2020-03-01 |         50
-    381 | Income Tax   | 340000 | Paid           | 2024-03-01 |         51
-    382 | Property Tax | 338000 | Pending        | 2023-03-01 |         51
-    383 | Road Tax     | 336000 | Paid           | 2022-03-01 |         51
-    384 | Water Tax    | 334000 | Pending        | 2021-03-01 |         51
-    385 | Utility Tax  | 332000 | Paid           | 2020-03-01 |         51
-    386 | Income Tax   | 320000 | Paid           | 2024-03-01 |         52
-    387 | Property Tax | 318000 | Pending        | 2023-03-01 |         52
-    388 | Road Tax     | 316000 | Paid           | 2022-03-01 |         52
-    389 | Water Tax    | 314000 | Pending        | 2021-03-01 |         52
-    390 | Utility Tax  | 312000 | Paid           | 2020-03-01 |         52
-    391 | Income Tax   | 252000 | Paid           | 2024-03-01 |         53
-    392 | Property Tax | 250000 | Pending        | 2023-03-01 |         53
-    393 | Road Tax     | 248000 | Paid           | 2022-03-01 |         53
-    394 | Water Tax    | 246000 | Pending        | 2021-03-01 |         53
-    395 | Utility Tax  | 244000 | Paid           | 2020-03-01 |         53
-    396 | Income Tax   | 168000 | Paid           | 2024-03-01 |         54
-    397 | Property Tax | 166000 | Pending        | 2023-03-01 |         54
-    398 | Road Tax     | 164000 | Paid           | 2022-03-01 |         54
-    399 | Water Tax    | 162000 | Pending        | 2021-03-01 |         54
-    400 | Utility Tax  | 160000 | Paid           | 2020-03-01 |         54
-    401 | Income Tax   | 108000 | Paid           | 2024-03-01 |         61
-    402 | Property Tax | 107000 | Pending        | 2023-03-01 |         61
-    403 | Road Tax     | 106000 | Paid           | 2022-03-01 |         61
-    404 | Water Tax    | 105000 | Pending        | 2021-03-01 |         61
-    405 | Utility Tax  | 104000 | Paid           | 2020-03-01 |         61
-    406 | Income Tax   | 104000 | Paid           | 2024-03-01 |         63
-    407 | Property Tax | 103000 | Pending        | 2023-03-01 |         63
-    408 | Road Tax     | 102000 | Paid           | 2022-03-01 |         63
-    409 | Water Tax    | 101000 | Pending        | 2021-03-01 |         63
-    410 | Utility Tax  | 100000 | Paid           | 2020-03-01 |         63
-    411 | Income Tax   | 124000 | Paid           | 2024-03-01 |         65
-    412 | Property Tax | 123000 | Pending        | 2023-03-01 |         65
-    413 | Road Tax     | 122000 | Paid           | 2022-03-01 |         65
-    414 | Water Tax    | 121000 | Pending        | 2021-03-01 |         65
-    415 | Utility Tax  | 120000 | Paid           | 2020-03-01 |         65
-    416 | Income Tax   |  76000 | Paid           | 2024-03-01 |         67
-    417 | Property Tax |  75000 | Pending        | 2023-03-01 |         67
-    418 | Road Tax     |  74000 | Paid           | 2022-03-01 |         67
-    419 | Water Tax    |  73500 | Pending        | 2021-03-01 |         67
-    420 | Utility Tax  |  73000 | Paid           | 2020-03-01 |         67
-    421 | Income Tax   | 288000 | Paid           | 2024-03-01 |         69
-    422 | Property Tax | 287000 | Pending        | 2023-03-01 |         69
-    423 | Road Tax     | 285000 | Paid           | 2022-03-01 |         69
-    424 | Water Tax    | 283500 | Pending        | 2021-03-01 |         69
-    425 | Utility Tax  | 280000 | Paid           | 2020-03-01 |         69
-    426 | Income Tax   | 268000 | Paid           | 2024-03-01 |         70
-    427 | Property Tax | 267000 | Pending        | 2023-03-01 |         70
-    428 | Road Tax     | 265000 | Paid           | 2022-03-01 |         70
-    429 | Water Tax    | 263500 | Pending        | 2021-03-01 |         70
-    430 | Utility Tax  | 260000 | Paid           | 2020-03-01 |         70
-    431 | Income Tax   | 352000 | Paid           | 2024-03-01 |         71
-    432 | Property Tax | 351000 | Pending        | 2023-03-01 |         71
-    433 | Road Tax     | 349000 | Paid           | 2022-03-01 |         71
-    434 | Water Tax    | 347500 | Pending        | 2021-03-01 |         71
-    435 | Utility Tax  | 344000 | Paid           | 2020-03-01 |         71
-    436 | Income Tax   | 324000 | Paid           | 2024-03-01 |         72
-    437 | Property Tax | 323000 | Pending        | 2023-03-01 |         72
-    438 | Road Tax     | 321000 | Paid           | 2022-03-01 |         72
-    439 | Water Tax    | 319500 | Pending        | 2021-03-01 |         72
-    440 | Utility Tax  | 316000 | Paid           | 2020-03-01 |         72
-    441 | Income Tax   | 256000 | Paid           | 2024-03-01 |         73
-    442 | Property Tax | 255000 | Pending        | 2023-03-01 |         73
-    443 | Road Tax     | 253000 | Paid           | 2022-03-01 |         73
-    444 | Water Tax    | 251500 | Pending        | 2021-03-01 |         73
-    445 | Utility Tax  | 248000 | Paid           | 2020-03-01 |         73
-    446 | Income Tax   | 164000 | Paid           | 2024-03-01 |         74
-    447 | Property Tax | 163000 | Pending        | 2023-03-01 |         74
-    448 | Road Tax     | 161000 | Paid           | 2022-03-01 |         74
-    449 | Water Tax    | 159500 | Pending        | 2021-03-01 |         74
-    450 | Utility Tax  | 156000 | Paid           | 2020-03-01 |         74
-    451 | Income Tax   | 100000 | Paid           | 2024-03-01 |         81
-    452 | Property Tax |  99000 | Pending        | 2023-03-01 |         81
-    453 | Road Tax     |  98000 | Paid           | 2022-03-01 |         81
-    454 | Water Tax    |  97000 | Pending        | 2021-03-01 |         81
-    455 | Utility Tax  |  96000 | Paid           | 2020-03-01 |         81
-    456 | Income Tax   | 112000 | Paid           | 2024-03-01 |         83
-    457 | Property Tax | 111000 | Pending        | 2023-03-01 |         83
-    458 | Road Tax     | 110000 | Paid           | 2022-03-01 |         83
-    459 | Water Tax    | 109000 | Pending        | 2021-03-01 |         83
-    460 | Utility Tax  | 108000 | Paid           | 2020-03-01 |         83
-    461 | Income Tax   | 128000 | Paid           | 2024-03-01 |         85
-    462 | Property Tax | 127000 | Pending        | 2023-03-01 |         85
-    463 | Road Tax     | 126000 | Paid           | 2022-03-01 |         85
-    464 | Water Tax    | 125000 | Pending        | 2021-03-01 |         85
-    465 | Utility Tax  | 124000 | Paid           | 2020-03-01 |         85
-    466 | Income Tax   |  84000 | Paid           | 2024-03-01 |         87
-    467 | Property Tax |  83000 | Pending        | 2023-03-01 |         87
-    468 | Road Tax     |  82000 | Paid           | 2022-03-01 |         87
-    469 | Water Tax    |  81000 | Pending        | 2021-03-01 |         87
-    470 | Utility Tax  |  80000 | Paid           | 2020-03-01 |         87
-    471 | Income Tax   | 296000 | Paid           | 2024-03-01 |         89
-    472 | Property Tax | 295000 | Pending        | 2023-03-01 |         89
-    473 | Road Tax     | 293000 | Paid           | 2022-03-01 |         89
-    474 | Water Tax    | 291500 | Pending        | 2021-03-01 |         89
-    475 | Utility Tax  | 288000 | Paid           | 2020-03-01 |         89
-    476 | Income Tax   | 276000 | Paid           | 2024-03-01 |         90
-    477 | Property Tax | 275000 | Pending        | 2023-03-01 |         90
-    478 | Road Tax     | 273000 | Paid           | 2022-03-01 |         90
-    479 | Water Tax    | 271500 | Pending        | 2021-03-01 |         90
-    480 | Utility Tax  | 268000 | Paid           | 2020-03-01 |         90
-    481 | Income Tax   | 344000 | Paid           | 2024-03-01 |         91
-    482 | Property Tax | 343000 | Pending        | 2023-03-01 |         91
-    483 | Road Tax     | 341000 | Paid           | 2022-03-01 |         91
-    484 | Water Tax    | 339500 | Pending        | 2021-03-01 |         91
-    485 | Utility Tax  | 336000 | Paid           | 2020-03-01 |         91
-    486 | Income Tax   | 328000 | Paid           | 2024-03-01 |         92
-    487 | Property Tax | 327000 | Pending        | 2023-03-01 |         92
-    488 | Road Tax     | 325000 | Paid           | 2022-03-01 |         92
-    489 | Water Tax    | 323500 | Pending        | 2021-03-01 |         92
-    490 | Utility Tax  | 320000 | Paid           | 2020-03-01 |         92
-    491 | Income Tax   | 260000 | Paid           | 2024-03-01 |         93
-    492 | Property Tax | 259000 | Pending        | 2023-03-01 |         93
-    493 | Road Tax     | 257000 | Paid           | 2022-03-01 |         93
-    494 | Water Tax    | 255500 | Pending        | 2021-03-01 |         93
-    495 | Utility Tax  | 252000 | Paid           | 2020-03-01 |         93
-    496 | Income Tax   | 168000 | Paid           | 2024-03-01 |         94
-    497 | Property Tax | 167000 | Pending        | 2023-03-01 |         94
-    498 | Road Tax     | 165000 | Paid           | 2022-03-01 |         94
-    499 | Water Tax    | 163500 | Pending        | 2021-03-01 |         94
-    500 | Utility Tax  | 160000 | Paid           | 2020-03-01 |         94
-(250 rows)
+    545 | Road Tax     |  80000 | Pending        | 2024-03-01 |          1
+    546 | Income Tax   |  75000 | Paid           | 2023-03-01 |          1
+    547 | Utility Tax  |  82000 | Pending        | 2022-03-01 |          1
+    548 | Property Tax |  78000 | Paid           | 2021-03-01 |          1
+    549 | Water Tax    |  77000 | Paid           | 2020-03-01 |          1
+    550 | Property Tax | 100000 | Paid           | 2024-03-01 |          3
+    551 | Water Tax    |  95000 | Pending        | 2023-03-01 |          3
+    552 | Road Tax     | 102000 | Paid           | 2022-03-01 |          3
+    553 | Income Tax   |  98000 | Pending        | 2021-03-01 |          3
+    554 | Utility Tax  |  97000 | Paid           | 2020-03-01 |          3
+    555 | Utility Tax  | 120000 | Pending        | 2024-03-01 |          5
+    556 | Income Tax   | 115000 | Paid           | 2023-03-01 |          5
+    557 | Property Tax | 122000 | Pending        | 2022-03-01 |          5
+    558 | Water Tax    | 118000 | Paid           | 2021-03-01 |          5
+    559 | Road Tax     | 117000 | Paid           | 2020-03-01 |          5
+    560 | Income Tax   |  72000 | Paid           | 2024-03-01 |          7
+    561 | Road Tax     |  67000 | Pending        | 2023-03-01 |          7
+    562 | Utility Tax  |  74000 | Paid           | 2022-03-01 |          7
+    563 | Water Tax    |  68000 | Pending        | 2021-03-01 |          7
+    564 | Property Tax |  69000 | Paid           | 2020-03-01 |          7
+    565 | Water Tax    | 280000 | Pending        | 2024-03-01 |          9
+    566 | Utility Tax  | 275000 | Paid           | 2023-03-01 |          9
+    567 | Income Tax   | 282000 | Pending        | 2022-03-01 |          9
+    568 | Road Tax     | 278000 | Paid           | 2021-03-01 |          9
+    569 | Property Tax | 277000 | Paid           | 2020-03-01 |          9
+    570 | Road Tax     | 260000 | Paid           | 2024-03-01 |         10
+    571 | Property Tax | 255000 | Pending        | 2023-03-01 |         10
+    572 | Water Tax    | 262000 | Paid           | 2022-03-01 |         10
+    573 | Income Tax   | 258000 | Pending        | 2021-03-01 |         10
+    574 | Utility Tax  | 257000 | Paid           | 2020-03-01 |         10
+    575 | Property Tax | 340000 | Pending        | 2024-03-01 |         11
+    576 | Income Tax   | 335000 | Paid           | 2023-03-01 |         11
+    577 | Road Tax     | 342000 | Pending        | 2022-03-01 |         11
+    578 | Utility Tax  | 338000 | Paid           | 2021-03-01 |         11
+    579 | Water Tax    | 337000 | Paid           | 2020-03-01 |         11
+    580 | Utility Tax  | 320000 | Paid           | 2024-03-01 |         12
+    581 | Water Tax    | 315000 | Pending        | 2023-03-01 |         12
+    582 | Property Tax | 322000 | Paid           | 2022-03-01 |         12
+    583 | Income Tax   | 318000 | Pending        | 2021-03-01 |         12
+    584 | Road Tax     | 317000 | Paid           | 2020-03-01 |         12
+    585 | Income Tax   | 240000 | Pending        | 2024-03-01 |         13
+    586 | Utility Tax  | 235000 | Paid           | 2023-03-01 |         13
+    587 | Water Tax    | 242000 | Pending        | 2022-03-01 |         13
+    588 | Road Tax     | 238000 | Paid           | 2021-03-01 |         13
+    589 | Property Tax | 237000 | Paid           | 2020-03-01 |         13
+    590 | Water Tax    | 160000 | Paid           | 2024-03-01 |         14
+    591 | Road Tax     | 155000 | Pending        | 2023-03-01 |         14
+    592 | Income Tax   | 162000 | Paid           | 2022-03-01 |         14
+    593 | Utility Tax  | 158000 | Pending        | 2021-03-01 |         14
+    594 | Property Tax | 157000 | Paid           | 2020-03-01 |         14
+    595 | Income Tax   |  75000 | Pending        | 2025-12-31 |          1
+    596 | Income Tax   |  98000 | Pending        | 2025-12-31 |          3
+    597 | Income Tax   | 115000 | Pending        | 2025-12-31 |          5
+    598 | Income Tax   | 282000 | Pending        | 2025-12-31 |          9
+    599 | Income Tax   | 258000 | Pending        | 2025-12-31 |         10
+    600 | Income Tax   | 335000 | Pending        | 2025-12-31 |         11
+    601 | Income Tax   | 240000 | Pending        | 2025-12-31 |         13
+    602 | Income Tax   | 162000 | Pending        | 2025-12-31 |         14
+    603 | Road Tax     |  88000 | Paid           | 2024-03-01 |         21
+    604 | Utility Tax  |  87000 | Pending        | 2023-03-01 |         21
+    605 | Income Tax   |  86000 | Paid           | 2022-03-01 |         21
+    606 | Property Tax |  85500 | Pending        | 2021-03-01 |         21
+    607 | Water Tax    |  85000 | Paid           | 2020-03-01 |         21
+    608 | Property Tax | 108000 | Pending        | 2024-03-01 |         23
+    609 | Road Tax     | 107000 | Paid           | 2023-03-01 |         23
+    610 | Utility Tax  | 106500 | Pending        | 2022-03-01 |         23
+    611 | Income Tax   | 105500 | Paid           | 2021-03-01 |         23
+    612 | Water Tax    | 104000 | Paid           | 2020-03-01 |         23
+    613 | Income Tax   | 116000 | Pending        | 2024-03-01 |         25
+    614 | Water Tax    | 115000 | Paid           | 2023-03-01 |         25
+    615 | Road Tax     | 114500 | Pending        | 2022-03-01 |         25
+    616 | Property Tax | 113500 | Paid           | 2021-03-01 |         25
+    617 | Utility Tax  | 112000 | Paid           | 2020-03-01 |         25
+    618 | Utility Tax  |  76000 | Paid           | 2024-03-01 |         27
+    619 | Property Tax |  75000 | Pending        | 2023-03-01 |         27
+    620 | Water Tax    |  74000 | Paid           | 2022-03-01 |         27
+    621 | Income Tax   |  73500 | Pending        | 2021-03-01 |         27
+    622 | Road Tax     |  73000 | Paid           | 2020-03-01 |         27
+    623 | Water Tax    | 288000 | Pending        | 2024-03-01 |         29
+    624 | Utility Tax  | 287000 | Paid           | 2023-03-01 |         29
+    625 | Property Tax | 285000 | Pending        | 2022-03-01 |         29
+    626 | Road Tax     | 283500 | Paid           | 2021-03-01 |         29
+    627 | Income Tax   | 280000 | Paid           | 2020-03-01 |         29
+    628 | Road Tax     | 272000 | Paid           | 2024-03-01 |         30
+    629 | Property Tax | 271000 | Pending        | 2023-03-01 |         30
+    630 | Water Tax    | 269000 | Paid           | 2022-03-01 |         30
+    631 | Income Tax   | 267500 | Pending        | 2021-03-01 |         30
+    632 | Utility Tax  | 264000 | Paid           | 2020-03-01 |         30
+    633 | Income Tax   | 344000 | Pending        | 2024-03-01 |         31
+    634 | Road Tax     | 343000 | Paid           | 2023-03-01 |         31
+    635 | Utility Tax  | 341000 | Pending        | 2022-03-01 |         31
+    636 | Property Tax | 339500 | Paid           | 2021-03-01 |         31
+    637 | Water Tax    | 336000 | Paid           | 2020-03-01 |         31
+    638 | Utility Tax  | 328000 | Paid           | 2024-03-01 |         32
+    639 | Property Tax | 327000 | Pending        | 2023-03-01 |         32
+    640 | Road Tax     | 325000 | Paid           | 2022-03-01 |         32
+    641 | Water Tax    | 323500 | Pending        | 2021-03-01 |         32
+    642 | Income Tax   | 320000 | Paid           | 2020-03-01 |         32
+    643 | Property Tax | 248000 | Pending        | 2024-03-01 |         33
+    644 | Water Tax    | 247000 | Paid           | 2023-03-01 |         33
+    645 | Income Tax   | 245000 | Pending        | 2022-03-01 |         33
+    646 | Utility Tax  | 243500 | Paid           | 2021-03-01 |         33
+    647 | Road Tax     | 240000 | Paid           | 2020-03-01 |         33
+    648 | Road Tax     | 164000 | Paid           | 2024-03-01 |         34
+    649 | Income Tax   | 163000 | Pending        | 2023-03-01 |         34
+    650 | Utility Tax  | 161000 | Paid           | 2022-03-01 |         34
+    651 | Property Tax | 159500 | Pending        | 2021-03-01 |         34
+    652 | Water Tax    | 156000 | Paid           | 2020-03-01 |         34
+    653 | Water Tax    | 100000 | Pending        | 2024-03-01 |         41
+    654 | Road Tax     |  99000 | Paid           | 2023-03-01 |         41
+    655 | Property Tax |  98000 | Pending        | 2022-03-01 |         41
+    656 | Income Tax   |  97000 | Paid           | 2021-03-01 |         41
+    657 | Utility Tax  |  96000 | Paid           | 2020-03-01 |         41
+    658 | Utility Tax  | 112000 | Paid           | 2024-03-01 |         43
+    659 | Income Tax   | 111000 | Pending        | 2023-03-01 |         43
+    660 | Road Tax     | 110000 | Paid           | 2022-03-01 |         43
+    661 | Property Tax | 109000 | Pending        | 2021-03-01 |         43
+    662 | Water Tax    | 108000 | Paid           | 2020-03-01 |         43
+    663 | Road Tax     | 120000 | Paid           | 2024-03-01 |         45
+    664 | Water Tax    | 119000 | Pending        | 2023-03-01 |         45
+    665 | Income Tax   | 118000 | Paid           | 2022-03-01 |         45
+    666 | Utility Tax  | 117000 | Pending        | 2021-03-01 |         45
+    667 | Property Tax | 116000 | Paid           | 2020-03-01 |         45
+    668 | Property Tax |  80000 | Paid           | 2024-03-01 |         47
+    669 | Utility Tax  |  79000 | Pending        | 2023-03-01 |         47
+    670 | Water Tax    |  78000 | Paid           | 2022-03-01 |         47
+    671 | Income Tax   |  77000 | Pending        | 2021-03-01 |         47
+    672 | Road Tax     |  76000 | Paid           | 2020-03-01 |         47
+    673 | Income Tax   | 280000 | Paid           | 2024-03-01 |         49
+    674 | Road Tax     | 278000 | Pending        | 2023-03-01 |         49
+    675 | Utility Tax  | 276000 | Paid           | 2022-03-01 |         49
+    676 | Water Tax    | 274000 | Pending        | 2021-03-01 |         49
+    677 | Property Tax | 272000 | Paid           | 2020-03-01 |         49
+    678 | Utility Tax  | 260000 | Paid           | 2024-03-01 |         50
+    679 | Income Tax   | 258000 | Pending        | 2023-03-01 |         50
+    680 | Property Tax | 256000 | Paid           | 2022-03-01 |         50
+    681 | Road Tax     | 254000 | Pending        | 2021-03-01 |         50
+    682 | Water Tax    | 252000 | Paid           | 2020-03-01 |         50
+    683 | Road Tax     | 340000 | Paid           | 2024-03-01 |         51
+    684 | Water Tax    | 338000 | Pending        | 2023-03-01 |         51
+    685 | Income Tax   | 336000 | Paid           | 2022-03-01 |         51
+    686 | Utility Tax  | 334000 | Pending        | 2021-03-01 |         51
+    687 | Property Tax | 332000 | Paid           | 2020-03-01 |         51
+    688 | Property Tax | 320000 | Paid           | 2024-03-01 |         52
+    689 | Road Tax     | 318000 | Pending        | 2023-03-01 |         52
+    690 | Water Tax    | 316000 | Paid           | 2022-03-01 |         52
+    691 | Income Tax   | 314000 | Pending        | 2021-03-01 |         52
+    692 | Utility Tax  | 312000 | Paid           | 2020-03-01 |         52
+    693 | Utility Tax  | 252000 | Paid           | 2024-03-01 |         53
+    694 | Income Tax   | 250000 | Pending        | 2023-03-01 |         53
+    695 | Property Tax | 248000 | Paid           | 2022-03-01 |         53
+    696 | Road Tax     | 246000 | Pending        | 2021-03-01 |         53
+    697 | Water Tax    | 244000 | Paid           | 2020-03-01 |         53
+    698 | Income Tax   | 168000 | Paid           | 2024-03-01 |         54
+    699 | Utility Tax  | 166000 | Pending        | 2023-03-01 |         54
+    700 | Road Tax     | 164000 | Paid           | 2022-03-01 |         54
+    701 | Property Tax | 162000 | Pending        | 2021-03-01 |         54
+    702 | Water Tax    | 160000 | Paid           | 2020-03-01 |         54
+    703 | Water Tax    | 108000 | Paid           | 2024-03-01 |         61
+    704 | Road Tax     | 107000 | Pending        | 2023-03-01 |         61
+    705 | Property Tax | 106000 | Paid           | 2022-03-01 |         61
+    706 | Income Tax   | 105000 | Pending        | 2021-03-01 |         61
+    707 | Utility Tax  | 104000 | Paid           | 2020-03-01 |         61
+    708 | Property Tax | 104000 | Pending        | 2024-03-01 |         63
+    709 | Income Tax   | 103000 | Paid           | 2023-03-01 |         63
+    710 | Utility Tax  | 102000 | Pending        | 2022-03-01 |         63
+    711 | Road Tax     | 101000 | Paid           | 2021-03-01 |         63
+    712 | Water Tax    | 100000 | Pending        | 2020-03-01 |         63
+    713 | Utility Tax  | 124000 | Paid           | 2024-03-01 |         65
+    714 | Water Tax    | 123000 | Pending        | 2023-03-01 |         65
+    715 | Income Tax   | 122000 | Paid           | 2022-03-01 |         65
+    716 | Road Tax     | 121000 | Pending        | 2021-03-01 |         65
+    717 | Property Tax | 120000 | Paid           | 2020-03-01 |         65
+    718 | Road Tax     |  76000 | Pending        | 2024-03-01 |         67
+    719 | Property Tax |  75000 | Paid           | 2023-03-01 |         67
+    720 | Water Tax    |  74000 | Pending        | 2022-03-01 |         67
+    721 | Utility Tax  |  73500 | Paid           | 2021-03-01 |         67
+    722 | Income Tax   |  73000 | Pending        | 2020-03-01 |         67
+    723 | Income Tax   | 288000 | Paid           | 2024-03-01 |         69
+    724 | Utility Tax  | 287000 | Pending        | 2023-03-01 |         69
+    725 | Road Tax     | 285000 | Paid           | 2022-03-01 |         69
+    726 | Property Tax | 283500 | Pending        | 2021-03-01 |         69
+    727 | Water Tax    | 280000 | Paid           | 2020-03-01 |         69
+    728 | Water Tax    | 268000 | Pending        | 2024-03-01 |         70
+    729 | Road Tax     | 267000 | Paid           | 2023-03-01 |         70
+    730 | Utility Tax  | 265000 | Pending        | 2022-03-01 |         70
+    731 | Income Tax   | 263500 | Paid           | 2021-03-01 |         70
+    732 | Property Tax | 260000 | Pending        | 2020-03-01 |         70
+    733 | Property Tax | 352000 | Paid           | 2024-03-01 |         71
+    734 | Income Tax   | 351000 | Pending        | 2023-03-01 |         71
+    735 | Road Tax     | 349000 | Paid           | 2022-03-01 |         71
+    736 | Utility Tax  | 347500 | Pending        | 2021-03-01 |         71
+    737 | Water Tax    | 344000 | Paid           | 2020-03-01 |         71
+    738 | Utility Tax  | 324000 | Pending        | 2024-03-01 |         72
+    739 | Water Tax    | 323000 | Paid           | 2023-03-01 |         72
+    740 | Income Tax   | 321000 | Pending        | 2022-03-01 |         72
+    741 | Road Tax     | 319500 | Paid           | 2021-03-01 |         72
+    742 | Property Tax | 316000 | Pending        | 2020-03-01 |         72
+    743 | Road Tax     | 256000 | Paid           | 2024-03-01 |         73
+    744 | Property Tax | 255000 | Pending        | 2023-03-01 |         73
+    745 | Utility Tax  | 253000 | Paid           | 2022-03-01 |         73
+    746 | Income Tax   | 251500 | Pending        | 2021-03-01 |         73
+    747 | Water Tax    | 248000 | Paid           | 2020-03-01 |         73
+    748 | Income Tax   | 164000 | Pending        | 2024-03-01 |         74
+    749 | Road Tax     | 163000 | Paid           | 2023-03-01 |         74
+    750 | Water Tax    | 161000 | Pending        | 2022-03-01 |         74
+    751 | Property Tax | 159500 | Paid           | 2021-03-01 |         74
+    752 | Utility Tax  | 156000 | Pending        | 2020-03-01 |         74
+    753 | Road Tax     | 100000 | Pending        | 2024-03-01 |         81
+    754 | Water Tax    |  99000 | Paid           | 2023-03-01 |         81
+    755 | Utility Tax  |  98000 | Pending        | 2022-03-01 |         81
+    756 | Property Tax |  97000 | Paid           | 2021-03-01 |         81
+    757 | Income Tax   |  96000 | Pending        | 2020-03-01 |         81
+    758 | Income Tax   | 112000 | Pending        | 2024-03-01 |         83
+    759 | Utility Tax  | 111000 | Paid           | 2023-03-01 |         83
+    760 | Property Tax | 110000 | Pending        | 2022-03-01 |         83
+    761 | Road Tax     | 109000 | Paid           | 2021-03-01 |         83
+    762 | Water Tax    | 108000 | Pending        | 2020-03-01 |         83
+    763 | Property Tax | 128000 | Paid           | 2024-03-01 |         85
+    764 | Road Tax     | 127000 | Pending        | 2023-03-01 |         85
+    765 | Income Tax   | 126000 | Paid           | 2022-03-01 |         85
+    766 | Utility Tax  | 125000 | Pending        | 2021-03-01 |         85
+    767 | Water Tax    | 124000 | Paid           | 2020-03-01 |         85
+    768 | Road Tax     |  84000 | Pending        | 2024-03-01 |         87
+    769 | Water Tax    |  83000 | Paid           | 2023-03-01 |         87
+    770 | Utility Tax  |  82000 | Pending        | 2022-03-01 |         87
+    771 | Property Tax |  81000 | Paid           | 2021-03-01 |         87
+    772 | Income Tax   |  80000 | Pending        | 2020-03-01 |         87
+    773 | Utility Tax  | 296000 | Paid           | 2024-03-01 |         89
+    774 | Income Tax   | 295000 | Pending        | 2023-03-01 |         89
+    775 | Water Tax    | 293000 | Paid           | 2022-03-01 |         89
+    776 | Road Tax     | 291500 | Pending        | 2021-03-01 |         89
+    777 | Property Tax | 288000 | Paid           | 2020-03-01 |         89
+    778 | Road Tax     | 276000 | Pending        | 2024-03-01 |         90
+    779 | Water Tax    | 275000 | Paid           | 2023-03-01 |         90
+    780 | Income Tax   | 273000 | Pending        | 2022-03-01 |         90
+    781 | Utility Tax  | 271500 | Paid           | 2021-03-01 |         90
+    782 | Property Tax | 268000 | Pending        | 2020-03-01 |         90
+    783 | Property Tax | 344000 | Pending        | 2024-03-01 |         91
+    784 | Utility Tax  | 343000 | Paid           | 2023-03-01 |         91
+    785 | Road Tax     | 341000 | Pending        | 2022-03-01 |         91
+    786 | Water Tax    | 339500 | Paid           | 2021-03-01 |         91
+    787 | Income Tax   | 336000 | Pending        | 2020-03-01 |         91
+    788 | Income Tax   | 328000 | Paid           | 2024-03-01 |         92
+    789 | Road Tax     | 327000 | Pending        | 2023-03-01 |         92
+    790 | Utility Tax  | 325000 | Paid           | 2022-03-01 |         92
+    791 | Property Tax | 323500 | Pending        | 2021-03-01 |         92
+    792 | Water Tax    | 320000 | Paid           | 2020-03-01 |         92
+    793 | Water Tax    | 260000 | Pending        | 2024-03-01 |         93
+    794 | Income Tax   | 259000 | Paid           | 2023-03-01 |         93
+    795 | Property Tax | 257000 | Pending        | 2022-03-01 |         93
+    796 | Road Tax     | 255500 | Paid           | 2021-03-01 |         93
+    797 | Utility Tax  | 252000 | Pending        | 2020-03-01 |         93
+    798 | Utility Tax  | 168000 | Paid           | 2024-03-01 |         94
+    799 | Water Tax    | 167000 | Pending        | 2023-03-01 |         94
+    800 | Road Tax     | 165000 | Paid           | 2022-03-01 |         94
+    801 | Property Tax | 163500 | Pending        | 2021-03-01 |         94
+    802 | Income Tax   | 160000 | Paid           | 2020-03-01 |         94
+(258 rows)
 
  env_id |  aqi  | temperature | humidity | rainfall | date_recorded 
 --------+-------+-------------+----------+----------+---------------
@@ -1366,31 +1385,32 @@
   100 | Fauna | Mongoose             | Village Groves      |    12
 (100 rows)
 
- budget_id |     category      | amount  |  spent  | created_at 
------------+-------------------+---------+---------+------------
-         1 | Education         | 5036601 | 4360596 | 2020-01-01
-         2 | Healthcare        | 5036601 | 4564504 | 2020-04-01
-         3 | Assets            | 5036601 | 4513759 | 2020-07-01
-         4 | Water Supply      | 5036601 | 4551389 | 2020-10-01
-         5 | Roads             | 4296499 | 3867766 | 2021-01-01
-         6 | Miscellaneous     | 4296499 | 4292069 | 2021-04-01
-         7 | Women Empowerment | 4296499 | 4277168 | 2021-07-01
-         8 | Education         | 4296499 | 3959031 | 2021-10-01
-         9 | Healthcare        | 3239521 | 2869181 | 2022-01-01
-        10 | Assets            | 3239521 | 2981497 | 2022-04-01
-        11 | Water Supply      | 3239521 | 3063317 | 2022-07-01
-        12 | Roads             | 3239521 | 2767211 | 2022-10-01
-        13 | Miscellaneous     | 4654121 | 4558922 | 2023-01-01
-        14 | Women Empowerment | 4654121 | 4523457 | 2023-04-01
-        15 | Education         | 4654121 | 4630892 | 2023-07-01
-        16 | Healthcare        | 4654121 | 4442150 | 2023-10-01
-        17 | Assets            | 3569414 | 3109803 | 2024-01-01
-        18 | Water Supply      | 3569414 | 3076934 | 2024-04-01
-        19 | Roads             | 3569414 | 3503583 | 2024-07-01
-        20 | Miscellaneous     | 3569414 | 3520729 | 2024-10-01
-        21 | Women Empowerment | 8021952 | 7531228 | 2025-01-01
-        22 | Education         | 8021952 | 6900261 | 2025-04-01
-        23 | Healthcare        | 8021952 | 7365981 | 2025-07-01
-        24 | Assets            | 8021952 | 7501392 | 2025-10-01
-(24 rows)
+ budget_id |     category      |  amount  |  spent  | created_at 
+-----------+-------------------+----------+---------+------------
+         1 | Education         |  5036601 | 4360596 | 2020-01-01
+         3 | Assets            |  5036601 | 4513759 | 2020-07-01
+         4 | Water Supply      |  5036601 | 4551389 | 2020-10-01
+         5 | Roads             |  4296499 | 3867766 | 2021-01-01
+         6 | Miscellaneous     |  4296499 | 4292069 | 2021-04-01
+         7 | Women Empowerment |  4296499 | 4277168 | 2021-07-01
+         8 | Education         |  4296499 | 3959031 | 2021-10-01
+        10 | Assets            |  3239521 | 2981497 | 2022-04-01
+        11 | Water Supply      |  3239521 | 3063317 | 2022-07-01
+        12 | Roads             |  3239521 | 2767211 | 2022-10-01
+        13 | Miscellaneous     |  4654121 | 4558922 | 2023-01-01
+        14 | Women Empowerment |  4654121 | 4523457 | 2023-04-01
+        15 | Education         |  4654121 | 4630892 | 2023-07-01
+        17 | Assets            |  3569414 | 3109803 | 2024-01-01
+        18 | Water Supply      |  3569414 | 3076934 | 2024-04-01
+        19 | Roads             |  3569414 | 3503583 | 2024-07-01
+        20 | Miscellaneous     |  3569414 | 3520729 | 2024-10-01
+        21 | Women Empowerment |  8021952 | 7531228 | 2025-01-01
+        22 | Education         |  8021952 | 6900261 | 2025-04-01
+        24 | Assets            |  8021952 | 7501392 | 2025-10-01
+         2 | Healthcare        |  5036601 |       0 | 2020-04-01
+         9 | Healthcare        |  3239521 |       0 | 2022-01-01
+        16 | Healthcare        |  4654121 |       0 | 2023-10-01
+        23 | Healthcare        |  8021952 |       0 | 2025-07-01
+        25 | Healthcare        | 500000.0 |       0 | 2025-03-02
+(25 rows)
 

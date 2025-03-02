@@ -39,15 +39,25 @@ const FinancialGraph: React.FC = () => {
     // Convert to sorted array
     const yearList = Array.from(years).sort((a, b) => a - b);
 
-    return yearList.map((year) => ({
-      year: year.toString(),
-      budget: data.budget?.find((item: any) => item.year === year)?.total_budget || 0,
-      assets: data.assets?.find((item: any) => item.year === year)?.total_assets || 0,
-      taxes: data.taxes?.find((item: any) => item.year === year)?.total_taxes || 0,
-      salaries: data.salaries || 0,
-      income: data.income?.find((item: any) => item.year === year)?.total_income || 0,
-      expenditure: data.expenditure?.find((item: any) => item.year === year)?.total_expenditure || 0
-    }));
+    const fixedSalary = data.salaries || 0;
+
+    return yearList.map((year) => {
+      const budgetEntry = data.budget?.find((item: any) => item.year === year);
+      const assetEntry = data.assets?.find((item: any) => item.year === year);
+      const taxEntry = data.taxes?.find((item: any) => item.year === year);
+      const incomeEntry = data.income?.find((item: any) => item.year === year);
+      const expenditureEntry = data.expenditure?.find((item: any) => item.year === year);
+
+      return {
+        year: year.toString(),
+        budget: budgetEntry ? budgetEntry.total_budget : undefined,
+        assets: assetEntry ? assetEntry.total_assets : undefined,
+        taxes: taxEntry ? taxEntry.total_taxes : undefined,
+        salaries: fixedSalary,
+        income: incomeEntry ? incomeEntry.total_income : undefined,
+        expenditure: expenditureEntry ? expenditureEntry.total_expenditure : undefined,
+      };
+    });
   };
 
   if (loading) return <p>Loading...</p>;
@@ -55,7 +65,6 @@ const FinancialGraph: React.FC = () => {
 
   return (
     <div className="graph-holder col card-holder">
-
       {/* Bar Chart */}
       <div className="chart-container">
         <h3 className="chart-title">Financial Overview</h3>
@@ -89,7 +98,6 @@ const FinancialGraph: React.FC = () => {
           </LineChart>
         </ResponsiveContainer>
       </div>
-
     </div>
   );
 };

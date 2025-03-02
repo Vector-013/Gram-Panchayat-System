@@ -56,6 +56,7 @@ import UpdateModal from './pages/employee/UpdateModal';
 import ITModal from './pages/it_dep/ITModal';
 import CensusModal from './pages/census_dep/CensusModal';
 import FinancialGraph from './pages/it_dep/analytics';
+import EnvironmentalDataComponent from './pages/census_dep/env_analytics';
 import "./styles/App.css";
 // Function to check if the user is authenticated
 const isAuthenticated = () => {
@@ -145,6 +146,7 @@ const App: React.FC = () => {
             <Route path="env-query" element={<CensusEnvForm/>} />
             <Route path="flora-query" element={<FloraFaunaQueryForm />} />
             <Route path="geo-query" element={<CensusGeoModal />} />
+            <Route path="env-analytics" element={<EnvironmentalDataComponent />}/>
         </Route>
 
         <Route path="/employee-dashboard/:empId" element={<ProtectedRoute element={<EmployeeDashboard />} />}>

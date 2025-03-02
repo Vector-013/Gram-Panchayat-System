@@ -35,10 +35,17 @@
 -- (2.0, 'Barley', 4),
 -- (2.5, 'Sugarcane', 10);
 
+-- INSERT INTO taxes (citizen_id, date, type, amount, payment_status) VALUES
+-- (1, '2025-03-01', 'Income Tax', 0, 'Paid');
+
+-- ALTER TABLE citizens
+-- ALTER COLUMN email DROP NOT NULL;
+
+
 
 -- -- Insert data into panchayat_employees
 -- INSERT INTO panchayat_employees (role, citizen_id) VALUES
--- ('Sarpanch', 2),
+-- ('Pradhan', 1);
 -- ('Secretary', 4),
 -- ('Member', 6),
 -- ('Clerk', 8),
@@ -69,8 +76,8 @@
 -- (5, 5, '2023-03-18');
 
 -- -- Insert data into vaccinations
-INSERT INTO vaccinations (citizen_id, vaccination_type, date_administered) VALUES
-(11, 'Covid-19', '2021-05-10');
+-- INSERT INTO vaccinations (citizen_id, vaccination_type, date_administered) VALUES
+-- (11, 'Covid-19', '2021-05-10');
 -- (2, 'Polio', '2020-08-15'),
 -- (3, 'Hepatitis B', '2022-11-30'),
 -- (4, 'Typhoid', '2023-02-14'),
@@ -137,3 +144,305 @@ INSERT INTO vaccinations (citizen_id, vaccination_type, date_administered) VALUE
 -- ('Bird', 'Peacock', 'Grasslands'),
 -- ('Flower', 'Marigold', 'Gardens'),
 -- ('Fish', 'Rohu', 'Rivers');
+-- INSERT INTO taxes (citizen_id, date, type, amount, payment_status) VALUES
+-- (1, '2024-03-01', 'Road Tax', 80000, 'Pending'),
+-- (1, '2023-03-01', 'Income Tax', 75000, 'Paid'),
+-- (1, '2022-03-01', 'Utility Tax', 82000, 'Pending'),
+-- (1, '2021-03-01', 'Property Tax', 78000, 'Paid'),
+-- (1, '2020-03-01', 'Water Tax', 77000, 'Paid'),
+-- (3, '2024-03-01', 'Property Tax', 100000, 'Paid'),
+-- (3, '2023-03-01', 'Water Tax', 95000, 'Pending'),
+-- (3, '2022-03-01', 'Road Tax', 102000, 'Paid'),
+-- (3, '2021-03-01', 'Income Tax', 98000, 'Pending'),
+-- (3, '2020-03-01', 'Utility Tax', 97000, 'Paid'),
+-- (5, '2024-03-01', 'Utility Tax', 120000, 'Pending'),
+-- (5, '2023-03-01', 'Income Tax', 115000, 'Paid'),
+-- (5, '2022-03-01', 'Property Tax', 122000, 'Pending'),
+-- (5, '2021-03-01', 'Water Tax', 118000, 'Paid'),
+-- (5, '2020-03-01', 'Road Tax', 117000, 'Paid'),
+-- (7, '2024-03-01', 'Income Tax', 72000, 'Paid'),
+-- (7, '2023-03-01', 'Road Tax', 67000, 'Pending'),
+-- (7, '2022-03-01', 'Utility Tax', 74000, 'Paid'),
+-- (7, '2021-03-01', 'Water Tax', 68000, 'Pending'),
+-- (7, '2020-03-01', 'Property Tax', 69000, 'Paid'),
+-- (9, '2024-03-01', 'Water Tax', 280000, 'Pending'),
+-- (9, '2023-03-01', 'Utility Tax', 275000, 'Paid'),
+-- (9, '2022-03-01', 'Income Tax', 282000, 'Pending'),
+-- (9, '2021-03-01', 'Road Tax', 278000, 'Paid'),
+-- (9, '2020-03-01', 'Property Tax', 277000, 'Paid'),
+-- (10, '2024-03-01', 'Road Tax', 260000, 'Paid'),
+-- (10, '2023-03-01', 'Property Tax', 255000, 'Pending'),
+-- (10, '2022-03-01', 'Water Tax', 262000, 'Paid'),
+-- (10, '2021-03-01', 'Income Tax', 258000, 'Pending'),
+-- (10, '2020-03-01', 'Utility Tax', 257000, 'Paid'),
+-- (11, '2024-03-01', 'Property Tax', 340000, 'Pending'),
+-- (11, '2023-03-01', 'Income Tax', 335000, 'Paid'),
+-- (11, '2022-03-01', 'Road Tax', 342000, 'Pending'),
+-- (11, '2021-03-01', 'Utility Tax', 338000, 'Paid'),
+-- (11, '2020-03-01', 'Water Tax', 337000, 'Paid'),
+-- (12, '2024-03-01', 'Utility Tax', 320000, 'Paid'),
+-- (12, '2023-03-01', 'Water Tax', 315000, 'Pending'),
+-- (12, '2022-03-01', 'Property Tax', 322000, 'Paid'),
+-- (12, '2021-03-01', 'Income Tax', 318000, 'Pending'),
+-- (12, '2020-03-01', 'Road Tax', 317000, 'Paid'),
+-- (13, '2024-03-01', 'Income Tax', 240000, 'Pending'),
+-- (13, '2023-03-01', 'Utility Tax', 235000, 'Paid'),
+-- (13, '2022-03-01', 'Water Tax', 242000, 'Pending'),
+-- (13, '2021-03-01', 'Road Tax', 238000, 'Paid'),
+-- (13, '2020-03-01', 'Property Tax', 237000, 'Paid'),
+-- (14, '2024-03-01', 'Water Tax', 160000, 'Paid'),
+-- (14, '2023-03-01', 'Road Tax', 155000, 'Pending'),
+-- (14, '2022-03-01', 'Income Tax', 162000, 'Paid'),
+-- (14, '2021-03-01', 'Utility Tax', 158000, 'Pending'),
+-- (14, '2020-03-01', 'Property Tax', 157000, 'Paid');
+
+
+-- INSERT INTO taxes (citizen_id, date, type, amount, payment_status) VALUES
+-- (21, '2024-03-01', 'Road Tax', 88000, 'Paid'),
+-- (21, '2023-03-01', 'Utility Tax', 87000, 'Pending'),
+-- (21, '2022-03-01', 'Income Tax', 86000, 'Paid'),
+-- (21, '2021-03-01', 'Property Tax', 85500, 'Pending'),
+-- (21, '2020-03-01', 'Water Tax', 85000, 'Paid'),
+
+-- (23, '2024-03-01', 'Property Tax', 108000, 'Pending'),
+-- (23, '2023-03-01', 'Road Tax', 107000, 'Paid'),
+-- (23, '2022-03-01', 'Utility Tax', 106500, 'Pending'),
+-- (23, '2021-03-01', 'Income Tax', 105500, 'Paid'),
+-- (23, '2020-03-01', 'Water Tax', 104000, 'Paid'),
+
+-- (25, '2024-03-01', 'Income Tax', 116000, 'Pending'),
+-- (25, '2023-03-01', 'Water Tax', 115000, 'Paid'),
+-- (25, '2022-03-01', 'Road Tax', 114500, 'Pending'),
+-- (25, '2021-03-01', 'Property Tax', 113500, 'Paid'),
+-- (25, '2020-03-01', 'Utility Tax', 112000, 'Paid'),
+
+-- (27, '2024-03-01', 'Utility Tax', 76000, 'Paid'),
+-- (27, '2023-03-01', 'Property Tax', 75000, 'Pending'),
+-- (27, '2022-03-01', 'Water Tax', 74000, 'Paid'),
+-- (27, '2021-03-01', 'Income Tax', 73500, 'Pending'),
+-- (27, '2020-03-01', 'Road Tax', 73000, 'Paid'),
+
+-- (29, '2024-03-01', 'Water Tax', 288000, 'Pending'),
+-- (29, '2023-03-01', 'Utility Tax', 287000, 'Paid'),
+-- (29, '2022-03-01', 'Property Tax', 285000, 'Pending'),
+-- (29, '2021-03-01', 'Road Tax', 283500, 'Paid'),
+-- (29, '2020-03-01', 'Income Tax', 280000, 'Paid'),
+
+-- (30, '2024-03-01', 'Road Tax', 272000, 'Paid'),
+-- (30, '2023-03-01', 'Property Tax', 271000, 'Pending'),
+-- (30, '2022-03-01', 'Water Tax', 269000, 'Paid'),
+-- (30, '2021-03-01', 'Income Tax', 267500, 'Pending'),
+-- (30, '2020-03-01', 'Utility Tax', 264000, 'Paid'),
+
+-- (31, '2024-03-01', 'Income Tax', 344000, 'Pending'),
+-- (31, '2023-03-01', 'Road Tax', 343000, 'Paid'),
+-- (31, '2022-03-01', 'Utility Tax', 341000, 'Pending'),
+-- (31, '2021-03-01', 'Property Tax', 339500, 'Paid'),
+-- (31, '2020-03-01', 'Water Tax', 336000, 'Paid'),
+
+-- (32, '2024-03-01', 'Utility Tax', 328000, 'Paid'),
+-- (32, '2023-03-01', 'Property Tax', 327000, 'Pending'),
+-- (32, '2022-03-01', 'Road Tax', 325000, 'Paid'),
+-- (32, '2021-03-01', 'Water Tax', 323500, 'Pending'),
+-- (32, '2020-03-01', 'Income Tax', 320000, 'Paid'),
+
+-- (33, '2024-03-01', 'Property Tax', 248000, 'Pending'),
+-- (33, '2023-03-01', 'Water Tax', 247000, 'Paid'),
+-- (33, '2022-03-01', 'Income Tax', 245000, 'Pending'),
+-- (33, '2021-03-01', 'Utility Tax', 243500, 'Paid'),
+-- (33, '2020-03-01', 'Road Tax', 240000, 'Paid'),
+
+-- (34, '2024-03-01', 'Road Tax', 164000, 'Paid'),
+-- (34, '2023-03-01', 'Income Tax', 163000, 'Pending'),
+-- (34, '2022-03-01', 'Utility Tax', 161000, 'Paid'),
+-- (34, '2021-03-01', 'Property Tax', 159500, 'Pending'),
+-- (34, '2020-03-01', 'Water Tax', 156000, 'Paid');
+
+
+-- INSERT INTO taxes (citizen_id, date, type, amount, payment_status) VALUES
+-- (41, '2024-03-01', 'Water Tax', 100000, 'Pending'),
+-- (41, '2023-03-01', 'Road Tax', 99000, 'Paid'),
+-- (41, '2022-03-01', 'Property Tax', 98000, 'Pending'),
+-- (41, '2021-03-01', 'Income Tax', 97000, 'Paid'),
+-- (41, '2020-03-01', 'Utility Tax', 96000, 'Paid'),
+
+-- (43, '2024-03-01', 'Utility Tax', 112000, 'Paid'),
+-- (43, '2023-03-01', 'Income Tax', 111000, 'Pending'),
+-- (43, '2022-03-01', 'Road Tax', 110000, 'Paid'),
+-- (43, '2021-03-01', 'Property Tax', 109000, 'Pending'),
+-- (43, '2020-03-01', 'Water Tax', 108000, 'Paid'),
+
+-- (45, '2024-03-01', 'Road Tax', 120000, 'Paid'),
+-- (45, '2023-03-01', 'Water Tax', 119000, 'Pending'),
+-- (45, '2022-03-01', 'Income Tax', 118000, 'Paid'),
+-- (45, '2021-03-01', 'Utility Tax', 117000, 'Pending'),
+-- (45, '2020-03-01', 'Property Tax', 116000, 'Paid'),
+
+-- (47, '2024-03-01', 'Property Tax', 80000, 'Paid'),
+-- (47, '2023-03-01', 'Utility Tax', 79000, 'Pending'),
+-- (47, '2022-03-01', 'Water Tax', 78000, 'Paid'),
+-- (47, '2021-03-01', 'Income Tax', 77000, 'Pending'),
+-- (47, '2020-03-01', 'Road Tax', 76000, 'Paid'),
+
+-- (49, '2024-03-01', 'Income Tax', 280000, 'Paid'),
+-- (49, '2023-03-01', 'Road Tax', 278000, 'Pending'),
+-- (49, '2022-03-01', 'Utility Tax', 276000, 'Paid'),
+-- (49, '2021-03-01', 'Water Tax', 274000, 'Pending'),
+-- (49, '2020-03-01', 'Property Tax', 272000, 'Paid'),
+
+-- (50, '2024-03-01', 'Utility Tax', 260000, 'Paid'),
+-- (50, '2023-03-01', 'Income Tax', 258000, 'Pending'),
+-- (50, '2022-03-01', 'Property Tax', 256000, 'Paid'),
+-- (50, '2021-03-01', 'Road Tax', 254000, 'Pending'),
+-- (50, '2020-03-01', 'Water Tax', 252000, 'Paid'),
+
+-- (51, '2024-03-01', 'Road Tax', 340000, 'Paid'),
+-- (51, '2023-03-01', 'Water Tax', 338000, 'Pending'),
+-- (51, '2022-03-01', 'Income Tax', 336000, 'Paid'),
+-- (51, '2021-03-01', 'Utility Tax', 334000, 'Pending'),
+-- (51, '2020-03-01', 'Property Tax', 332000, 'Paid'),
+
+-- (52, '2024-03-01', 'Property Tax', 320000, 'Paid'),
+-- (52, '2023-03-01', 'Road Tax', 318000, 'Pending'),
+-- (52, '2022-03-01', 'Water Tax', 316000, 'Paid'),
+-- (52, '2021-03-01', 'Income Tax', 314000, 'Pending'),
+-- (52, '2020-03-01', 'Utility Tax', 312000, 'Paid'),
+
+-- (53, '2024-03-01', 'Utility Tax', 252000, 'Paid'),
+-- (53, '2023-03-01', 'Income Tax', 250000, 'Pending'),
+-- (53, '2022-03-01', 'Property Tax', 248000, 'Paid'),
+-- (53, '2021-03-01', 'Road Tax', 246000, 'Pending'),
+-- (53, '2020-03-01', 'Water Tax', 244000, 'Paid'),
+
+-- (54, '2024-03-01', 'Income Tax', 168000, 'Paid'),
+-- (54, '2023-03-01', 'Utility Tax', 166000, 'Pending'),
+-- (54, '2022-03-01', 'Road Tax', 164000, 'Paid'),
+-- (54, '2021-03-01', 'Property Tax', 162000, 'Pending'),
+-- (54, '2020-03-01', 'Water Tax', 160000, 'Paid');
+
+
+
+-- -- -- Taxes for Citizens (61-80)
+-- INSERT INTO taxes (citizen_id, date, type, amount, payment_status) VALUES
+-- (61, '2024-03-01', 'Water Tax', 108000, 'Paid'),
+-- (61, '2023-03-01', 'Road Tax', 107000, 'Pending'),
+-- (61, '2022-03-01', 'Property Tax', 106000, 'Paid'),
+-- (61, '2021-03-01', 'Income Tax', 105000, 'Pending'),
+-- (61, '2020-03-01', 'Utility Tax', 104000, 'Paid'),
+
+-- (63, '2024-03-01', 'Property Tax', 104000, 'Pending'),
+-- (63, '2023-03-01', 'Income Tax', 103000, 'Paid'),
+-- (63, '2022-03-01', 'Utility Tax', 102000, 'Pending'),
+-- (63, '2021-03-01', 'Road Tax', 101000, 'Paid'),
+-- (63, '2020-03-01', 'Water Tax', 100000, 'Pending'),
+
+-- (65, '2024-03-01', 'Utility Tax', 124000, 'Paid'),
+-- (65, '2023-03-01', 'Water Tax', 123000, 'Pending'),
+-- (65, '2022-03-01', 'Income Tax', 122000, 'Paid'),
+-- (65, '2021-03-01', 'Road Tax', 121000, 'Pending'),
+-- (65, '2020-03-01', 'Property Tax', 120000, 'Paid'),
+
+-- (67, '2024-03-01', 'Road Tax', 76000, 'Pending'),
+-- (67, '2023-03-01', 'Property Tax', 75000, 'Paid'),
+-- (67, '2022-03-01', 'Water Tax', 74000, 'Pending'),
+-- (67, '2021-03-01', 'Utility Tax', 73500, 'Paid'),
+-- (67, '2020-03-01', 'Income Tax', 73000, 'Pending'),
+
+-- (69, '2024-03-01', 'Income Tax', 288000, 'Paid'),
+-- (69, '2023-03-01', 'Utility Tax', 287000, 'Pending'),
+-- (69, '2022-03-01', 'Road Tax', 285000, 'Paid'),
+-- (69, '2021-03-01', 'Property Tax', 283500, 'Pending'),
+-- (69, '2020-03-01', 'Water Tax', 280000, 'Paid'),
+
+-- (70, '2024-03-01', 'Water Tax', 268000, 'Pending'),
+-- (70, '2023-03-01', 'Road Tax', 267000, 'Paid'),
+-- (70, '2022-03-01', 'Utility Tax', 265000, 'Pending'),
+-- (70, '2021-03-01', 'Income Tax', 263500, 'Paid'),
+-- (70, '2020-03-01', 'Property Tax', 260000, 'Pending'),
+
+-- (71, '2024-03-01', 'Property Tax', 352000, 'Paid'),
+-- (71, '2023-03-01', 'Income Tax', 351000, 'Pending'),
+-- (71, '2022-03-01', 'Road Tax', 349000, 'Paid'),
+-- (71, '2021-03-01', 'Utility Tax', 347500, 'Pending'),
+-- (71, '2020-03-01', 'Water Tax', 344000, 'Paid'),
+
+-- (72, '2024-03-01', 'Utility Tax', 324000, 'Pending'),
+-- (72, '2023-03-01', 'Water Tax', 323000, 'Paid'),
+-- (72, '2022-03-01', 'Income Tax', 321000, 'Pending'),
+-- (72, '2021-03-01', 'Road Tax', 319500, 'Paid'),
+-- (72, '2020-03-01', 'Property Tax', 316000, 'Pending'),
+
+-- (73, '2024-03-01', 'Road Tax', 256000, 'Paid'),
+-- (73, '2023-03-01', 'Property Tax', 255000, 'Pending'),
+-- (73, '2022-03-01', 'Utility Tax', 253000, 'Paid'),
+-- (73, '2021-03-01', 'Income Tax', 251500, 'Pending'),
+-- (73, '2020-03-01', 'Water Tax', 248000, 'Paid'),
+
+-- (74, '2024-03-01', 'Income Tax', 164000, 'Pending'),
+-- (74, '2023-03-01', 'Road Tax', 163000, 'Paid'),
+-- (74, '2022-03-01', 'Water Tax', 161000, 'Pending'),
+-- (74, '2021-03-01', 'Property Tax', 159500, 'Paid'),
+-- (74, '2020-03-01', 'Utility Tax', 156000, 'Pending');
+
+
+-- -- Taxes for Citizens (81-100) with tax_date column
+-- INSERT INTO taxes (citizen_id, date, type, amount, payment_status) VALUES
+-- (81, '2024-03-01', 'Road Tax', 100000, 'Pending'),
+-- (81, '2023-03-01', 'Water Tax', 99000, 'Paid'),
+-- (81, '2022-03-01', 'Utility Tax', 98000, 'Pending'),
+-- (81, '2021-03-01', 'Property Tax', 97000, 'Paid'),
+-- (81, '2020-03-01', 'Income Tax', 96000, 'Pending'),
+
+-- (83, '2024-03-01', 'Income Tax', 112000, 'Pending'),
+-- (83, '2023-03-01', 'Utility Tax', 111000, 'Paid'),
+-- (83, '2022-03-01', 'Property Tax', 110000, 'Pending'),
+-- (83, '2021-03-01', 'Road Tax', 109000, 'Paid'),
+-- (83, '2020-03-01', 'Water Tax', 108000, 'Pending'),
+
+-- (85, '2024-03-01', 'Property Tax', 128000, 'Paid'),
+-- (85, '2023-03-01', 'Road Tax', 127000, 'Pending'),
+-- (85, '2022-03-01', 'Income Tax', 126000, 'Paid'),
+-- (85, '2021-03-01', 'Utility Tax', 125000, 'Pending'),
+-- (85, '2020-03-01', 'Water Tax', 124000, 'Paid'),
+
+-- (87, '2024-03-01', 'Road Tax', 84000, 'Pending'),
+-- (87, '2023-03-01', 'Water Tax', 83000, 'Paid'),
+-- (87, '2022-03-01', 'Utility Tax', 82000, 'Pending'),
+-- (87, '2021-03-01', 'Property Tax', 81000, 'Paid'),
+-- (87, '2020-03-01', 'Income Tax', 80000, 'Pending'),
+
+-- (89, '2024-03-01', 'Utility Tax', 296000, 'Paid'),
+-- (89, '2023-03-01', 'Income Tax', 295000, 'Pending'),
+-- (89, '2022-03-01', 'Water Tax', 293000, 'Paid'),
+-- (89, '2021-03-01', 'Road Tax', 291500, 'Pending'),
+-- (89, '2020-03-01', 'Property Tax', 288000, 'Paid'),
+
+-- (90, '2024-03-01', 'Road Tax', 276000, 'Pending'),
+-- (90, '2023-03-01', 'Water Tax', 275000, 'Paid'),
+-- (90, '2022-03-01', 'Income Tax', 273000, 'Pending'),
+-- (90, '2021-03-01', 'Utility Tax', 271500, 'Paid'),
+-- (90, '2020-03-01', 'Property Tax', 268000, 'Pending'),
+
+-- (91, '2024-03-01', 'Property Tax', 344000, 'Pending'),
+-- (91, '2023-03-01', 'Utility Tax', 343000, 'Paid'),
+-- (91, '2022-03-01', 'Road Tax', 341000, 'Pending'),
+-- (91, '2021-03-01', 'Water Tax', 339500, 'Paid'),
+-- (91, '2020-03-01', 'Income Tax', 336000, 'Pending'),
+
+-- (92, '2024-03-01', 'Income Tax', 328000, 'Paid'),
+-- (92, '2023-03-01', 'Road Tax', 327000, 'Pending'),
+-- (92, '2022-03-01', 'Utility Tax', 325000, 'Paid'),
+-- (92, '2021-03-01', 'Property Tax', 323500, 'Pending'),
+-- (92, '2020-03-01', 'Water Tax', 320000, 'Paid'),
+
+-- (93, '2024-03-01', 'Water Tax', 260000, 'Pending'),
+-- (93, '2023-03-01', 'Income Tax', 259000, 'Paid'),
+-- (93, '2022-03-01', 'Property Tax', 257000, 'Pending'),
+-- (93, '2021-03-01', 'Road Tax', 255500, 'Paid'),
+-- (93, '2020-03-01', 'Utility Tax', 252000, 'Pending'),
+
+-- (94, '2024-03-01', 'Utility Tax', 168000, 'Paid'),
+-- (94, '2023-03-01', 'Water Tax', 167000, 'Pending'),
+-- (94, '2022-03-01', 'Road Tax', 165000, 'Paid'),
+-- (94, '2021-03-01', 'Property Tax', 163500, 'Pending'),
+-- (94, '2020-03-01', 'Income Tax', 160000, 'Paid');
