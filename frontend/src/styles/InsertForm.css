@@ -75,3 +75,22 @@
     font-weight: bold;
     margin-bottom: 10px;
 }
+
+/* Textarea Input */
+.insert-form-textarea {
+    padding: 10px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    background-color: #fff;
+    height: 100px;
+    resize: vertical;
+    transition: border-color 0.3s ease;
+}
+
+.insert-form-textarea:hover,
+.insert-form-textarea:focus {
+    border-color: #007bff;
+    outline: none;
+}
