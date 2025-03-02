@@ -29,9 +29,9 @@ def create_citizen(
         sql_insert = text(
             """
             INSERT INTO citizens 
-            (name, gender, dob, educational_qualification, income, household_id, hashed_password)
-            VALUES (:name, :gender, :dob, :educational_qualification, :income, :household_id, :hashed_password)
-            RETURNING citizen_id, name, gender, dob, educational_qualification, income, household_id
+            (name, gender, dob, educational_qualification, income, household_id, email, hashed_password)
+            VALUES (:name, :gender, :dob, :educational_qualification, :income, :household_id, :email, :hashed_password)
+            RETURNING citizen_id, name, gender, dob, educational_qualification, income, email, household_id
         """
         )
         params = {
@@ -42,6 +42,7 @@ def create_citizen(
             "income": citizen.income,
             "household_id": citizen.household_id,
             "hashed_password": hashed_pw,
+            "email": "tmp@panchayat.com",
         }
         result = db.execute(sql_insert, params)
         new_citizen = result.fetchone()

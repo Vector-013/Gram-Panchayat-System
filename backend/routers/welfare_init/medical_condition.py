@@ -11,8 +11,18 @@ from typing import Union
 router = APIRouter(prefix="/welfare/medical-data", tags=["Welfare - Medical Data"])
 
 # Allowed values for medical condition & health status
-VALID_MEDICAL_CONDITIONS = {"Hypertension", "None", "Blood Pressure", "Diabetes"}
-VALID_HEALTH_STATUSES = {"Good", "Needs Diagnoses", "Poor", "Fair"}
+VALID_MEDICAL_CONDITIONS = {
+    "Hypertension",
+    "Healthy",
+    "Low Blood Pressure",
+    "Diabetes",
+    "Arthritis",
+    "Asthma",
+    "Allergies",
+    "Kidney Disease",
+    "Liver Disease",
+}
+VALID_HEALTH_STATUSES = {"Good", "Critical", "Poor", "Fair", "Excellent"}
 
 
 # Request body model
@@ -49,13 +59,64 @@ def get_medical_data(
         raise HTTPException(status_code=400, detail="Invalid health status")
 
     if (
-        filters.medical_condition == "None"
+        filters.medical_condition == "Healthy"
         and filters.health_status
-        and filters.health_status != "Good"
+        and filters.health_status != "Excellent"
     ):
         raise HTTPException(
             status_code=400,
-            detail="If medical condition is 'None', health status must be 'Good'",
+            detail="If medical condition is 'None', health status must be 'Excellent'",
+        )
+    if (
+        filters.health_status
+        and filters.health_status != "Good"
+        and (
+            filters.medical_condition != "Asthma"
+            or filters.medical_condition != "Allergies"
+        )
+    ):
+        raise HTTPException(
+            status_code=400,
+            detail="If medical condition is 'Ashtma' or 'Allegries', health status must be 'Good'",
+        )
+
+    if (
+        filters.health_status
+        and filters.health_status != "Fair"
+        and (
+            filters.medical_condition != "Low Blood Pressure"
+            or filters.medical_condition != "Hypertension"
+        )
+    ):
+        raise HTTPException(
+            status_code=400,
+            detail="If medical condition is 'Low Blood Pressure' or 'Hypertension', health status must be 'Fair'",
+        )
+
+    if (
+        filters.health_status
+        and filters.health_status != "Poor"
+        and (
+            filters.medical_condition != "Diabetes"
+            or filters.medical_condition != "Arthritis"
+        )
+    ):
+        raise HTTPException(
+            status_code=400,
+            detail="If medical condition is 'Diabetes' or 'Arthritis', health status must be 'Poor'",
+        )
+
+    if (
+        filters.health_status
+        and filters.health_status != "Critical"
+        and (
+            filters.medical_condition != "Kidney Disease"
+            or filters.medical_condition != "Liver Disease"
+        )
+    ):
+        raise HTTPException(
+            status_code=400,
+            detail="If medical condition is 'Kidney Disease' or 'Liver Disease', health status must be 'Critical'",
         )
 
     # Set default bounds
