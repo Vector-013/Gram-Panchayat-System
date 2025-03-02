@@ -309,9 +309,9 @@
 # GET http://localhost:8000/api/1/fam-land
 # Content-Type: application/json
 
-## IT Analytics Query
-GET http://localhost:8000/api/it-dept/analytics1
-Content-Type: application/json
+# ## IT Analytics Query
+# GET http://localhost:8000/api/it-dept/analytics1
+# Content-Type: application/json
 
 # ## Get Medical Data for Citizen with ID 1
 # GET http://localhost:8000/api/1/medical
@@ -434,17 +434,17 @@ Content-Type: application/json
 # }
 
 # ### Fetch MGNREGA Data Without Any Filters
-POST http://localhost:8000/welfare/mgnrega/
-Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxQHBhbmNoYXlhdC5jb20iLCJyb2xlIjoicHJhZGhhbiIsImV4cCI6MTc0MDg4MDE5Mn0.DUZz-sER0CLGW13Qwr8LyekP4mtcViEUbHMhRYIIlLU
+# POST http://localhost:8000/welfare/mgnrega/
+# Content-Type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxQHBhbmNoYXlhdC5jb20iLCJyb2xlIjoicHJhZGhhbiIsImV4cCI6MTc0MDg4MDE5Mn0.DUZz-sER0CLGW13Qwr8LyekP4mtcViEUbHMhRYIIlLU
 
-{
-  "min_age": 0,
-  "max_age": 100,
-  "min_household_income": 0,
-  "max_household_income": 1000000,
-  "personal_income": 1000000
-}
+# {
+#   "min_age": 0,
+#   "max_age": 100,
+#   "min_household_income": 0,
+#   "max_household_income": 1000000,
+#   "personal_income": 1000000
+# }
 
 
 
@@ -453,4 +453,4 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxQHBhbmNoY
 # ### Get Today's Environmental Data and All Records
 GET http://localhost:8000/get-today-env/
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxQHBhbmNoYXlhdC5jb20iLCJyb2xlIjoicHJhZGhhbiIsImV4cCI6MTc0MDk1MDI3OX0.FUxtX3BDUU4BlToCSZbup62iddAiWJZSPiqLnqWRutg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJDZW5zdXNEZXB0QHBhbmNoYXlhdC5jb20iLCJyb2xlIjoiY2Vuc3VzX2RlcHQiLCJleHAiOjE3NDA5NTk2NzR9.nVDbNGlAZAATcEqiqlOXuiC6CSk9qPm1xfgnic9XfeU

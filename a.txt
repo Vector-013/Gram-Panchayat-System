@@ -125,7 +125,8 @@
            19 | Building 11, Rajput Mohalla, Phulera
            20 | Building 39, Station Road, Phulera
            21 | 35, Main Building, Phulera
-(21 rows)
+           22 | Building 12, Main Circle, Phulera
+(22 rows)
 
  land_id | area_acres | crop_type | weight | year_recorded | citizen_id 
 ---------+------------+-----------+--------+---------------+------------
