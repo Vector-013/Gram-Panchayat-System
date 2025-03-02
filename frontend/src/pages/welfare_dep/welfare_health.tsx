@@ -2,13 +2,13 @@ import React, { useState, useEffect } from "react";
 import "../../styles/MedicalDataQuery.css";
 
 interface MedicalRecord {
-  citizen_id: number;
-  name: string;
-  age: number;
-  household_id: number;
   address_id: string;
+  age: number;
+  citizen_id: number;
   health_status: string;
+  household_id: number;
   medical_condition: string;
+  name: string;
 }
 
 const MedicalDataModal: React.FC = () => {
@@ -43,6 +43,7 @@ const MedicalDataModal: React.FC = () => {
         health_status: healthStatus,
       };
 
+      console.log(requestBody);
       const response = await fetch(
         "http://localhost:8000/welfare/medical-data/",
         {
@@ -60,8 +61,17 @@ const MedicalDataModal: React.FC = () => {
       }
 
       const data = await response.json();
-      setRecords(data);
-      setFilteredRecords(data);
+      const transformedData = data.map((record: any) => ({
+        address_id: record.Address, // Backend uses "Address"
+        age: record.Age,
+        citizen_id: record["Citizen ID"], // Backend uses "Citizen ID"
+        health_status: record["Health Status"],
+        household_id: record["Household ID"],
+        medical_condition: record["Medical Condition"],
+        name: record.Name,
+      }));
+      setRecords(transformedData);
+      setFilteredRecords(transformedData);
     } catch (err: any) {
       setError(err.message);
     }
@@ -87,6 +97,8 @@ const MedicalDataModal: React.FC = () => {
 
     setFilteredRecords(filtered);
   }, [records, nameFilter, householdIdFilter, addressIdFilter]);
+
+  console.log(filteredRecords.map((record) => record.name));
 
   return (
     <div
@@ -140,12 +152,16 @@ const MedicalDataModal: React.FC = () => {
         <div className="medical-query-group">
           <div className="medical-query-subgroup">
             <label className="medical-query-label">Medical Condition:</label>
-            <input
-              type="text"
+            <select
+              className="medical-query-input"
               value={medicalCondition}
               onChange={(e) => setMedicalCondition(e.target.value)}
-              className="medical-query-input"
-            />
+            >
+              <option value="Hypertension">Hypertension</option>
+              <option value="Blood Pressure">Blood Pressure</option>
+              <option value="Diabetes">Diabetes</option>
+              <option value="None">None</option>
+            </select>
           </div>
 
           <div className="medical-query-subgroup">
@@ -158,8 +174,7 @@ const MedicalDataModal: React.FC = () => {
               <option value="Fair">Fair</option>
               <option value="Poor">Poor</option>
               <option value="Good">Good</option>
-              <option value="Excellent">Excellent</option>
-              <option value="Critical">Critical</option>
+              <option value="Needs Diagnoses">Needs Diagnoses</option>
             </select>
           </div>
         </div>
@@ -173,33 +188,33 @@ const MedicalDataModal: React.FC = () => {
 
       <div className="medical-query-filter">
         <div className="medical-subfilter">
-        <label className="medical-query-label">Name:</label>
-        <input
-          type="text"
-          value={nameFilter}
-          onChange={(e) => setNameFilter(e.target.value)}
-          className="medical-query-input"
-        />
-        </div>
-        
-        <div className="medical-subfilter">
-        <label className="medical-query-label">Household ID:</label>
-        <input
-          type="text"
-          value={householdIdFilter}
-          onChange={(e) => setHouseholdIdFilter(e.target.value)}
-          className="medical-query-input"
-        />
+          <label className="medical-query-label">Name:</label>
+          <input
+            type="text"
+            value={nameFilter}
+            onChange={(e) => setNameFilter(e.target.value)}
+            className="medical-query-input"
+          />
         </div>
 
         <div className="medical-subfilter">
-        <label className="medical-query-label">Address ID:</label>
-        <input
-          type="text"
-          value={addressIdFilter}
-          onChange={(e) => setAddressIdFilter(e.target.value)}
-          className="medical-query-input"
-        />
+          <label className="medical-query-label">Household ID:</label>
+          <input
+            type="text"
+            value={householdIdFilter}
+            onChange={(e) => setHouseholdIdFilter(e.target.value)}
+            className="medical-query-input"
+          />
+        </div>
+
+        <div className="medical-subfilter">
+          <label className="medical-query-label">Address:</label>
+          <input
+            type="text"
+            value={addressIdFilter}
+            onChange={(e) => setAddressIdFilter(e.target.value)}
+            className="medical-query-input"
+          />
         </div>
       </div>
 
@@ -214,7 +229,7 @@ const MedicalDataModal: React.FC = () => {
                 <th>Name</th>
                 <th>Age</th>
                 <th>Household ID</th>
-                <th>Address ID</th>
+                <th>Address</th>
                 <th>Medical Condition</th>
                 <th>Health Status</th>
               </tr>
