@@ -19,3 +19,4 @@ from .posts.birth_event import router as birth_event
 from .posts.citizen_creator import router as citizen_creator
 from .updates.tax_update import router as tax_update
 from .welfare_init.medical_condition import router as medical_condition
+from .welfare_init.mgnrega import router as mgnrega
