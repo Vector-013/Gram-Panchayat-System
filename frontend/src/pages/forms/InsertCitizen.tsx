@@ -35,7 +35,7 @@ const InsertCitizen: React.FC = () => {
         };
 
         try {
-            const response = await fetch("http://localhost:8000/admin/register", {
+            const response = await fetch("http://localhost:8000/citizen-creator/", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

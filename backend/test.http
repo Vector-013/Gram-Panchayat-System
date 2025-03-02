@@ -71,7 +71,7 @@ Content-Type: application/json
 # ### Create Asset - Valid Request by Employee or Pradhan
 # POST http://localhost:8000/asset-create/
 # Content-Type: application/json
-# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxQHBhbmNoYXlhdC5jb20iLCJyb2xlIjoicHJhZGhhbiIsImV4cCI6MTc0MDg0Njk4M30.6WfoGvfDO4PADO4J91OSNsqgxJdFKPDRepFc5F0z9Do
+# Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyQHBhbmNoYXlhdC5jb20iLCJyb2xlIjoiZW1wbG95ZWUiLCJleHAiOjE3NDA5MDA2OTd9.LkSSIHlFPAI7XgqMepJ30MgRhDMMTfyZQCTNEayRkgE
 
 # {
 #   "type": "Library",
@@ -122,6 +122,7 @@ Content-Type: application/json
 #   "household_id": 10,
 #   "password": "OjasIsGod"
 # }
+
 ### Test Update Taxes Endpoint
 # POST http://localhost:8000/update-taxes/
 # Content-Type: application/json

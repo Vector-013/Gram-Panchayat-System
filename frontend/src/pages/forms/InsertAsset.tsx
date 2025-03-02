@@ -24,10 +24,11 @@ const InsertAsset: React.FC = () => {
         };
 
         try {
-            const response = await fetch("http://localhost:8000/assets/insert", {
+            const response = await fetch("http://localhost:8000/asset-create/", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
+                    "Authorization": `Bearer ${localStorage.getItem("token")}`,
                 },
                 body: JSON.stringify(requestBody),
             });
