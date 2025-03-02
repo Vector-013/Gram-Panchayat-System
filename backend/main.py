@@ -34,6 +34,8 @@ from routers import (
     welfare_analytics,
     deth,
     census_analytics,
+    flora_fauna_assets,
+    all_citizens,
 )
 
 app = FastAPI()
@@ -94,6 +96,8 @@ app.include_router(marriages)
 app.include_router(welfare_analytics)
 app.include_router(deth)
 app.include_router(census_analytics)
+app.include_router(flora_fauna_assets)
+app.include_router(all_citizens)
 
 # Start server
 if __name__ == "__main__":

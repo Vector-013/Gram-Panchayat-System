@@ -251,13 +251,13 @@ Content-Type: application/json
 # }
 
 # ### Execute a Raw SQL Query (Admin Super Box)
-POST http://localhost:8000/admin/super-box/
-Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBZG1pbkBwYW5jaGF5YXQuY29tIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzQwOTYzMDU1fQ.TA4DOf13Jclc8pbYiU96P2lEWAHTbwDzg61IJOrEmv8
+# POST http://localhost:8000/admin/super-box/
+# Content-Type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBZG1pbkBwYW5jaGF5YXQuY29tIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzQwOTYzMDU1fQ.TA4DOf13Jclc8pbYiU96P2lEWAHTbwDzg61IJOrEmv8
 
-{
-  "query": "SELECT * FROM citizens LIMIT 5"
-}
+# {
+#   "query": "SELECT * FROM citizens LIMIT 5"
+# }
 
 
 #####################################################    IT DEPT   #####################################################
@@ -336,20 +336,21 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBZG1pbkBwY
 #   "max_amount": 50000
 # }
 
-### Query for citizens based on income and household income
-# POST http://localhost:8000/it-dept/income-query
-# Content-Type: application/json
+## Query for citizens based on income and household income
+POST http://localhost:8000/it-dept/income-query
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBZG1pbkBwYW5jaGF5YXQuY29tIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzQwOTY5MjI0fQ.xTZ--dHt_2zPjpx5nrMJqKsYB04poB7-w2-dBsM0ROE
 
-# {
-#   "income_min": 10000,
-#   "income_max": 50000,
-#   "household_income_min": 30000,
-#   "household_income_max": 150000,
-#   "gender": "Female",
-#   "age_min": 18,
-#   "age_max": "",
-#   "educational_qualification": "Graduate"
-# }
+{
+  "income_min": 1000,
+  "income_max": 500000,
+  "household_income_min": 3000,
+  "household_income_max": 1500000,
+  "gender": "Female",
+  "age_min": 18,
+  "age_max": "",
+  "educational_qualification": ""
+}
 
 
 
@@ -426,6 +427,15 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJJVERlcHRAc
 #   "value_max": 100000,
 #   "location": ""
 # }
+
+### Get All Assets and Flora Fauna Data
+GET http://localhost:8000/flora-fauna-assets/
+
+### Get All Citizens (Excluding Password)
+GET http://localhost:8000/employees/all-citizens
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBZG1pbkBwYW5jaGF5YXQuY29tIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzQwOTY5MjI0fQ.xTZ--dHt_2zPjpx5nrMJqKsYB04poB7-w2-dBsM0ROE
+
 
 #####################################################    WELFARE QUERIES    #####################################################
 
