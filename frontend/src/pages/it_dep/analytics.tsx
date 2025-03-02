@@ -24,6 +24,7 @@ const FinancialGraph: React.FC = () => {
         }
         const rawData = await response.json();
         setData(processData(rawData));
+        console.log(rawData);
         setLoading(false);
       } catch (err: any) {
         setError(err.message);
@@ -54,7 +55,7 @@ const FinancialGraph: React.FC = () => {
       const assetEntry = data.assets?.find((item: any) => item.year === year);
       const taxEntry = data.taxes?.find((item: any) => item.year === year);
       const incomeEntry = data.income?.find((item: any) => item.year === year);
-      const expenditureEntry = data.expenditure?.find((item: any) => item.year === year);
+      const expenditureEntry = data.expenditure?.find((item: any) => item.year === year && item.year != 2025);
 
       return {
         year: year.toString(),

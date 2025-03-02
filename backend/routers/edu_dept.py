@@ -4,7 +4,7 @@ from sqlalchemy import text
 from typing import Optional, List
 
 from database import get_db
-
+from routers.posts.dependencies import get_current_user
 from schemas import EduDeptQuery, EduDeptResult
 from sqlalchemy import text, bindparam
 
@@ -12,8 +12,13 @@ router = APIRouter(prefix="/edu-dept", tags=["EduDept Query"])
 
 
 @router.post("/edu-query", response_model=List[EduDeptResult])
-def edu_dept_query(query: EduDeptQuery, db: Session = Depends(get_db)):
+def edu_dept_query(query: EduDeptQuery, db: Session = Depends(get_db), user=Depends(get_current_user)):
 
+    if user["role"] not in {"pradhan", "employee", "admin", "welfare"}:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Only admin/pradhan/employee/welfare can fetch edu details",
+        )
     ## if educational leve is "All", I want that any educational level is accepted. instead of making if-else, i would like to use IN operator
 
     edu_list = []

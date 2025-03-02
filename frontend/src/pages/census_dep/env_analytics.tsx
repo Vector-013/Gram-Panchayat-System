@@ -47,14 +47,19 @@ const EnvironmentalDataComponent = () => {
           throw new Error("Failed to fetch data");
         }
         const result: ApiResponse = await response.json();
-        setTodayData(result.today_data ?? null);
-        setAllData(result.all_data ?? []);
-      } catch (error) {
-        setError((error as Error).message);
-      } finally {
-        setLoading(false);
-      }
-    };
+         // Filter only 2024 data
+        const filteredData = result.all_data
+        .filter((entry) => entry.date_recorded.startsWith("2024"))
+        .sort((a, b) => new Date(b.date_recorded).getTime() - new Date(a.date_recorded).getTime());
+
+      setTodayData(result.today_data);
+      setAllData(filteredData);
+    } catch (error) {
+      setError((error as Error).message);
+    } finally {
+      setLoading(false);
+    }
+  };
     fetchData();
   }, []);
 
