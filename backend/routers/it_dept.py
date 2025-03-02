@@ -12,6 +12,13 @@ router = APIRouter(prefix="/it-dept", tags=["ITDept Query"])
 
 @router.post("/land-query", response_model=List[LandQueryResult])
 def query_land_data(query: LandQuery, db: Session = Depends(get_db)):
+
+    if user["role"] not in {"pradhan", "employee", "admin"}:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Only admins can fetch citizen details",
+        )
+
     if query.role == "citizen":
         sql = text(
             """
