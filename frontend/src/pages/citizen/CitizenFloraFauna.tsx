@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import "../../styles/CitizenFloraFauna.css";
 
 interface FloraFaunaRecord {
+    f_id : number;
     type: string;
     name: string;
     habitat: string;
@@ -23,49 +24,48 @@ const CitizenFloraFauna: React.FC = () => {
     const [minCountFilter, setMinCountFilter] = useState<string>("");
     const [maxCountFilter, setMaxCountFilter] = useState<string>("");
 
-    // useEffect(() => {
-    //     const fetchFloraFaunaRecords = async () => {
-    //         setLoading(true);
-    //         setError("");
+    useEffect(() => {
+        const fetchFloraFaunaRecords = async () => {
+            setLoading(true);
+            setError("");
 
-    //         try {
-    //             const response = await fetch(`http://localhost:8000/api/${citizenId}/flora-fauna`, {
-    //                 method: "GET",
-    //                 headers: {
-    //                     "Content-Type": "application/json",
-    //                     "Authorization": "Bearer " + localStorage.getItem("token"),
-    //                 },
-    //             });
+            try {
+                const response = await fetch(`http://localhost:8000/flora-fauna-assets/`, {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": "Bearer " + localStorage.getItem("token"),
+                    },
+                });
 
-    //             const data: FloraFaunaRecord[] = await response.json();
-    //             console.log(data);
-    //             setRecords(data);
-    //         } catch (err) {
-    //             console.error(err);
-    //             setError("Error loading flora and fauna records");
-    //         }
+                const data = await response.json();
+                setRecords(data.flora_fauna);
+            } catch (err) {
+                console.error(err);
+                setError("Error loading flora and fauna records");
+            }
 
-    //         setLoading(false);
-    //     };
+            setLoading(false);
+        };
 
-    //     fetchFloraFaunaRecords();
-    // }, [citizenId]);
+        fetchFloraFaunaRecords();
+    }, [citizenId]);
 
-    // useEffect(() => {
-    //     const filtered = records.filter((record) => {
-    //         const minCount = minCountFilter === "" ? Number.NEGATIVE_INFINITY : Number(minCountFilter);
-    //         const maxCount = maxCountFilter === "" ? Number.POSITIVE_INFINITY : Number(maxCountFilter);
+    useEffect(() => {
+        const filtered = records.filter((record) => {
+            const minCount = minCountFilter === "" ? Number.NEGATIVE_INFINITY : Number(minCountFilter);
+            const maxCount = maxCountFilter === "" ? Number.POSITIVE_INFINITY : Number(maxCountFilter);
 
-    //         return (
-    //             (nameFilter === "" || record.name.toLowerCase().includes(nameFilter.toLowerCase())) &&
-    //             (habitatFilter === "" || record.habitat.toLowerCase().includes(habitatFilter.toLowerCase())) &&
-    //             (typeFilter === "" || record.type === typeFilter) &&
-    //             (record.count >= minCount && record.count <= maxCount)
-    //         );
-    //     });
+            return (
+                (nameFilter === "" || record.name.toLowerCase().includes(nameFilter.toLowerCase())) &&
+                (habitatFilter === "" || record.habitat.toLowerCase().includes(habitatFilter.toLowerCase())) &&
+                (typeFilter === "" || record.type === typeFilter) &&
+                (record.count >= minCount && record.count <= maxCount)
+            );
+        });
 
-    //     setFilteredRecords(filtered);
-    // }, [nameFilter, habitatFilter, typeFilter, minCountFilter, maxCountFilter, records]);
+        setFilteredRecords(filtered);
+    }, [nameFilter, habitatFilter, typeFilter, minCountFilter, maxCountFilter, records]);
 
     return (
         <div className="flora-fauna-container card-holder">

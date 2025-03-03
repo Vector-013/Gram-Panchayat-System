@@ -21,48 +21,47 @@ const CitizenAsset: React.FC = () => {
     const [minDateFilter, setMinDateFilter] = useState<string>("");
     const [maxDateFilter, setMaxDateFilter] = useState<string>("");
 
-    // useEffect(() => {
-    //     const fetchAssetRecords = async () => {
-    //         setLoading(true);
-    //         setError("");
+    useEffect(() => {
+        const fetchAssetRecords = async () => {
+            setLoading(true);
+            setError("");
 
-    //         try {
-    //             const response = await fetch("http://localhost:8000/api/assets", {
-    //                 method: "GET",
-    //                 headers: {
-    //                     "Content-Type": "application/json",
-    //                     "Authorization": "Bearer " + localStorage.getItem("token"),
-    //                 },
-    //             });
+            try {
+                const response = await fetch("http://localhost:8000/flora-fauna-assets/", {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": "Bearer " + localStorage.getItem("token"),
+                    },
+                });
 
-    //             const data: AssetRecord[] = await response.json();
-    //             console.log(data);
-    //             setRecords(data);
-    //         } catch (err) {
-    //             console.error(err);
-    //             setError("Error loading asset records");
-    //         }
+                const data = await response.json();
+                setRecords(data.assets);
+            } catch (err) {
+                console.error(err);
+                setError("Error loading asset records");
+            }
 
-    //         setLoading(false);
-    //     };
+            setLoading(false);
+        };
 
-    //     fetchAssetRecords();
-    // }, []);
+        fetchAssetRecords();
+    }, []);
 
-    // useEffect(() => {
-    //     const filtered = records.filter((record) => {
-    //         const minDate = minDateFilter === "" ? "0000-00-00" : minDateFilter;
-    //         const maxDate = maxDateFilter === "" ? "9999-99-99" : maxDateFilter;
+    useEffect(() => {
+        const filtered = records.filter((record) => {
+            const minDate = minDateFilter === "" ? "0000-00-00" : minDateFilter;
+            const maxDate = maxDateFilter === "" ? "9999-99-99" : maxDateFilter;
 
-    //         return (
-    //             (typeFilter === "" || record.type === typeFilter) &&
-    //             (locationFilter === "" || record.location === locationFilter) &&
-    //             (record.installation_date >= minDate && record.installation_date <= maxDate)
-    //         );
-    //     });
+            return (
+                (typeFilter === "" || record.type === typeFilter) &&
+                (locationFilter === "" || record.location === locationFilter) &&
+                (record.installation_date >= minDate && record.installation_date <= maxDate)
+            );
+        });
 
-    //     setFilteredRecords(filtered);
-    // }, [typeFilter, locationFilter, minDateFilter, maxDateFilter, records]);
+        setFilteredRecords(filtered);
+    }, [typeFilter, locationFilter, minDateFilter, maxDateFilter, records]);
 
     return (
         <div className="asset-container card-holder">

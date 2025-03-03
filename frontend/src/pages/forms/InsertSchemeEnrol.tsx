@@ -4,7 +4,6 @@ import "../../styles/InsertForm.css";
 const InsertScheme: React.FC = () => {
     const [schemeId, setSchemeId] = useState<number | "">("");
     const [citizenId, setCitizenId] = useState<number | "">("");
-    const [password, setPassword] = useState<string>("");
     const [loading, setLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
     const [success, setSuccess] = useState<string | null>(null);
@@ -34,7 +33,6 @@ const InsertScheme: React.FC = () => {
             setSuccess("Scheme record successfully added!");
             setSchemeId("");
             setCitizenId("");
-            setPassword("");
         } catch (err: any) {
             setError(err.message);
         }
@@ -62,15 +60,6 @@ const InsertScheme: React.FC = () => {
                     type="number" 
                     value={citizenId} 
                     onChange={(e) => setCitizenId(e.target.value === "" ? "" : parseInt(e.target.value))} 
-                    className="insert-form-input" 
-                    required 
-                />
-
-                <label className="insert-form-label">Password:</label>
-                <input 
-                    type="password" 
-                    value={password} 
-                    onChange={(e) => setPassword(e.target.value)} 
                     className="insert-form-input" 
                     required 
                 />
