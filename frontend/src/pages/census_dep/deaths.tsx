@@ -18,12 +18,12 @@ interface DeathRecords {
 }
 
 function DeathQueryForm() {
-  const [gender, setGender] = useState("both");
+  const [gender, setGender] = useState("Both");
   const [householdId, setHouseholdId] = useState("");
-  const [ageMin, setAgeMin] = useState(0);
-  const [ageMax, setAgeMax] = useState(100);
-  const [yearMin, setYearMin] = useState(1000);
-  const [yearMax, setYearMax] = useState(2025);
+  const [ageMin, setAgeMin] = useState<number>(0);
+  const [ageMax, setAgeMax] = useState<number>(100);
+  const [yearMin, setYearMin] = useState<number>(1900);
+  const [yearMax, setYearMax] = useState<number>(2025);
   const [error, setError] = useState<string | null>(null);
   const [deathRecords, setDeathRecords] = useState<DeathRecord[]>([]);
 
@@ -33,8 +33,8 @@ function DeathQueryForm() {
     e.preventDefault();
     try {
       const requestBody = {
-        gender: gender === "both" ? "" : gender, // Fix "both" issue
-        household_id: householdId.trim() ? parseInt(householdId) : null, // Convert to null if empty
+        gender: gender === "Both" ? "" : gender, // Fix "both" issue
+        household_id: householdId == "" ? null : householdId, // Convert to null if empty
         year_min: yearMin > 1000 ? yearMin : null, // Ensure null instead of 1000
         year_max: yearMax < 2025 ? yearMax : null, // Ensure null if default
         age_min: ageMin > 0 ? ageMin : null, // Ensure null for default 0
@@ -77,9 +77,9 @@ function DeathQueryForm() {
               value={gender}
               onChange={(e) => setGender(e.target.value)}
             >
-              <option value="both">Both</option>
-              <option value="male">Male</option>
-              <option value="female">Female</option>
+              <option value="Both">Both</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
             </select>
           </div>
 

@@ -7,7 +7,7 @@ const UpdateCitizen: React.FC = () => {
     citizen_id: "",
     educational_qualification: "",
     income: "",
-    householdId: "",
+    household_id: "",
     password: "",
   });
 
@@ -32,7 +32,7 @@ const UpdateCitizen: React.FC = () => {
         citizen_id: data.citizen_id || "",
         educational_qualification: data.educational_qualification || "",
         income: data.income || "",
-        householdId: data.household_id || "",
+        household_id: data.household_id || "",
         password: "",
       });
     } catch (err) {
@@ -105,7 +105,7 @@ const UpdateCitizen: React.FC = () => {
 
         <div className="update-wrapper">
           <label>Household ID:</label>
-          <input type="text" name="householdId" value={formData.householdId} onChange={handleChange} />
+          <input type="text" name="householdId" value={formData.household_id} onChange={handleChange} />
         </div>
 
         <div className="update-wrapper">
