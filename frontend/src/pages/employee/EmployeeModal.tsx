@@ -18,12 +18,19 @@ const EmployeeModal = () => {
                     <div className="col">
                         <RecordCard title="Update" onRedirect={() => alert("Redirecting to Medical Record")} to_link="update"/>
                     </div>
+                </div>
+
+                <div className="row">
                     <div className="col">
                         <RecordCard title="Delete" onRedirect={() => alert("Redirecting to Medical Record")} to_link="delete"/>
                     </div>
+                    <div className="col">
+                        <RecordCard title="View" onRedirect={() => alert("Redirecting to Medical Record")} to_link="view"/>
+                    </div>
+                    </div>
                 </div>
             </div>
-        </div>
+
     );
 }
 

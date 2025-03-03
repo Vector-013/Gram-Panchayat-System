@@ -56,6 +56,7 @@ import EmployeeModal from './pages/employee/EmployeeModal';
 import InsertModal from './pages/employee/InsertModal';
 import UpdateModal from './pages/employee/UpdateModal';
 import DeleteModal from './pages/employee/DeleteModal';
+import ViewModal from './pages/employee/ViewModal';
 
 import InsertBirth from './pages/forms/InsertBirth';
 
@@ -121,6 +122,7 @@ const App: React.FC = () => {
           <Route path='update' element={<UpdateModal />} />
           <Route path='delete' element={<DeleteModal />} />
           <Route path='query' element={<QueryAdmin />} />
+          <Route path='view' element={<ViewModal />} />
         </Route>
 
         {/* Citizen Dashboard */}
@@ -173,6 +175,7 @@ const App: React.FC = () => {
           <Route path="insert" element={<InsertModal />} />
           <Route path="update" element={<UpdateModal />} />
           <Route path="delete" element={<DeleteModal />} />
+          <Route path="view" element={<ViewModal />} />
         </Route>
 
         {/* Protected Routes for Citizen Data */}
