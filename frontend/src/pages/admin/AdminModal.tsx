@@ -21,6 +21,9 @@ const AdminModal = () => {
                     <div className="col">
                         <RecordCard title="Delete" onRedirect={() => alert("Redirecting to Medical Record")} to_link="delete"/>
                     </div>
+                    <div className="col">
+                        <RecordCard title="View" onRedirect={() => alert("Redirecting to Medical Record")} to_link="view"/>
+                    </div>
                 </div>
                 <div className="row justify-content-center">
                     <div className="col-md-6">
