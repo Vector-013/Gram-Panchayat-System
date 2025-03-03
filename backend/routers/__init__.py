@@ -31,3 +31,5 @@ from .posts.deth import router as deth
 from .env_init.census_analytics import router as census_analytics
 from .citizen_initial.flora_fauna_assets import router as flora_fauna_assets
 from .all_citizens import router as all_citizens
+from .census_common import router as census_birth
+

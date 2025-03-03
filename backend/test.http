@@ -529,5 +529,18 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJDZW5zdXNEZXB0QHBhbmNoYXlhdC5jb20iLCJyb2xlIjoiY2Vuc3VzX2RlcHQiLCJleHAiOjE3NDA5NTk2NzR9.nVDbNGlAZAATcEqiqlOXuiC6CSk9qPm1xfgnic9XfeU
 
 ### Census Analytics Data
-GET http://localhost:8000/census/analytics-data/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBZG1pbkBwYW5jaGF5YXQuY29tIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzQwOTg0NTU1fQ.uDB9faTiWx-jXJ3lVzgaX6GL-pGA-DvTVRztR5bJbko
+# GET http://localhost:8000/census/analytics-data/
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBZG1pbkBwYW5jaGF5YXQuY29tIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzQwOTg0NTU1fQ.uDB9faTiWx-jXJ3lVzgaX6GL-pGA-DvTVRztR5bJbko
+
+
+### Birth Query Request (Example)
+PUT http://localhost:8000/census/birth-query
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBZG1pbkBwYW5jaGF5YXQuY29tIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzQwOTg4NzYzfQ.BmsjJewcf6zfyoO0G8qPrU1tg9tE7uAuQFQvB7E-sac
+
+{
+  "gender": "Both",
+  "household_id": null,
+  "min_year": 2000,
+  "max_year": 2020
+}
