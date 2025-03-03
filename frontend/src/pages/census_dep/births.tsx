@@ -5,17 +5,16 @@ import { useNavigate } from "react-router-dom";
 interface BirthRecord {
   citizen_id: number;
   name: string;
-  date_of_birth: string;
+  dob: string;
   gender: string;
   household_id: string;
-  birth_count: number;
 }
 
 function BirthQueryForm() {
-  const [gender, setGender] = useState("both");
-  const [householdId, setHouseholdId] = useState("");
-  const [yearMin, setYearMin] = useState(1000);
-  const [yearMax, setYearMax] = useState(2025);
+  const [gender, setGender] = useState("Both");
+  const [householdId, setHouseholdId] = useState<number | null>(null);
+  const [yearMin, setYearMin] = useState<number>(2020);
+  const [yearMax, setYearMax] = useState<number>(2025);
   const [error, setError] = useState<string | null>(null);
   const [birthRecords, setBirthRecords] = useState<BirthRecord[]>([]);
   const navigate = useNavigate();
@@ -23,26 +22,26 @@ function BirthQueryForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const requestBody:{ } = {
+      const requestBody = {
         gender,
         household_id: householdId,
-        year_min: yearMin,
-        year_max: yearMax,
+        min_year: yearMin,
+        max_year: yearMax,
       };
 
-      const response = await fetch("http://localhost:8000/birth-query", {
+      const response = await fetch("http://localhost:8000/census/birth-query", {
         method: "POST",
-        headers: { 
+        headers: {
           "Content-Type": "application/json",
-          "Authorization": "Bearer " + localStorage.getItem("token")
-         },
+          Authorization: "Bearer " + localStorage.getItem("token"),
+        },
         body: JSON.stringify(requestBody),
       });
       if (!response.ok) {
         throw new Error("Submission failed");
       }
-      const data: BirthRecord[] = await response.json();
-      setBirthRecords(data);
+      const data = await response.json();
+      setBirthRecords(data.births);
     } catch (err: any) {
       setError(err.message);
     }
@@ -56,40 +55,47 @@ function BirthQueryForm() {
       {error && <div className="birth-query-error">{error}</div>}
 
       <form className="birth-query-form" onSubmit={handleSubmit}>
+        {/* Gender Dropdown */}
         <label className="birth-query-label">Gender:</label>
         <select
           className="birth-query-input"
           value={gender}
           onChange={(e) => setGender(e.target.value)}
         >
-          <option value="both">Both</option>
-          <option value="male">Male</option>
-          <option value="female">Female</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Both">Both</option>
         </select>
 
+        {/* Household ID */}
         <label className="birth-query-label">Household ID:</label>
         <input
           className="birth-query-input"
-          type="text"
-          value={householdId}
-          onChange={(e) => setHouseholdId(e.target.value)}
+          type="number"
+          value={householdId === null ? "" : householdId}
+          onChange={(e) =>
+            setHouseholdId(e.target.value === "" ? null : parseInt(e.target.value))
+          }
         />
 
-        <label className="death-query-label">Year Range:</label>
-        <div className="death-query-input-group">
-          <input
-            className="death-query-input"
-            type="number"
-            value={yearMin}
-            onChange={(e) => setYearMin(parseInt(e.target.value))}
-          />
-          <span className="death-query-separator">to</span>
-          <input
-            className="death-query-input"
-            type="number"
-            value={yearMax}
-            onChange={(e) => setYearMax(parseInt(e.target.value))}
-          />
+        {/* Year Range */}
+        <div className="query-group">
+          <div className="birth-query-input-group">
+            <label className="birth-query-label">Year Range:</label>
+            <input
+              className="birth-query-input"
+              type="number"
+              value={yearMin}
+              onChange={(e) => setYearMin(parseInt(e.target.value))}
+            />
+            <span className="birth-query-separator">to</span>
+            <input
+              className="birth-query-input"
+              type="number"
+              value={yearMax}
+              onChange={(e) => setYearMax(parseInt(e.target.value))}
+            />
+          </div>
         </div>
 
         <button className="birth-query-submit" type="submit">
@@ -97,12 +103,8 @@ function BirthQueryForm() {
         </button>
       </form>
 
-      {birthRecords.length > 0 && (
-        <div className="birth-records-summary">
-          <p>Total Births: {birthRecords.length}</p>
-        </div>
-      )}
 
+      {/* Birth Records Table */}
       {birthRecords.length > 0 && (
         <div className="birth-records-container">
           <table className="birth-records-table">
@@ -112,7 +114,7 @@ function BirthQueryForm() {
                 <th>Name</th>
                 <th>Gender</th>
                 <th>Date of Birth</th>
-                <th>Household Income</th>
+                <th>Household ID</th>
               </tr>
             </thead>
             <tbody>
@@ -121,7 +123,7 @@ function BirthQueryForm() {
                   <td>{record.citizen_id}</td>
                   <td>{record.name}</td>
                   <td>{record.gender}</td>
-                  <td>{record.date_of_birth}</td>
+                  <td>{record.dob}</td>
                   <td>{record.household_id}</td>
                 </tr>
               ))}

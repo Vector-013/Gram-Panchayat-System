@@ -9,7 +9,7 @@ interface FloraFaunaRecord {
     habitat: string;
     count: number;
 }
-
+// FloraFaunaQueryForm
 const CitizenFloraFauna: React.FC = () => {
     const { citizenId } = useParams<{ citizenId: string }>();
     const [records, setRecords] = useState<FloraFaunaRecord[]>([]);

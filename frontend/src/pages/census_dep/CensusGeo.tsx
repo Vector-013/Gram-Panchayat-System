@@ -29,7 +29,7 @@ const CensusGeoModal: React.FC = () => {
             setError("");
 
             try {
-                const response = await fetch(`http://localhost:8000/api/${citizenId}/geo`,
+                const response = await fetch(`http://localhost:8000/census/geo-query`,
                     {
                         method: "GET",
                         headers: {

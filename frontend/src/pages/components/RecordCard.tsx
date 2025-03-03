@@ -61,7 +61,7 @@ const RecordCard: React.FC<RecordCardProps> = ({ title, onRedirect, to_link }) =
     src = updateRecordImage;
   } else if (title === "Delete") {
     src = deleteRecordImage;
-  } else if (title === "Analytics") {
+  } else if (title === "Analytics" || title === "Environment Analytics" || title === "People Analytics") {
     src = analyticsRecordImage;
   } else if (title === "Income Record") {
     src = incomeRecordImage;

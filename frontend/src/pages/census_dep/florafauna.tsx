@@ -1,124 +1,162 @@
-import { useState } from "react";
-import "../../styles/CensusFloraFauna.css";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import "../../styles/CitizenFloraFauna.css";
 
 interface FloraFaunaRecord {
-    name: string;
+    f_id : number;
     type: string;
+    name: string;
     habitat: string;
     count: number;
 }
+// FloraFaunaQueryForm
+const FloraFaunaQueryForm: React.FC = () => {
+    const { citizenId } = useParams<{ citizenId: string }>();
+    const [records, setRecords] = useState<FloraFaunaRecord[]>([]);
+    const [filteredRecords, setFilteredRecords] = useState<FloraFaunaRecord[]>([]);
+    const [loading, setLoading] = useState<boolean>(false);
+    const [error, setError] = useState<string>("");
 
-function FloraFaunaQueryForm() {
-    const [name, setName] = useState("");
-    const [type, setType] = useState("tree");
-    const [habitat, setHabitat] = useState("land");
-    const [floraFaunaRecords, setFloraFaunaRecords] = useState<FloraFaunaRecord[]>([]);
-    const [error, setError] = useState<string | null>(null);
-    
-    const navigate = useNavigate();
+    // Filter states
+    const [typeFilter, setTypeFilter] = useState<string>("");
+    const [nameFilter, setNameFilter] = useState<string>("");
+    const [habitatFilter, setHabitatFilter] = useState<string>("");
+    const [minCountFilter, setMinCountFilter] = useState<string>("");
+    const [maxCountFilter, setMaxCountFilter] = useState<string>("");
 
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-        try {
-            const requestBody = {
-                name,
-                type,
-                habitat,
-            };
-            
-            const response = await fetch("http://localhost:8000/flora-fauna-query", {
-                method: "POST",
-                headers: { "Content-Type": "application/json", "Authorization": "Bearer " + localStorage.getItem("token") },
-                body: JSON.stringify(requestBody),
-            });
-            if (!response.ok) {
-                throw new Error("Submission failed");
+    useEffect(() => {
+        const fetchFloraFaunaRecords = async () => {
+            setLoading(true);
+            setError("");
+
+            try {
+                const response = await fetch(`http://localhost:8000/flora-fauna-assets/`, {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": "Bearer " + localStorage.getItem("token"),
+                    },
+                });
+
+                const data = await response.json();
+                setRecords(data.flora_fauna);
+            } catch (err) {
+                console.error(err);
+                setError("Error loading flora and fauna records");
             }
-            const data: FloraFaunaRecord[] = await response.json();
-            setFloraFaunaRecords(data);
-        } catch (err: any) {
-            setError(err.message);
-        }
-    };
+
+            setLoading(false);
+        };
+
+        fetchFloraFaunaRecords();
+    }, [citizenId]);
+
+    useEffect(() => {
+        const filtered = records.filter((record) => {
+            const minCount = minCountFilter === "" ? Number.NEGATIVE_INFINITY : Number(minCountFilter);
+            const maxCount = maxCountFilter === "" ? Number.POSITIVE_INFINITY : Number(maxCountFilter);
+
+            return (
+                (nameFilter === "" || record.name.toLowerCase().includes(nameFilter.toLowerCase())) &&
+                (habitatFilter === "" || record.habitat.toLowerCase().includes(habitatFilter.toLowerCase())) &&
+                (typeFilter === "" || record.type === typeFilter) &&
+                (record.count >= minCount && record.count <= maxCount)
+            );
+        });
+
+        setFilteredRecords(filtered);
+    }, [nameFilter, habitatFilter, typeFilter, minCountFilter, maxCountFilter, records]);
 
     return (
-        <div className="flora-fauna-query-container col card-holder">
-            <div className="header">
-                <div className="flora-fauna-query-title">Flora & Fauna Query</div>
-            </div>
-            {error && <div className="flora-fauna-query-error">{error}</div>}
-            
-            <form className="flora-fauna-query-form" onSubmit={handleSubmit}>
-                <label className="flora-fauna-query-label">Name:</label>
-                <input 
-                    className="flora-fauna-query-input"
-                    type="text" 
-                    value={name} 
-                    onChange={(e) => setName(e.target.value)}
+        <div className="flora-fauna-container card-holder">
+            <h2 className="flora-fauna-title">Flora & Fauna Records</h2>
+
+            {/* Filters */}
+            <div className="flora-fauna-filter-container">
+                <select
+                    value={typeFilter}
+                    onChange={(e) => setTypeFilter(e.target.value)}
+                    className="flora-fauna-input"
+                >
+                    <option value="">All Types</option>
+                    <option value="Flora">Flora</option>
+                    <option value="Fauna">Fauna</option>
+                </select>
+
+                <input
+                    type="text"
+                    placeholder="Filter by Name"
+                    value={nameFilter}
+                    onChange={(e) => setNameFilter(e.target.value)}
+                    className="flora-fauna-input"
                 />
-                
-                <label className="flora-fauna-query-label">Type:</label>
-                <select 
-                    className="flora-fauna-query-input"
-                    value={type} 
-                    onChange={(e) => setType(e.target.value)}
-                >
-                    <option value="tree">Tree</option>
-                    <option value="animal">Animal</option>
-                    <option value="bird">Bird</option>
-                    <option value="fish">Fish</option>
-                    <option value="flower">Flower</option>
-                </select>
-                
-                <label className="flora-fauna-query-label">Habitat:</label>
-                <select 
-                    className="flora-fauna-query-input"
-                    value={habitat} 
-                    onChange={(e) => setHabitat(e.target.value)}
-                >
-                    <option value="desert">Desert</option>
-                    <option value="land">Land</option>
-                    <option value="water">Water</option>
-                    <option value="forest">Forest</option>
-                    <option value="mountains">Mountains</option>
-                </select>
-                
-                <button className="flora-fauna-query-submit" type="submit">Submit</button>
-            </form>
 
-            {floraFaunaRecords.length > 0 && (
-                <div className="flora-fauna-total-count">
-                    Total Count: {floraFaunaRecords.reduce((total, record) => total + record.count, 0)}
+                <input
+                    type="text"
+                    placeholder="Filter by Habitat"
+                    value={habitatFilter}
+                    onChange={(e) => setHabitatFilter(e.target.value)}
+                    className="flora-fauna-input"
+                />
+
+                <div className="flora-fauna-range">
+                    <label className="flora-fauna-label">Count:</label>
+                    <input
+                        type="number"
+                        placeholder="Min"
+                        value={minCountFilter}
+                        onChange={(e) => setMinCountFilter(e.target.value)}
+                        className="flora-fauna-input"
+                    />
+                    <input
+                        type="number"
+                        placeholder="Max"
+                        value={maxCountFilter}
+                        onChange={(e) => setMaxCountFilter(e.target.value)}
+                        className="flora-fauna-input"
+                    />
                 </div>
-            )}
+            </div>
 
-            {floraFaunaRecords.length > 0 && (
-                <div className="flora-fauna-records-container">
-                    <table className="flora-fauna-records-table">
+            {/* Display Table */}
+            {loading ? (
+                <p className="flora-fauna-loading">Loading...</p>
+            ) : error ? (
+                <p className="flora-fauna-error">{error}</p>
+            ) : (
+                <div className="flora-fauna-table-container">
+                    <table className="flora-fauna-table">
                         <thead>
                             <tr>
-                                <th>Name</th>
                                 <th>Type</th>
+                                <th>Name</th>
                                 <th>Habitat</th>
                                 <th>Count</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {floraFaunaRecords.map((record, index) => (
-                                <tr key={index}>
-                                    <td>{record.name}</td>
-                                    <td>{record.type}</td>
-                                    <td>{record.habitat}</td>
-                                    <td>{record.count}</td>
+                            {filteredRecords.length > 0 ? (
+                                filteredRecords.map((record, index) => (
+                                    <tr key={index}>
+                                        <td>{record.type}</td>
+                                        <td>{record.name}</td>
+                                        <td>{record.habitat}</td>
+                                        <td>{record.count}</td>
+                                    </tr>
+                                ))
+                            ) : (
+                                <tr>
+                                    <td colSpan={4} className="no-data">
+                                        No records found
+                                    </td>
                                 </tr>
-                            ))}
+                            )}
                         </tbody>
                     </table>
                 </div>
             )}
         </div>
     );
-}
+};
 
 export default FloraFaunaQueryForm;
