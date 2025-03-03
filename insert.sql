@@ -446,3 +446,76 @@
 -- (94, '2022-03-01', 'Road Tax', 165000, 'Paid'),
 -- (94, '2021-03-01', 'Property Tax', 163500, 'Pending'),
 -- (94, '2020-03-01', 'Income Tax', 160000, 'Paid');
+
+
+-- Altering foreign keys to enable ON DELETE CASCADE
+
+ALTER TABLE citizens 
+    DROP CONSTRAINT citizens_household_id_fkey,
+    ADD CONSTRAINT citizens_household_id_fkey 
+    FOREIGN KEY (household_id) REFERENCES households(household_id) ON DELETE CASCADE;
+
+ALTER TABLE land_records 
+    DROP CONSTRAINT land_records_citizen_id_fkey,
+    ADD CONSTRAINT land_records_citizen_id_fkey 
+    FOREIGN KEY (citizen_id) REFERENCES citizens(citizen_id) ON DELETE CASCADE;
+
+ALTER TABLE panchayat_employees 
+    DROP CONSTRAINT panchayat_employees_citizen_id_fkey,
+    ADD CONSTRAINT panchayat_employees_citizen_id_fkey 
+    FOREIGN KEY (citizen_id) REFERENCES citizens(citizen_id) ON DELETE CASCADE;
+
+ALTER TABLE scheme_enrollments 
+    DROP CONSTRAINT scheme_enrollments_citizen_id_fkey,
+    ADD CONSTRAINT scheme_enrollments_citizen_id_fkey 
+    FOREIGN KEY (citizen_id) REFERENCES citizens(citizen_id) ON DELETE CASCADE;
+
+ALTER TABLE scheme_enrollments 
+    DROP CONSTRAINT scheme_enrollments_scheme_id_fkey,
+    ADD CONSTRAINT scheme_enrollments_scheme_id_fkey 
+    FOREIGN KEY (scheme_id) REFERENCES welfare_schemes(scheme_id) ON DELETE CASCADE;
+
+ALTER TABLE vaccinations 
+    DROP CONSTRAINT vaccinations_citizen_id_fkey,
+    ADD CONSTRAINT vaccinations_citizen_id_fkey 
+    FOREIGN KEY (citizen_id) REFERENCES citizens(citizen_id) ON DELETE CASCADE;
+
+ALTER TABLE medical_data 
+    DROP CONSTRAINT medical_data_citizen_id_fkey,
+    ADD CONSTRAINT medical_data_citizen_id_fkey 
+    FOREIGN KEY (citizen_id) REFERENCES citizens(citizen_id) ON DELETE CASCADE;
+
+ALTER TABLE taxes 
+    DROP CONSTRAINT taxes_citizen_id_fkey,
+    ADD CONSTRAINT taxes_citizen_id_fkey 
+    FOREIGN KEY (citizen_id) REFERENCES citizens(citizen_id) ON DELETE CASCADE;
+
+ALTER TABLE marriage 
+    DROP CONSTRAINT marriage_husband_id_fkey,
+    ADD CONSTRAINT marriage_husband_id_fkey 
+    FOREIGN KEY (husband_id) REFERENCES citizens(citizen_id) ON DELETE CASCADE;
+
+ALTER TABLE marriage 
+    DROP CONSTRAINT marriage_wife_id_fkey,
+    ADD CONSTRAINT marriage_wife_id_fkey 
+    FOREIGN KEY (wife_id) REFERENCES citizens(citizen_id) ON DELETE CASCADE;
+
+ALTER TABLE births 
+    DROP CONSTRAINT births_child_id_fkey,
+    ADD CONSTRAINT births_child_id_fkey 
+    FOREIGN KEY (child_id) REFERENCES citizens(citizen_id) ON DELETE CASCADE;
+
+ALTER TABLE births 
+    DROP CONSTRAINT births_father_id_fkey,
+    ADD CONSTRAINT births_father_id_fkey 
+    FOREIGN KEY (father_id) REFERENCES citizens(citizen_id) ON DELETE CASCADE;
+
+ALTER TABLE births 
+    DROP CONSTRAINT births_mother_id_fkey,
+    ADD CONSTRAINT births_mother_id_fkey 
+    FOREIGN KEY (mother_id) REFERENCES citizens(citizen_id) ON DELETE CASCADE;
+
+ALTER TABLE deaths 
+    DROP CONSTRAINT deaths_citizen_id_fkey,
+    ADD CONSTRAINT deaths_citizen_id_fkey 
+    FOREIGN KEY (citizen_id) REFERENCES citizens(citizen_id) ON DELETE CASCADE;

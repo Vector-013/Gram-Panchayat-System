@@ -105,7 +105,7 @@ const UpdateCitizen: React.FC = () => {
 
         <div className="update-wrapper">
           <label>Household ID:</label>
-          <input type="text" name="householdId" value={formData.household_id} onChange={handleChange} />
+          <input type="text" name="household_id" value={formData.household_id} onChange={handleChange} />
         </div>
 
         <div className="update-wrapper">

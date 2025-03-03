@@ -1,108 +1,106 @@
- citizen_id |       name       | gender |    dob     | educational_qualification | income |       email       |                       hashed_password                        | household_id 
-------------+------------------+--------+------------+---------------------------+--------+-------------------+--------------------------------------------------------------+--------------
-         30 | Rekha Sharma     | Female | 1984-05-10 | Post Graduate             |  68000 | 30@panchayat.com  | $2b$12$qHEvGDDgBK6Z0MFoq0cIguQgW/R2vnSEt2BtQgdZ86Hanlc3fGbzK |             
-          5 | Surendra Iyer    | Male   | 1945-07-09 | Post Graduate             |  90000 | 5@panchayat.com   | $2b$12$n2HGdCtYMWkd9zQ.hYGXZ.skppFAgqSE/i1nHwkdZaKZq.hrt27zS |            3
-         17 | Karan Patel      | Male   | 2012-04-25 | Secondary                 |      0 | 17@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            1
-          1 | Rajesh Sharma    | Male   | 1950-05-14 | Illiterate                |  20000 | 1@panchayat.com   | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            1
-          2 | Kamla Sharma     | Female | 1955-08-22 | Illiterate                |      0 | 2@panchayat.com   | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            1
-          3 | Harish Patel     | Male   | 1948-11-03 | Primary                   |  25000 | 3@panchayat.com   | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            2
-          4 | Savitri Patel    | Female | 1952-03-18 | Primary                   |      0 | 4@panchayat.com   | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            2
-          6 | Meera Iyer       | Female | 1950-10-12 | Primary                   |      0 | 6@panchayat.com   | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            3
-          7 | Gopal Verma      | Male   | 1949-06-15 | Illiterate                |  18000 | 7@panchayat.com   | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            4
-          8 | Laxmi Verma      | Female | 1951-09-20 | Primary                   |      0 | 8@panchayat.com   | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            4
-          9 | Amit Sharma      | Male   | 1980-02-25 | Graduate                  |  70000 | 9@panchayat.com   | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            1
-         10 | Pooja Sharma     | Female | 1985-06-15 | Graduate                  |  65000 | 10@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            1
-         11 | Vikram Patel     | Male   | 1978-09-10 | Post Graduate             |  85000 | 11@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            2
-         12 | Anjali Patel     | Female | 1982-12-04 | Post Graduate             |  80000 | 12@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            2
-         13 | Ravi Iyer        | Male   | 1975-03-30 | Graduate                  |  60000 | 13@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            3
-         14 | Sunita Iyer      | Female | 1980-07-21 | Secondary                 |  40000 | 14@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            3
-         15 | Aryan Sharma     | Male   | 2010-05-12 | Secondary                 |      0 | 15@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            1
-         16 | Siya Sharma      | Female | 2015-08-18 | Primary                   |      0 | 16@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            1
-         18 | Riya Patel       | Female | 2017-09-11 | Primary                   |      0 | 18@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            2
-         19 | Neel Iyer        | Male   | 2011-01-05 | Secondary                 |      0 | 19@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            3
-         20 | Tara Iyer        | Female | 2016-03-30 | Primary                   |      0 | 20@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            3
-         21 | Prakash Sharma   | Male   | 1951-04-10 | Illiterate                |  22000 | 21@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            5
-         22 | Sumitra Sharma   | Female | 1954-07-19 | Illiterate                |      0 | 22@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            5
-         23 | Devendra Iyer    | Male   | 1947-10-25 | Primary                   |  27000 | 23@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            6
-         24 | Saroj Iyer       | Female | 1953-02-14 | Primary                   |      0 | 24@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            6
-         25 | Mahendra Desai   | Male   | 1946-06-30 | Secondary                 |  29000 | 25@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            7
-         26 | Anjana Desai     | Female | 1951-09-25 | Primary                   |      0 | 26@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            7
-         27 | Keshav Pillai    | Male   | 1950-05-20 | Illiterate                |  19000 | 27@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            8
-         28 | Gita Pillai      | Female | 1952-08-29 | Primary                   |      0 | 28@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            8
-         29 | Naveen Sharma    | Male   | 1979-01-18 | Graduate                  |  72000 | 29@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            5
-        102 | Rishika Kumari   |        | 2025-03-03 | Illiterate                |      0 | 102@panchayat.com | $2b$12$E5ZtH1s4fmxPJxf2uYWW8u042NExl0ZNaN57pcdLE2fbfH6vw1yDG |           19
-         31 | Sandeep Iyer     | Male   | 1977-08-05 | Post Graduate             |  86000 | 31@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            6
-         32 | Kavita Iyer      | Female | 1981-11-20 | Post Graduate             |  82000 | 32@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            6
-         33 | Rahul Desai      | Male   | 1976-02-22 | Graduate                  |  62000 | 33@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            7
-         34 | Neha Desai       | Female | 1979-06-14 | Secondary                 |  41000 | 34@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            7
-         35 | Rohan Sharma     | Male   | 2011-06-08 | Secondary                 |      0 | 35@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            5
-         36 | Meera Sharma     | Female | 2014-07-25 | Primary                   |      0 | 36@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            5
-         37 | Arjun Iyer       | Male   | 2013-05-18 | Secondary                 |      0 | 37@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            6
-         38 | Nisha Iyer       | Female | 2016-08-30 | Primary                   |      0 | 38@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            6
-         39 | Vikrant Desai    | Male   | 2012-02-10 | Secondary                 |      0 | 39@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            7
-         40 | Priya Desai      | Female | 2015-04-22 | Primary                   |      0 | 40@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            7
-         41 | Harish Verma     | Male   | 1950-03-12 | Illiterate                |  25000 | 41@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            9
-         42 | Lata Verma       | Female | 1955-06-15 | Illiterate                |      0 | 42@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            9
-         43 | Rajendra Nair    | Male   | 1948-11-22 | Primary                   |  28000 | 43@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           10
-         44 | Meena Nair       | Female | 1952-01-10 | Primary                   |      0 | 44@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           10
-         45 | Kamal Gupta      | Male   | 1947-07-05 | Secondary                 |  30000 | 45@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           11
-         46 | Sunita Gupta     | Female | 1953-10-20 | Primary                   |      0 | 46@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           11
-         47 | Vishnu Menon     | Male   | 1951-09-14 | Illiterate                |  20000 | 47@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           12
-         48 | Usha Menon       | Female | 1956-04-18 | Primary                   |      0 | 48@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           12
-         49 | Amit Verma       | Male   | 1978-02-05 | Graduate                  |  70000 | 49@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            9
-         50 | Poonam Verma     | Female | 1983-07-08 | Graduate                  |  65000 | 50@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            9
-         51 | Suresh Nair      | Male   | 1975-09-15 | Post Graduate             |  85000 | 51@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           10
-         52 | Laxmi Nair       | Female | 1980-12-21 | Post Graduate             |  80000 | 52@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           10
-         53 | Vikram Gupta     | Male   | 1977-03-12 | Graduate                  |  63000 | 53@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           11
-         54 | Anita Gupta      | Female | 1978-08-25 | Secondary                 |  42000 | 54@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           11
-         55 | Ravi Verma       | Male   | 2010-05-10 | Secondary                 |      0 | 55@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            9
-         56 | Sneha Verma      | Female | 2013-09-28 | Primary                   |      0 | 56@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            9
-         57 | Karthik Nair     | Male   | 2012-07-22 | Secondary                 |      0 | 57@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           10
-         58 | Deepa Nair       | Female | 2015-11-15 | Primary                   |      0 | 58@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           10
-         59 | Aryan Gupta      | Male   | 2011-02-18 | Secondary                 |      0 | 59@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           11
-         60 | Ritika Gupta     | Female | 2014-06-30 | Primary                   |      0 | 60@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           11
-         61 | Shankar Iyer     | Male   | 1949-05-22 | Illiterate                |  27000 | 61@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           13
-         62 | Radha Iyer       | Female | 1954-09-13 | Illiterate                |      0 | 62@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           13
-         63 | Govind Reddy     | Male   | 1950-12-10 | Primary                   |  26000 | 63@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           14
-         64 | Kamala Reddy     | Female | 1951-02-17 | Primary                   |      0 | 64@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           14
-         65 | Brijesh Sharma   | Male   | 1948-08-05 | Secondary                 |  31000 | 65@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           15
-         66 | Savita Sharma    | Female | 1956-11-30 | Primary                   |      0 | 66@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           15
-         67 | Mahadev Pillai   | Male   | 1952-07-20 | Illiterate                |  19000 | 67@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           16
-         68 | Leela Pillai     | Female | 1957-03-25 | Primary                   |      0 | 68@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           16
-         69 | Ramesh Iyer      | Male   | 1979-06-14 | Graduate                  |  72000 | 69@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           13
-         70 | Meera Iyer       | Female | 1982-10-19 | Graduate                  |  67000 | 70@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           13
-         71 | Vikram Reddy     | Male   | 1974-08-23 | Post Graduate             |  88000 | 71@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           14
-         72 | Anjali Reddy     | Female | 1981-11-11 | Post Graduate             |  81000 | 72@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           14
-         73 | Rajeev Sharma    | Male   | 1976-04-05 | Graduate                  |  64000 | 73@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           15
-         74 | Sangeeta Sharma  | Female | 1977-09-29 | Secondary                 |  41000 | 74@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           15
-         75 | Nikhil Iyer      | Male   | 2011-08-03 | Secondary                 |      0 | 75@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           13
-         76 | Riya Iyer        | Female | 2014-12-12 | Primary                   |      0 | 76@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           13
-         77 | Arjun Reddy      | Male   | 2013-06-18 | Secondary                 |      0 | 77@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           14
-         78 | Pooja Reddy      | Female | 2016-10-05 | Primary                   |      0 | 78@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           14
-         79 | Varun Sharma     | Male   | 2012-03-15 | Secondary                 |      0 | 79@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           15
-         80 | Kavya Sharma     | Female | 2015-07-27 | Primary                   |      0 | 80@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           15
-         81 | Surya Nair       | Male   | 1950-03-15 | Illiterate                |  25000 | 81@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           17
-         82 | Lakshmi Nair     | Female | 1955-08-10 | Illiterate                |      0 | 82@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           17
-         83 | Dinesh Verma     | Male   | 1952-11-23 | Primary                   |  28000 | 83@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           18
-         84 | Meenakshi Verma  | Female | 1953-06-05 | Primary                   |      0 | 84@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           18
-         85 | Rajinder Chauhan | Male   | 1949-09-17 | Secondary                 |  32000 | 85@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           19
-         86 | Sunita Chauhan   | Female | 1957-10-21 | Primary                   |      0 | 86@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           19
-         87 | Keshav Menon     | Male   | 1951-04-29 | Illiterate                |  21000 | 87@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           20
-         88 | Nalini Menon     | Female | 1956-12-14 | Primary                   |      0 | 88@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           20
-         89 | Arvind Nair      | Male   | 1980-07-02 | Graduate                  |  74000 | 89@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           17
-         90 | Priya Nair       | Female | 1983-09-25 | Graduate                  |  69000 | 90@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           17
-         91 | Sandeep Verma    | Male   | 1975-05-14 | Post Graduate             |  86000 | 91@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           18
-         92 | Divya Verma      | Female | 1980-08-30 | Post Graduate             |  82000 | 92@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           18
-         93 | Neeraj Chauhan   | Male   | 1977-01-19 | Graduate                  |  65000 | 93@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           19
-         94 | Anita Chauhan    | Female | 1978-05-23 | Secondary                 |  42000 | 94@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           19
-         96 | Ishita Nair      | Female | 2013-11-11 | Primary                   |      0 | 96@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           17
-         97 | Harsh Verma      | Male   | 2012-04-28 | Secondary                 |      0 | 97@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           18
-         98 | Sneha Verma      | Female | 2015-06-17 | Primary                   |      0 | 98@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           18
-         99 | Rohan Chauhan    | Male   | 2011-02-14 | Secondary                 |      0 | 99@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           19
-        100 | Tanvi Chauhan    | Female | 2014-07-22 | Primary                   |      0 | 100@panchayat.com | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           19
-         95 | Aarav Nair       | Male   | 2010-09-09 | Secondary                 |      0 | 95@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           17
-        101 | Baby Lorcan      | Male   | 2025-03-03 | Illiterate                |      0 | 101@panchayat.com | $2b$12$Mcbp7RMNMauq3Xkvc3MsAOVW3bP3IhyGE1lByGHNTep3eshj.hOIG |            3
-(102 rows)
+ citizen_id |       name       | gender |    dob     | educational_qualification | income  |       email       |                       hashed_password                        | household_id 
+------------+------------------+--------+------------+---------------------------+---------+-------------------+--------------------------------------------------------------+--------------
+         30 | Rekha Sharma     | Female | 1984-05-10 | Post Graduate             |   68000 | 30@panchayat.com  | $2b$12$qHEvGDDgBK6Z0MFoq0cIguQgW/R2vnSEt2BtQgdZ86Hanlc3fGbzK |            3
+          5 | Surendra Iyer    | Male   | 1945-07-09 | Post Graduate             |   90000 | 5@panchayat.com   | $2b$12$n2HGdCtYMWkd9zQ.hYGXZ.skppFAgqSE/i1nHwkdZaKZq.hrt27zS |            3
+         17 | Karan Patel      | Male   | 2012-04-25 | Secondary                 |       0 | 17@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            1
+        103 | Vistrinna        | Female | 2004-05-20 | Graduate                  | 20000.0 | 103@panchayat.com | $2b$12$BDp4c.DwOvWdzUou1xbvge29hFSAxVONyP/mCbCJcjiYSUApRcUrm |            2
+          1 | Rajesh Sharma    | Male   | 1950-05-14 | Post Graduate             |   20000 | 1@panchayat.com   | $2b$12$IYtfcj2uGgByOZqVdfUBu.ZRpkS6pJtRiap3GhephK1QlQhV//pkq |            3
+          2 | Kamla Sharma     | Female | 1955-08-22 | Illiterate                |       0 | 2@panchayat.com   | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            1
+          3 | Harish Patel     | Male   | 1948-11-03 | Primary                   |   25000 | 3@panchayat.com   | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            2
+          4 | Savitri Patel    | Female | 1952-03-18 | Primary                   |       0 | 4@panchayat.com   | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            2
+          6 | Meera Iyer       | Female | 1950-10-12 | Primary                   |       0 | 6@panchayat.com   | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            3
+          7 | Gopal Verma      | Male   | 1949-06-15 | Illiterate                |   18000 | 7@panchayat.com   | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            4
+          8 | Laxmi Verma      | Female | 1951-09-20 | Primary                   |       0 | 8@panchayat.com   | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            4
+          9 | Amit Sharma      | Male   | 1980-02-25 | Graduate                  |   70000 | 9@panchayat.com   | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            1
+         10 | Pooja Sharma     | Female | 1985-06-15 | Graduate                  |   65000 | 10@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            1
+         11 | Vikram Patel     | Male   | 1978-09-10 | Post Graduate             |   85000 | 11@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            2
+         12 | Anjali Patel     | Female | 1982-12-04 | Post Graduate             |   80000 | 12@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            2
+         13 | Ravi Iyer        | Male   | 1975-03-30 | Graduate                  |   60000 | 13@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            3
+         14 | Sunita Iyer      | Female | 1980-07-21 | Secondary                 |   40000 | 14@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            3
+         15 | Aryan Sharma     | Male   | 2010-05-12 | Secondary                 |       0 | 15@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            1
+         16 | Siya Sharma      | Female | 2015-08-18 | Primary                   |       0 | 16@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            1
+         18 | Riya Patel       | Female | 2017-09-11 | Primary                   |       0 | 18@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            2
+         19 | Neel Iyer        | Male   | 2011-01-05 | Secondary                 |       0 | 19@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            3
+         20 | Tara Iyer        | Female | 2016-03-30 | Primary                   |       0 | 20@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            3
+         21 | Prakash Sharma   | Male   | 1951-04-10 | Illiterate                |   22000 | 21@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            5
+         22 | Sumitra Sharma   | Female | 1954-07-19 | Illiterate                |       0 | 22@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            5
+         23 | Devendra Iyer    | Male   | 1947-10-25 | Primary                   |   27000 | 23@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            6
+         24 | Saroj Iyer       | Female | 1953-02-14 | Primary                   |       0 | 24@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            6
+         25 | Mahendra Desai   | Male   | 1946-06-30 | Secondary                 |   29000 | 25@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            7
+         26 | Anjana Desai     | Female | 1951-09-25 | Primary                   |       0 | 26@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            7
+         27 | Keshav Pillai    | Male   | 1950-05-20 | Illiterate                |   19000 | 27@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            8
+         28 | Gita Pillai      | Female | 1952-08-29 | Primary                   |       0 | 28@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            8
+         29 | Naveen Sharma    | Male   | 1979-01-18 | Graduate                  |   72000 | 29@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            5
+        102 | Rishika Kumari   |        | 2025-03-03 | Illiterate                |       0 | 102@panchayat.com | $2b$12$E5ZtH1s4fmxPJxf2uYWW8u042NExl0ZNaN57pcdLE2fbfH6vw1yDG |           19
+         31 | Sandeep Iyer     | Male   | 1977-08-05 | Post Graduate             |   86000 | 31@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            6
+         32 | Kavita Iyer      | Female | 1981-11-20 | Post Graduate             |   82000 | 32@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            6
+         33 | Rahul Desai      | Male   | 1976-02-22 | Graduate                  |   62000 | 33@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            7
+         34 | Neha Desai       | Female | 1979-06-14 | Secondary                 |   41000 | 34@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            7
+         35 | Rohan Sharma     | Male   | 2011-06-08 | Secondary                 |       0 | 35@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            5
+         36 | Meera Sharma     | Female | 2014-07-25 | Primary                   |       0 | 36@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            5
+         37 | Arjun Iyer       | Male   | 2013-05-18 | Secondary                 |       0 | 37@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            6
+         38 | Nisha Iyer       | Female | 2016-08-30 | Primary                   |       0 | 38@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            6
+         39 | Vikrant Desai    | Male   | 2012-02-10 | Secondary                 |       0 | 39@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            7
+         40 | Priya Desai      | Female | 2015-04-22 | Primary                   |       0 | 40@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            7
+         41 | Harish Verma     | Male   | 1950-03-12 | Illiterate                |   25000 | 41@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            9
+         42 | Lata Verma       | Female | 1955-06-15 | Illiterate                |       0 | 42@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            9
+         43 | Rajendra Nair    | Male   | 1948-11-22 | Primary                   |   28000 | 43@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           10
+         44 | Meena Nair       | Female | 1952-01-10 | Primary                   |       0 | 44@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           10
+         45 | Kamal Gupta      | Male   | 1947-07-05 | Secondary                 |   30000 | 45@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           11
+         46 | Sunita Gupta     | Female | 1953-10-20 | Primary                   |       0 | 46@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           11
+         47 | Vishnu Menon     | Male   | 1951-09-14 | Illiterate                |   20000 | 47@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           12
+         48 | Usha Menon       | Female | 1956-04-18 | Primary                   |       0 | 48@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           12
+         49 | Amit Verma       | Male   | 1978-02-05 | Graduate                  |   70000 | 49@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            9
+         50 | Poonam Verma     | Female | 1983-07-08 | Graduate                  |   65000 | 50@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            9
+         51 | Suresh Nair      | Male   | 1975-09-15 | Post Graduate             |   85000 | 51@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           10
+         52 | Laxmi Nair       | Female | 1980-12-21 | Post Graduate             |   80000 | 52@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           10
+         53 | Vikram Gupta     | Male   | 1977-03-12 | Graduate                  |   63000 | 53@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           11
+         54 | Anita Gupta      | Female | 1978-08-25 | Secondary                 |   42000 | 54@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           11
+         55 | Ravi Verma       | Male   | 2010-05-10 | Secondary                 |       0 | 55@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            9
+         56 | Sneha Verma      | Female | 2013-09-28 | Primary                   |       0 | 56@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            9
+         57 | Karthik Nair     | Male   | 2012-07-22 | Secondary                 |       0 | 57@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           10
+         58 | Deepa Nair       | Female | 2015-11-15 | Primary                   |       0 | 58@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           10
+         59 | Aryan Gupta      | Male   | 2011-02-18 | Secondary                 |       0 | 59@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           11
+         60 | Ritika Gupta     | Female | 2014-06-30 | Primary                   |       0 | 60@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           11
+         61 | Shankar Iyer     | Male   | 1949-05-22 | Illiterate                |   27000 | 61@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           13
+         62 | Radha Iyer       | Female | 1954-09-13 | Illiterate                |       0 | 62@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           13
+         63 | Govind Reddy     | Male   | 1950-12-10 | Primary                   |   26000 | 63@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           14
+         64 | Kamala Reddy     | Female | 1951-02-17 | Primary                   |       0 | 64@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           14
+         65 | Brijesh Sharma   | Male   | 1948-08-05 | Secondary                 |   31000 | 65@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           15
+         66 | Savita Sharma    | Female | 1956-11-30 | Primary                   |       0 | 66@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           15
+         67 | Mahadev Pillai   | Male   | 1952-07-20 | Illiterate                |   19000 | 67@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           16
+         68 | Leela Pillai     | Female | 1957-03-25 | Primary                   |       0 | 68@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           16
+         69 | Ramesh Iyer      | Male   | 1979-06-14 | Graduate                  |   72000 | 69@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           13
+         70 | Meera Iyer       | Female | 1982-10-19 | Graduate                  |   67000 | 70@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           13
+         71 | Vikram Reddy     | Male   | 1974-08-23 | Post Graduate             |   88000 | 71@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           14
+         72 | Anjali Reddy     | Female | 1981-11-11 | Post Graduate             |   81000 | 72@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           14
+         73 | Rajeev Sharma    | Male   | 1976-04-05 | Graduate                  |   64000 | 73@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           15
+         74 | Sangeeta Sharma  | Female | 1977-09-29 | Secondary                 |   41000 | 74@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           15
+         75 | Nikhil Iyer      | Male   | 2011-08-03 | Secondary                 |       0 | 75@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           13
+         76 | Riya Iyer        | Female | 2014-12-12 | Primary                   |       0 | 76@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           13
+         77 | Arjun Reddy      | Male   | 2013-06-18 | Secondary                 |       0 | 77@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           14
+         78 | Pooja Reddy      | Female | 2016-10-05 | Primary                   |       0 | 78@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           14
+         79 | Varun Sharma     | Male   | 2012-03-15 | Secondary                 |       0 | 79@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           15
+         80 | Kavya Sharma     | Female | 2015-07-27 | Primary                   |       0 | 80@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           15
+         81 | Surya Nair       | Male   | 1950-03-15 | Illiterate                |   25000 | 81@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           17
+         82 | Lakshmi Nair     | Female | 1955-08-10 | Illiterate                |       0 | 82@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           17
+         83 | Dinesh Verma     | Male   | 1952-11-23 | Primary                   |   28000 | 83@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           18
+         84 | Meenakshi Verma  | Female | 1953-06-05 | Primary                   |       0 | 84@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           18
+         85 | Rajinder Chauhan | Male   | 1949-09-17 | Secondary                 |   32000 | 85@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           19
+         86 | Sunita Chauhan   | Female | 1957-10-21 | Primary                   |       0 | 86@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           19
+         89 | Arvind Nair      | Male   | 1980-07-02 | Graduate                  |   74000 | 89@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           17
+         90 | Priya Nair       | Female | 1983-09-25 | Graduate                  |   69000 | 90@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           17
+         91 | Sandeep Verma    | Male   | 1975-05-14 | Post Graduate             |   86000 | 91@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           18
+         92 | Divya Verma      | Female | 1980-08-30 | Post Graduate             |   82000 | 92@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           18
+         93 | Neeraj Chauhan   | Male   | 1977-01-19 | Graduate                  |   65000 | 93@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           19
+         94 | Anita Chauhan    | Female | 1978-05-23 | Secondary                 |   42000 | 94@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           19
+         96 | Ishita Nair      | Female | 2013-11-11 | Primary                   |       0 | 96@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           17
+         97 | Harsh Verma      | Male   | 2012-04-28 | Secondary                 |       0 | 97@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           18
+         98 | Sneha Verma      | Female | 2015-06-17 | Primary                   |       0 | 98@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           18
+        100 | Tanvi Chauhan    | Female | 2014-07-22 | Primary                   |       0 | 100@panchayat.com | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           19
+         95 | Aarav Nair       | Male   | 2010-09-09 | Secondary                 |       0 | 95@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           17
+        104 | Bruce Wayne      | Male   | 2007-12-31 | Secondary                 | 10000.0 | 104@panchayat.com | $2b$12$49n/8tPKtbEyi8zExYxCDuIFDYbPsy93tiVyoDXIDoXnzhrHrT10m |            2
+(100 rows)
 
  household_id |               address                
 --------------+--------------------------------------
@@ -125,10 +123,9 @@
            17 | Building 33, Gandhi Chowk, Phulera
            18 | Building 26, Subhash Marg, Phulera
            19 | Building 11, Rajput Mohalla, Phulera
-           20 | Building 39, Station Road, Phulera
            21 | 35, Main Building, Phulera
            22 | Building 12, Main Circle, Phulera
-(22 rows)
+(21 rows)
 
  land_id | area_acres | crop_type | weight | year_recorded | citizen_id 
 ---------+------------+-----------+--------+---------------+------------
@@ -216,24 +213,21 @@
      184 |          5 | Coffee    |      4 |          2023 |         83
      185 |          4 | Wheat     |      3 |          2024 |         85
      186 |         10 | Rice      |      9 |          2020 |         85
-     187 |          5 | Maize     |      4 |          2021 |         87
-     188 |          6 | Cotton    |      5 |          2022 |         87
      189 |          5 | Sugarcane |      4 |          2023 |         89
      190 |          4 | Barley    |      3 |          2024 |         90
      191 |          7 | Coffee    |      6 |          2020 |         91
      192 |          5 | Wheat     |      4 |          2021 |         92
-     193 |          6 | Rice      |      5 |          2022 |         93
      194 |          5 | Maize     |      4 |          2023 |         94
      195 |          4 | Cotton    |      3 |          2024 |         89
-     196 |          8 | Sugarcane |      7 |          2020 |         90
      197 |          5 | Barley    |      4 |          2021 |         91
      198 |          6 | Coffee    |      5 |          2022 |         92
-     199 |          5 | Wheat     |      4 |          2023 |         93
      200 |          4 | Rice      |      3 |          2024 |         94
      201 |          1 | Wheat     |     50 |          2025 |          3
      110 |          4 | Maize     |      3 |          2024 |          9
      116 |          5 | Rice      |      4 |          2020 |          9
-(101 rows)
+     193 |          6 | Rice      |      5 |          2022 |        100
+     199 |          5 | Wheat     |      4 |          2023 |        100
+(98 rows)
 
  employee_id |    role    | citizen_id 
 -------------+------------+------------
@@ -325,14 +319,19 @@
        64 | Street Light  | Rajput Mohalla, Phulera |   20000 | 2025-03-02
 (64 rows)
 
- scheme_id |       name       |       description       
------------+------------------+-------------------------
-         1 | ABP Sadhan Yojna | Help the needy and poor
-(1 row)
+ scheme_id |        name        |                          description                           
+-----------+--------------------+----------------------------------------------------------------
+         1 | ABP Sadhan Yojna   | Help the needy and poor
+         2 | MGNREGA            | A Scheme to provide rural employment
+         3 | Single Girl Policy | A policy to support education of single girls in the household
+(3 rows)
 
  citizen_id | scheme_id | enrollment_date 
 ------------+-----------+-----------------
-(0 rows)
+          1 |         1 | 2025-03-03
+          9 |         2 | 2025-03-03
+         16 |         3 | 2025-03-03
+(3 rows)
 
  vaccination_id | citizen_id | vaccination_type | date_administered 
 ----------------+------------+------------------+-------------------
@@ -422,8 +421,6 @@
             284 |         84 | Flu              | 2021-12-18
             285 |         85 | Covid-19         | 2020-07-25
             286 |         86 | Mumps            | 2023-01-14
-            287 |         87 | HepatitisA       | 2019-09-30
-            288 |         88 | Polio            | 2022-07-09
             289 |         89 | Rubella          | 2021-11-01
             290 |         90 | Small Pox        | 2023-04-08
             291 |         91 | HepatitisB       | 2020-08-19
@@ -434,7 +431,6 @@
             296 |         96 | Polio            | 2023-03-27
             297 |         97 | Rubella          | 2019-11-17
             298 |         98 | Small Pox        | 2022-12-14
-            299 |         99 | Flu              | 2021-09-05
             300 |        100 | Covid-19         | 2020-06-22
             301 |          1 | Polio            | 2023-05-20
             302 |          2 | Mumps            | 2020-09-14
@@ -522,8 +518,6 @@
             384 |         84 | Flu              | 2022-11-22
             385 |         85 | Polio            | 2019-10-01
             386 |         86 | Mumps            | 2021-09-14
-            387 |         87 | HepatitisA       | 2020-08-16
-            388 |         88 | Rubella          | 2023-06-30
             389 |         89 | Small Pox        | 2022-12-18
             390 |         90 | Flu              | 2019-07-21
             391 |         91 | Covid-19         | 2021-08-05
@@ -534,11 +528,10 @@
             396 |         96 | Flu              | 2019-09-14
             397 |         97 | Covid-19         | 2023-05-01
             398 |         98 | HepatitisA       | 2020-08-29
-            399 |         99 | Small Pox        | 2021-12-25
             400 |        100 | Mumps            | 2022-10-31
             401 |         11 | Covid-19         | 2021-05-10
             402 |         11 | Covid-19         | 2021-05-10
-(202 rows)
+(196 rows)
 
  medical_id | citizen_id | health_status | medical_condition  | date_recorded 
 ------------+------------+---------------+--------------------+---------------
@@ -762,10 +755,6 @@
         478 |         85 | Critical      | Liver Disease      | 2024-02-01
         479 |         86 | Poor          | Arthritis          | 2021-02-07
         480 |         86 | Critical      | Kidney Disease     | 2023-10-20
-        481 |         87 | Fair          | Low Blood Pressure | 2020-12-05
-        482 |         87 | Poor          | Diabetes           | 2022-11-14
-        483 |         88 | Critical      | Liver Disease      | 2019-08-25
-        484 |         88 | Fair          | Hypertension       | 2023-07-22
         485 |         89 | Fair          | Low Blood Pressure | 2019-09-10
         486 |         89 | Poor          | Arthritis          | 2021-11-12
         487 |         89 | Good          | Asthma             | 2023-12-28
@@ -796,16 +785,14 @@
         512 |         98 | Fair          | Hypertension       | 2021-09-10
         513 |         98 | Good          | Allergies          | 2023-07-15
         514 |         98 | Excellent     | Healthy            | 2024-02-28
-        515 |         99 | Excellent     | Healthy            | 2022-02-25
-        516 |         99 | Fair          | Low Blood Pressure | 2023-11-20
-        517 |         99 | Good          | Asthma             | 2022-07-08
         518 |        100 | Good          | Allergies          | 2020-10-14
         519 |        100 | Fair          | Hypertension       | 2022-12-28
         520 |        100 | Excellent     | Healthy            | 2023-08-10
         521 |          5 | Excellent     | Healthy            | 2025-03-03
         522 |         50 | Poor          | Diabetes           | 2025-03-03
         523 |         51 | Excellent     | Healthy            | 2025-03-03
-(263 rows)
+        524 |          2 | Excellent     | Healthy            | 2025-03-03
+(257 rows)
 
  tax_id |     type     | amount | payment_status |    date    | citizen_id 
 --------+--------------+--------+----------------+------------+------------
@@ -854,13 +841,6 @@
     592 | Income Tax   | 162000 | Paid           | 2022-03-01 |         14
     593 | Utility Tax  | 158000 | Pending        | 2021-03-01 |         14
     594 | Property Tax | 157000 | Paid           | 2020-03-01 |         14
-    595 | Income Tax   |  75000 | Pending        | 2025-12-31 |          1
-    596 | Income Tax   |  98000 | Pending        | 2025-12-31 |          3
-    597 | Income Tax   | 115000 | Pending        | 2025-12-31 |          5
-    598 | Income Tax   | 282000 | Pending        | 2025-12-31 |          9
-    600 | Income Tax   | 335000 | Pending        | 2025-12-31 |         11
-    601 | Income Tax   | 240000 | Pending        | 2025-12-31 |         13
-    602 | Income Tax   | 162000 | Pending        | 2025-12-31 |         14
     603 | Road Tax     |  88000 | Paid           | 2024-03-01 |         21
     604 | Utility Tax  |  87000 | Pending        | 2023-03-01 |         21
     605 | Income Tax   |  86000 | Paid           | 2022-03-01 |         21
@@ -1026,11 +1006,6 @@
     765 | Income Tax   | 126000 | Paid           | 2022-03-01 |         85
     766 | Utility Tax  | 125000 | Pending        | 2021-03-01 |         85
     767 | Water Tax    | 124000 | Paid           | 2020-03-01 |         85
-    768 | Road Tax     |  84000 | Pending        | 2024-03-01 |         87
-    769 | Water Tax    |  83000 | Paid           | 2023-03-01 |         87
-    770 | Utility Tax  |  82000 | Pending        | 2022-03-01 |         87
-    771 | Property Tax |  81000 | Paid           | 2021-03-01 |         87
-    772 | Income Tax   |  80000 | Pending        | 2020-03-01 |         87
     773 | Utility Tax  | 296000 | Paid           | 2024-03-01 |         89
     774 | Income Tax   | 295000 | Pending        | 2023-03-01 |         89
     775 | Water Tax    | 293000 | Paid           | 2022-03-01 |         89
@@ -1051,48 +1026,12 @@
     790 | Utility Tax  | 325000 | Paid           | 2022-03-01 |         92
     791 | Property Tax | 323500 | Pending        | 2021-03-01 |         92
     792 | Water Tax    | 320000 | Paid           | 2020-03-01 |         92
-    793 | Water Tax    | 260000 | Pending        | 2024-03-01 |         93
-    794 | Income Tax   | 259000 | Paid           | 2023-03-01 |         93
-    795 | Property Tax | 257000 | Pending        | 2022-03-01 |         93
-    796 | Road Tax     | 255500 | Paid           | 2021-03-01 |         93
-    797 | Utility Tax  | 252000 | Pending        | 2020-03-01 |         93
     798 | Utility Tax  | 168000 | Paid           | 2024-03-01 |         94
     799 | Water Tax    | 167000 | Pending        | 2023-03-01 |         94
     800 | Road Tax     | 165000 | Paid           | 2022-03-01 |         94
     801 | Property Tax | 163500 | Pending        | 2021-03-01 |         94
     802 | Income Tax   | 160000 | Paid           | 2020-03-01 |         94
-    803 | Income Tax   |  86000 | Pending        | 2025-12-31 |         21
-    804 | Income Tax   | 105500 | Pending        | 2025-12-31 |         23
-    805 | Income Tax   |  73500 | Pending        | 2025-12-31 |         27
-    806 | Income Tax   | 280000 | Pending        | 2025-12-31 |         29
-    807 | Income Tax   | 267500 | Pending        | 2025-12-31 |         30
-    808 | Income Tax   | 344000 | Pending        | 2025-12-31 |         31
-    809 | Income Tax   | 245000 | Pending        | 2025-12-31 |         33
-    810 | Income Tax   | 163000 | Pending        | 2025-12-31 |         34
-    811 | Income Tax   |  97000 | Pending        | 2025-12-31 |         41
-    812 | Income Tax   | 118000 | Pending        | 2025-12-31 |         45
-    813 | Income Tax   | 280000 | Pending        | 2025-12-31 |         49
-    814 | Income Tax   | 258000 | Pending        | 2025-12-31 |         50
-    815 | Income Tax   | 336000 | Pending        | 2025-12-31 |         51
-    816 | Income Tax   | 250000 | Pending        | 2025-12-31 |         53
-    817 | Income Tax   | 168000 | Pending        | 2025-12-31 |         54
-    818 | Income Tax   | 105000 | Pending        | 2025-12-31 |         61
-    819 | Income Tax   | 122000 | Pending        | 2025-12-31 |         65
-    820 | Income Tax   |  73000 | Pending        | 2025-12-31 |         67
-    821 | Income Tax   | 263500 | Pending        | 2025-12-31 |         70
-    822 | Income Tax   | 351000 | Pending        | 2025-12-31 |         71
-    823 | Income Tax   | 321000 | Pending        | 2025-12-31 |         72
-    824 | Income Tax   | 251500 | Pending        | 2025-12-31 |         73
-    825 | Income Tax   | 164000 | Pending        | 2025-12-31 |         74
-    826 | Income Tax   |  96000 | Pending        | 2025-12-31 |         81
-    827 | Income Tax   | 112000 | Pending        | 2025-12-31 |         83
-    828 | Income Tax   | 126000 | Pending        | 2025-12-31 |         85
-    829 | Income Tax   |  80000 | Pending        | 2025-12-31 |         87
-    830 | Income Tax   | 295000 | Pending        | 2025-12-31 |         89
-    831 | Income Tax   | 273000 | Pending        | 2025-12-31 |         90
-    832 | Income Tax   | 328000 | Pending        | 2025-12-31 |         92
-    833 | Income Tax   | 259000 | Pending        | 2025-12-31 |         93
-(283 rows)
+(235 rows)
 
  env_id |  aqi  | temperature | humidity | rainfall | date_recorded 
 --------+-------+-------------+----------+----------+---------------
@@ -1206,7 +1145,8 @@
          30 | Desert       | Surya Dhaan   | 1404.36
          31 | Lake         | Vans River    |     100
          32 | Mountain     | HighRise      |     500
-(32 rows)
+         33 | River        | Narmada       |   20000
+(33 rows)
 
  husband_id | wife_id | marriage_date 
 ------------+---------+---------------
@@ -1241,13 +1181,12 @@
          81 |      82 | 1962-06-10
          83 |      84 | 1969-08-25
          85 |      86 | 1970-10-17
-         87 |      88 | 1974-05-30
          89 |      90 | 1977-12-02
          91 |      92 | 1979-06-18
          93 |      94 | 1961-09-22
          17 |      15 | 2025-03-05
          95 |      96 | 2025-03-03
-(37 rows)
+(36 rows)
 
  child_id | father_id | mother_id | birth_date 
 ----------+-----------+-----------+------------
@@ -1255,7 +1194,6 @@
        96 |        89 |        90 | 2013-11-11
        97 |        91 |        92 | 2012-04-28
        98 |        91 |        92 | 2015-06-17
-       99 |        93 |        94 | 2011-02-14
       100 |        93 |        94 | 2014-07-22
        89 |        81 |        82 | 1980-07-02
        91 |        83 |        84 | 1975-05-14
@@ -1296,9 +1234,8 @@
        18 |        11 |        12 | 2017-09-11
        19 |        13 |        14 | 2011-01-05
        20 |        13 |        14 | 2016-03-30
-      101 |         6 |         5 | 2025-03-03
       102 |        93 |        94 | 2025-03-03
-(47 rows)
+(45 rows)
 
  citizen_id |    date    |     cause      
 ------------+------------+----------------
@@ -1315,9 +1252,9 @@
          91 | 2016-05-09 | Accident
          52 | 2021-02-14 | Malaria
          69 | 2022-04-18 | Accident
-         88 | 2021-11-27 | Covid-19
          94 | 2016-05-09 | Malaria
          10 | 2025-03-02 | Natural Causes
+         93 | 2025-03-04 | Accident
 (16 rows)
 
  f_id | type  |         name         |       habitat       | count 
