@@ -23,49 +23,49 @@ const CensusGeoModal: React.FC = () => {
     const [minAreaFilter, setMinAreaFilter] = useState<string>("");
     const [maxAreaFilter, setMaxAreaFilter] = useState<string>("");
 
-    useEffect(() => {
-        const fetchGeoRecords = async () => {
-            setLoading(true);
-            setError("");
+    // useEffect(() => {
+    //     const fetchGeoRecords = async () => {
+    //         setLoading(true);
+    //         setError("");
 
-            try {
-                const response = await fetch(`http://localhost:8000/api/${citizenId}/geo`,
-                    {
-                        method: "GET",
-                        headers: {
-                            "Content-Type": "application/json",
-                            "Authorization": "Bearer " + localStorage.getItem("token"),
-                        },
-                    }
-                );
-                const data: GeoRecord[] = await response.json();
-                console.log(data);
-                setGeoRecords(data);
-            } catch (err) {
-                console.error(err);
-                setError("Error loading geographic records");
-            }
+    //         try {
+    //             const response = await fetch(`http://localhost:8000/api/${citizenId}/geo`,
+    //                 {
+    //                     method: "GET",
+    //                     headers: {
+    //                         "Content-Type": "application/json",
+    //                         "Authorization": "Bearer " + localStorage.getItem("token"),
+    //                     },
+    //                 }
+    //             );
+    //             const data: GeoRecord[] = await response.json();
+    //             console.log(data);
+    //             setGeoRecords(data);
+    //         } catch (err) {
+    //             console.error(err);
+    //             setError("Error loading geographic records");
+    //         }
 
-            setLoading(false);
-        };
+    //         setLoading(false);
+    //     };
 
-        fetchGeoRecords();
-    }, [citizenId]);
+    //     fetchGeoRecords();
+    // }, [citizenId]);
 
-    useEffect(() => {
-        const filtered = geoRecords.filter((record) => {
-            const minArea = minAreaFilter === "" ? Number.NEGATIVE_INFINITY : Number(minAreaFilter);
-            const maxArea = maxAreaFilter === "" ? Number.POSITIVE_INFINITY : Number(maxAreaFilter);
+    // useEffect(() => {
+    //     const filtered = geoRecords.filter((record) => {
+    //         const minArea = minAreaFilter === "" ? Number.NEGATIVE_INFINITY : Number(minAreaFilter);
+    //         const maxArea = maxAreaFilter === "" ? Number.POSITIVE_INFINITY : Number(maxAreaFilter);
 
-            return (
-                (nameFilter === "" || record.name.toLowerCase().includes(nameFilter.toLowerCase())) &&
-                (typeFilter === "" || record.feature_type === typeFilter) &&
-                (record.area >= minArea && record.area <= maxArea)
-            );
-        });
+    //         return (
+    //             (nameFilter === "" || record.name.toLowerCase().includes(nameFilter.toLowerCase())) &&
+    //             (typeFilter === "" || record.feature_type === typeFilter) &&
+    //             (record.area >= minArea && record.area <= maxArea)
+    //         );
+    //     });
 
-        setFilteredRecords(filtered);
-    }, [nameFilter, typeFilter, minAreaFilter, maxAreaFilter, geoRecords]);
+    //     setFilteredRecords(filtered);
+    // }, [nameFilter, typeFilter, minAreaFilter, maxAreaFilter, geoRecords]);
 
     return (
         <div className="geo-container card-holder">
