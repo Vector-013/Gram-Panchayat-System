@@ -40,6 +40,7 @@ import MarriageQueryForm from './pages/census_dep/marriages';
 import CensusEnvForm from './pages/census_dep/CensusEnvironment';
 import FloraFaunaQueryForm from './pages/census_dep/florafauna';
 import CensusGeoModal from './pages/census_dep/CensusGeo';
+import BirthDeathMarriageChart from './pages/census_dep/ppl_analytics';
 
 import WelfareDashboard from './pages/welfare_dep/WelfareDashboard';
 import WelfareModal from './pages/welfare_dep/WelfareModal';
@@ -164,6 +165,7 @@ const App: React.FC = () => {
             <Route path="flora-query" element={<FloraFaunaQueryForm />} />
             <Route path="geo-query" element={<CensusGeoModal />} />
             <Route path="env-analytics" element={<EnvironmentalDataComponent />}/>
+            <Route path="ppl-analytics" element={<ProtectedRoute element={<BirthDeathMarriageChart />} />} />
         </Route>
 
         <Route path="/employee-dashboard/:empId" element={<ProtectedRoute element={<EmployeeDashboard />} />}>
