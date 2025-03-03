@@ -56,7 +56,7 @@ const ViewModal: React.FC = () => {
     <div className="insert-modal-container card-holder">
       <h2 className="insert-modal-title">View Records</h2>
 
-      {role === "pradhan" || role === "admin" ? (
+      {role === "pradhan" || role === "admin" || role === 'employee' ? (
         <button
           onClick={handleViewCitizens}
           className="insert-form-submit"
