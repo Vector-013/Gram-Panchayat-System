@@ -1,6 +1,8 @@
  citizen_id |       name       | gender |    dob     | educational_qualification | income |       email       |                       hashed_password                        | household_id 
 ------------+------------------+--------+------------+---------------------------+--------+-------------------+--------------------------------------------------------------+--------------
+         30 | Rekha Sharma     | Female | 1984-05-10 | Post Graduate             |  68000 | 30@panchayat.com  | $2b$12$qHEvGDDgBK6Z0MFoq0cIguQgW/R2vnSEt2BtQgdZ86Hanlc3fGbzK |             
           5 | Surendra Iyer    | Male   | 1945-07-09 | Post Graduate             |  90000 | 5@panchayat.com   | $2b$12$n2HGdCtYMWkd9zQ.hYGXZ.skppFAgqSE/i1nHwkdZaKZq.hrt27zS |            3
+         17 | Karan Patel      | Male   | 2012-04-25 | Secondary                 |      0 | 17@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            1
           1 | Rajesh Sharma    | Male   | 1950-05-14 | Illiterate                |  20000 | 1@panchayat.com   | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            1
           2 | Kamla Sharma     | Female | 1955-08-22 | Illiterate                |      0 | 2@panchayat.com   | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            1
           3 | Harish Patel     | Male   | 1948-11-03 | Primary                   |  25000 | 3@panchayat.com   | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            2
@@ -16,7 +18,6 @@
          14 | Sunita Iyer      | Female | 1980-07-21 | Secondary                 |  40000 | 14@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            3
          15 | Aryan Sharma     | Male   | 2010-05-12 | Secondary                 |      0 | 15@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            1
          16 | Siya Sharma      | Female | 2015-08-18 | Primary                   |      0 | 16@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            1
-         17 | Karan Patel      | Male   | 2012-04-25 | Secondary                 |      0 | 17@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            2
          18 | Riya Patel       | Female | 2017-09-11 | Primary                   |      0 | 18@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            2
          19 | Neel Iyer        | Male   | 2011-01-05 | Secondary                 |      0 | 19@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            3
          20 | Tara Iyer        | Female | 2016-03-30 | Primary                   |      0 | 20@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            3
@@ -29,7 +30,7 @@
          27 | Keshav Pillai    | Male   | 1950-05-20 | Illiterate                |  19000 | 27@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            8
          28 | Gita Pillai      | Female | 1952-08-29 | Primary                   |      0 | 28@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            8
          29 | Naveen Sharma    | Male   | 1979-01-18 | Graduate                  |  72000 | 29@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            5
-         30 | Rekha Sharma     | Female | 1984-05-10 | Graduate                  |  68000 | 30@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            5
+        102 | Rishika Kumari   |        | 2025-03-03 | Illiterate                |      0 | 102@panchayat.com | $2b$12$E5ZtH1s4fmxPJxf2uYWW8u042NExl0ZNaN57pcdLE2fbfH6vw1yDG |           19
          31 | Sandeep Iyer     | Male   | 1977-08-05 | Post Graduate             |  86000 | 31@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            6
          32 | Kavita Iyer      | Female | 1981-11-20 | Post Graduate             |  82000 | 32@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            6
          33 | Rahul Desai      | Male   | 1976-02-22 | Graduate                  |  62000 | 33@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |            7
@@ -94,13 +95,14 @@
          92 | Divya Verma      | Female | 1980-08-30 | Post Graduate             |  82000 | 92@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           18
          93 | Neeraj Chauhan   | Male   | 1977-01-19 | Graduate                  |  65000 | 93@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           19
          94 | Anita Chauhan    | Female | 1978-05-23 | Secondary                 |  42000 | 94@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           19
-         95 | Aarav Nair       | Male   | 2010-09-09 | Secondary                 |      0 | 95@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           17
          96 | Ishita Nair      | Female | 2013-11-11 | Primary                   |      0 | 96@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           17
          97 | Harsh Verma      | Male   | 2012-04-28 | Secondary                 |      0 | 97@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           18
          98 | Sneha Verma      | Female | 2015-06-17 | Primary                   |      0 | 98@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           18
          99 | Rohan Chauhan    | Male   | 2011-02-14 | Secondary                 |      0 | 99@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           19
         100 | Tanvi Chauhan    | Female | 2014-07-22 | Primary                   |      0 | 100@panchayat.com | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           19
-(100 rows)
+         95 | Aarav Nair       | Male   | 2010-09-09 | Secondary                 |      0 | 95@panchayat.com  | $2b$12$2bEZbQA2tTMMQ.tDk6rQwubUYDPisr4pZj/FC.tLevOCZwECdn03W |           17
+        101 | Baby Lorcan      | Male   | 2025-03-03 | Illiterate                |      0 | 101@panchayat.com | $2b$12$Mcbp7RMNMauq3Xkvc3MsAOVW3bP3IhyGE1lByGHNTep3eshj.hOIG |            3
+(102 rows)
 
  household_id |               address                
 --------------+--------------------------------------
@@ -139,13 +141,11 @@
      107 |          4 | Coffee    |      3 |          2021 |          7
      108 |          6 | Wheat     |      5 |          2022 |          7
      109 |          5 | Rice      |      4 |          2023 |          9
-     110 |          4 | Maize     |      3 |          2024 |         10
      111 |          8 | Cotton    |      7 |          2020 |         11
      112 |          9 | Sugarcane |      8 |          2021 |         12
      113 |          5 | Barley    |      4 |          2022 |         13
      114 |          6 | Coffee    |      5 |          2023 |         14
      115 |         10 | Wheat     |      9 |          2024 |          9
-     116 |          5 | Rice      |      4 |          2020 |         10
      117 |          6 | Maize     |      5 |          2021 |         11
      118 |          5 | Cotton    |      4 |          2022 |         12
      119 |          4 | Sugarcane |      3 |          2023 |         13
@@ -231,6 +231,8 @@
      199 |          5 | Wheat     |      4 |          2023 |         93
      200 |          4 | Rice      |      3 |          2024 |         94
      201 |          1 | Wheat     |     50 |          2025 |          3
+     110 |          4 | Maize     |      3 |          2024 |          9
+     116 |          5 | Rice      |      4 |          2020 |          9
 (101 rows)
 
  employee_id |    role    | citizen_id 
@@ -252,7 +254,8 @@
           30 | Treasurer  |         89
           31 | Member     |          2
           32 | Pradhan    |          1
-(17 rows)
+          33 | Secretary  |          4
+(18 rows)
 
  asset_id |     type      |        location         |  value  | installation_date 
 ----------+---------------+-------------------------+---------+-------------------
@@ -799,7 +802,10 @@
         518 |        100 | Good          | Allergies          | 2020-10-14
         519 |        100 | Fair          | Hypertension       | 2022-12-28
         520 |        100 | Excellent     | Healthy            | 2023-08-10
-(260 rows)
+        521 |          5 | Excellent     | Healthy            | 2025-03-03
+        522 |         50 | Poor          | Diabetes           | 2025-03-03
+        523 |         51 | Excellent     | Healthy            | 2025-03-03
+(263 rows)
 
  tax_id |     type     | amount | payment_status |    date    | citizen_id 
 --------+--------------+--------+----------------+------------+------------
@@ -828,11 +834,6 @@
     567 | Income Tax   | 282000 | Pending        | 2022-03-01 |          9
     568 | Road Tax     | 278000 | Paid           | 2021-03-01 |          9
     569 | Property Tax | 277000 | Paid           | 2020-03-01 |          9
-    570 | Road Tax     | 260000 | Paid           | 2024-03-01 |         10
-    571 | Property Tax | 255000 | Pending        | 2023-03-01 |         10
-    572 | Water Tax    | 262000 | Paid           | 2022-03-01 |         10
-    573 | Income Tax   | 258000 | Pending        | 2021-03-01 |         10
-    574 | Utility Tax  | 257000 | Paid           | 2020-03-01 |         10
     575 | Property Tax | 340000 | Pending        | 2024-03-01 |         11
     576 | Income Tax   | 335000 | Paid           | 2023-03-01 |         11
     577 | Road Tax     | 342000 | Pending        | 2022-03-01 |         11
@@ -857,7 +858,6 @@
     596 | Income Tax   |  98000 | Pending        | 2025-12-31 |          3
     597 | Income Tax   | 115000 | Pending        | 2025-12-31 |          5
     598 | Income Tax   | 282000 | Pending        | 2025-12-31 |          9
-    599 | Income Tax   | 258000 | Pending        | 2025-12-31 |         10
     600 | Income Tax   | 335000 | Pending        | 2025-12-31 |         11
     601 | Income Tax   | 240000 | Pending        | 2025-12-31 |         13
     602 | Income Tax   | 162000 | Pending        | 2025-12-31 |         14
@@ -1061,7 +1061,38 @@
     800 | Road Tax     | 165000 | Paid           | 2022-03-01 |         94
     801 | Property Tax | 163500 | Pending        | 2021-03-01 |         94
     802 | Income Tax   | 160000 | Paid           | 2020-03-01 |         94
-(258 rows)
+    803 | Income Tax   |  86000 | Pending        | 2025-12-31 |         21
+    804 | Income Tax   | 105500 | Pending        | 2025-12-31 |         23
+    805 | Income Tax   |  73500 | Pending        | 2025-12-31 |         27
+    806 | Income Tax   | 280000 | Pending        | 2025-12-31 |         29
+    807 | Income Tax   | 267500 | Pending        | 2025-12-31 |         30
+    808 | Income Tax   | 344000 | Pending        | 2025-12-31 |         31
+    809 | Income Tax   | 245000 | Pending        | 2025-12-31 |         33
+    810 | Income Tax   | 163000 | Pending        | 2025-12-31 |         34
+    811 | Income Tax   |  97000 | Pending        | 2025-12-31 |         41
+    812 | Income Tax   | 118000 | Pending        | 2025-12-31 |         45
+    813 | Income Tax   | 280000 | Pending        | 2025-12-31 |         49
+    814 | Income Tax   | 258000 | Pending        | 2025-12-31 |         50
+    815 | Income Tax   | 336000 | Pending        | 2025-12-31 |         51
+    816 | Income Tax   | 250000 | Pending        | 2025-12-31 |         53
+    817 | Income Tax   | 168000 | Pending        | 2025-12-31 |         54
+    818 | Income Tax   | 105000 | Pending        | 2025-12-31 |         61
+    819 | Income Tax   | 122000 | Pending        | 2025-12-31 |         65
+    820 | Income Tax   |  73000 | Pending        | 2025-12-31 |         67
+    821 | Income Tax   | 263500 | Pending        | 2025-12-31 |         70
+    822 | Income Tax   | 351000 | Pending        | 2025-12-31 |         71
+    823 | Income Tax   | 321000 | Pending        | 2025-12-31 |         72
+    824 | Income Tax   | 251500 | Pending        | 2025-12-31 |         73
+    825 | Income Tax   | 164000 | Pending        | 2025-12-31 |         74
+    826 | Income Tax   |  96000 | Pending        | 2025-12-31 |         81
+    827 | Income Tax   | 112000 | Pending        | 2025-12-31 |         83
+    828 | Income Tax   | 126000 | Pending        | 2025-12-31 |         85
+    829 | Income Tax   |  80000 | Pending        | 2025-12-31 |         87
+    830 | Income Tax   | 295000 | Pending        | 2025-12-31 |         89
+    831 | Income Tax   | 273000 | Pending        | 2025-12-31 |         90
+    832 | Income Tax   | 328000 | Pending        | 2025-12-31 |         92
+    833 | Income Tax   | 259000 | Pending        | 2025-12-31 |         93
+(283 rows)
 
  env_id |  aqi  | temperature | humidity | rainfall | date_recorded 
 --------+-------+-------------+----------+----------+---------------
@@ -1173,7 +1204,9 @@
          28 | River        | Patali Nala   |  180.55
          29 | Desert       | Ujwal Thar    |  908.68
          30 | Desert       | Surya Dhaan   | 1404.36
-(30 rows)
+         31 | Lake         | Vans River    |     100
+         32 | Mountain     | HighRise      |     500
+(32 rows)
 
  husband_id | wife_id | marriage_date 
 ------------+---------+---------------
@@ -1212,7 +1245,9 @@
          89 |      90 | 1977-12-02
          91 |      92 | 1979-06-18
          93 |      94 | 1961-09-22
-(35 rows)
+         17 |      15 | 2025-03-05
+         95 |      96 | 2025-03-03
+(37 rows)
 
  child_id | father_id | mother_id | birth_date 
 ----------+-----------+-----------+------------
@@ -1261,10 +1296,12 @@
        18 |        11 |        12 | 2017-09-11
        19 |        13 |        14 | 2011-01-05
        20 |        13 |        14 | 2016-03-30
-(45 rows)
+      101 |         6 |         5 | 2025-03-03
+      102 |        93 |        94 | 2025-03-03
+(47 rows)
 
- citizen_id |    date    |    cause     
-------------+------------+--------------
+ citizen_id |    date    |     cause      
+------------+------------+----------------
           7 | 2015-06-12 | Heart attack
          12 | 2018-09-24 | Stroke
          25 | 2017-12-05 | Heart attack
@@ -1280,13 +1317,13 @@
          69 | 2022-04-18 | Accident
          88 | 2021-11-27 | Covid-19
          94 | 2016-05-09 | Malaria
-(15 rows)
+         10 | 2025-03-02 | Natural Causes
+(16 rows)
 
  f_id | type  |         name         |       habitat       | count 
 ------+-------+----------------------+---------------------+-------
     1 | Fauna | Langur               | Village Groves      |    14
     2 | Flora | Coconut              | Agricultural Fields |    62
-    3 | Flora | Tamarind             | Agricultural Fields |    54
     4 | Flora | Jackfruit            | Scrublands          |    55
     5 | Flora | Jamun                | Grasslands          |    74
     6 | Flora | Guava                | Riverbanks          |    61
@@ -1384,6 +1421,7 @@
    98 | Flora | Khejri               | Grasslands          |    55
    99 | Flora | Guava                | Riverbanks          |    51
   100 | Fauna | Mongoose             | Village Groves      |    12
+    3 | Flora | Tamarind             | Forest              |    25
 (100 rows)
 
  budget_id |     category      |  amount  |  spent  | created_at 

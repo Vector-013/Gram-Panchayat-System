@@ -34,11 +34,14 @@ const ITModal: React.FC = () => {
                     <div className="col">
                         <RecordCard title="Geo Record" to_link="geo-query" onRedirect={() => alert("Redirecting to Geo Physical Record")} />
                     </div>
-
+                 
                 </div>
-                <div className="row justify-content-center">
-                    <div className="col-md-6">
-                        <RecordCard title="Analytics" to_link="env-analytics" onRedirect={() => alert("Redirecting to env Physical Record")} />
+                 <div className="row">
+                    <div className="col">
+                        <RecordCard title="Environment Analytics" to_link="env-analytics" onRedirect={() => alert("Redirecting to env Physical Record")} />
+                    </div>
+                     <div className="col">
+                        <RecordCard title="People Analytics" to_link="ppl-analytics" onRedirect={() => alert("Redirecting to env Physical Record")} />
                     </div>
                 </div>
 
