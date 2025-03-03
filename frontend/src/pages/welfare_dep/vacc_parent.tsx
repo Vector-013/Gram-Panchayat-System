@@ -18,7 +18,7 @@ const VaccineDataModal: React.FC = () => {
     const [vaccineType, setVaccineType] = useState("Covid-19");
     const [startDate, setStartDate] = useState("2020-01-01");
     const [endDate, setEndDate] = useState("2023-12-31");
-    const [parentQualification, setParentQualification] = useState("All");
+    const [parentQualification, setParentQualification] = useState("");
     const [records, setRecords] = useState<VaccineRecord[]>([]);
     const [filteredRecords, setFilteredRecords] = useState<VaccineRecord[]>([]);
     const [loading, setLoading] = useState<boolean>(false);
@@ -47,7 +47,7 @@ const VaccineDataModal: React.FC = () => {
 
             console.log(requestBody);
 
-            const response = await fetch("http://127.0.0.1:8000/welfare/vaccines", {
+            const response = await fetch("http://localhost:8000/welfare/vaccines", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" , "Authorization": `Bearer ${localStorage.getItem("token")}`},
                 body: JSON.stringify(requestBody),
@@ -118,7 +118,16 @@ const VaccineDataModal: React.FC = () => {
             
             <form className="vaccine-query-form" onSubmit={handleSubmit}>
                 <label className="vaccine-query-label">Vaccine Type:</label>
-                <input type="text" value={vaccineType} onChange={(e) => setVaccineType(e.target.value)} className="vaccine-query-input" />
+                <select className="vaccine-query-input" value={vaccineType} onChange={(e) => setVaccineType(e.target.value)}>
+                    <option value="Covid-19">Covid-19</option>
+                    <option value="Polio">Polio</option>
+                    <option value="HepatitisA">Hepatitis A</option>
+                    <option value="HepatitisB">Hepatitis B</option>
+                    <option value="Flu">Flu</option>
+                    <option value="Rubella">Rubella</option>
+                    <option value="Mumps">Mumps</option>
+                    <option value="Small Pox">Small Pox</option>
+                </select>
                 
                 <label className="vaccine-query-label">Date Range:</label>
                 <div className="vaccine-query-range">
@@ -129,7 +138,7 @@ const VaccineDataModal: React.FC = () => {
                 
                 <label className="vaccine-query-label">Parent Qualification:</label>
                 <select className="vaccine-query-input" value={parentQualification} onChange={(e) => setParentQualification(e.target.value)}>
-                    <option value="All">All</option>
+                    <option value="">All</option>
                     <option value="Illiterate">Illiterate</option>
                     <option value="Primary">Primary</option>
                     <option value="Secondary">Secondary</option>

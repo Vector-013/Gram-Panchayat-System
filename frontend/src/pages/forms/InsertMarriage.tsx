@@ -22,7 +22,7 @@ const InsertMarriage: React.FC = () => {
         };
 
         try {
-            const response = await fetch("http://localhost:8000/marriages/", {
+            const response = await fetch("http://localhost:8000/marriage/", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

@@ -5,7 +5,6 @@ const InsertDeath: React.FC = () => {
     const [citizenId, setCitizenId] = useState<number | "">("");
     const [dateOfDeath, setDateOfDeath] = useState<string>("");
     const [cause, setCause] = useState<string>("");
-    const [password, setPassword] = useState<string>("");
     const [loading, setLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
     const [success, setSuccess] = useState<string | null>(null);
@@ -18,13 +17,12 @@ const InsertDeath: React.FC = () => {
 
         const requestBody = {
             citizen_id: citizenId === "" ? null : citizenId,
-            date_of_death: dateOfDeath,
-            cause,
-            password,
+            date: dateOfDeath,
+            cause
         };
 
         try {
-            const response = await fetch("http://localhost:8000/api/death/insert", {
+            const response = await fetch("http://localhost:8000/death-event", {
                 method: "POST",
                 headers: { "Content-Type": "application/json", "Authorization": `Bearer ${localStorage.getItem("token")}` },
                 body: JSON.stringify(requestBody),
@@ -38,7 +36,6 @@ const InsertDeath: React.FC = () => {
             setCitizenId("");
             setDateOfDeath("");
             setCause("");
-            setPassword("");
         } catch (err: any) {
             setError(err.message);
         }
@@ -75,15 +72,6 @@ const InsertDeath: React.FC = () => {
                     type="text" 
                     value={cause} 
                     onChange={(e) => setCause(e.target.value)} 
-                    className="insert-form-input" 
-                    required 
-                />
-
-                <label className="insert-form-label">Password:</label>
-                <input 
-                    type="password" 
-                    value={password} 
-                    onChange={(e) => setPassword(e.target.value)} 
                     className="insert-form-input" 
                     required 
                 />

@@ -35,10 +35,10 @@ const CitizenModal = () => {
                 </div>
                 <div className="row">
                     <div className="col">
-                        <RecordCard title="Flora Fauna Record" onRedirect={() => alert("Redirecting to Landlord Record")} />
+                        <RecordCard to_link="flora_fauna" title="Flora Fauna Record" onRedirect={() => alert("Redirecting to Landlord Record")} />
                     </div>
                     <div className="col">
-                        <RecordCard title="Assets Record" onRedirect={() => alert("Redirecting to Medical Record")} />
+                        <RecordCard to_link="assets" title="Assets Record" onRedirect={() => alert("Redirecting to Medical Record")} />
                     </div>
                     <div className="col">
                         <RecordCard to_link="geo" title="Geo Features Record" onRedirect={() => alert("Redirecting to Medical Record")} />

@@ -19,6 +19,10 @@ import deleteRecordImage from "../../../../icons/delete.png";
 import analyticsRecordImage from "../../../../icons/analytics.png";
 import incomeRecordImage from "../../../../icons/income.png";
 import educationRecordImage from "../../../../icons/education.png";
+import birthRecordImage from "../../../../icons/birth.png";
+import deathRecordImage from "../../../../icons/death.png";
+import marriageRecordImage from "../../../../icons/marriage.png";
+import adminRecordImage from "../../../../icons/admin.png";
 
 interface RecordCardProps {
   title: string;
@@ -31,7 +35,7 @@ const RecordCard: React.FC<RecordCardProps> = ({ title, onRedirect, to_link }) =
   let src = "";
   if (title === "Land Record") {
     src = landRecordImage;
-  } else if (title === "Health Record") {
+  } else if (title === "Health Record" || title === "Medical Record") {
     src = medicalRecordImage;
   } else if (title === "Tax Record") {
     src = taxRecordImage;
@@ -63,6 +67,16 @@ const RecordCard: React.FC<RecordCardProps> = ({ title, onRedirect, to_link }) =
     src = incomeRecordImage;
   } else if (title === "Education Record") {
     src = educationRecordImage;
+  } else if (title === "Birth Record") {
+    src = birthRecordImage;
+  }
+  else if (title === "Death Record") {
+    src = deathRecordImage;
+  }
+  else if (title === "Marriage Record") {
+    src = marriageRecordImage;
+  }else if (title === "Super User") {
+    src = adminRecordImage;
   }
 
   return (

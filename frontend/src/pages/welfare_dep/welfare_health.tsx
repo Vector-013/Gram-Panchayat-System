@@ -11,13 +11,13 @@ interface MedicalRecord {
   name: string;
 }
 
-const MedicalDataModal: React.FC = () => {
+const MedicalDataQueryForm: React.FC = () => {
   const [minAge, setMinAge] = useState(0);
   const [maxAge, setMaxAge] = useState(100);
   const [minIncome, setMinIncome] = useState(0);
   const [maxIncome, setMaxIncome] = useState(1000000);
-  const [medicalCondition, setMedicalCondition] = useState("Diabetes");
-  const [healthStatus, setHealthStatus] = useState("Fair");
+  const [medicalCondition, setMedicalCondition] = useState("Healthy");
+  const [healthStatus, setHealthStatus] = useState("Excellent");
   const [records, setRecords] = useState<MedicalRecord[]>([]);
   const [filteredRecords, setFilteredRecords] = useState<MedicalRecord[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
@@ -162,15 +162,15 @@ const MedicalDataModal: React.FC = () => {
               value={medicalCondition}
               onChange={(e) => setMedicalCondition(e.target.value)}
             >
+              <option value="Healthy">Healthy</option>
               <option value="Hypertension">Hypertension</option>
               <option value="Low Blood Pressure">Low Blood Pressure</option>
               <option value="Diabetes">Diabetes</option>
               <option value="Arthritis">Arthritis</option>
               <option value="Asthma">Asthma</option>
+              <option value="Allergies">Allergies</option>
               <option value="Kidney Disease">Kidney Disease</option>
               <option value="Liver Disease">Liver Disease</option>
-              <option value="Allergies">Allergies</option>
-              <option value="Healthy">Healthy</option>
             </select>
           </div>
 
@@ -184,8 +184,8 @@ const MedicalDataModal: React.FC = () => {
               <option value="Fair">Fair</option>
               <option value="Poor">Poor</option>
               <option value="Good">Good</option>
-              <option value="Critical">Critical</option>
               <option value="Excellent">Excellent</option>
+              <option value="Critical">Critical</option>
             </select>
           </div>
         </div>
@@ -273,4 +273,4 @@ const MedicalDataModal: React.FC = () => {
   );
 };
 
-export default MedicalDataModal;
+export default MedicalDataQueryForm;

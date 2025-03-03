@@ -31,6 +31,8 @@ import CitizenTaxModal from './pages/citizen/CitizenTaxModal';
 import CitizenVaccineModal from './pages/citizen/CitizenVaccineModal';
 import CitizenEnvModal from './pages/citizen/CitizenEnvModal';
 import CitizenGeoModal from './pages/citizen/CitizenGeoModal';
+import CitizenFloraFauna from './pages/citizen/CitizenFloraFauna';
+import CitizenAsset from './pages/citizen/CitizenAsset';
 
 import BirthQueryForm from './pages/census_dep/births';
 import DeathQueryForm from './pages/census_dep/deaths';
@@ -130,6 +132,8 @@ const App: React.FC = () => {
             <Route path="vaccine" element={<CitizenVaccineModal />} />
             <Route path="env" element={<CitizenEnvModal />} />
             <Route path="geo" element={<CitizenGeoModal />} />
+            <Route path="flora_fauna" element={<CitizenFloraFauna />} />
+            <Route path="assets" element={<CitizenAsset />} />
         </Route>
 
         <Route path="/it-dashboard" element={<ProtectedRoute element={<ItDashboard />} />} >
