@@ -363,9 +363,7 @@ from datetime import date as dt
 def create_scheme_enrollment(
     enrollment: SchemeEnrollmentCreate,
     db: Session = Depends(get_db),
-    current_user: dict = Depends(
-        get_current_user
-    ),
+    current_user: dict = Depends(get_current_user),
 ):
 
     if current_user["role"] not in {"pradhan", "employee"}:
@@ -401,6 +399,90 @@ def create_scheme_enrollment(
                 detail="Enrollment creation failed",
             )
         return dict(new_enrollment._mapping)
+    except Exception as e:
+        db.rollback()
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e)
+        )
+
+from pydantic import BaseModel, Field
+
+
+class DeleteRequest(BaseModel):
+    id: int = Field(..., description="ID of the record to delete")
+
+
+ALLOWED_ROLES = {"admin", "pradhan", "employee"}
+
+
+@router.post("/delete/citizen", response_model=dict)
+def delete_citizen(
+    request: DeleteRequest,
+    db: Session = Depends(get_db),
+    current_user: dict = Depends(get_current_user),
+):
+    if current_user.get("role") not in ALLOWED_ROLES:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Not authorized to delete citizen records",
+        )
+    try:
+        sql = text("DELETE FROM citizens WHERE citizen_id = :id")
+        result = db.execute(sql, {"id": request.id})
+        if result.rowcount == 0:
+            raise HTTPException(status_code=404, detail="Citizen not found")
+        db.commit()
+        return {"message": f"Citizen with id {request.id} deleted successfully"}
+    except Exception as e:
+        db.rollback()
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e)
+        )
+
+
+@router.post("/delete/household", response_model=dict)
+def delete_household(
+    request: DeleteRequest,
+    db: Session = Depends(get_db),
+    current_user: dict = Depends(get_current_user),
+):
+    if current_user.get("role") not in ALLOWED_ROLES:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Not authorized to delete household records",
+        )
+    try:
+        sql = text("DELETE FROM households WHERE household_id = :id")
+        result = db.execute(sql, {"id": request.id})
+        if result.rowcount == 0:
+            raise HTTPException(status_code=404, detail="Household not found")
+        db.commit()
+        return {"message": f"Household with id {request.id} deleted successfully"}
+    except Exception as e:
+        db.rollback()
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e)
+        )
+
+
+@router.post("/delete/land-record", response_model=dict)
+def delete_land_record(
+    request: DeleteRequest,
+    db: Session = Depends(get_db),
+    current_user: dict = Depends(get_current_user),
+):
+    if current_user.get("role") not in ALLOWED_ROLES:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Not authorized to delete land records",
+        )
+    try:
+        sql = text("DELETE FROM land_records WHERE land_id = :id")
+        result = db.execute(sql, {"id": request.id})
+        if result.rowcount == 0:
+            raise HTTPException(status_code=404, detail="Land record not found")
+        db.commit()
+        return {"message": f"Land record with id {request.id} deleted successfully"}
     except Exception as e:
         db.rollback()
         raise HTTPException(
