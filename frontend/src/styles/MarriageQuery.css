@@ -96,6 +96,10 @@
     overflow-y: auto;
     width: 100%;
 }
+.marriage-records-table th{
+    background-color: #007bff;
+    color: white;
+}
 
 .marriage-records-table thead,
 .marriage-records-table tbody tr {
