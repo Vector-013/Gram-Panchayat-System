@@ -124,3 +124,72 @@ def get_geo_features(db: Session = Depends(get_db)):
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e)
         )
+
+
+from pydantic import BaseModel, Field
+from typing import Optional
+
+
+class MarriageQuery(BaseModel):
+    household_id: Optional[int] = Field(
+        None,
+        description="Household ID to filter by. If omitted, all households are considered.",
+    )
+    year_min: Optional[int] = Field(
+        None,
+        description="Minimum marriage year. If omitted, no lower bound is applied.",
+    )
+    year_max: Optional[int] = Field(
+        None,
+        description="Maximum marriage year. If omitted, no upper bound is applied.",
+    )
+
+
+@router.post("/marriage-query", response_model=dict)
+def marriage_query(
+    query: MarriageQuery,
+    db: Session = Depends(get_db),
+    # current_user: dict = Depends(get_current_user)  # Uncomment if auth is needed
+):
+    # We'll use the provided filters, using None for any missing bound.
+    household_id = query.household_id
+    year_min = query.year_min
+    year_max = query.year_max
+
+    sql = text(
+        """
+        WITH marriages_with_households AS (
+            SELECT 
+                m.husband_id, 
+                m.wife_id, 
+                m.marriage_date,
+                ch.name AS husband_name,
+                cw.name AS wife_name,
+                h1.household_id AS husband_household,
+                h2.household_id AS wife_household,
+                h1.address AS husband_address,
+                h2.address AS wife_address
+            FROM marriage m
+            JOIN citizens ch ON m.husband_id = ch.citizen_id
+            JOIN citizens cw ON m.wife_id = cw.citizen_id
+            LEFT JOIN households h1 ON ch.household_id = h1.household_id
+            LEFT JOIN households h2 ON cw.household_id = h2.household_id
+        )
+        SELECT * FROM marriages_with_households
+        WHERE (:household_id IS NULL OR (husband_household = :household_id OR wife_household = :household_id))
+          AND (:year_min IS NULL OR EXTRACT(YEAR FROM marriage_date) >= :year_min)
+          AND (:year_max IS NULL OR EXTRACT(YEAR FROM marriage_date) <= :year_max)
+        ORDER BY marriage_date DESC;
+    """
+    )
+
+    params = {"household_id": household_id, "year_min": year_min, "year_max": year_max}
+    try:
+        result = db.execute(sql, params)
+        rows = result.fetchall()
+        marriages = [dict(row._mapping) for row in rows]
+        return {"marriages": marriages}
+    except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e)
+        )

@@ -534,13 +534,33 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJDZW5zdXNEZ
 
 
 ### Birth Query Request (Example)
-PUT http://localhost:8000/census/birth-query
+# PUT http://localhost:8000/census/birth-query
+# Content-Type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBZG1pbkBwYW5jaGF5YXQuY29tIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzQwOTg4NzYzfQ.BmsjJewcf6zfyoO0G8qPrU1tg9tE7uAuQFQvB7E-sac
+
+# {
+#   "gender": "Both",
+#   "household_id": null,
+#   "min_year": 2000,
+#   "max_year": 2020
+# }
+
+# ### Test: Marriage Query - No Filters (Return all marriages)
+# POST http://localhost:8000/census/marriage-query
+# Content-Type: application/json
+
+# {
+#   "household_id": null,
+#   "year_min": null,
+#   "year_max": null
+# }
+
+### Test: Marriage Query - Filter by Household and Year Range
+POST http://localhost:8000/census/marriage-query
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBZG1pbkBwYW5jaGF5YXQuY29tIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzQwOTg4NzYzfQ.BmsjJewcf6zfyoO0G8qPrU1tg9tE7uAuQFQvB7E-sac
 
 {
-  "gender": "Both",
   "household_id": null,
-  "min_year": 2000,
-  "max_year": 2020
+  "year_min": 1900,
+  "year_max": 2025
 }
