@@ -366,7 +366,7 @@ def create_scheme_enrollment(
     current_user: dict = Depends(get_current_user),
 ):
 
-    if current_user["role"] not in {"pradhan", "employee"}:
+    if current_user["role"] not in {"pradhan", "employee", "admin"}:
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
             detail="You are not authorized to enroll citizens in welfare schemes.",

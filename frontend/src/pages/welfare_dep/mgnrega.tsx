@@ -272,8 +272,10 @@ const MGNREGAQuery: React.FC = () => {
                       <td>{record.household_id}</td>
                       <td>{record.address}</td>
                       <td>{record.personal_income}</td>
+                      <td>{record.household_id}</td>
+                      <td>{record.address}</td>
+                      <td>{record.personal_income}</td>
                       <td>{record.household_income}</td>
-                    
                     </tr>
                   ))
                 ) : (
