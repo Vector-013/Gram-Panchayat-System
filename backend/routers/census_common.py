@@ -75,7 +75,15 @@ def birth_query(
 
 
 @router.get("/geo-query", response_model=list)
-def get_geo_features(db: Session = Depends(get_db)):
+def get_geo_features(
+    db: Session = Depends(get_db), user: dict = Depends(get_current_user)
+):
+
+    if user["role"] not in {"pradhan", "employee", "admin", "census_dept"}:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Only admin/pradhan/employee/welfare can fetch geo features",
+        )
     """
     Returns the entire geo_features table.
     The response is a list of objects with keys:
@@ -149,8 +157,14 @@ class MarriageQuery(BaseModel):
 def marriage_query(
     query: MarriageQuery,
     db: Session = Depends(get_db),
-    # current_user: dict = Depends(get_current_user)  # Uncomment if auth is needed
+    current_user: dict = Depends(get_current_user),  # Uncomment if auth is needed
 ):
+
+    if current_user["role"] not in {"pradhan", "employee", "admin", "census_dept"}:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Only admin/pradhan/employee/welfare can fetch marriage details",
+        )
     # We'll use the provided filters, using None for any missing bound.
     household_id = query.household_id
     year_min = query.year_min
@@ -189,6 +203,40 @@ def marriage_query(
         rows = result.fetchall()
         marriages = [dict(row._mapping) for row in rows]
         return {"marriages": marriages}
+    except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e)
+        )
+
+
+@router.post("/death-query", response_model=dict)
+def death_query(db: Session = Depends(get_db), user: dict = Depends(get_current_user)):
+
+    if user["role"] not in {"pradhan", "employee", "admin", "census_dept"}:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Only admin/pradhan/employee/welfare can fetch death details",
+        )
+    try:
+        sql = text(
+            """
+            SELECT 
+                d.citizen_id,
+                c.name,
+                EXTRACT(YEAR FROM age(d.date, c.dob))::int AS age_at_death,
+                d.cause,
+                c.gender,
+                TO_CHAR(c.dob, 'YYYY-MM-DD') AS dob,
+                c.household_id
+            FROM deaths d
+            JOIN citizens c ON d.citizen_id = c.citizen_id
+            ORDER BY d.date DESC;
+        """
+        )
+        result = db.execute(sql)
+        rows = result.fetchall()
+        death_data = [dict(row._mapping) for row in rows]
+        return {"deaths": death_data}
     except Exception as e:
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e)
