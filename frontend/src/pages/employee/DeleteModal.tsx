@@ -37,8 +37,8 @@ const DeleteModal: React.FC = () => {
                     <option value="">Choose an option</option>
                     <option value="citizen">Citizen</option>
                     <option value="household">Household</option>
-                    <option value="asset">Asset</option>
                     <option value="land">Land Record</option>
+                    {/*<option value="asset">Asset</option>
                     <option value="welfare">Welfare Scheme</option>
                     <option value="tax">Tax Record</option>
                     <option value="health">Health Record</option>
@@ -47,8 +47,8 @@ const DeleteModal: React.FC = () => {
                     <option value="geo">Geographical Record</option>
                     <option value="birth">Birth Record</option>
                     <option value="death">Death Record</option>
-                    <option value="scheme">Scheme Enrollment</option>
-                    {(role == 'pradhan' || role == 'admin') && <option value="employee">Employee</option>}
+                    <option value="scheme">Scheme Enrollment</option> */}
+                    {/* {(role == 'pradhan' || role == 'admin') && <option value="employee">Employee</option>} */}
                 </select>
             </div>
 

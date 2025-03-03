@@ -75,7 +75,7 @@ useEffect(() => {
         return (
             (citizenIdFilter === 0 || record.citizen_id === citizenIdFilter) &&
             (nameFilter === "" || record.name.toLowerCase().includes(nameFilter.toLowerCase())) &&
-            (genderFilter === "" || record.gender === genderFilter)
+            (genderFilter === "" || genderFilter == "All" || record.gender === genderFilter)
         );
     });
     setFilteredRecords(filtered);

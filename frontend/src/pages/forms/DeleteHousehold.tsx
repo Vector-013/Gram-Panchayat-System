@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "../../styles/InsertForm.css";
 
-const DeleteHosehold: React.FC = () => {
-    const [childId, setChildId] = useState<number | "">("");
+const DeleteHousehold: React.FC = () => {
+    const [householdId, setHouseholdId] = useState<number | "">("");
     const [loading, setLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
     const [success, setSuccess] = useState<string | null>(null);
@@ -14,19 +14,25 @@ const DeleteHosehold: React.FC = () => {
         setSuccess(null);
 
         try {
-            const response = await fetch(`http://localhost:8000/birth-event/${childId}`, {
-                method: "DELETE",
+            const requestBody = { id: householdId };
+
+            const response = await fetch("http://localhost:8000/delete/household", {
+                method: "POST",
                 headers: { 
+                    "Content-Type": "application/json",
                     "Authorization": `Bearer ${localStorage.getItem("token")}`
-                }
+                },
+                body: JSON.stringify(requestBody),
             });
 
+            const data = await response.json();
+
             if (!response.ok) {
-                throw new Error("Failed to delete birth record");
+                throw new Error(data.detail || "Failed to delete household record");
             }
 
-            setSuccess("Householdrecord successfully deleted!");
-            setChildId("");
+            setSuccess(data.message);
+            setHouseholdId("");
         } catch (err: any) {
             setError(err.message);
         }
@@ -43,8 +49,8 @@ const DeleteHosehold: React.FC = () => {
                 <label className="insert-form-label">Household ID:</label>
                 <input
                     type="number"
-                    value={childId}
-                    onChange={(e) => setChildId(e.target.value === "" ? "" : parseInt(e.target.value))}
+                    value={householdId}
+                    onChange={(e) => setHouseholdId(e.target.value === "" ? "" : parseInt(e.target.value))}
                     className="insert-form-input"
                     required
                 />
@@ -57,4 +63,4 @@ const DeleteHosehold: React.FC = () => {
     );
 };
 
-export default DeleteHosehold;
+export default DeleteHousehold;

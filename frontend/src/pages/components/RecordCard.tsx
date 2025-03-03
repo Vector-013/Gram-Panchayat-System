@@ -23,6 +23,7 @@ import birthRecordImage from "../../../../icons/birth.png";
 import deathRecordImage from "../../../../icons/death.png";
 import marriageRecordImage from "../../../../icons/marriage.png";
 import adminRecordImage from "../../../../icons/admin.png";
+import viewRecordImage from "../../../../icons/view.png";
 
 interface RecordCardProps {
   title: string;
@@ -77,6 +78,8 @@ const RecordCard: React.FC<RecordCardProps> = ({ title, onRedirect, to_link }) =
     src = marriageRecordImage;
   }else if (title === "Super User") {
     src = adminRecordImage;
+  }else if (title === "View") {
+    src = viewRecordImage;
   }
 
   return (

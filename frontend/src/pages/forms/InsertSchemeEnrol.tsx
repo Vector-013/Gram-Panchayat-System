@@ -20,7 +20,7 @@ const InsertScheme: React.FC = () => {
         };
 
         try {
-            const response = await fetch("http://localhost:8000/api/scheme/insert", {
+            const response = await fetch("http://localhost:8000/employee/scheme-enrollment", {
                 method: "POST",
                 headers: { "Content-Type": "application/json", "Authorization": `Bearer ${localStorage.getItem("token")}` },
                 body: JSON.stringify(requestBody),

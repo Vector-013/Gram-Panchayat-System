@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../../styles/InsertForm.css";
 
 const DeleteLandRecords: React.FC = () => {
-    const [childId, setChildId] = useState<number | "">("");
+    const [landRecordId, setLandRecordId] = useState<number | "">("");
     const [loading, setLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
     const [success, setSuccess] = useState<string | null>(null);
@@ -14,19 +14,25 @@ const DeleteLandRecords: React.FC = () => {
         setSuccess(null);
 
         try {
-            const response = await fetch(`http://localhost:8000/birth-event/${childId}`, {
-                method: "DELETE",
+            const requestBody = { id: landRecordId };
+
+            const response = await fetch("http://localhost:8000/delete/land-record", {
+                method: "POST",
                 headers: { 
+                    "Content-Type": "application/json",
                     "Authorization": `Bearer ${localStorage.getItem("token")}`
-                }
+                },
+                body: JSON.stringify(requestBody),
             });
 
+            const data = await response.json();
+
             if (!response.ok) {
-                throw new Error("Failed to delete birth record");
+                throw new Error(data.detail || "Failed to delete land record");
             }
 
-            setSuccess("Land record successfully deleted!");
-            setChildId("");
+            setSuccess(data.message);
+            setLandRecordId("");
         } catch (err: any) {
             setError(err.message);
         }
@@ -40,11 +46,11 @@ const DeleteLandRecords: React.FC = () => {
             {success && <div className="insert-form-success">{success}</div>}
 
             <form onSubmit={handleSubmit} className="insert-form">
-                <label className="insert-form-label">Landrecord ID:</label>
+                <label className="insert-form-label">Land Record ID:</label>
                 <input
                     type="number"
-                    value={childId}
-                    onChange={(e) => setChildId(e.target.value === "" ? "" : parseInt(e.target.value))}
+                    value={landRecordId}
+                    onChange={(e) => setLandRecordId(e.target.value === "" ? "" : parseInt(e.target.value))}
                     className="insert-form-input"
                     required
                 />
