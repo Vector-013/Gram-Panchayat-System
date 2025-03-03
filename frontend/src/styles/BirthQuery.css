@@ -76,3 +76,15 @@
     background-color: #007bff;
     color: white;
 }
+
+.birth-query-input-group{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 80%;
+
+}
+
+.birth-query-input-group input, span{
+    margin: 5px;
+}

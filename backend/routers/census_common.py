@@ -16,7 +16,7 @@ class BirthQueryRequest(BaseModel):
     max_year: Optional[int] = None
 
 
-@router.put("/birth-query")
+@router.post("/birth-query")
 def birth_query(
     query: BirthQueryRequest,
     db: Session = Depends(get_db),

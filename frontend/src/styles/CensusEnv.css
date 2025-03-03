@@ -1,60 +1,29 @@
 /* Main Container */
-.env-container {
+.birth-query-container {
     background-color: #f9f9f9;
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
+    padding: 20px;
 }
 
-.env-title {
-    font-size: 1.25rem;
+/* Title */
+.birth-query-title {
+    font-size: 1.5rem;
     font-weight: bold;
     margin-bottom: 15px;
-    margin-top: 15px;
+    margin-top: 10px;
 }
 
-/* Today's Values */
-.env-today {
-    background: #e3f2fd;
-    padding: 15px;
-    border-radius: 5px;
-    margin-bottom: 15px;
-    font-size: 16px;
-}
-
-/* Filters */
-.env-filter-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    justify-content: center;
-    margin-bottom: 20px;
-}
-
-.env-range {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.env-input {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    width: 100px;
-}
-
-/* Loading & Error Messages */
-.env-loading {
-    color: #007bff;
-}
-
-.env-error {
+/* Error Message */
+.birth-query-error {
     color: red;
+    font-weight: bold;
+    margin-bottom: 10px;
 }
 
 /* Table Container */
-.env-table-container {
+.birth-records-container {
     margin-top: 20px;
     overflow-y: auto;
     max-height: 400px;
@@ -62,54 +31,43 @@
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.env-table-container thead{
+/* Sticky Header */
+.birth-records-table thead {
     position: sticky;
     top: 0;
     z-index: 1;
 }
 
 /* Table Styling */
-.env-table {
+.birth-records-table {
     width: 100%;
     border-collapse: collapse;
     background-color: white;
 }
 
 /* Table Headers */
-.env-table th {
+.birth-records-table th {
     background-color: #007bff;
     color: white;
-    padding: 10px;
+    padding: 12px;
     border: 1px solid #ddd;
     text-align: center;
 }
 
 /* Table Cells */
-.env-table td {
+.birth-records-table td {
     padding: 10px;
     border: 1px solid #ddd;
     text-align: center;
 }
 
-/* High AQI Warning */
-.env-high-aqi {
-    font-weight: bold;
-    color: red;
-}
-
-/* Normal AQI */
-.env-normal-aqi {
-    font-weight: bold;
-    color: green;
-}
-
 /* Alternate Row Styling */
-.env-table tr:nth-child(even) {
+.birth-records-table tr:nth-child(even) {
     background-color: #f2f2f2;
 }
 
 /* Hover Effect */
-.env-table tr:hover {
+.birth-records-table tr:hover {
     background-color: #d6eaff;
 }
 
@@ -123,7 +81,7 @@
 
 /* Responsive Table */
 @media (max-width: 768px) {
-    .env-table {
+    .birth-records-table {
         font-size: 14px;
     }
 }
