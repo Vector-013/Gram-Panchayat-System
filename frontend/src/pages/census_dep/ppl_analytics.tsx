@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from "recharts";
-
+import "../../styles/DataChart.css";
 // Define Type for API Response
 type ApiResponse = {
   births: { year: number; gender: string; count: number }[];
@@ -83,10 +83,10 @@ const transformData = (data: ApiResponse) => {
   if (error) return <p>Error: {error}</p>;
 
   return (
-    <div style={{ width: "100%", height: 500 }}>
+    <div style={{ width: "100%", height: "80%", overflowY: "auto" }} className="col card-holder ppl-holder">
       <h2>Births, Deaths, and Marriages Over the Years</h2>
-      <ResponsiveContainer width="100%" height="100%">
-        <BarChart data={chartData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+      <ResponsiveContainer width="100%" height="90%">
+        <BarChart data={chartData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }} barSize={50}>
           <XAxis dataKey="year" />
           <YAxis />
           <Tooltip />

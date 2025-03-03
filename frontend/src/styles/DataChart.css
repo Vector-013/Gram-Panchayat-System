@@ -1,0 +1,48 @@
+/* Styling for the main container */
+.ppl-holder {
+    background: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px;
+    text-align: center;
+  }
+  
+  /* Title Styling */
+  h2 {
+    font-size: 22px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  /* Tooltip Styling */
+  .recharts-tooltip-wrapper {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 5px;
+    padding: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Legend Styling */
+  .recharts-legend-item {
+    font-size: 14px;
+    font-weight: 500;
+    color: #555;
+  }
+  
+  /* Axis Labels */
+  .recharts-cartesian-axis-tick text {
+    font-size: 14px;
+    fill: #666;
+  }
+  
+  /* Bars Styling */
+  .recharts-bar-rectangle {
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .recharts-bar-rectangle:hover {
+    opacity: 0.8;
+  }
+  
