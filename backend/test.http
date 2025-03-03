@@ -564,3 +564,31 @@ Content-Type: application/json
   "year_min": 1900,
   "year_max": 2025
 }
+
+### Test: Census Death Query - Example with Filters
+POST http://localhost:8000/census/death-query
+Content-Type: application/json
+Authorization: Bearer YOUR_ACCESS_TOKEN
+
+{
+  "gender": "Female",
+  "household_id": null,
+  "year_min": 2000,
+  "year_max": 2025,
+  "age_min": 30,
+  "age_max": 80
+}
+
+### Test: Census Death Query - No Filters (return all)
+POST http://localhost:8000/census/death-query
+Content-Type: application/json
+Authorization: Bearer YOUR_ACCESS_TOKEN
+
+{
+  "gender": "",
+  "household_id": null,
+  "year_min": null,
+  "year_max": null,
+  "age_min": null,
+  "age_max": null
+}

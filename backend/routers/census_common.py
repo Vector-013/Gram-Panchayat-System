@@ -209,34 +209,79 @@ def marriage_query(
         )
 
 
+class DeathQuery(BaseModel):
+    gender: Optional[str] = Field(
+        "", description="Gender filter: 'Male', 'Female', or blank for all"
+    )
+    household_id: Optional[int] = Field(
+        None, description="Household ID filter; if omitted, no filtering by household"
+    )
+    year_min: Optional[int] = Field(
+        None, description="Minimum death year; if omitted, no lower bound"
+    )
+    year_max: Optional[int] = Field(
+        None, description="Maximum death year; if omitted, no upper bound"
+    )
+    age_min: Optional[int] = Field(
+        None, description="Minimum age at death; if omitted, no lower bound"
+    )
+    age_max: Optional[int] = Field(
+        None, description="Maximum age at death; if omitted, no upper bound"
+    )
+
+
 @router.post("/death-query", response_model=dict)
-def death_query(db: Session = Depends(get_db), user: dict = Depends(get_current_user)):
+def death_query(
+    query: DeathQuery,
+    db: Session = Depends(get_db),
+    user: dict = Depends(get_current_user),
+):
+    # Build a query that computes age at death and applies filters.
 
     if user["role"] not in {"pradhan", "employee", "admin", "census_dept"}:
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
             detail="Only admin/pradhan/employee/welfare can fetch death details",
         )
-    try:
-        sql = text(
-            """
+    sql = text(
+        """
+        WITH death_details AS (
             SELECT 
                 d.citizen_id,
                 c.name,
-                EXTRACT(YEAR FROM age(d.date, c.dob))::int AS age_at_death,
-                d.cause,
                 c.gender,
-                TO_CHAR(c.dob, 'YYYY-MM-DD') AS dob,
-                c.household_id
+                c.dob,
+                d.date AS death_date,
+                d.cause,
+                c.household_id,
+                EXTRACT(YEAR FROM age(d.date, c.dob))::int AS age_at_death
             FROM deaths d
             JOIN citizens c ON d.citizen_id = c.citizen_id
-            ORDER BY d.date DESC;
-        """
         )
-        result = db.execute(sql)
+        SELECT * FROM death_details
+        WHERE (:gender = '' OR :gender IS NULL OR gender = :gender)
+          AND (:household_id IS NULL OR household_id = :household_id)
+          AND (:year_min IS NULL OR EXTRACT(YEAR FROM death_date) >= :year_min)
+          AND (:year_max IS NULL OR EXTRACT(YEAR FROM death_date) <= :year_max)
+          AND (:age_min IS NULL OR age_at_death >= :age_min)
+          AND (:age_max IS NULL OR age_at_death <= :age_max)
+        ORDER BY death_date DESC;
+    """
+    )
+
+    params = {
+        "gender": query.gender if query.gender is not None else "",
+        "household_id": query.household_id,
+        "year_min": query.year_min,
+        "year_max": query.year_max,
+        "age_min": query.age_min,
+        "age_max": query.age_max,
+    }
+    try:
+        result = db.execute(sql, params)
         rows = result.fetchall()
-        death_data = [dict(row._mapping) for row in rows]
-        return {"deaths": death_data}
+        death_list = [dict(row._mapping) for row in rows]
+        return {"deaths": death_list}
     except Exception as e:
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e)
