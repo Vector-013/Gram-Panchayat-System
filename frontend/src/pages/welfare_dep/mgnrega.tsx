@@ -65,7 +65,7 @@ const MGNREGAQuery: React.FC = () => {
 
 
       const data = await response.json();
-
+      console.log(data);
       const transformedData1 = data["eligible_and_enrolled"].map((record: any) => ({
         citizen_id: record["Citizen ID"],  // Backend: "Citizen ID"
         name: record["Name"],  
@@ -87,6 +87,7 @@ const MGNREGAQuery: React.FC = () => {
   }));
       setEnrolled(transformedData1);
       setNotEnrolled(transformedData2);
+      console.log(transformedData1);
     } catch (err: any) {
       setError(err.message);
     }
@@ -268,8 +269,11 @@ const MGNREGAQuery: React.FC = () => {
                       <td>{record.citizen_id}</td>
                       <td>{record.name}</td>
                       <td>{record.age}</td>
-                      <td>{record.household_income}</td>
+                      <td>{record.household_id}</td>
                       <td>{record.address}</td>
+                      <td>{record.personal_income}</td>
+                      <td>{record.household_income}</td>
+                    
                     </tr>
                   ))
                 ) : (
