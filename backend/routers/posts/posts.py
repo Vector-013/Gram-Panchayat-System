@@ -346,3 +346,63 @@ def create_geo_feature(
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e)
         )
+
+
+from pydantic import BaseModel, Field
+
+
+class SchemeEnrollmentCreate(BaseModel):
+    citizen_id: int = Field(..., description="ID of the citizen to enroll")
+    scheme_id: int = Field(..., description="ID of the scheme to enroll in")
+
+
+from datetime import date as dt
+
+
+@router.post("/employee/scheme-enrollment", response_model=dict)
+def create_scheme_enrollment(
+    enrollment: SchemeEnrollmentCreate,
+    db: Session = Depends(get_db),
+    current_user: dict = Depends(
+        get_current_user
+    ),
+):
+
+    if current_user["role"] not in {"pradhan", "employee"}:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="You are not authorized to enroll citizens in welfare schemes.",
+        )
+
+    # Set enrollment_date to today's date
+    enroll_date = dt.today()
+
+    # For simplicity, we directly insert the record.
+    sql = text(
+        """
+        INSERT INTO scheme_enrollments (citizen_id, scheme_id, enrollment_date)
+        VALUES (:citizen_id, :scheme_id, :enrollment_date)
+        RETURNING citizen_id, scheme_id, to_char(enrollment_date, 'YYYY-MM-DD') AS enrollment_date;
+    """
+    )
+    params = {
+        "citizen_id": enrollment.citizen_id,
+        "scheme_id": enrollment.scheme_id,
+        "enrollment_date": enroll_date,
+    }
+
+    try:
+        result = db.execute(sql, params)
+        db.commit()
+        new_enrollment = result.fetchone()
+        if not new_enrollment:
+            raise HTTPException(
+                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                detail="Enrollment creation failed",
+            )
+        return dict(new_enrollment._mapping)
+    except Exception as e:
+        db.rollback()
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e)
+        )
