@@ -66,23 +66,41 @@
 }
 
 .marriage-records-container {
-    margin-top: 20px;
-    text-align: center;
+    max-height: 400px; /* Adjust height as needed */
+    overflow-y: auto;
+    border: 1px solid #ccc;
 }
 
 .marriage-records-table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 10px;
 }
 
-.marriage-records-table th, .marriage-records-table td {
+.marriage-records-table thead {
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 10;
+}
+
+.marriage-records-table th,
+.marriage-records-table td {
+    padding: 8px;
     border: 1px solid #ddd;
-    padding: 10px;
-    text-align: center;
+    text-align: left;
 }
 
-.marriage-records-table th {
-    background-color: #007bff;
-    color: white;
+.marriage-records-table tbody {
+    display: block;
+    max-height: 350px; /* Adjust as needed */
+    overflow-y: auto;
+    width: 100%;
 }
+
+.marriage-records-table thead,
+.marriage-records-table tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+

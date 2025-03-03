@@ -3,12 +3,19 @@ import "../../styles/MarriageQuery.css";
 import { useNavigate } from "react-router-dom";
 
 interface MarriageRecord {
-    citizen1_id: number;
-    citizen1_name: string;
-    citizen2_id: number;
-    citizen2_name: string;
-    household_id: string;
+    husband_id: number;
+    wife_id: number;
     marriage_date: string;
+    husband_name: string;
+    wife_name: string;
+    husband_household: number;
+    wife_household: number;
+    husband_address: string;
+    wife_address: string;
+}
+
+interface MarriageRecords{
+    marriages: MarriageRecord[];
 }
 
 function MarriageQueryForm() {
@@ -18,7 +25,6 @@ function MarriageQueryForm() {
     const [marriageRecords, setMarriageRecords] = useState<MarriageRecord[]>([]);
     const [error, setError] = useState<string | null>(null);
     
-    const navigate = useNavigate();
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -28,21 +34,25 @@ function MarriageQueryForm() {
         }
         try {
             const requestBody = {
-                household_id: householdId,
-                start_year: startYear,
-                end_year: endYear,
+                household_id: householdId ? parseInt(householdId) : null,
+                year_min: startYear ? parseInt(startYear) : null,
+                year_max: endYear ? parseInt(endYear) : null,
             };
             
-            const response = await fetch("http://localhost:8000/marriage-query", {
+            
+            const response = await fetch("http://localhost:8000/census/marriage-query", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" , "Authorization": "Bearer " + localStorage.getItem("token")},
                 body: JSON.stringify(requestBody),
             });
             if (!response.ok) {
-                throw new Error("Submission failed");
+                const errorData = await response.json();
+                throw new Error(errorData.detail || "Submission failed");
             }
-            const data: MarriageRecord[] = await response.json();
-            setMarriageRecords(data);
+            
+            const data: MarriageRecords = await response.json();
+            setMarriageRecords(data.marriages);
+            console.log(data);
         } catch (err: any) {
             setError(err.message);
         }
@@ -79,23 +89,30 @@ function MarriageQueryForm() {
                     <table className="marriage-records-table">
                         <thead>
                             <tr>
-                                <th>Citizen 1 ID</th>
-                                <th>Citizen 1 Name</th>
-                                <th>Citizen 2 ID</th>
-                                <th>Citizen 2 Name</th>
-                                <th>Household ID</th>
+                                <th>Husband ID</th>
+                                <th>Husband Name</th>
+                                <th>Wife ID</th>
+                                <th>Wife Name</th>
                                 <th>Marriage Date</th>
+                                <th>Husband Household ID</th>
+                                <th>Wife Household ID</th>
+                                <th>Husband Address</th>
+                                <th>Wife Address</th>
+                
                             </tr>
                         </thead>
                         <tbody>
                             {marriageRecords.map((record, index) => (
                                 <tr key={index}>
-                                    <td>{record.citizen1_id}</td>
-                                    <td>{record.citizen1_name}</td>
-                                    <td>{record.citizen2_id}</td>
-                                    <td>{record.citizen2_name}</td>
-                                    <td>{record.household_id}</td>
+                                    <td>{record.husband_id}</td>
+                                    <td>{record.husband_name}</td>
+                                    <td>{record.wife_id}</td>
+                                    <td>{record.wife_name}</td>
                                     <td>{record.marriage_date}</td>
+                                    <td>{record.husband_household}</td>
+                                    <td>{record.wife_household}</td>
+                                    <td>{record.husband_address}</td>
+                                    <td>{record.wife_address}</td>
                                 </tr>
                             ))}
                         </tbody>
