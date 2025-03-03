@@ -568,7 +568,7 @@ Content-Type: application/json
 ### Test: Census Death Query - Example with Filters
 POST http://localhost:8000/census/death-query
 Content-Type: application/json
-Authorization: Bearer YOUR_ACCESS_TOKEN
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJDZW5zdXNEZXB0QHBhbmNoYXlhdC5jb20iLCJyb2xlIjoiY2Vuc3VzX2RlcHQiLCJleHAiOjE3NDA5OTM5MTF9.w9JveUf51AJcRcrRPUHS7Ec6BaZKYTAE_MEuO_8Sn34
 
 {
   "gender": "Female",
