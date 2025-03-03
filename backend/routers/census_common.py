@@ -75,7 +75,7 @@ def birth_query(
 
 
 @router.get("/geo-query", response_model=list)
-def get_geo_features(citizen_id: int, db: Session = Depends(get_db)):
+def get_geo_features(db: Session = Depends(get_db)):
     """
     Returns the entire geo_features table.
     The response is a list of objects with keys:
